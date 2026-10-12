@@ -1,0 +1,90 @@
+---
+/** Home hero: one campaign running across CTV, web and in-app (illustrative, no data). */
+---
+<figure class="devices" aria-hidden="true">
+  <svg viewBox="0 0 600 460" role="presentation">
+    <defs>
+      <linearGradient id="hd-brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0870c7" /><stop offset="1" stop-color="#0eb151" /></linearGradient>
+      <linearGradient id="hd-screen" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0b2a52" /><stop offset="1" stop-color="#0a3d5c" /></linearGradient>
+    </defs>
+
+    <!-- CTV -->
+    <g class="dev tv">
+      <rect x="150" y="18" width="430" height="262" rx="16" fill="#0b1b33" />
+      <rect x="162" y="30" width="406" height="226" rx="8" fill="url(#hd-screen)" />
+      <rect x="162" y="30" width="406" height="226" rx="8" fill="url(#hd-brand)" opacity=".55" />
+      <circle cx="365" cy="135" r="34" fill="#fff" fill-opacity=".92" />
+      <path d="M355 117 l30 18 -30 18z" fill="#0870c7" />
+      <rect x="180" y="226" width="370" height="6" rx="3" fill="#fff" fill-opacity=".25" />
+      <rect x="180" y="226" width="370" height="6" rx="3" fill="#fff" class="progress" />
+      <rect x="180" y="44" width="38" height="22" rx="5" fill="#ffd34d" />
+      <text x="199" y="60" text-anchor="middle" class="t-badge">AD</text>
+      <path d="M335 280 h60 l10 22 h-80z" fill="#0b1b33" />
+    </g>
+
+    <!-- Laptop -->
+    <g class="dev laptop">
+      <rect x="20" y="190" width="300" height="190" rx="12" fill="#0b1b33" />
+      <rect x="30" y="200" width="280" height="170" rx="5" fill="#f4f7fb" />
+      <rect x="30" y="200" width="280" height="22" rx="5" fill="#e3e9f2" />
+      <circle cx="44" cy="211" r="4" fill="#ff6b6b" /><circle cx="57" cy="211" r="4" fill="#ffc94d" /><circle cx="70" cy="211" r="4" fill="#3ccf7a" />
+      <rect x="44" y="236" width="150" height="12" rx="6" fill="#c9d4e3" />
+      <rect x="44" y="258" width="120" height="8" rx="4" fill="#dbe3ee" />
+      <rect x="44" y="274" width="140" height="8" rx="4" fill="#dbe3ee" />
+      <rect x="44" y="290" width="110" height="8" rx="4" fill="#dbe3ee" />
+      <rect x="44" y="306" width="135" height="8" rx="4" fill="#dbe3ee" />
+      <rect x="44" y="322" width="100" height="8" rx="4" fill="#dbe3ee" />
+      <rect x="208" y="234" width="88" height="122" rx="8" fill="url(#hd-brand)" class="banner" />
+      <rect x="220" y="250" width="50" height="8" rx="4" fill="#fff" fill-opacity=".9" />
+      <rect x="220" y="264" width="36" height="6" rx="3" fill="#fff" fill-opacity=".6" />
+      <rect x="220" y="326" width="64" height="20" rx="10" fill="#fff" />
+      <path d="M0 380 h340 l-14 16 h-312z" fill="#16294a" />
+    </g>
+
+    <!-- Phone -->
+    <g class="dev phone">
+      <rect x="430" y="170" width="142" height="276" rx="24" fill="#0b1b33" />
+      <rect x="440" y="182" width="122" height="252" rx="16" fill="#f4f7fb" />
+      <rect x="481" y="188" width="40" height="8" rx="4" fill="#0b1b33" />
+      <rect x="452" y="210" width="98" height="10" rx="5" fill="#c9d4e3" />
+      <rect x="452" y="230" width="98" height="40" rx="8" fill="#e3e9f2" />
+      <rect x="452" y="280" width="98" height="92" rx="10" fill="url(#hd-brand)" class="native" />
+      <text x="460" y="298" class="t-sponsored">SPONSORED</text>
+      <rect x="460" y="350" width="50" height="14" rx="7" fill="#fff" />
+      <rect x="452" y="382" width="98" height="40" rx="8" fill="#e3e9f2" />
+    </g>
+  </svg>
+  <span class="tag tag-ctv"><i></i>CTV</span>
+  <span class="tag tag-web"><i></i>Web</span>
+  <span class="tag tag-app"><i></i>In-App</span>
+</figure>
+
+<style>
+  .devices { position: relative; margin: 0; }
+  svg { display: block; width: 100%; height: auto; overflow: visible; }
+  .dev { filter: drop-shadow(0 18px 30px rgb(11 37 69 / 0.22)); }
+  .t-badge { font: 700 12px var(--font-mono, monospace); fill: #0b1b33; }
+  .t-sponsored { font: 700 9px var(--font-mono, monospace); letter-spacing: 0.08em; fill: #fff; fill-opacity: 0.85; }
+  .progress { transform-box: fill-box; transform-origin: left; }
+  .tag { position: absolute; display: inline-flex; align-items: center; gap: 8px; padding: 6px 12px; border-radius: 999px; background: #fff; border: 1px solid var(--line); box-shadow: var(--shadow-soft); font-family: var(--font-mono); font-size: 0.72rem; font-weight: 600; letter-spacing: 0.08em; text-transform: uppercase; white-space: nowrap; }
+  .tag i { width: 8px; height: 8px; border-radius: 50%; background: var(--green); }
+  .tag-ctv { top: -2%; right: 2%; }
+  .tag-web { top: 36%; left: -4%; }
+  .tag-web i { background: var(--blue); }
+  .tag-app { bottom: 2%; right: -3%; }
+
+  @media (prefers-reduced-motion: no-preference) {
+    .dev { animation: hd-float 7s var(--ease-in-out) infinite alternate; }
+    .laptop { animation-delay: -2.3s; }
+    .phone { animation-delay: -4.6s; }
+    @keyframes hd-float { to { transform: translateY(-8px); } }
+    .progress { animation: hd-play 6s linear infinite; }
+    @keyframes hd-play { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+    .banner, .native { animation: hd-glow 3.2s var(--ease-in-out) infinite alternate; }
+    .native { animation-delay: -1.6s; }
+    @keyframes hd-glow { to { opacity: 0.78; } }
+    .tag { animation: hd-float 6s var(--ease-in-out) infinite alternate; }
+    .tag-web { animation-delay: -2s; }
+    .tag-app { animation-delay: -4s; }
+  }
+</style>

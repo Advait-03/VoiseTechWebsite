@@ -2,6 +2,7 @@
 import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroNetwork from '../components/HeroNetwork.astro';
+import HeroDevices from '../components/HeroDevices.astro';
 import StatGrid from '../components/StatGrid.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import LogoMarquee from '../components/LogoMarquee.astro';
@@ -58,6 +59,7 @@ const cases = await featuredCaseStudies();
         <p class="eyebrow" data-reveal>AI-driven infrastructure across the omnichannel AdTech ecosystem</p>
         <h1 class="display" data-reveal style="--i:1">Beyond AdTech.<br /><span class="grad-text">Built for What’s Next.</span></h1>
       </div>
+      <div class="hero-devices" data-reveal="fade" style="--i:2"><HeroDevices /></div>
       <div class="hero-side">
         <p class="lede" data-reveal style="--i:2">
           At VoiseTech, we’re redefining how the world experiences advertising. As a trusted technology partner to leading global agency networks and publishers, we power high-impact, data-driven campaigns across the full digital advertising spectrum.
@@ -246,6 +248,11 @@ const cases = await featuredCaseStudies();
   .hero-side .lede { font-size: clamp(1.05rem, 0.98rem + 0.3vw, 1.22rem); max-width: 56ch; }
   .hero-side .cluster { justify-content: flex-end; }
   .hero-visual { margin-top: clamp(40px, 5vw, 72px); }
+  /* Wide screens: devices fill the space right of the headline. Narrower: in flow under it. */
+  .hero-devices { grid-column: 1 / -1; width: min(100%, 460px); justify-self: center; }
+  @media (min-width: 1100px) {
+    .hero-devices { position: absolute; top: 0; right: 0; width: clamp(340px, 30vw, 440px); }
+  }
   @media (max-width: 860px) {
     .hero-top { grid-template-columns: minmax(0, 1fr); }
     .hero-side .cluster { justify-content: flex-start; }
