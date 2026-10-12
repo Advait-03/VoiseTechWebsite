@@ -15,7 +15,7 @@ export const GET: APIRoute = async () => {
   const xml = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
 <channel>
-<title>Voise Blogs — Voise Tech</title>
+<title>Voise Blogs - Voise Tech</title>
 <link>${SITE.url}/resources/blog/</link>
 <atom:link href="${SITE.url}/rss.xml" rel="self" type="application/rss+xml" />
 <description>Perspectives on programmatic advertising, CTV and agentic AI from Voise Tech.</description>

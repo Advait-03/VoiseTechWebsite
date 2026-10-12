@@ -14,7 +14,7 @@ In the ever-evolving world of digital advertising, **Supply-Side Platforms (SSPs
 
 **Why SSPs Matter More Than Ever**
 
-As the landscape of **digital advertising** becomes more complex, SSPs are at the heart of optimising inventory management, revenue generation and real-time bidding. Their ability to connect publishers with demand through automated processes is essential to keeping the wheels of the programmatic ecosystem turning. But SSPs do more than just manage ad inventory—they enable **greater transparency**, **better targeting** and ultimately, **increased revenue** for publishers.
+As the landscape of **digital advertising** becomes more complex, SSPs are at the heart of optimising inventory management, revenue generation and real-time bidding. Their ability to connect publishers with demand through automated processes is essential to keeping the wheels of the programmatic ecosystem turning. But SSPs do more than just manage ad inventory - they enable **greater transparency**, **better targeting** and ultimately, **increased revenue** for publishers.
 
 As we are in Q2, the market is experiencing shifts that demand innovation. Here’s how SSPs are adapting and why they’re central to success:
 

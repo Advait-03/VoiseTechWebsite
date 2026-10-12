@@ -3,7 +3,7 @@ title: "ad:tech Delhi 2026"
 seoTitle: "ad:tech Delhi 2026 - Voise Tech"
 description: "VoiseTech will be attending ad:tech Delhi 2026, India’s premier digital marketing and adtech conference, on 18–19 March 2026 at Yashobhoomi, New Delhi, alongside key industry decision-makers."
 image: {"src":"/wp-content/uploads/2026/01/adt26.png","width":551,"height":355}
-excerpt: "The Voisetech team had two impactful days at ad:tech New Delhi 2026, where industry leaders gathered in New Delhi to explore what’s truly shaping the future of advertising and marketing technology. It was incredible to be a part of conversations that went beyond buzzwords—examining the realities of evolving supply path"
+excerpt: "The Voisetech team had two impactful days at ad:tech New Delhi 2026, where industry leaders gathered in New Delhi to explore what’s truly shaping the future of advertising and marketing technology. It was incredible to be a part of conversations that went beyond buzzwords - examining the realities of evolving supply path"
 date: "2026-01-21T20:58:54"
 updated: "2026-03-19T15:20:49"
 dateText: "17th March - 18th March 2026"
@@ -17,10 +17,10 @@ wpId: 6367
 ---
 The Voisetech team had two impactful days at ad:tech New Delhi 2026, where industry leaders gathered in New Delhi to explore what’s _truly_ shaping the future of advertising and marketing technology.
 
-It was incredible to be a part of conversations that went beyond buzzwords—examining the realities of evolving supply paths, AI-driven execution, and the increasing demand for transparency across the ecosystem. These discussions highlighted a clear industry move toward greater efficiency, accountability, and smarter monetisation strategies.
+It was incredible to be a part of conversations that went beyond buzzwords - examining the realities of evolving supply paths, AI-driven execution, and the increasing demand for transparency across the ecosystem. These discussions highlighted a clear industry move toward greater efficiency, accountability, and smarter monetisation strategies.
 
-The agenda covered key areas such as data privacy, programmatic innovation, retail media, and the convergence of media and commerce—always with a focus on practical applications and measurable outcomes.
+The agenda covered key areas such as data privacy, programmatic innovation, retail media, and the convergence of media and commerce - always with a focus on practical applications and measurable outcomes.
 
-Even more importantly, the event created opportunities for genuine, actionable conversations with partners, peers, and future collaborators—demonstrating the power of collaboration in driving progress across the industry.
+Even more importantly, the event created opportunities for genuine, actionable conversations with partners, peers, and future collaborators - demonstrating the power of collaboration in driving progress across the industry.
 
-A heartfelt thank you to everyone who connected with the Voisetech team on-ground—Sabarish Pillai, Wahid Omer, Jijesh Nambiar, Pia Srivastava, and Yatin Makkar. We’re excited to build on these conversations and continue advancing the ecosystem together.
+A heartfelt thank you to everyone who connected with the Voisetech team on-ground - Sabarish Pillai, Wahid Omer, Jijesh Nambiar, Pia Srivastava, and Yatin Makkar. We’re excited to build on these conversations and continue advancing the ecosystem together.

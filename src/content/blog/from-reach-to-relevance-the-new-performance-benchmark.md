@@ -47,7 +47,7 @@ Relevance isn’t just a buzzword. It influences measurable outcomes across camp
 
 At VoiseTech, our **Voise DSP** is built to help advertisers go beyond reach and unlock relevance at scale. Here’s how it supports relevance-driven performance:
 
--   **Unified cross-channel buying:** Manage audience-centric campaigns across Display, Video, CTV/OTT – all from one platform.
+-   **Unified cross-channel buying:** Manage audience-centric campaigns across Display, Video, CTV/OTT - all from one platform.
 -   **Real-time AI optimisation:** Intelligent bidding and pacing that prioritise the right audiences over sheer ad volume.
 -   **Advanced targeting:** Demographic, behavioural, contextual, and geo-based segments that drive meaningful engagement.
 -   **Brand safety and transparency:** Tools that ensure ads appear in the right environment, protecting reputation and spend.

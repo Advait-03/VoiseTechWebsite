@@ -28,10 +28,10 @@ To stay ahead, brands must adopt new strategies and technologies that prioritise
 
 The transition to a cookieless world is increasing the adoption of alternative targeting methods. Some of the most effective solutions include:
 
--   First-Party Data Utilisation – Brands are leveraging their own customer data collected from website interactions, CRM systems, and loyalty programs. By building robust first-party data strategies, advertisers can create meaningful audience segments and improve targeting precision.
--   Contextual Targeting – Instead of relying on personal data, contextual advertising analyses page content, keywords, and sentiment to serve relevant ads in real time. This ensures privacy-compliant ad placement while maintaining user relevance.
--   Identity-Based Solutions – Innovations such as Universal IDs, Google’s Privacy Sandbox, and publisher-based identity graphs allow for anonymised audience targeting. These solutions enable advertisers to reach users effectively while respecting their privacy.
--   AI & Machine Learning – AI-driven models predict user intent and behaviour based on real-time interactions rather than cookie-based data. These technologies help optimise ad placements, improve engagement rates, and ensure higher campaign performance.
+-   First-Party Data Utilisation - Brands are leveraging their own customer data collected from website interactions, CRM systems, and loyalty programs. By building robust first-party data strategies, advertisers can create meaningful audience segments and improve targeting precision.
+-   Contextual Targeting - Instead of relying on personal data, contextual advertising analyses page content, keywords, and sentiment to serve relevant ads in real time. This ensures privacy-compliant ad placement while maintaining user relevance.
+-   Identity-Based Solutions - Innovations such as Universal IDs, Google’s Privacy Sandbox, and publisher-based identity graphs allow for anonymised audience targeting. These solutions enable advertisers to reach users effectively while respecting their privacy.
+-   AI & Machine Learning - AI-driven models predict user intent and behaviour based on real-time interactions rather than cookie-based data. These technologies help optimise ad placements, improve engagement rates, and ensure higher campaign performance.
 
 The Road Ahead for Advertisers
 

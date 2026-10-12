@@ -18,7 +18,7 @@ You’re probably well aware, but for anyone who might have missed it, here are 
 
 1️⃣ **Gyms & Fitness Studios**
 
-Who says ads only work on the couch? More and more fitness spaces are streaming CTV content: from workout guides to live entertainment – right on smart screens near treadmills and weights.
+Who says ads only work on the couch? More and more fitness spaces are streaming CTV content: from workout guides to live entertainment - right on smart screens near treadmills and weights.
 
 💪 Why it works:
 
@@ -34,7 +34,7 @@ Smart TVs in hotels aren’t just for Netflix binges anymore. From boutique stay
 
 -   You can target by city, region, or even hotel type.
 -   Perfect for brands in travel, food delivery, lifestyle, and entertainment.
--   Guests are relaxed, tuned in and open to discovery – it’s a premium screen in a premium moment.
+-   Guests are relaxed, tuned in and open to discovery - it’s a premium screen in a premium moment.
 
 3️⃣ **Public Transit Screens (Yes, really)**
 
@@ -50,4 +50,4 @@ As **CTV viewership becomes more fragmented and personal**, marketers need to th
 
 💭Fun Fact!
 
-According to research, **over 30% of CTV impressions in India are now happening outside of traditional households** – with gyms, hotels and travel hubs leading the way.
+According to research, **over 30% of CTV impressions in India are now happening outside of traditional households** - with gyms, hotels and travel hubs leading the way.

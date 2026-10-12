@@ -14,7 +14,7 @@ The digital advertising industry is evolving rapidly, but its environmental impa
 
 ## The Hidden Carbon Footprint of Digital Ads
 
-Programmatic advertising relies on complex infrastructures, including data centers, real-time bidding (RTB) systems and ad exchanges. A single RTB transaction involves multiple players and processes, consuming significant energy. According to estimates, the global digital advertising ecosystem generates **over 200 million metric tons of CO₂ annually**—comparable to the carbon footprint of some small countries.
+Programmatic advertising relies on complex infrastructures, including data centers, real-time bidding (RTB) systems and ad exchanges. A single RTB transaction involves multiple players and processes, consuming significant energy. According to estimates, the global digital advertising ecosystem generates **over 200 million metric tons of CO₂ annually** - comparable to the carbon footprint of some small countries.
 
 ## How Curation Can Drive Sustainable Advertising
 
@@ -30,7 +30,7 @@ Curation in programmatic advertising is emerging as a solution to minimise energ
 
 ## A More Sustainable Future for AdTech
 
-As brands and agencies seek to balance performance with sustainability, adopting curated ad-buying strategies is a step in the right direction. Beyond carbon footprint reduction, curation enhances transparency, efficiency, and ROI—making it a win-win for both businesses and the environment.
+As brands and agencies seek to balance performance with sustainability, adopting curated ad-buying strategies is a step in the right direction. Beyond carbon footprint reduction, curation enhances transparency, efficiency, and ROI - making it a win-win for both businesses and the environment.
 
 📊 **Did you know?**
 

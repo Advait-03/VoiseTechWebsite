@@ -24,15 +24,15 @@ By testing multiple variations of visuals, copy, and narratives, brands can sign
 
 **What should next-gen brands & traders focus on?**
 
-👉 **Mix up your creatives** – Don’t stick to one “hero” visual or copy. Test lifestyle vs. product, emotional vs. informative, short vs. long. Variety drives results.
+👉 **Mix up your creatives** - Don’t stick to one “hero” visual or copy. Test lifestyle vs. product, emotional vs. informative, short vs. long. Variety drives results.
 
-👉 **Adapt in real time** – Let your ads flex with signals like location, device, time of day, or recent behavior. Relevance = performance.
+👉 **Adapt in real time** - Let your ads flex with signals like location, device, time of day, or recent behavior. Relevance = performance.
 
-👉 **Tap into emotion** – Storytelling that resonates sticks longer and often converts better. [Data](https://martechedge.com/news/appsflyer-2025-creative-optimization-report-key-trends-and-takeaways/) shows emotional hooks outperform, especially outside gaming.
+👉 **Tap into emotion** - Storytelling that resonates sticks longer and often converts better. [Data](https://martechedge.com/news/appsflyer-2025-creative-optimization-report-key-trends-and-takeaways/) shows emotional hooks outperform, especially outside gaming.
 
-👉 **Keep testing & rotating** – Winners are great, but overusing them causes fatigue. Keep refreshing with new angles and formats.
+👉 **Keep testing & rotating** - Winners are great, but overusing them causes fatigue. Keep refreshing with new angles and formats.
 
-👉 **Measure what matters** – Beyond clicks: track retention, installs, CPA, and ROAS, as these give a fuller [picture](https://segwise.ai/blog/dynamic-creative-optimization-best-practices-tips/) of whether your creative variations are actually working in the long term.
+👉 **Measure what matters** - Beyond clicks: track retention, installs, CPA, and ROAS, as these give a fuller [picture](https://segwise.ai/blog/dynamic-creative-optimization-best-practices-tips/) of whether your creative variations are actually working in the long term.
 
 **Challenges to Be Mindful Of**
 

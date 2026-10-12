@@ -17,6 +17,6 @@ wpId: 5280
 ---
 ad:tech New Delhi 2025 took place in March as a two-day conference and expo bringing together the digital marketing, advertising, media, and technology ecosystem. The event featured **100+ speakers** from brands, agencies, publishers, and platform partners.
 
-Key speakers included **Anisha Iyer (CEO, OMD India)**, **Ankit Desai (Head – Media & Digital Marketing, Marico)**, **Avi Kumar (CMO, Ferns & Petals)**, **Sanjeev Bikhchandani (Founder, Info Edge)**, **Tejas Apte (GM – Media, Unilever)**, **Anuja Mishra (EVP & CMO, Honasa)**, and **Rajiv Dubey (VP Marketing, Dabur)**, among others.
+Key speakers included **Anisha Iyer (CEO, OMD India)**, **Ankit Desai (Head - Media & Digital Marketing, Marico)**, **Avi Kumar (CMO, Ferns & Petals)**, **Sanjeev Bikhchandani (Founder, Info Edge)**, **Tejas Apte (GM - Media, Unilever)**, **Anuja Mishra (EVP & CMO, Honasa)**, and **Rajiv Dubey (VP Marketing, Dabur)**, among others.
 
 The conference covered topics such as AI-powered media planning, privacy-first targeting, connected TV growth, measurement transparency, and the evolution of commerce and creator ecosystems. The exhibition floor showcased solutions across programmatic advertising, data platforms, retail media, performance marketing, analytics, CTV, and brand experience. With attendance exceeding **6,000 marketing and technology professionals**, the 2025 edition served as a marketplace for partnership building, product evaluation, and industry knowledge exchange.

@@ -6,7 +6,7 @@ image: {"src":"/wp-content/uploads/2025/11/Feature-Image-Grid-551-x-355px-20.png
 excerpt: "Objective Mahindra aimed to enhance brand visibility and engagement across key southern markets by leveraging high-impact banner and video creatives. The goal was to connect with automotive enthusiasts and potential buyers through dynamic storytelling and data-led precision targeting. Our Approach Voise Tech executed a"
 date: "2025-11-12T20:13:52"
 updated: "2025-11-12T20:21:27"
-metrics: [{"label":"Total Impressions","value":"3.1 million"},{"label":"CTR","value":"0.46%"},{"label":"VTR","value":"85%"},{"label":"Targeting","value":"Bangalore, Chennai, and Rest of South India"},{"label":"Engagement","value":"3X Higher | Precision – 2X Stronger"}]
+metrics: [{"label":"Total Impressions","value":"3.1 million"},{"label":"CTR","value":"0.46%"},{"label":"VTR","value":"85%"},{"label":"Targeting","value":"Bangalore, Chennai, and Rest of South India"},{"label":"Engagement","value":"3X Higher | Precision - 2X Stronger"}]
 publishers: ["/wp-content/uploads/2025/11/Case-Study-Logos-11.png","/wp-content/uploads/2025/11/Case-Study-Logos-10.png","/wp-content/uploads/2025/11/Case-Study-Logos-9.png","/wp-content/uploads/2025/11/Case-Study-Logos-8.png","/wp-content/uploads/2025/11/Case-Study-Logos-7.png"]
 cta: {"label":"Connect With Us Today","href":"/contact-us/"}
 wpId: 5667

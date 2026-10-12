@@ -31,7 +31,7 @@ export type FormDef = {
 
 const DOCS = ['.pdf', '.doc', '.docx'];
 const FIVE_MB = 5 * 1024 * 1024;
-const BANDS = ['Less than $5,000', '$5,000 – $10,000', '$10,000 – $50,000', '$50,000 – $100,000', '$100,000 – $500,000', '$500,000 – $1M', '$1M – $2M', '$2M – $5M', 'Over $5M'];
+const BANDS = ['Less than $5,000', '$5,000 - $10,000', '$10,000 - $50,000', '$50,000 - $100,000', '$100,000 - $500,000', '$500,000 - $1M', '$1M - $2M', '$2M - $5M', 'Over $5M'];
 
 export const forms: Record<FormDef['id'], FormDef> = {
   contact: {
@@ -39,7 +39,7 @@ export const forms: Record<FormDef['id'], FormDef> = {
     title: 'Contact enquiry',
     recipientsEnv: 'CONTACT_TO',
     submitLabel: 'Send message',
-    subject: (v) => `Enquiry From Website — ${v.name}${v.company ? ` (${v.company})` : ''} — ${v.type}`,
+    subject: (v) => `Enquiry From Website - ${v.name}${v.company ? ` (${v.company})` : ''} - ${v.type}`,
     fields: [
       { name: 'name', label: 'Name', type: 'text', required: true, autocomplete: 'name', maxLength: 120, half: true },
       { name: 'email', label: 'Work email', type: 'email', required: true, autocomplete: 'email', maxLength: 200, half: true },
@@ -48,7 +48,7 @@ export const forms: Record<FormDef['id'], FormDef> = {
       { name: 'company', label: 'Company', type: 'text', autocomplete: 'organization', maxLength: 160, half: true, hint: 'Optional' },
       { name: 'website', label: 'Website URL', type: 'url', autocomplete: 'url', maxLength: 300, half: true, hint: 'Optional', placeholder: 'https://' },
       { name: 'type', label: 'Are you a', type: 'select', required: true, options: ['Publisher', 'Buyer'] },
-      { name: 'message', label: 'Message', type: 'textarea', maxLength: 4000, hint: 'Optional — tell us what you’re looking for.' },
+      { name: 'message', label: 'Message', type: 'textarea', maxLength: 4000, hint: 'Optional - tell us what you’re looking for.' },
     ],
   },
   careers: {
@@ -56,7 +56,7 @@ export const forms: Record<FormDef['id'], FormDef> = {
     title: 'Job application',
     recipientsEnv: 'CAREERS_TO',
     submitLabel: 'Submit application',
-    subject: (v) => `Careers application — ${v.role} — ${v.name}`,
+    subject: (v) => `Careers application - ${v.role} - ${v.name}`,
     fields: [
       { name: 'name', label: 'Name', type: 'text', required: true, autocomplete: 'name', maxLength: 120, half: true },
       { name: 'email', label: 'Email', type: 'email', required: true, autocomplete: 'email', maxLength: 200, half: true },
@@ -74,7 +74,7 @@ export const forms: Record<FormDef['id'], FormDef> = {
     title: 'GAM 360 enquiry',
     recipientsEnv: 'GAM_TO',
     submitLabel: 'Submit enquiry',
-    subject: (v) => `GAM 360 enquiry — ${v.firstName} ${v.lastName}${v.website ? ` (${v.website})` : ''}`,
+    subject: (v) => `GAM 360 enquiry - ${v.firstName} ${v.lastName}${v.website ? ` (${v.website})` : ''}`,
     fields: [
       { name: 'firstName', label: 'First name', type: 'text', required: true, autocomplete: 'given-name', maxLength: 80, half: true },
       { name: 'lastName', label: 'Last name', type: 'text', required: true, autocomplete: 'family-name', maxLength: 80, half: true },
@@ -84,7 +84,7 @@ export const forms: Record<FormDef['id'], FormDef> = {
       { name: 'traffic', label: 'Monthly inventory traffic', type: 'select', required: true, options: BANDS, half: true },
       { name: 'revenue', label: 'Your monthly ad revenue (of all sites)', type: 'select', required: true, options: BANDS, half: true },
       { name: 'country', label: 'Where are you located?', type: 'select', required: true, options: countries },
-      { name: 'siteList', label: 'Site / app list', type: 'file', accept: DOCS, maxBytes: FIVE_MB, hint: 'Optional — PDF, DOC or DOCX, up to 5 MB' },
+      { name: 'siteList', label: 'Site / app list', type: 'file', accept: DOCS, maxBytes: FIVE_MB, hint: 'Optional - PDF, DOC or DOCX, up to 5 MB' },
     ],
   },
 };

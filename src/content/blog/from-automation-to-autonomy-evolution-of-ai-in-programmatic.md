@@ -32,7 +32,7 @@ Think of it like the difference between cruise control and self-driving. One mai
 
 ## What this means for buyers and publishers
 
-The stakes are clear. Buyers need platforms built for autonomous decisioning – interoperable, data-rich, and fast. Publishers need clean, transparent supply paths that AI agents can trust and transact on confidently.
+The stakes are clear. Buyers need platforms built for autonomous decisioning - interoperable, data-rich, and fast. Publishers need clean, transparent supply paths that AI agents can trust and transact on confidently.
 
 The stacks that aren’t built for this won’t just fall behind. They’ll get bypassed entirely.
 

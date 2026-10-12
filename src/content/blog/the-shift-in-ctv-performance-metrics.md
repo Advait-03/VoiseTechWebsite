@@ -3,14 +3,14 @@ title: "From Eyeballs to Engagement: The Shift in CTV Performance Metrics"
 seoTitle: "From Eyeballs to Engagement: The Shift in CTV Performance Metrics"
 description: "Connected TV (CTV) is no longer just a buzzword, it's a dominant force in digital advertising."
 image: {"src":"/wp-content/uploads/2025/11/Feature-Image-Grid-551-x-355px-10-1.png","width":551,"height":355}
-excerpt: "Connected TV (CTV) is no longer just a buzzword—it’s a dominant force in digital advertising. As brands shift budgets from traditional TV to streaming platforms, the ability to measure true impact beyond impressions has become a critical challenge and opportunity in 2025. While impressions remain a basic metric, advert"
+excerpt: "Connected TV (CTV) is no longer just a buzzword - it’s a dominant force in digital advertising. As brands shift budgets from traditional TV to streaming platforms, the ability to measure true impact beyond impressions has become a critical challenge and opportunity in 2025. While impressions remain a basic metric, advert"
 date: "2025-11-14T19:26:24"
 updated: "2025-11-14T19:28:34"
 banner: {"src":"/wp-content/uploads/2025/11/in-page-feature-image-1181-x-400-10-1.png","width":1181,"height":400}
 cta: {"label":"Connect With Us Today","href":"/contact-us/"}
 wpId: 5859
 ---
-Connected TV (CTV) is no longer just a buzzword—it’s a dominant force in digital advertising. As brands shift budgets from traditional TV to streaming platforms, the ability to measure **true impact beyond impressions** has become a critical challenge and opportunity in 2025. While impressions remain a basic metric, advertisers now demand **deeper insights into engagement, conversions** and **ROI.**
+Connected TV (CTV) is no longer just a buzzword - it’s a dominant force in digital advertising. As brands shift budgets from traditional TV to streaming platforms, the ability to measure **true impact beyond impressions** has become a critical challenge and opportunity in 2025. While impressions remain a basic metric, advertisers now demand **deeper insights into engagement, conversions** and **ROI.**
 
 **The Shift from Vanity Metrics to Performance-Driven Insights**
 
@@ -39,10 +39,10 @@ For years, marketers have relied on impressions, view-through rates and basic co
 
 **Final Thoughts**
 
-CTV advertising is no longer just about being seen—it’s about driving measurable business outcomes. In 2025, brands that prioritise **data-driven measurement strategies** will outperform competitors by maximising ROI and audience engagement.
+CTV advertising is no longer just about being seen - it’s about driving measurable business outcomes. In 2025, brands that prioritise **data-driven measurement strategies** will outperform competitors by maximising ROI and audience engagement.
 
 💡Here’s a fact you might not know!
 
 In 2025, CTV ad spending is projected to reach **$33.35 billion** and continue to grow, surpassing traditional TV ad spending by 2028, driven by increased streaming viewership and the shift from linear TV.
 
-Don’t let outdated metrics hold you back— 📩 Let’s Talk! Connect with us at business@voisetech.com to explore how we can help you measure and optimise your CTV campaigns for maximum ROI.
+Don’t let outdated metrics hold you back - 📩 Let’s Talk! Connect with us at business@voisetech.com to explore how we can help you measure and optimise your CTV campaigns for maximum ROI.

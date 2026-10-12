@@ -6,7 +6,7 @@
  */
 export type Logo = { name: string; src: string; width: number; height: number };
 
-/** "Our Partners." — homepage. 30 logos; Dailyhunt appears once. */
+/** "Our Partners." - homepage. 30 logos; Dailyhunt appears once. */
 export const partners: Logo[] = [
   { name: 'TV9 Network', src: '/wp-content/uploads/2025/09/TV9.png', width: 250, height: 135 },
   { name: 'Magnite', src: '/wp-content/uploads/2025/10/Magnite-logo1.png', width: 250, height: 135 },
@@ -40,7 +40,7 @@ export const partners: Logo[] = [
   { name: 'Life360', src: '/wp-content/uploads/2026/09/Website-Logo-Square-e1789544141395.png', width: 370, height: 188 },
 ];
 
-/** "Our Clients." — homepage. Each brand also has a case study. */
+/** "Our Clients." - homepage. Each brand also has a case study. */
 export const clients: Logo[] = [
   { name: 'Malaysia Airlines', src: '/wp-content/uploads/2025/09/1.jpg', width: 270, height: 150 },
   { name: 'Etihad Airways', src: '/wp-content/uploads/2025/09/2.jpg', width: 270, height: 150 },

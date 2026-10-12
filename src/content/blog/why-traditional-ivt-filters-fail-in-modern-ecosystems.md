@@ -21,7 +21,7 @@ AI models process behavioural cues like clicks, dwell time and browsing paths to
 
 This allows marketers to move beyond broad “spray and pray” approaches and embrace precision outreach. Brands can target users who have recently browsed a category but haven’t yet completed a purchase, resulting in stronger targeting, lower wasted spend and a more efficient funnel.
 
-## Personalisation at Scale — Not Just a Buzzword
+## Personalisation at Scale - Not Just a Buzzword
 
 AI is making personalisation far more practical and effective. According to [Litslink](https://litslink.com/blog/ai-marketing-statistics), 74% of marketers using AI-based segmentation reported improved conversion rates.
 

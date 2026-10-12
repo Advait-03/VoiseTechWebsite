@@ -52,7 +52,7 @@ const schema = [{ '@type': 'Article', headline: d.title, description: d.descript
 
   {(d.banner ?? d.image) && (
     <div class="container banner" data-reveal="mask">
-      <div class="media"><Img src={(d.banner ?? d.image)!.src} alt={`${d.title} — campaign creative`} sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+      <div class="media"><Img src={(d.banner ?? d.image)!.src} alt={`${d.title} - campaign creative`} sizes="(max-width: 1280px) 100vw, 1280px" /></div>
     </div>
   )}
 
@@ -74,7 +74,7 @@ const schema = [{ '@type': 'Article', headline: d.title, description: d.descript
     {next ? <a class="pg next" href={`/case-study/${next.id}/`}><span class="mono">Next</span><span>{next.data.title}</span></a> : <span></span>}
   </nav>
 
-  <CtaBand eyebrow="Work with us" title="Let’s Build What’s Next in Programmatic Advertising — Together." primary={{ label: d.cta?.label ?? 'Connect With Us Today', href: d.cta?.href ?? '/contact-us/' }} secondary={{ label: 'All case studies', href: '/resources/case-studies/' }} />
+  <CtaBand eyebrow="Work with us" title="Let’s Build What’s Next in Programmatic Advertising - Together." primary={{ label: d.cta?.label ?? 'Connect With Us Today', href: d.cta?.href ?? '/contact-us/' }} secondary={{ label: 'All case studies', href: '/resources/case-studies/' }} />
 </BaseLayout>
 
 <style>

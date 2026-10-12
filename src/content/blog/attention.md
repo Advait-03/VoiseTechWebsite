@@ -3,7 +3,7 @@ title: "The Attention Economy: Why Seconds Matter More Than Clicks"
 seoTitle: "The Attention Economy: Why Seconds Matter More Than Clicks"
 description: "Every time you pause on a post or watch a video for a few seconds, you are spending the most valuable currency in the digital world - Attention."
 image: {"src":"/wp-content/uploads/2025/12/Feature-Image-Grid-551-x-355px.png","width":551,"height":355}
-excerpt: "Every time you pause on a post or watch a video for a few seconds, you are spending the most valuable currency in the digital world — Attention. In an environment crowded with content and constant notifications, those two or three seconds of focus decide whether a message connects or disappears. The real competition to"
+excerpt: "Every time you pause on a post or watch a video for a few seconds, you are spending the most valuable currency in the digital world - Attention. In an environment crowded with content and constant notifications, those two or three seconds of focus decide whether a message connects or disappears. The real competition to"
 date: "2025-12-10T16:12:59"
 updated: "2025-12-10T16:41:43"
 tags: [{"name":"clicks","slug":"clicks"},{"name":"impressions","slug":"impressions"},{"name":"attention","slug":"attention"},{"name":"voise ad server","slug":"voise-ad-server"}]
@@ -11,7 +11,7 @@ banner: {"src":"/wp-content/uploads/2025/12/in-page-feature-image-1181-x-400.png
 cta: {"label":"Connect With Us Today","href":"/contact-us/"}
 wpId: 6087
 ---
-Every time you pause on a post or watch a video for a few seconds, you are spending the most valuable currency in the digital world — Attention. In an environment crowded with content and constant notifications, those two or three seconds of focus decide whether a message connects or disappears. The real competition today is not for clicks. It is for sustained attention.
+Every time you pause on a post or watch a video for a few seconds, you are spending the most valuable currency in the digital world - Attention. In an environment crowded with content and constant notifications, those two or three seconds of focus decide whether a message connects or disappears. The real competition today is not for clicks. It is for sustained attention.
 
 ## Attention is the new indicator of impact
 

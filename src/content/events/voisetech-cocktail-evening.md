@@ -2,7 +2,7 @@
 manual: true
 title: "VoiseTech | Cocktail Evening"
 seoTitle: "VoiseTech | Cocktail Evening - Voise Tech"
-description: "You are cordially invited to the VoiseTech Cocktail Evening — an evening of conversations, connections and cocktails. Friday, 7 August 2026, Orbis Club, The Leela Ambience Gurugram."
+description: "You are cordially invited to the VoiseTech Cocktail Evening - an evening of conversations, connections and cocktails. Friday, 7 August 2026, Orbis Club, The Leela Ambience Gurugram."
 image: {"src":"/wp-content/uploads/2026/08/Events-Feature-Image-Grid-551-x-355px-3.png","width":551,"height":355}
 excerpt: "Connect. Celebrate. Collaborate. An evening of conversations, connections and cocktails with great company."
 date: "2026-08-05T15:28:08"

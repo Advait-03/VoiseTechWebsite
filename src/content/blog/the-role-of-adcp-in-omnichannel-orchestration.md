@@ -28,7 +28,7 @@ And the protocol is still evolving, proponents aim to expand AdCP’s scope to c
 
 That said, the road ahead isn’t without debate.
 
-As per [reports](https://www.exchangewire.com/blog/2026/01/14/agentic-ad-tech-confusion-revolution-or-evolution/#:~:text=by%20Shirley%20Marschall%20on%2014th,%2DTime%20Framework%20\(ARTF\).), the industry is still navigating competing narratives – is AdCP a revolutionary reset or simply an evolution of existing programmatic infrastructure?
+As per [reports](https://www.exchangewire.com/blog/2026/01/14/agentic-ad-tech-confusion-revolution-or-evolution/#:~:text=by%20Shirley%20Marschall%20on%2014th,%2DTime%20Framework%20\(ARTF\).), the industry is still navigating competing narratives - is AdCP a revolutionary reset or simply an evolution of existing programmatic infrastructure?
 
 As many practitioners point out, the real challenge isn’t the technology. It’s adoption.
 

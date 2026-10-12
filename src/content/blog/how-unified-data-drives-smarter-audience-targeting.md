@@ -24,7 +24,7 @@ The Case for Unified Data
 
 Bringing together audience data from multiple sources lays the foundation for smarter, more efficient media strategies. A unified data approach empowers advertisers with:
 
--   **A 360° view of your customer**: By integrating first-party, second-party, and third-party data, brands can build more complete and accurate audience profiles—unlocking deeper insights into demographics, interests, and intent.
+-   **A 360° view of your customer**: By integrating first-party, second-party, and third-party data, brands can build more complete and accurate audience profiles - unlocking deeper insights into demographics, interests, and intent.
 -   **Better targeting & personalisation**: Unification enables a holistic understanding of audience behaviours across platforms and devices, allowing for more precise targeting and highly relevant messaging that resonates at every touchpoint.
 -   **Improved optimisation**: Access to real-time, cross-channel insights ensures quicker data-driven decision-making. This leads to smarter media allocation, reduced budget waste, and maximised ROI across the board.
 

@@ -24,7 +24,7 @@ Here are the key ways advertisers are leveraging predictive AI and how you can t
 
 -   **Result:** lower wasted spend, stronger targeting and a more efficient funnel.
 
-## 2\. Personalisation at Scale – Not Just a Buzzword
+## 2\. Personalisation at Scale - Not Just a Buzzword
 
 -   Marketers using AI for segmentation saw big lifts, as per [Litslink](https://litslink.com/blog/ai-marketing-statistics?utm_source=chatgpt.com), 74% of marketers doing AI-based segmentation reported improved conversion rates.
 
@@ -42,7 +42,7 @@ Here are the key ways advertisers are leveraging predictive AI and how you can t
 
 ## Practical Steps to Get Started
 
-✅ **Audit your data** – Do you have behavioural, transactional, engagement data ready?✅ **Pick a pilot use-case** – Maybe lead-scoring or churn-prediction is a fit.✅ **Define a clear metric** – E.g., “reduce CPA by 20%” or “increase repeat-purchase probability by 30%”.✅ **Keep humans in the loop** – Even the best models need human judgement to steer strategy and check for bias.✅ **Monitor and iterate** – AI isn’t a ‘set-and-forget’ tool. Measure outcomes, retrain models and refine continuously.
+✅ **Audit your data** - Do you have behavioural, transactional, engagement data ready?✅ **Pick a pilot use-case** - Maybe lead-scoring or churn-prediction is a fit.✅ **Define a clear metric** - E.g., “reduce CPA by 20%” or “increase repeat-purchase probability by 30%”.✅ **Keep humans in the loop** - Even the best models need human judgement to steer strategy and check for bias.✅ **Monitor and iterate** - AI isn’t a ‘set-and-forget’ tool. Measure outcomes, retrain models and refine continuously.
 
 **How VoiseTech Enables Predictive AI to Anticipate Buyer Behaviour**
 

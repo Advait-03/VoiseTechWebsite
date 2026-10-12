@@ -6,7 +6,7 @@ image: {"src":"/wp-content/uploads/2025/09/20.png","width":551,"height":355}
 excerpt: "The UK’s biggest, buzziest + boldest marketing festival is back on 7–9 July 2026 for 3 explosive days of superstar speakers, networking, brand innovation pitches, masterclasses, experiential activations, food, drinks, parties, DJs + evening entertainment. Sold out in 2025, we’re going BIG in 2026 with another HUGE fest"
 date: "2025-09-10T12:49:40"
 updated: "2025-11-12T14:43:57"
-dateText: "1st July 2025 – 3rd July 2025"
+dateText: "1st July 2025 - 3rd July 2025"
 location: "London, UK"
 startDate: "2025-07-01"
 endDate: "2025-07-03"

@@ -1,9 +1,9 @@
 ---
 title: "POSSIBLE 2025"
 seoTitle: "POSSIBLE 2025 - Voise Tech"
-description: "POSSIBLE brings together marketers at every level—from rising stars to C-suite leaders—for three full days of learning, networking, and inspiration."
+description: "POSSIBLE brings together marketers at every level - from rising stars to C-suite leaders - for three full days of learning, networking, and inspiration."
 image: {"src":"/wp-content/uploads/2025/09/18.png","width":551,"height":355}
-excerpt: "The Most Impactful Marketing Event for the Industry POSSIBLE brings together marketers at every level—from rising stars to C-suite leaders—for three full days of learning, networking, and inspiration. Set across a dynamic dual-campus experience at the iconic Fontainebleau and Eden Roc, the event features interactive se"
+excerpt: "The Most Impactful Marketing Event for the Industry POSSIBLE brings together marketers at every level - from rising stars to C-suite leaders - for three full days of learning, networking, and inspiration. Set across a dynamic dual-campus experience at the iconic Fontainebleau and Eden Roc, the event features interactive se"
 date: "2025-09-10T14:24:24"
 updated: "2026-01-21T22:00:08"
 dateText: "28th April 2025 - 30th April 2025"
@@ -17,4 +17,4 @@ wpId: 2979
 ---
 ## The Most Impactful Marketing Event for the Industry
 
-POSSIBLE brings together marketers at every level—from rising stars to C-suite leaders—for three full days of learning, networking, and inspiration. Set across a dynamic dual-campus experience at the iconic Fontainebleau and Eden Roc, the event features interactive sessions, curated meetups, and immersive environments designed to spark big ideas, foster meaningful connections, and shape the future of marketing.
+POSSIBLE brings together marketers at every level - from rising stars to C-suite leaders - for three full days of learning, networking, and inspiration. Set across a dynamic dual-campus experience at the iconic Fontainebleau and Eden Roc, the event features interactive sessions, curated meetups, and immersive environments designed to spark big ideas, foster meaningful connections, and shape the future of marketing.

@@ -6,7 +6,7 @@ export const SITE = {
   url: 'https://www.voisetech.com',
   tagline: 'Beyond AdTech. Built for What’s Next.',
   description:
-    'Power your campaigns with Voise Tech — a next-gen programmatic advertising platform offering advanced tools, automation & transparency for advertisers.',
+    'Power your campaigns with Voise Tech - a next-gen programmatic advertising platform offering advanced tools, automation & transparency for advertisers.',
   email: 'business@voisetech.com',
   address: {
     street: '4 Station Avenue',

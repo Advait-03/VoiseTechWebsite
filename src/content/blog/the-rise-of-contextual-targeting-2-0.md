@@ -34,7 +34,7 @@ Its targeting framework is where Contextual 2.0 becomes actionable:
 
 -   Ability to use both first-party and third-party audience data for deeper segmentation
 
-According to the [McKinsey & Company – Winning the battle for consumer attention: The attention equation](https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-attention-equation-winning-the-right-battles-for-consumer-attention/), organizations that unify contextual and first-party signals see better return on ad spend and lower wasted impressions. Voise Ad Server operates exactly in this unified zone. It helps reduce third-party dependencies and improves revenue outcomes through precise ad delivery.
+According to the [McKinsey & Company - Winning the battle for consumer attention: The attention equation](https://www.mckinsey.com/industries/technology-media-and-telecommunications/our-insights/the-attention-equation-winning-the-right-battles-for-consumer-attention/), organizations that unify contextual and first-party signals see better return on ad spend and lower wasted impressions. Voise Ad Server operates exactly in this unified zone. It helps reduce third-party dependencies and improves revenue outcomes through precise ad delivery.
 
 ## Conclusion
 

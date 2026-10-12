@@ -29,7 +29,7 @@ export const REDIRECTS: Record<string, string> = {
   // Empty WordPress draft whose SEO title was "Voise AI | Voise Tech" (see docs/REVIEW-ITEMS.md)
   '/abc-draft/': '/voisetechai/',
   // Redirects that exist on the live site (WordPress Redirection plugin / slug changes).
-  // The full plugin list needs a WP admin export — see docs/REVIEW-ITEMS.md.
+  // The full plugin list needs a WP admin export - see docs/REVIEW-ITEMS.md.
   '/home/': '/',
   '/about/': '/about-us/',
   '/contact/': '/contact-us/',
@@ -47,7 +47,7 @@ export const REDIRECTS: Record<string, string> = {
   '/voise-planning-tool/': '/advertising-planning-tool/',
   '/voise-multicultural-opportunity/': '/multicultural-advertising-agency/',
   '/voise-curation/': '/auction-platform/',
-  // "Voise DSP" has no published page (live URL redirects to an image) — needs a decision.
+  // "Voise DSP" has no published page (live URL redirects to an image) - needs a decision.
   '/voise-dsp/': '/products/',
   // Items whose WordPress slug differs from their public permalink
   '/why-curation-as-a-service-is-the-future-of-effective-advertising/': '/curation-as-a-service/',

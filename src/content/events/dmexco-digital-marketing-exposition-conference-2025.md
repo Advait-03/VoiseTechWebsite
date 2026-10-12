@@ -1,5 +1,5 @@
 ---
-title: "DMEXCO – Digital Marketing Exposition & Conference 2025"
+title: "DMEXCO - Digital Marketing Exposition & Conference 2025"
 seoTitle: "DMEXCO - Digital Marketing Exposition & Conference 2025 - Voise Tech"
 description: "DMEXCO 2025 took place in September at the Koelnmesse in Cologne as a two-day global conference and expo for the digital marketing, advertising, media, and technology ecosystem. The event brought together leaders from brands, agencies, publishers, platforms, and solution providers from across Europe and worldwide. The program featured 100+ speakers from organizations including Google, Meta, […]"
 image: {"src":"/wp-content/uploads/2025/11/Why-Connected-TV-CTV-is-a-Game-Changer-for-Advertisers-6.png","width":551,"height":355}
@@ -21,4 +21,4 @@ The program featured 100+ speakers from organizations including Google, Meta, Am
 
 The exhibition floor showcased a wide spectrum of offerings across programmatic advertising, martech platforms, analytics and attribution, identity and audience solutions, creator and content ecosystems, retail media networks, and connected TV infrastructure. Attendees had the opportunity to engage with product teams, compare offerings, and form partnerships.
 
-With more than 40,000 attendees and hundreds of exhibitors, DMEXCO 2025 maintained its position as one of the most influential events shaping the global digital economy—driving collaboration, market intelligence, and business growth across the ecosystem.
+With more than 40,000 attendees and hundreds of exhibitors, DMEXCO 2025 maintained its position as one of the most influential events shaping the global digital economy - driving collaboration, market intelligence, and business growth across the ecosystem.

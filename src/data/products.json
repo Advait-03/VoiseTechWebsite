@@ -250,7 +250,7 @@
     "category": "publishers",
     "name": "Voise SSP",
     "seoTitle": "Advertising Supply Side Platform for Publishers | Voise Tech",
-    "description": "Discover Voise SSP—the intelligent advertising supply side platform built for publishers. Maximize yield, boost transparency, and scale programmatic revenue.",
+    "description": "Discover Voise SSP - the intelligent advertising supply side platform built for publishers. Maximize yield, boost transparency, and scale programmatic revenue.",
     "ogImage": "/wp-content/uploads/2025/09/Voise-SSP-thumb.jpg",
     "publishedTime": null,
     "modifiedTime": "2026-03-10T13:42:12+00:00",
@@ -545,7 +545,7 @@
     "category": "publishers",
     "name": "Voise Pre-Bid",
     "seoTitle": "Header Bidding Solution for Publishers | Pre Bid",
-    "description": "Boost ad revenue with Voise Pre Bid – a unified header bidding solution for publishers offering transparent auctions, higher eCPMs & full control.",
+    "description": "Boost ad revenue with Voise Pre Bid - a unified header bidding solution for publishers offering transparent auctions, higher eCPMs & full control.",
     "ogImage": "/wp-content/uploads/2025/09/Voise-Pre-Bid-thumb.jpg",
     "publishedTime": null,
     "modifiedTime": "2026-03-10T13:29:30+00:00",
@@ -983,14 +983,14 @@
     "category": "buyers",
     "name": "Voise Curation",
     "seoTitle": "Auction Platform for Programmatic Buyers | Voise Curation",
-    "description": "Discover Voise Curation — a powerful auction platform for programmatic buyers. Curate premium deals, target better audiences, and boost media performance. Try now!",
+    "description": "Discover Voise Curation - a powerful auction platform for programmatic buyers. Curate premium deals, target better audiences, and boost media performance. Try now!",
     "ogImage": "/wp-content/uploads/2025/08/Voise-Curation2-1.webp",
     "publishedTime": null,
     "modifiedTime": "2025-10-30T09:04:49+00:00",
     "tagline": "Deals that Do the Heavy Lifting",
     "intro": [
       "Voise Curation gives agencies, brands, and resellers the power to build custom, high-performing programmatic marketplaces.",
-      "Instead of relying on off-the-shelf inventory bundles or predefined PMPs, this solution lets you handpick audiences, formats, publishers, and data layers—then package them into curated deals that deliver.",
+      "Instead of relying on off-the-shelf inventory bundles or predefined PMPs, this solution lets you handpick audiences, formats, publishers, and data layers - then package them into curated deals that deliver.",
       "It’s built for the teams who want more control, better targeting, and curated media buys that perform like they were made in-house. Because they were."
     ],
     "heroCta": {
@@ -1110,7 +1110,7 @@
         "items": [
           {
             "label": "What it does",
-            "text": "Dashboards track the performance of every curated package—by audience, format, and region."
+            "text": "Dashboards track the performance of every curated package - by audience, format, and region."
           },
           {
             "label": "Why it matters",
@@ -1145,14 +1145,14 @@
     "category": "buyers",
     "name": "Voise Multicultural Opportunity",
     "seoTitle": "Multicultural Advertising Agency | Voise Tech",
-    "description": "Reach diverse audiences with Voise Tech — a multicultural advertising agency offering data-driven, inclusive campaigns across cultures, languages & regions.",
+    "description": "Reach diverse audiences with Voise Tech - a multicultural advertising agency offering data-driven, inclusive campaigns across cultures, languages & regions.",
     "ogImage": "/wp-content/uploads/2025/08/Voise-Multicultural-Opportunity1-1.webp",
     "publishedTime": null,
     "modifiedTime": "2026-01-12T10:56:18+00:00",
     "tagline": "Diversity-Driven Advertising at Scale",
     "intro": [
       "Voise Multicultural Opportunity is a programmatic solution designed for brands that want to connect authentically with diverse communities across cultures, languages, identities, and regions.",
-      "Backed by deep audience intelligence and exclusive publisher relationships, this offering helps advertisers create culturally relevant campaigns that go beyond tokenism and actually deliver results. Whether you're targeting Hispanic moms on mobile, Tamil-speaking youth on CTV, or LGBTQ+ audiences across lifestyle content—Voise makes it simple to reach the right people, the right way."
+      "Backed by deep audience intelligence and exclusive publisher relationships, this offering helps advertisers create culturally relevant campaigns that go beyond tokenism and actually deliver results. Whether you're targeting Hispanic moms on mobile, Tamil-speaking youth on CTV, or LGBTQ+ audiences across lifestyle content - Voise makes it simple to reach the right people, the right way."
     ],
     "heroCta": {
       "label": "Explore Deal Packages",
@@ -1416,7 +1416,7 @@
       }
     ],
     "closing": {
-      "heading": "Build smarter, faster, and more precise campaigns — today.",
+      "heading": "Build smarter, faster, and more precise campaigns - today.",
       "cta": {
         "label": "Start Planning with Voise",
         "href": "/contact-us/"
@@ -1428,7 +1428,7 @@
     "category": "buyers",
     "name": "Voise AudienceIQ",
     "seoTitle": "Audience Segmentation for Programmatic Ads | Voise Tech",
-    "description": "Build smarter targeting with Voise Tech’s audience segmentation engine — powered by AI, first-party data, and multicultural insights. Start today!",
+    "description": "Build smarter targeting with Voise Tech’s audience segmentation engine - powered by AI, first-party data, and multicultural insights. Start today!",
     "ogImage": "/wp-content/uploads/2025/08/Voise-Audience-Segmentation1.webp",
     "publishedTime": null,
     "modifiedTime": "2026-03-06T09:40:10+00:00",
@@ -1683,7 +1683,7 @@
         "items": [
           {
             "label": "What it does",
-            "text": "Builds templates that adapt in real-time based on audience, behavior, and performance — automatically prioritizing top variants."
+            "text": "Builds templates that adapt in real-time based on audience, behavior, and performance - automatically prioritizing top variants."
           },
           {
             "label": "Why it matters",

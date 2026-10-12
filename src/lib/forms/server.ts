@@ -1,7 +1,7 @@
 /**
  * Server-side form handling: validation, spam protection, rate limiting and
  * delivery. A submission is either delivered or the visitor gets an explicit
- * error — never a silent drop (spam caught by the honeypot excepted).
+ * error - never a silent drop (spam caught by the honeypot excepted).
  */
 import type { APIContext } from 'astro';
 import { mkdir, writeFile } from 'node:fs/promises';
@@ -115,7 +115,7 @@ async function verifyRecaptcha(token: string, action: string, ip: string) {
 const esc = (s: string) => s.replace(/[&<>"']/g, (c) => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' })[c]!);
 
 function renderMessage(def: FormDef, values: Record<string, string>, uploads: Upload[], meta: Record<string, string>) {
-  const rows = def.fields.filter((f) => f.type !== 'file').map((f) => [f.label, values[f.name] ?? '—']);
+  const rows = def.fields.filter((f) => f.type !== 'file').map((f) => [f.label, values[f.name] ?? '-']);
   if (uploads.length) rows.push(['Attachments', uploads.map((u) => `${u.field}: ${u.filename}`).join('\n')]);
   const text = [`New ${def.title} from www.voisetech.com`, '', ...rows.map(([k, v]) => `${k}: ${v}`), '', ...Object.entries(meta).map(([k, v]) => `${k}: ${v}`)].join('\n');
   const html = `<div style="font-family:Arial,sans-serif;font-size:14px;color:#17191d">
@@ -212,8 +212,8 @@ async function processSubmission(id: FormDef['id'], ctx: APIContext): Promise<Re
   try {
     await deliver(def, values, uploads, {
       Submitted: new Date().toISOString(),
-      Page: ctx.request.headers.get('referer') ?? '—',
-      'User agent': ctx.request.headers.get('user-agent')?.slice(0, 200) ?? '—',
+      Page: ctx.request.headers.get('referer') ?? '-',
+      'User agent': ctx.request.headers.get('user-agent')?.slice(0, 200) ?? '-',
     });
   } catch (err) {
     console.error(`[forms] ${id} delivery failed:`, err);
@@ -221,10 +221,10 @@ async function processSubmission(id: FormDef['id'], ctx: APIContext): Promise<Re
     return {
       status: noTransport ? 503 : 502,
       ok: false,
-      message: `Sorry — we couldn’t send your ${id === 'careers' ? 'application' : 'message'} just now. Please try again shortly or email us directly at ${FALLBACK_EMAIL}.`,
+      message: `Sorry - we couldn’t send your ${id === 'careers' ? 'application' : 'message'} just now. Please try again shortly or email us directly at ${FALLBACK_EMAIL}.`,
     };
   }
-  return { status: 200, ok: true, message: 'Thank you — we’ll be in touch shortly.', redirect: '/thank-you/' };
+  return { status: 200, ok: true, message: 'Thank you - we’ll be in touch shortly.', redirect: '/thank-you/' };
 }
 
 /** Responds with JSON for fetch() callers and with a redirect / plain page for no-JS form posts. */
@@ -240,7 +240,7 @@ export async function handleForm(id: FormDef['id'], ctx: APIContext) {
   if (result.ok) return ctx.redirect(result.redirect ?? '/thank-you/', 303);
   const items = Object.values(result.errors ?? {}).map((e) => `<li>${esc(e)}</li>`).join('');
   return new Response(
-    `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Please check your submission — Voise Tech</title>
+    `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Please check your submission - Voise Tech</title>
 <style>body{font-family:system-ui,sans-serif;max-width:640px;margin:10vh auto;padding:0 20px;color:#17191d;line-height:1.6}a{color:#0663b0}</style></head>
 <body><h1>We couldn’t send your form yet</h1><p>${esc(result.message)}</p>${items ? `<ul>${items}</ul>` : ''}<p><a href="javascript:history.back()">Go back and try again</a> or email <a href="mailto:${FALLBACK_EMAIL}">${FALLBACK_EMAIL}</a>.</p></body></html>`,
     { status: result.status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } },

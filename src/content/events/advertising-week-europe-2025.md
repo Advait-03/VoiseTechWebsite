@@ -19,6 +19,6 @@ Join us for Advertising Week Europe in London from **1–3 April** and hear from
 
 Located in the heart of London’s creative community, **180 Studios** will again host this year’s event. Advertising Week Europe will feature three interactive Zones where you can learn and play, each featuring a major stage.
 
-You’ll also find a coworking garden among the vines, private meeting rooms with giant screens to showcase your creativity, a wellness retreat, a VIP Loft — and so much more!
+You’ll also find a coworking garden among the vines, private meeting rooms with giant screens to showcase your creativity, a wellness retreat, a VIP Loft - and so much more!
 
 We can’t wait to welcome you back for another unforgettable, inspiring event!

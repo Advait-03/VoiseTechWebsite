@@ -1,5 +1,5 @@
 ---
-title: "Voise Tech Ltd – Global Privacy Policy"
+title: "Voise Tech Ltd - Global Privacy Policy"
 description: "How Voise Tech Ltd collects, uses, discloses and protects personal data across its website and programmatic advertising services."
 effective: "March 12, 2026"
 updated: "March 12, 2026"

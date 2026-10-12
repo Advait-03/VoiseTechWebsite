@@ -27,11 +27,11 @@ export const team: Person[] = [
   { name: 'Aakash Birhade', role: 'UI/UX Designer', department: 'Design & Creative', photo: '/team/aakash-birhade.webp', linkedin: 'https://www.linkedin.com/in/aakashbirhadex/' },
   { name: 'Saloni Deshmukh', role: 'AI Video Editor', department: 'Design & Creative', photo: '/team/saloni-deshmukh.webp', linkedin: 'https://www.linkedin.com/in/saloni-deshmukh-4561562a9/' },
   { name: 'Advait Anand', role: 'Tech Ops', department: 'Technical Operations', photo: '/team/advait-anand.webp', linkedin: 'https://www.linkedin.com/in/advait-anand03/' },
-  { name: 'Ashwin Vinod', role: 'Technical Operations Engineer – Intern', department: 'Technical Operations', photo: '/team/ashwin-vinod.webp', linkedin: 'https://www.linkedin.com/in/ashwin-vinod-463256427/' },
+  { name: 'Ashwin Vinod', role: 'Technical Operations Engineer - Intern', department: 'Technical Operations', photo: '/team/ashwin-vinod.webp', linkedin: 'https://www.linkedin.com/in/ashwin-vinod-463256427/' },
   { name: 'Yuvraj Munot', role: 'Senior Director', department: 'Operations', photo: '/wp-content/uploads/2026/01/yum-e1767799386172.jpg', linkedin: 'https://www.linkedin.com/in/yuvrajmunot83/' },
   { name: 'Victoria de la Calle Fernández', role: 'Senior Commercial Operations Manager', department: 'Operations', photo: '/wp-content/uploads/2026/04/Vic.png', linkedin: 'https://www.linkedin.com/in/victoria-de-la-calle/' },
   { name: 'Sushma Veggalam', role: 'Senior Account Manager', department: 'Operations', photo: '/wp-content/uploads/2025/12/Untitled-design-9-e1767800003538.png', linkedin: 'https://www.linkedin.com/in/sushma-veggalam/' },
-  { name: 'Karim Hammoud', role: 'Director – Partnerships MENA', department: 'Partnerships', photo: '/team/karim-hammoud.webp', linkedin: 'https://www.linkedin.com/in/karim-hammoud-43a27b8/' },
+  { name: 'Karim Hammoud', role: 'Director - Partnerships MENA', department: 'Partnerships', photo: '/team/karim-hammoud.webp', linkedin: 'https://www.linkedin.com/in/karim-hammoud-43a27b8/' },
   { name: 'Kelly Hoang', role: 'Partnerships', department: 'Partnerships', photo: '/wp-content/uploads/2026/08/kelly.png', linkedin: 'https://www.linkedin.com/in/kelly-hoang1307/' },
   { name: 'Yatin Makkar', role: 'Marketing and Brand Manager', department: 'Marketing', photo: '/team/yatin-makkar.webp', linkedin: 'https://www.linkedin.com/in/yatin-makkar-800960167/' },
   { name: 'Malavika Balakrishnan', role: 'Marketing', department: 'Marketing', photo: '/wp-content/uploads/2025/12/4.png', linkedin: 'https://www.linkedin.com/in/malavika-balakrishnan-649069125/' },
@@ -59,7 +59,7 @@ export const testimonials: Testimonial[] = [
     company: 'Adbreak',
     logo: '/wp-content/uploads/2025/09/logo1.jpg',
     quote:
-      'Our journey with Voise Tech has been built on mutual respect, shared vision, and a genuine commitment to success. They understand our goals, adapt to our needs, and consistently deliver solutions that help Adbreak thrive. It’s rare to find a partner who feels like an extension of your own team — Voise Tech is exactly that.',
+      'Our journey with Voise Tech has been built on mutual respect, shared vision, and a genuine commitment to success. They understand our goals, adapt to our needs, and consistently deliver solutions that help Adbreak thrive. It’s rare to find a partner who feels like an extension of your own team - Voise Tech is exactly that.',
   },
   {
     name: 'Anushrav Gulati',

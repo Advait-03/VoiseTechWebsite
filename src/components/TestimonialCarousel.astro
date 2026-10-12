@@ -12,7 +12,7 @@ interface Props { items: Testimonial[] }
 const { items } = Astro.props;
 ---
 <div class="tc" data-tc aria-roledescription="carousel" aria-label="Client testimonials">
-  <div class="viewport" data-tc-viewport tabindex="0" aria-label="Testimonials — use left and right arrow keys to browse">
+  <div class="viewport" data-tc-viewport tabindex="0" aria-label="Testimonials - use left and right arrow keys to browse">
     {items.map((t, i) => (
       <figure class="slide" data-tc-slide aria-roledescription="slide" aria-label={`${i + 1} of ${items.length}`}>
         <Icon name="quote" size={34} class="q" />

@@ -30,9 +30,9 @@ Traditional approaches relied on static, hand-tuned rules, fixed audience segmen
 
 Here’s where that shows up in practice:
 
--   **Slow reaction times** – By the time a rule triggers, the opportunity has passed
--   **Budget inefficiency** – Static floors and caps don’t account for real-time market shifts
--   **Fragmented decisions** – Separate rules across channels create inconsistent outcomes
+-   **Slow reaction times** - By the time a rule triggers, the opportunity has passed
+-   **Budget inefficiency** - Static floors and caps don’t account for real-time market shifts
+-   **Fragmented decisions** - Separate rules across channels create inconsistent outcomes
 
 ## What agentic systems change
 
@@ -40,9 +40,9 @@ Unlike traditional AI, [agentic AI](https://www.everestgrp.com/ad-context-protoc
 
 In practice, this means:
 
--   **Dynamic audience discovery** – Audiences built in real-time from contextual signals, not predefined segments
--   **Continuous optimisation** – Spend reallocated across channels and creatives based on live feedback, not scheduled check-ins
--   **Goal-based planning** – Campaigns optimised toward outcomes, not just delivery metrics
+-   **Dynamic audience discovery** - Audiences built in real-time from contextual signals, not predefined segments
+-   **Continuous optimisation** - Spend reallocated across channels and creatives based on live feedback, not scheduled check-ins
+-   **Goal-based planning** - Campaigns optimised toward outcomes, not just delivery metrics
 
 ## The honest reality
 

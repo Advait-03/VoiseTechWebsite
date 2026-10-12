@@ -28,7 +28,7 @@ Every click, scroll, or stream generates a signal: device, time, context, even m
 -   **Engagement:** A CTV ad deepens the plot with immersive visuals.
 -   **Conversion:** A retargeted audio ad nudges the final action.
 
-This is where storytelling thrives—not in isolated impressions, but in the continuity created across moments and platforms.
+This is where storytelling thrives - not in isolated impressions, but in the continuity created across moments and platforms.
 
 A recent [report](https://adtechmartech.com/the-future-of-ads-trends-shaping-programmatic-advertising-in-2025/) notes that over 70% of marketers now prioritize cross-channel storytelling as a driver of campaign success.
 

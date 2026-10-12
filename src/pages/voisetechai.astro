@@ -1,5 +1,5 @@
 ---
-/** VoiseTech.AI landing page — copy migrated from the live /voisetechai/ page. */
+/** VoiseTech.AI landing page - copy migrated from the live /voisetechai/ page. */
 import BaseLayout from '../layouts/BaseLayout.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import StatGrid from '../components/StatGrid.astro';
@@ -9,49 +9,49 @@ import { aiStats } from '../data/stats';
 
 const AI = 'https://voisetech.ai';
 const ticker = [
-  'Free tier — start instantly, no credit card needed', 'Conversational AI across all domains', 'Generate complete applications — not just snippets',
-  'Live preview & architecture view', 'Learns your preferences over time', 'Multiple AI models — Claude, GPT & Gemini in one place',
-  'Powered by Claude Opus & Sonnet — frontier intelligence', 'Credit-based — pay per use, scale as you go',
+  'Free tier - start instantly, no credit card needed', 'Conversational AI across all domains', 'Generate complete applications - not just snippets',
+  'Live preview & architecture view', 'Learns your preferences over time', 'Multiple AI models - Claude, GPT & Gemini in one place',
+  'Powered by Claude Opus & Sonnet - frontier intelligence', 'Credit-based - pay per use, scale as you go',
 ];
 const modes = [
   {
     tag: 'Most Popular', name: 'Ask Me Anything', subtitle: 'The AI that listens and learns.', cta: 'Start Asking',
-    text: 'Your AI that learns and gets smarter with every conversation. Multi-AI powered — Claude, GPT & Gemini. Get expert-level answers across engineering, architecture, strategy, and beyond.',
+    text: 'Your AI that learns and gets smarter with every conversation. Multi-AI powered - Claude, GPT & Gemini. Get expert-level answers across engineering, architecture, strategy, and beyond.',
     lede: 'Not a search engine. Not a chatbot. A reasoning partner that gets sharper every time you use it.',
     points: [
-      ['Conversational AI across all domains', 'Engineering, strategy, marketing, legal — switch topics mid-conversation without losing context.'],
+      ['Conversational AI across all domains', 'Engineering, strategy, marketing, legal - switch topics mid-conversation without losing context.'],
       ['Learns your preferences over time', 'The more you use it, the better it knows your style, stack, and standards. It adapts, you accelerate.'],
-      ['Multiple AI models in one place', 'Claude, GPT & Gemini — routed intelligently by task type. Best model for the job, every time.'],
-      ['Free tier — start instantly', 'No credit card. No commitment. Jump in now and experience frontier AI without a barrier in sight.'],
+      ['Multiple AI models in one place', 'Claude, GPT & Gemini - routed intelligently by task type. Best model for the job, every time.'],
+      ['Free tier - start instantly', 'No credit card. No commitment. Jump in now and experience frontier AI without a barrier in sight.'],
     ],
   },
   {
     tag: 'For Developers', name: 'Build Anything', subtitle: 'The IDE that builds with you.', cta: 'Start Building',
-    text: 'AI-powered workspace for production-ready code. Full-stack generation with live preview — from a single function to an entire deployable application.',
-    lede: 'From a single prompt to a production-ready codebase — with live preview and architectural clarity baked in.',
+    text: 'AI-powered workspace for production-ready code. Full-stack generation with live preview - from a single function to an entire deployable application.',
+    lede: 'From a single prompt to a production-ready codebase - with live preview and architectural clarity baked in.',
     points: [
-      ['Generate complete applications', 'Not snippets. Full projects — auth, APIs, DB schemas, CI configs — ready to clone and ship.'],
-      ['Live preview & architecture view', 'See your app render in real time. Visualise system architecture as it’s being generated — no guesswork.'],
+      ['Generate complete applications', 'Not snippets. Full projects - auth, APIs, DB schemas, CI configs - ready to clone and ship.'],
+      ['Live preview & architecture view', 'See your app render in real time. Visualise system architecture as it’s being generated - no guesswork.'],
       ['Powered by Claude Opus & Sonnet', 'Frontier models purpose-built for complex code generation. The most capable AI, applied to your build.'],
-      ['Credit-based — pay per use', 'No subscriptions, no wasted seat licences. Pay only for what you build. Scale down or go all-in anytime.'],
+      ['Credit-based - pay per use', 'No subscriptions, no wasted seat licences. Pay only for what you build. Scale down or go all-in anytime.'],
     ],
   },
 ];
 const capabilities = [
-  ['Full-stack development', 'React, Next.js, Node, Python, Go — production-ready apps from frontend to database, deployed and live. VoiseTech writes clean, scalable code that ships.', 'Frontend · Backend · Database'],
-  ['AI & machine learning', 'Custom models, NLP pipelines, computer vision — built and integrated end-to-end.', 'Models · Pipelines · APIs'],
-  ['System architecture', 'Microservices, event-driven systems, distributed infrastructure — designed for scale and reliability from day one.', ''],
-  ['Intelligent Q&A', 'Ask anything technical — get expert-level answers instantly, not generic documentation links.', ''],
-  ['Mobile apps — iOS & Android', 'React Native, Flutter, Swift, Kotlin — cross-platform or fully native. Built with full API integration, auth flows, and App Store-ready build configs.', 'Cross-platform · Native · PWA'],
-  ['DevOps & cloud', 'Docker, Kubernetes, CI/CD, AWS, GCP, Azure — deployments automated and infrastructure production-ready.', ''],
-  ['API development', 'REST, GraphQL, WebSocket, gRPC — APIs that are fast, documented, and production-grade.', 'REST · GraphQL · Realtime'],
+  ['Full-stack development', 'React, Next.js, Node, Python, Go - production-ready apps from frontend to database, deployed and live. VoiseTech writes clean, scalable code that ships.', 'Frontend · Backend · Database'],
+  ['AI & machine learning', 'Custom models, NLP pipelines, computer vision - built and integrated end-to-end.', 'Models · Pipelines · APIs'],
+  ['System architecture', 'Microservices, event-driven systems, distributed infrastructure - designed for scale and reliability from day one.', ''],
+  ['Intelligent Q&A', 'Ask anything technical - get expert-level answers instantly, not generic documentation links.', ''],
+  ['Mobile apps - iOS & Android', 'React Native, Flutter, Swift, Kotlin - cross-platform or fully native. Built with full API integration, auth flows, and App Store-ready build configs.', 'Cross-platform · Native · PWA'],
+  ['DevOps & cloud', 'Docker, Kubernetes, CI/CD, AWS, GCP, Azure - deployments automated and infrastructure production-ready.', ''],
+  ['API development', 'REST, GraphQL, WebSocket, gRPC - APIs that are fast, documented, and production-grade.', 'REST · GraphQL · Realtime'],
 ];
 const builds = [
-  ['01 / SaaS', 'SaaS platforms', 'Auth, billing, dashboards, analytics, onboarding — full SaaS stack, ready to launch.', 'Launch-ready'],
-  ['02 / Commerce', 'E-commerce stores', 'Product catalogs, checkout, inventory, order management — conversion-optimised by design.', 'High-converting'],
+  ['01 / SaaS', 'SaaS platforms', 'Auth, billing, dashboards, analytics, onboarding - full SaaS stack, ready to launch.', 'Launch-ready'],
+  ['02 / Commerce', 'E-commerce stores', 'Product catalogs, checkout, inventory, order management - conversion-optimised by design.', 'High-converting'],
   ['03 / Intelligence', 'AI-powered apps', 'Recommendation engines, prediction systems, intelligent assistants, RAG pipelines.', 'AI-native'],
   ['04 / Insights', 'Enterprise dashboards', 'Real-time analytics, KPI monitoring, live data pipelines, visual business intelligence.', 'Real-time data'],
-  ['05 / Systems', 'Custom business tools', 'Workflow automation, internal ops platforms, integrations — tailored to your processes.', 'Process automation'],
+  ['05 / Systems', 'Custom business tools', 'Workflow automation, internal ops platforms, integrations - tailored to your processes.', 'Process automation'],
   ['06 / Infrastructure', 'Scalable backends', 'High-traffic microservices, real-time systems, event-driven architecture for enterprise load.', 'Enterprise-grade'],
 ];
 const stacks = [
@@ -63,15 +63,15 @@ const stacks = [
   ['LLM Integrations', 'OpenAI · Anthropic · Gemini · Meta AI · DeepSeek · Bedrock'],
 ];
 const outcomes = [
-  ['Startup MVP', 'Go from napkin idea to live product. Auth, core features, database, deployment — complete and shipped before a sprint ends.', 'concept to live: under 24 hours'],
-  ['Enterprise integration', 'Modernize legacy systems, build integration layers, automate workflows — without the 6-month consulting engagement.', 'legacy modernization at scale'],
-  ['Data intelligence', 'Raw data into real-time dashboards, ML models, automated reporting pipelines — business decisions backed by live data.', 'real-time business intelligence'],
-  ['Process automation', 'Eliminate manual workflows, build intelligent automation that learns and scales — 90%+ efficiency gains, measurably.', '90%+ operational efficiency'],
+  ['Startup MVP', 'Go from napkin idea to live product. Auth, core features, database, deployment - complete and shipped before a sprint ends.', 'concept to live: under 24 hours'],
+  ['Enterprise integration', 'Modernize legacy systems, build integration layers, automate workflows - without the 6-month consulting engagement.', 'legacy modernization at scale'],
+  ['Data intelligence', 'Raw data into real-time dashboards, ML models, automated reporting pipelines - business decisions backed by live data.', 'real-time business intelligence'],
+  ['Process automation', 'Eliminate manual workflows, build intelligent automation that learns and scales - 90%+ efficiency gains, measurably.', '90%+ operational efficiency'],
 ];
 ---
 <BaseLayout
   title="VoiseTech.AI - Voise Tech"
-  description="VoiseTech AI combines the reasoning power of a senior engineer, the creativity of a product builder, and the precision of an enterprise architect — in one conversation. Now live at voisetech.ai."
+  description="VoiseTech AI combines the reasoning power of a senior engineer, the creativity of a product builder, and the precision of an enterprise architect - in one conversation. Now live at voisetech.ai."
   breadcrumbs={[{ label: 'VoiseTech.AI', href: '/voisetechai/' }]}
 >
   <section class="ai-hero on-night">
@@ -79,10 +79,10 @@ const outcomes = [
       <div class="copy">
         <p class="pill live" data-reveal><span class="dot"></span>Now live at voisetech.ai</p>
         <h1 class="display" data-reveal style="--i:1">The AI that can <span class="rotator" data-rotator aria-live="off"><span>write your code</span><span>build your app</span><span>answer anything</span><span>scale your business</span><span>design your system</span></span></h1>
-        <p class="lede" data-reveal style="--i:2">VoiseTech AI combines the reasoning power of a senior engineer, the creativity of a product builder, and the precision of an enterprise architect — in one conversation.</p>
+        <p class="lede" data-reveal style="--i:2">VoiseTech AI combines the reasoning power of a senior engineer, the creativity of a product builder, and the precision of an enterprise architect - in one conversation.</p>
         <form class="ask" action={AI} method="get" target="_blank" data-reveal style="--i:3">
           <label for="ai-ask" class="sr-only">Ask VoiseTech AI anything</label>
-          <input id="ai-ask" type="text" placeholder="Ask me anything — code, architecture, strategy…" autocomplete="off" />
+          <input id="ai-ask" type="text" placeholder="Ask me anything - code, architecture, strategy…" autocomplete="off" />
           <button class="btn" type="submit">Open voisetech.ai <Icon name="arrow-up-right" size={16} class="arrow" /></button>
         </form>
         <ul role="list" class="chips" data-reveal style="--i:4">
@@ -105,7 +105,7 @@ const outcomes = [
 
   <section class="section">
     <div class="container">
-      <SectionHeading eyebrow="Two products. One platform." title="Everything you need to think faster and ship smarter" lede="Whether you’re looking for answers or looking to build — VoiseTech AI has a dedicated mode for each." />
+      <SectionHeading eyebrow="Two products. One platform." title="Everything you need to think faster and ship smarter" lede="Whether you’re looking for answers or looking to build - VoiseTech AI has a dedicated mode for each." />
       <div class="modes" data-stagger>
         {modes.map((m) => (
           <article class="mode card" data-reveal>
@@ -124,7 +124,7 @@ const outcomes = [
 
   <section class="section tone-subtle">
     <div class="container">
-      <SectionHeading eyebrow="Core capabilities" title="One platform. Every problem solved." lede="From a quick question to a full production system — VoiseTech handles depth at every level." />
+      <SectionHeading eyebrow="Core capabilities" title="One platform. Every problem solved." lede="From a quick question to a full production system - VoiseTech handles depth at every level." />
       <ul role="list" class="caps" data-stagger>
         {capabilities.map(([t, d, k]) => <li class="card" data-reveal><h3 class="h4">{t}</h3><p class="muted small">{d}</p>{k && <p class="mono k">→ {k}</p>}</li>)}
       </ul>
@@ -134,18 +134,18 @@ const outcomes = [
   <section class="section">
     <div class="container two">
       <div>
-        <SectionHeading eyebrow="Accessible at voisetech.ai" title="Ask. Build. Deploy." lede="Just describe what you want. VoiseTech reasons through your problem, produces working code, explains the architecture, and helps you ship — without switching tabs." />
+        <SectionHeading eyebrow="Accessible at voisetech.ai" title="Ask. Build. Deploy." lede="Just describe what you want. VoiseTech reasons through your problem, produces working code, explains the architecture, and helps you ship - without switching tabs." />
         <a class="btn" href={AI} target="_blank" rel="noopener noreferrer" data-reveal>Start building at voisetech.ai <Icon name="arrow-up-right" size={16} class="arrow" /></a>
       </div>
       <dl class="list-dl" data-stagger>
-        {[['Conversational coding', 'Go from idea to working code in natural language'], ['Multi-file project generation', 'Full repos, not just snippets — ready to clone and run'], ['Architecture guidance', 'System design, trade-off analysis, and tech decisions'], ['50+ technology stacks', 'Whatever you’re building in, VoiseTech knows it deeply']].map(([k, v]) => <div data-reveal><dt>{k}</dt><dd>{v}</dd></div>)}
+        {[['Conversational coding', 'Go from idea to working code in natural language'], ['Multi-file project generation', 'Full repos, not just snippets - ready to clone and run'], ['Architecture guidance', 'System design, trade-off analysis, and tech decisions'], ['50+ technology stacks', 'Whatever you’re building in, VoiseTech knows it deeply']].map(([k, v]) => <div data-reveal><dt>{k}</dt><dd>{v}</dd></div>)}
       </dl>
     </div>
   </section>
 
   <section class="section on-night">
     <div class="container">
-      <SectionHeading eyebrow="What we build" title="Ideas become products. Fast." lede="VoiseTech doesn’t just answer — it builds. Here’s what teams ship with it." />
+      <SectionHeading eyebrow="What we build" title="Ideas become products. Fast." lede="VoiseTech doesn’t just answer - it builds. Here’s what teams ship with it." />
       <ul role="list" class="builds" data-stagger>
         {builds.map(([n, t, d, k]) => <li data-reveal><p class="mono n">{n}</p><h3 class="h4">{t}</h3><p class="small">{d}</p><p class="mono k">→ {k}</p></li>)}
       </ul>
@@ -154,7 +154,7 @@ const outcomes = [
 
   <section class="section">
     <div class="container two">
-      <SectionHeading eyebrow="Technology" title="Mastery across every stack" lede="50+ technologies. Zero compromise on depth. VoiseTech knows each stack the way an expert does — not just the syntax, but the trade-offs." />
+      <SectionHeading eyebrow="Technology" title="Mastery across every stack" lede="50+ technologies. Zero compromise on depth. VoiseTech knows each stack the way an expert does - not just the syntax, but the trade-offs." />
       <dl class="stacks" data-stagger>{stacks.map(([k, v]) => <div data-reveal><dt class="mono">{k}</dt><dd>{v}</dd></div>)}</dl>
     </div>
   </section>
@@ -168,7 +168,7 @@ const outcomes = [
     </div>
   </section>
 
-  <CtaBand eyebrow="Get started today" title="Build the future. Starting now." text="Join thousands of developers, startups, and enterprises who trust VoiseTech AI to turn ideas into reality — faster than ever before." primary={{ label: 'Explore VoiseTech.AI', href: AI }} />
+  <CtaBand eyebrow="Get started today" title="Build the future. Starting now." text="Join thousands of developers, startups, and enterprises who trust VoiseTech AI to turn ideas into reality - faster than ever before." primary={{ label: 'Explore VoiseTech.AI', href: AI }} />
 </BaseLayout>
 
 <style>

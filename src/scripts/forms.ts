@@ -29,7 +29,7 @@ function messageFor(control: HTMLInputElement | HTMLSelectElement | HTMLTextArea
     const ext = file.name.match(/\.[^.]+$/)?.[0]?.toLowerCase() ?? '';
     if (!control.accept.split(',').includes(ext)) return 'Please upload a PDF, DOC or DOCX file.';
     const max = Number(control.dataset.maxBytes);
-    if (max && file.size > max) return `This file is ${(file.size / 1048576).toFixed(1)} MB — the limit is 5 MB.`;
+    if (max && file.size > max) return `This file is ${(file.size / 1048576).toFixed(1)} MB - the limit is 5 MB.`;
     return '';
   }
   if (!value) {
@@ -163,7 +163,7 @@ function initForm(form: HTMLFormElement) {
 
       if (res.ok && body.ok) {
         window.dataLayer?.push({ event: 'form_submit', form_id: id });
-        showStatus('success', 'Thank you — your submission has been received. Redirecting…');
+        showStatus('success', 'Thank you - your submission has been received. Redirecting…');
         setTimeout(() => (location.href = body.redirect ?? '/thank-you/'), 400);
         return;
       }

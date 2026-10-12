@@ -15,7 +15,7 @@ const hasFiles = def.fields.some((f) => f.type === 'file');
 const recaptcha = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
 const fid = (name: string) => `${id}-${name}`;
 // Short "Optional" sits in the label; anything longer is help text under the control.
-const help = (f: (typeof def.fields)[number]) => (f.hint ?? '').replace(/^Optional( — )?/, '').trim();
+const help = (f: (typeof def.fields)[number]) => (f.hint ?? '').replace(/^Optional( - )?/, '').trim();
 const describedBy = (f: (typeof def.fields)[number]) => [help(f) && `${fid(f.name)}-help`, `${fid(f.name)}-error`].filter(Boolean).join(' ');
 ---
 <form

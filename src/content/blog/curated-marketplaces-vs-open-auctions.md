@@ -23,7 +23,7 @@ It all comes down to one key trade-off: **Scale vs. Control**
 -   Access to long-tail inventory
 -   Transparent auction dynamics
 
-But here’s the plot twist – **Curated Marketplaces** are stealing the spotlight faster than you can say “brand safety.”
+But here’s the plot twist - **Curated Marketplaces** are stealing the spotlight faster than you can say “brand safety.”
 
 Why Curated is Having Its Moment
 

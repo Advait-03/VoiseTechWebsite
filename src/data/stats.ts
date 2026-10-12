@@ -4,12 +4,12 @@
  *
  * The live pages disagree with each other (e.g. 60B requests "daily" on the
  * homepage vs "per month" on About, 500B/month on Solutions). Each page keeps
- * its own published wording until the business confirms a single set —
+ * its own published wording until the business confirms a single set - 
  * see docs/REVIEW-ITEMS.md.
  */
 export type Stat = { value: number; decimals?: number; prefix?: string; suffix: string; label: string; detail?: string };
 
-/** Homepage counters (source: / — "Smarter Advertising. Cleaner Supply." section). */
+/** Homepage counters (source: / - "Smarter Advertising. Cleaner Supply." section). */
 export const homeStats: Stat[] = [
   { value: 60, suffix: '+', label: 'Billion requests daily' },
   { value: 25, suffix: '+', label: 'SSPs and exchanges' },
@@ -28,7 +28,7 @@ export const aboutStats: Stat[] = [
 /**
  * Publisher "Platform Highlights" (sources: /ad-publishers-solutions/ counters and
  * /solutions/ wording). The live publisher page labels its fourth counter
- * "24 Hourse — Global Premium Publishers", a template error; /solutions/ states
+ * "24 Hourse - Global Premium Publishers", a template error; /solutions/ states
  * "Integration Time: Under 24 hours for most formats", which is used here.
  */
 export const publisherStats: Stat[] = [

@@ -35,7 +35,7 @@ Curation-as-a-Service (CaaS) involves the use of advanced technology to handpick
 
 ## How Curation Solves Industry Challenges
 
-### Reducing Complexity – Navigating the fragmented ecosystem of SSPs, DSPs and exchanges is overwhelming. CaaS simplifies the supply chain, enabling advertisers to focus on strategy rather than logistics.Building Trust – Curation fosters transparency and trust between advertisers, publishers and consumers. By providing curated and premium inventory, advertisers ensure their messages appear in trusted environments.Sustainability – By reducing wasteful impressions and redundant bidding, CaaS contributes to a more sustainable digital advertising ecosystem.
+### Reducing Complexity - Navigating the fragmented ecosystem of SSPs, DSPs and exchanges is overwhelming. CaaS simplifies the supply chain, enabling advertisers to focus on strategy rather than logistics.Building Trust - Curation fosters transparency and trust between advertisers, publishers and consumers. By providing curated and premium inventory, advertisers ensure their messages appear in trusted environments.Sustainability - By reducing wasteful impressions and redundant bidding, CaaS contributes to a more sustainable digital advertising ecosystem.
 
 Curation-as-a-Service (CaaS) is shaping the future of advertising by combining privacy, precision and efficiency in today’s digital landscape.
 

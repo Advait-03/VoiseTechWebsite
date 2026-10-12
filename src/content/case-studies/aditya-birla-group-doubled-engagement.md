@@ -6,7 +6,7 @@ image: {"src":"/wp-content/uploads/2025/11/Feature-Image-Grid-551-x-355px-32.png
 excerpt: "Objective Aditya Birla Group aimed to strengthen visibility and engagement for its FMCG brands among tech-savvy male audiences aged 25–45. The goal was to drive awareness and attention across premium digital touchpoints through impactful storytelling and data-driven precision. Our Approach Voise Tech deployed a unified"
 date: "2025-11-13T21:01:20"
 updated: "2025-11-13T21:07:22"
-metrics: [{"label":"Total Impressions","value":"3.1 million"},{"label":"CTR","value":"0.25%"},{"label":"VTR","value":"85%"},{"label":"Targeting","value":"25–45 Men – Technology"},{"label":"Performance","value":"2X Better CTR & VTR | 2X More Precise Targeting"}]
+metrics: [{"label":"Total Impressions","value":"3.1 million"},{"label":"CTR","value":"0.25%"},{"label":"VTR","value":"85%"},{"label":"Targeting","value":"25–45 Men - Technology"},{"label":"Performance","value":"2X Better CTR & VTR | 2X More Precise Targeting"}]
 publishers: ["/wp-content/uploads/2025/11/Case-Study-Logos-9.png","/wp-content/uploads/2025/11/Case-Study-Logos-10.png","/wp-content/uploads/2025/11/Case-Study-Logos-11.png","/wp-content/uploads/2025/11/Case-Study-Logos-12.png","/wp-content/uploads/2025/11/Case-Study-Logos-30.png"]
 cta: {"label":"Connect With Us Today","href":"/contact-us/"}
 wpId: 5799

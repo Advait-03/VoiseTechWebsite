@@ -14,7 +14,7 @@ In the fast-moving world of AdTech, **Supply-Side Platforms (SSPs)** have underg
 
 ## From Waterfall to Real-Time Auctions
 
-In the early days of programmatic advertising, the **waterfall model** was the standard approach to monetising inventory. Publishers prioritised ad networks in sequential order, offering impressions to one buyer at a time. If the first buyer declined, the opportunity trickled down to the next in line—leading to inefficiencies, revenue loss and slower decision-making.
+In the early days of programmatic advertising, the **waterfall model** was the standard approach to monetising inventory. Publishers prioritised ad networks in sequential order, offering impressions to one buyer at a time. If the first buyer declined, the opportunity trickled down to the next in line - leading to inefficiencies, revenue loss and slower decision-making.
 
 ## The Rise of Header Bidding
 
