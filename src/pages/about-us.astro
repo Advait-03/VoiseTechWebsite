@@ -4,7 +4,8 @@ import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import StatGrid from '../components/StatGrid.astro';
 import VideoFacade from '../components/VideoFacade.astro';
-import WorldPresence from '../components/WorldPresence.astro';
+import GlobePresence from '../components/GlobePresence.astro';
+import { SITE } from '../data/site';
 import LogoGrid from '../components/LogoGrid.astro';
 import LogoMark from '../components/LogoMark.astro';
 import CtaBand from '../components/CtaBand.astro';
@@ -106,10 +107,15 @@ const triad = [
 
   <section class="section presence-section">
     <div class="container">
-      <div class="presence-head">
-        <SectionHeading eyebrow="Offices" title="Global Presence." lede="A trusted technology partner across the US, UK, UAE, India, and beyond." />
+      <div class="presence-grid">
+        <div>
+          <SectionHeading eyebrow="Offices" title="Global Presence." lede="A trusted technology partner across the US, UK, UAE, India, and beyond." />
+          <ul role="list" class="countries">
+            {SITE.presence.map((c) => <li>{c}</li>)}
+          </ul>
+        </div>
+        <div class="presence-globe" data-reveal="fade"><GlobePresence /></div>
       </div>
-      <div data-reveal="fade"><WorldPresence /></div>
     </div>
   </section>
 
@@ -193,7 +199,12 @@ const triad = [
   @media (max-width: 860px) { .values-grid { grid-template-columns: minmax(0, 1fr); } }
   @media (max-width: 560px) { .values li { grid-template-columns: 40px 1fr; } .values li p { grid-column: 2; } }
 
-  .presence-head { margin-bottom: clamp(32px, 4vw, 56px); }
+  .presence-section { overflow: hidden; padding-bottom: 0; }
+  .presence-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .presence-globe { padding-top: clamp(48px, 5vw, 72px); }
+  .countries { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .countries li { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; background: #fff; }
+  @media (max-width: 900px) { .presence-grid { grid-template-columns: minmax(0, 1fr); } }
 
   .people { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); margin-top: clamp(32px, 4vw, 48px); }
   .people.leaders { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 980px; }
