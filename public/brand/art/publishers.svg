@@ -1,0 +1,57 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 840" width="1120" height="840">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06172e"/><stop offset="1" stop-color="#0a2b57"/></linearGradient>
+<radialGradient id="gb" cx="12%" cy="8%" r="65%"><stop offset="0" stop-color="#0870c7" stop-opacity=".55"/><stop offset="1" stop-color="#0870c7" stop-opacity="0"/></radialGradient>
+<radialGradient id="gg" cx="92%" cy="96%" r="55%"><stop offset="0" stop-color="#0eb151" stop-opacity=".38"/><stop offset="1" stop-color="#0eb151" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".07"/></pattern>
+<linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0870c7"/><stop offset="1" stop-color="#0eb151"/></linearGradient>
+<linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2fd27a" stop-opacity=".45"/><stop offset="1" stop-color="#2fd27a" stop-opacity="0"/></linearGradient>
+</defs>
+<style>
+.flow{stroke-dasharray:8 12;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-40}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.7);opacity:.7}100%{transform:scale(2.3);opacity:0}}
+.bar{transform-box:fill-box;transform-origin:left;animation:grow 3.2s ease-in-out infinite alternate}@keyframes grow{from{transform:scaleX(.82)}to{transform:scaleX(1)}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1120" height="840" fill="url(#bg)"/><rect width="1120" height="840" fill="url(#gb)"/><rect width="1120" height="840" fill="url(#gg)"/><rect width="1120" height="840" fill="url(#dots)"/>
+
+<rect x="60" y="230" width="270" height="380" rx="22" fill="#fff" fill-opacity="0.06" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/>
+<circle cx="94" cy="277" r="6" fill="#2fd27a"/><text x="110" y="285" font-size="22" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="2.5" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace">INVENTORY</text>
+<rect x="88" y="315" width="214" height="16" rx="8" fill="#fff" fill-opacity=".18"/>
+<rect x="88" y="345" width="160" height="16" rx="8" fill="#fff" fill-opacity=".12"/>
+<rect x="88" y="385" width="214" height="120" rx="14" fill="#2fd27a" fill-opacity=".1" stroke="#2fd27a" stroke-width="2.5" stroke-dasharray="10 8"/>
+<text x="195" y="455" font-size="24" font-weight="600" fill="#2fd27a" fill-opacity="1" text-anchor="middle" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Ad slot</text>
+<rect x="88" y="530" width="214" height="16" rx="8" fill="#fff" fill-opacity=".12"/>
+<rect x="88" y="560" width="130" height="16" rx="8" fill="#fff" fill-opacity=".12"/>
+<path d="M330 420 H 400" stroke="#3a9bf0" stroke-width="4" class="flow"/>
+<rect x="400" y="120" width="360" height="600" rx="22" fill="#fff" fill-opacity="0.06" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/>
+<circle cx="436" cy="170" r="6" fill="#2fd27a"/><text x="452" y="178" font-size="22" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="2.5" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace">LIVE AUCTION</text>
+<circle cx="722" cy="170" r="8" fill="#2fd27a"/><circle cx="722" cy="170" r="8" fill="#2fd27a" class="pulse"/>
+<text x="430" y="230" font-size="22" font-weight="600" fill="#fff" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Demand partner A</text>
+<rect x="430" y="248" width="300" height="26" rx="13" fill="#fff" fill-opacity=".06"/>
+<rect x="430" y="248" width="276" height="26" rx="13" fill="url(#brand)" fill-opacity="1" class="bar" style="animation-delay:0s"/>
+<circle cx="712" cy="222" r="15" fill="#2fd27a"/><path d="M705.7 222l4.5 4.5 8.25-9" fill="none" stroke="#06172e" stroke-width="3.3" stroke-linecap="round" stroke-linejoin="round"/><text x="430" y="322" font-size="22" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Demand partner B</text>
+<rect x="430" y="340" width="300" height="26" rx="13" fill="#fff" fill-opacity=".06"/>
+<rect x="430" y="340" width="222" height="26" rx="13" fill="#3a9bf0" fill-opacity="0.55" class="bar" style="animation-delay:0.12s"/>
+<text x="430" y="414" font-size="22" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Demand partner C</text>
+<rect x="430" y="432" width="300" height="26" rx="13" fill="#fff" fill-opacity=".06"/>
+<rect x="430" y="432" width="174" height="26" rx="13" fill="#3a9bf0" fill-opacity="0.55" class="bar" style="animation-delay:0.24s"/>
+<text x="430" y="506" font-size="22" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Demand partner D</text>
+<rect x="430" y="524" width="300" height="26" rx="13" fill="#fff" fill-opacity=".06"/>
+<rect x="430" y="524" width="122.99999999999999" height="26" rx="13" fill="#3a9bf0" fill-opacity="0.55" class="bar" style="animation-delay:0.36s"/>
+<text x="430" y="598" font-size="22" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Demand partner E</text>
+<rect x="430" y="616" width="300" height="26" rx="13" fill="#fff" fill-opacity=".06"/>
+<rect x="430" y="616" width="90" height="26" rx="13" fill="#3a9bf0" fill-opacity="0.55" class="bar" style="animation-delay:0.48s"/>
+
+<path d="M540 215 V 690" stroke="#fff" stroke-opacity=".5" stroke-width="2" stroke-dasharray="6 8"/>
+<text x="548" y="700" font-size="18" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="1.5" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace">FLOOR</text>
+<path d="M760 420 H 830" stroke="#2fd27a" stroke-width="4" class="flow"/>
+<rect x="830" y="260" width="240" height="320" rx="22" fill="#fff" fill-opacity="0.06" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/>
+<circle cx="862" cy="304" r="6" fill="#2fd27a"/><text x="878" y="312" font-size="22" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="2.5" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace">AD SERVED</text>
+<rect x="856" y="340" width="188" height="140" rx="14" fill="url(#brand)" fill-opacity=".85"/>
+<path d="M930 385 l40 25 -40 25z" fill="#fff" fill-opacity=".9"/>
+<circle cx="950" cy="530" r="22" fill="#2fd27a"/><path d="M940.76 530l6.6 6.6 12.100000000000001-13.2" fill="none" stroke="#06172e" stroke-width="4.84" stroke-linecap="round" stroke-linejoin="round"/>
+
+</svg>

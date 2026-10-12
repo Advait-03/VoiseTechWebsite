@@ -23,7 +23,8 @@ interface Props {
 }
 
 const { src, alt, sizes = '100vw', loading = 'lazy', fetchpriority, class: className, imgClass, style } = Astro.props;
-const entry = (manifest as Record<string, Entry>)[src];
+// Brand illustrations (scripts/make-brand-art.mjs) are all 1120 × 840 SVGs.
+const entry = (manifest as Record<string, Entry>)[src] ?? (src.startsWith('/brand/art/') ? { w: 1120, h: 840, variants: [] } : undefined);
 if (!entry && import.meta.env.DEV) console.warn(`[Img] not in image manifest (run npm run assets:optimize): ${src}`);
 
 const width = Astro.props.width ?? entry?.w;

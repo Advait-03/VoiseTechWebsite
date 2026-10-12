@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 840" width="1120" height="840">
+<defs>
+<linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06172e"/><stop offset="1" stop-color="#0a2b57"/></linearGradient>
+<radialGradient id="gb" cx="12%" cy="8%" r="65%"><stop offset="0" stop-color="#0870c7" stop-opacity=".55"/><stop offset="1" stop-color="#0870c7" stop-opacity="0"/></radialGradient>
+<radialGradient id="gg" cx="92%" cy="96%" r="55%"><stop offset="0" stop-color="#0eb151" stop-opacity=".38"/><stop offset="1" stop-color="#0eb151" stop-opacity="0"/></radialGradient>
+<pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".07"/></pattern>
+<linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0870c7"/><stop offset="1" stop-color="#0eb151"/></linearGradient>
+<linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2fd27a" stop-opacity=".45"/><stop offset="1" stop-color="#2fd27a" stop-opacity="0"/></linearGradient>
+</defs>
+<style>
+.flow{stroke-dasharray:8 12;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-40}}
+.pulse{transform-box:fill-box;transform-origin:center;animation:pulse 2.6s ease-out infinite}
+@keyframes pulse{0%{transform:scale(.7);opacity:.7}100%{transform:scale(2.3);opacity:0}}
+.draw{stroke-dasharray:520;animation:draw 4s ease-in-out infinite alternate}@keyframes draw{from{stroke-dashoffset:520}50%{stroke-dashoffset:0}to{stroke-dashoffset:0}}
+@media (prefers-reduced-motion:reduce){*{animation:none!important}}
+</style>
+<rect width="1120" height="840" fill="url(#bg)"/><rect width="1120" height="840" fill="url(#gb)"/><rect width="1120" height="840" fill="url(#gg)"/><rect width="1120" height="840" fill="url(#dots)"/>
+
+<rect x="70" y="100" width="520" height="640" rx="22" fill="#fff" fill-opacity="0.06" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/>
+<circle cx="110" cy="152" r="6" fill="#2fd27a"/><text x="126" y="160" font-size="22" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="2.5" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace">AD MANAGER SETUP</text>
+<rect x="104" y="200" width="452" height="66" rx="14" fill="#fff" fill-opacity="0.04" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/><text x="132" y="242" font-size="24" font-weight="600" fill="#fff" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Ad units</text>
+<rect x="476" y="219" width="56" height="28" rx="14" fill="#2fd27a"/><circle cx="518" cy="233" r="10" fill="#fff"/><rect x="104" y="286" width="452" height="66" rx="14" fill="#fff" fill-opacity="0.04" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/><text x="132" y="328" font-size="24" font-weight="600" fill="#fff" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Line items</text>
+<rect x="476" y="305" width="56" height="28" rx="14" fill="#2fd27a"/><circle cx="518" cy="319" r="10" fill="#fff"/><rect x="104" y="372" width="452" height="66" rx="14" fill="#fff" fill-opacity="0.04" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/><text x="132" y="414" font-size="24" font-weight="600" fill="#fff" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Header bidding</text>
+<rect x="476" y="391" width="56" height="28" rx="14" fill="#2fd27a"/><circle cx="518" cy="405" r="10" fill="#fff"/><rect x="104" y="458" width="452" height="66" rx="14" fill="#fff" fill-opacity="0.04" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/><text x="132" y="500" font-size="24" font-weight="600" fill="#fff" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Unified pricing rules</text>
+<rect x="476" y="477" width="56" height="28" rx="14" fill="#2fd27a"/><circle cx="518" cy="491" r="10" fill="#fff"/><rect x="104" y="544" width="452" height="66" rx="14" fill="#fff" fill-opacity="0.04" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/><text x="132" y="586" font-size="24" font-weight="600" fill="#fff" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Yield groups</text>
+<rect x="476" y="563" width="56" height="28" rx="14" fill="#2fd27a"/><circle cx="518" cy="577" r="10" fill="#fff"/><rect x="104" y="630" width="452" height="66" rx="14" fill="#fff" fill-opacity="0.04" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/><text x="132" y="672" font-size="24" font-weight="600" fill="#fff" fill-opacity="1" text-anchor="start" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Reporting</text>
+<rect x="476" y="649" width="56" height="28" rx="14" fill="#2fd27a"/><circle cx="518" cy="663" r="10" fill="#fff"/>
+<rect x="630" y="100" width="420" height="400" rx="22" fill="#fff" fill-opacity="0.06" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/>
+<circle cx="668" cy="152" r="6" fill="#2fd27a"/><text x="684" y="160" font-size="22" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="2.5" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace">YIELD</text>
+<path d="M662 450 L740 410 L800 425 L870 350 L930 330 L1010 240 V450Z" fill="url(#area)"/>
+<path d="M662 450 L740 410 L800 425 L870 350 L930 330 L1010 240" fill="none" stroke="#2fd27a" stroke-width="5" stroke-linejoin="round" class="draw"/>
+<path d="M985 240 h25 v25" fill="none" stroke="#2fd27a" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+<path d="M662 450 H1010" stroke="#fff" stroke-opacity=".2" stroke-width="1.5"/>
+<rect x="630" y="530" width="420" height="210" rx="22" fill="#fff" fill-opacity="0.06" stroke="#fff" stroke-opacity=".14" stroke-width="1.5"/>
+<circle cx="668" cy="582" r="6" fill="#2fd27a"/><text x="684" y="590" font-size="22" font-weight="500" fill="#b9c8dc" fill-opacity="1" text-anchor="start" letter-spacing="2.5" font-family="'JetBrains Mono', Consolas, 'Courier New', monospace">MANAGED FOR YOU</text>
+<rect x="662" y="620" width="104" height="44" rx="22" fill="#fff" fill-opacity="0.04" stroke="#fff" stroke-opacity="0.25" stroke-width="1.5"/><text x="714" y="649.92" font-size="22" font-weight="600" fill="#b9c8dc" fill-opacity="1" text-anchor="middle" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Setup</text><rect x="778" y="620" width="193" height="44" rx="22" fill="#fff" fill-opacity="0.04" stroke="#fff" stroke-opacity="0.25" stroke-width="1.5"/><text x="874.5" y="649.92" font-size="22" font-weight="600" fill="#b9c8dc" fill-opacity="1" text-anchor="middle" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Optimisation</text>
+<rect x="662" y="680" width="129" height="44" rx="22" fill="#fff" fill-opacity="0.04" stroke="#fff" stroke-opacity="0.25" stroke-width="1.5"/><text x="726.5" y="709.92" font-size="22" font-weight="600" fill="#b9c8dc" fill-opacity="1" text-anchor="middle" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Support</text><rect x="803" y="680" width="168" height="44" rx="22" fill="#fff" fill-opacity="0.04" stroke="#fff" stroke-opacity="0.25" stroke-width="1.5"/><text x="887" y="709.92" font-size="22" font-weight="600" fill="#b9c8dc" fill-opacity="1" text-anchor="middle" letter-spacing="0" font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif">Compliance</text>
+
+</svg>
