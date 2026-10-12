@@ -10,6 +10,9 @@ import { SITE } from '../data/site';
 
 const groups = departments.map((d) => ({ name: d, id: d.toLowerCase().replace(/[^a-z]+/g, '-'), people: team.filter((p) => p.department === d) })).filter((g) => g.people.length);
 const everyone = [...leadership, ...team];
+// First 12 photographed people, with Advait in Anamya's tile.
+const byName = (n: string) => everyone.find((p) => p.name === n)!;
+const mosaic = everyone.filter((p) => p.photo).slice(0, 12).map((p) => (p.name === 'Anamya Shree' ? byName('Advait Anand') : p));
 const initials = (n: string) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 const crumbs = [{ label: 'About Us', href: '/about-us/' }, { label: 'Meet the Team', href: '/meet-the-team/' }];
 const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle: p.role, worksFor: { '@id': `${SITE.url}/#organization` }, ...(p.linkedin && { sameAs: [p.linkedin] }) }));
@@ -38,7 +41,7 @@ const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle:
         </dl>
       </div>
       <ul role="list" class="mosaic" aria-hidden="true">
-        {everyone.filter((p) => p.photo).slice(0, 12).map((p, i) => (
+        {mosaic.map((p, i) => (
           <li style={`--i:${i}`}><Img src={p.photo!} alt="" sizes="120px" loading={i < 6 ? 'eager' : 'lazy'} /></li>
         ))}
       </ul>
