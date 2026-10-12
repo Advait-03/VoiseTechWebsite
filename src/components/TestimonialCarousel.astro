@@ -1,0 +1,108 @@
+---
+/**
+ * Testimonials. Every quote is in the DOM (crawlable, works without JS);
+ * with JS it becomes a carousel with buttons, keyboard arrows and auto-advance
+ * that stops on interaction and is off for reduced motion.
+ */
+import LogoMark from './LogoMark.astro';
+import Icon from './Icon.astro';
+import type { Testimonial } from '../data/people';
+
+interface Props { items: Testimonial[] }
+const { items } = Astro.props;
+---
+<div class="tc" data-tc aria-roledescription="carousel" aria-label="Client testimonials">
+  <div class="viewport" data-tc-viewport tabindex="0" aria-label="Testimonials — use left and right arrow keys to browse">
+    {items.map((t, i) => (
+      <figure class="slide" data-tc-slide aria-roledescription="slide" aria-label={`${i + 1} of ${items.length}`}>
+        <Icon name="quote" size={34} class="q" />
+        <blockquote><p>{t.quote}</p></blockquote>
+        <figcaption>
+          <span class="logo"><LogoMark src={t.logo} name={t.company} area={2400} maxHeight={44} maxWidth={130} /></span>
+          <span class="who"><b>{t.name}</b><span>{t.role}, {t.company}</span></span>
+        </figcaption>
+      </figure>
+    ))}
+  </div>
+  <div class="controls" data-tc-controls hidden>
+    <div class="dots" role="group" aria-label="Choose testimonial">
+      {items.map((t, i) => <button type="button" class="dot-btn" data-tc-dot={i} aria-label={`Show testimonial from ${t.name}, ${t.company}`}><span></span></button>)}
+    </div>
+    <div class="arrows">
+      <button type="button" class="arrow-btn" data-tc-prev aria-label="Previous testimonial"><Icon name="arrow-left" size={18} /></button>
+      <button type="button" class="arrow-btn" data-tc-next aria-label="Next testimonial"><Icon name="arrow" size={18} /></button>
+    </div>
+  </div>
+</div>
+
+<style>
+  .tc { margin-top: clamp(32px, 4vw, 56px); }
+  .viewport { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; border-radius: var(--radius-l); }
+  .slide { margin: 0; display: flex; flex-direction: column; gap: 26px; padding: clamp(26px, 3vw, 44px); background: #fff; border: 1px solid var(--line); border-radius: var(--radius-l); }
+  .slide :global(.q) { color: var(--blue); }
+  blockquote p { font-size: clamp(1.1rem, 1rem + 0.45vw, 1.35rem); line-height: 1.5; letter-spacing: -0.014em; color: var(--ink); text-wrap: pretty; }
+  figcaption { display: flex; align-items: center; gap: 18px; margin-top: auto; padding-top: 22px; border-top: 1px solid var(--line); }
+  .logo { display: grid; place-items: center; width: 140px; height: 56px; flex: none; }
+  .logo :global(.logo-mark) { mix-blend-mode: multiply; }
+  .who { display: grid; font-size: var(--fs-small); color: var(--ink-2); }
+  .who b { color: var(--ink); font-weight: 600; }
+  @media (max-width: 860px) { .viewport { grid-template-columns: minmax(0, 1fr); } }
+
+  /* Carousel mode (JS) */
+  .tc.is-carousel .viewport { display: grid; grid-template-columns: minmax(0, 1fr); overflow: hidden; }
+  .tc.is-carousel .slide { grid-area: 1 / 1; transition: opacity 600ms var(--ease-out), transform 600ms var(--ease-out); }
+  .tc.is-carousel .slide:not(.is-active) { opacity: 0; transform: translateX(24px); pointer-events: none; visibility: hidden; transition: opacity 400ms, transform 400ms, visibility 0s 400ms; }
+  .tc.is-carousel blockquote p { font-size: clamp(1.3rem, 1rem + 1.3vw, 2.1rem); line-height: 1.38; letter-spacing: -0.025em; max-width: 40ch; }
+  .controls { display: flex; align-items: center; justify-content: space-between; margin-top: 22px; }
+  .dots { display: flex; gap: 4px; }
+  .dot-btn { width: 36px; height: 36px; display: grid; place-items: center; border-radius: 50%; }
+  .dot-btn span { width: 26px; height: 3px; border-radius: 2px; background: var(--line-strong); transition: background-color var(--dur), width var(--dur) var(--ease-out); }
+  .dot-btn[aria-current='true'] span { background: var(--ink); width: 34px; }
+  .arrows { display: flex; gap: 8px; }
+  .arrow-btn { width: 46px; height: 46px; border-radius: 50%; border: 1px solid var(--line-strong); display: grid; place-items: center; transition: background-color var(--dur), color var(--dur), border-color var(--dur); }
+  .arrow-btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .arrow-btn:active { transform: scale(0.95); }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-tc]').forEach((root) => {
+    const slides = [...root.querySelectorAll<HTMLElement>('[data-tc-slide]')];
+    const dots = [...root.querySelectorAll<HTMLButtonElement>('[data-tc-dot]')];
+    const viewport = root.querySelector<HTMLElement>('[data-tc-viewport]')!;
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let index = 0;
+    let timer: number | undefined;
+
+    root.classList.add('is-carousel');
+    root.querySelector<HTMLElement>('[data-tc-controls]')!.hidden = false;
+
+    function show(i: number) {
+      index = (i + slides.length) % slides.length;
+      slides.forEach((s, n) => {
+        s.classList.toggle('is-active', n === index);
+        s.setAttribute('aria-hidden', String(n !== index));
+      });
+      dots.forEach((d, n) => d.setAttribute('aria-current', String(n === index)));
+    }
+    const stopAuto = () => { clearInterval(timer); timer = undefined; };
+    root.querySelector('[data-tc-prev]')!.addEventListener('click', () => { stopAuto(); show(index - 1); });
+    root.querySelector('[data-tc-next]')!.addEventListener('click', () => { stopAuto(); show(index + 1); });
+    dots.forEach((d, n) => d.addEventListener('click', () => { stopAuto(); show(n); }));
+    viewport.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') { stopAuto(); show(index + 1); }
+      if (e.key === 'ArrowLeft') { stopAuto(); show(index - 1); }
+    });
+    root.addEventListener('focusin', stopAuto);
+    root.addEventListener('pointerenter', stopAuto);
+
+    show(0);
+    if (!reduced) {
+      const io = new IntersectionObserver(([e]) => {
+        if (e.isIntersecting && timer === undefined && !root.dataset.touched) timer = window.setInterval(() => show(index + 1), 7000);
+        else if (!e.isIntersecting) stopAuto();
+      });
+      io.observe(root);
+      ['pointerenter', 'focusin'].forEach((ev) => root.addEventListener(ev, () => (root.dataset.touched = '1')));
+    }
+  });
+</script>

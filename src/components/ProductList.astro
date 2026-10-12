@@ -1,0 +1,40 @@
+---
+/** Alternating product rows: listing image + name, tagline, summary and link. */
+import Img from './Img.astro';
+import Icon from './Icon.astro';
+import products from '../data/products.json';
+import { productImages, productSummaries } from '../data/product-media';
+
+interface Props { slugs: string[]; names?: Record<string, string> }
+const { slugs, names = {} } = Astro.props;
+const items = slugs.map((s) => products.find((p) => p.slug === s)!).filter(Boolean);
+---
+<ol role="list" class="plist">
+  {items.map((p, i) => (
+    <li class="prow">
+      <a class="prow-media media" href={`/${p.slug}/`} tabindex="-1" aria-hidden="true" data-reveal="mask">
+        <Img src={productImages[p.slug]} alt="" sizes="(max-width: 860px) 100vw, 46vw" />
+      </a>
+      <div class="prow-copy" data-reveal>
+        <span class="mono idx">{String(i + 1).padStart(2, '0')} / {String(items.length).padStart(2, '0')}</span>
+        <h3 class="prow-name">{names[p.slug] ?? p.name}</h3>
+        <p class="prow-tag">{p.tagline}</p>
+        <p class="muted">{productSummaries[p.slug]}</p>
+        <a class="btn btn-secondary btn-sm" href={`/${p.slug}/`}>Read more<span class="sr-only"> about {names[p.slug] ?? p.name}</span><Icon name="arrow" size={14} class="arrow" /></a>
+      </div>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .plist { display: grid; gap: clamp(56px, 7vw, 104px); }
+  .prow { display: grid; grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr); gap: clamp(28px, 5vw, 80px); align-items: center; }
+  .prow:nth-child(even) .prow-media { order: 2; }
+  .prow-media { aspect-ratio: 4 / 3; display: block; }
+  .prow-copy { display: grid; gap: 14px; justify-items: start; max-width: 520px; }
+  .idx { color: var(--ink-3); }
+  .prow-name { font-size: clamp(1.8rem, 1.3rem + 1.8vw, 2.75rem); letter-spacing: -0.035em; }
+  .prow-tag { font-size: 1.15rem; font-weight: 550; color: var(--blue-ink); letter-spacing: -0.015em; }
+  .prow-copy .btn { margin-top: 8px; }
+  @media (max-width: 860px) { .prow { grid-template-columns: minmax(0, 1fr); } .prow:nth-child(even) .prow-media { order: 0; } }
+</style>

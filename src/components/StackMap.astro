@@ -1,0 +1,66 @@
+---
+/**
+ * "Where it fits": the Voise product ecosystem with publisher products on the
+ * supply side, buyer products on the demand side, and the auction between them.
+ * The current product (if any) is highlighted; every node links to its page.
+ */
+import { publisherProducts, buyerProducts } from '../data/navigation';
+
+interface Props { current?: string; compact?: boolean }
+const { current, compact = false } = Astro.props;
+
+const W = 640, H = 420;
+const left = publisherProducts.map((p, i, a) => ({ ...p, x: 112, y: 70 + i * ((H - 140) / (a.length - 1)) }));
+const right = buyerProducts.map((p, i, a) => ({ ...p, x: W - 112, y: 60 + i * ((H - 120) / (a.length - 1)) }));
+const hub = { x: W / 2, y: H / 2 };
+const isCur = (href: string) => current && href === `/${current}/`;
+const short = (label: string) => label.replace(/^Voise /, '').replace('Curation/Auction Packages', 'Curation');
+const curve = (x1: number, y1: number, x2: number, y2: number) => `M ${x1} ${y1} C ${(x1 + x2) / 2} ${y1}, ${(x1 + x2) / 2} ${y2}, ${x2} ${y2}`;
+---
+<figure class:list={['stack-map', compact && 'is-compact']}>
+  <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-label="The Voise product ecosystem" data-draw>
+    <defs>
+      <linearGradient id="sm-g" x1="0" x2="1"><stop offset="0" stop-color="#0870c7" /><stop offset="1" stop-color="#0eb151" /></linearGradient>
+    </defs>
+    <text x="112" y="22" class="sm-label" aria-hidden="true">PUBLISHERS</text>
+    <text x={W - 112} y="22" class="sm-label" aria-hidden="true">BUYERS</text>
+    <g aria-hidden="true">
+      {left.map((n) => <path class:list={['sm-link', isCur(n.href) && 'is-cur']} d={curve(n.x + 78, n.y, hub.x - 44, hub.y)} />)}
+      {right.map((n) => <path class:list={['sm-link', isCur(n.href) && 'is-cur']} d={curve(hub.x + 44, hub.y, n.x - 78, n.y)} />)}
+    </g>
+    <g class="sm-hub" aria-hidden="true">
+      <circle cx={hub.x} cy={hub.y} r="44" />
+      <circle class="sm-ring" cx={hub.x} cy={hub.y} r="58" />
+      <text x={hub.x} y={hub.y - 6} text-anchor="middle">Auction</text>
+      <text x={hub.x} y={hub.y + 12} text-anchor="middle" class="sm-sub">real-time</text>
+    </g>
+    {[...left, ...right].map((n) => (
+      <a href={n.href} class:list={['sm-node', isCur(n.href) && 'is-cur']} aria-label={n.label} aria-current={isCur(n.href) ? 'page' : undefined}>
+        <rect x={n.x - 78} y={n.y - 19} width="156" height="38" rx="19" />
+        <text x={n.x} y={n.y} dominant-baseline="central" text-anchor="middle">{short(n.label)}</text>
+      </a>
+    ))}
+  </svg>
+</figure>
+
+<style>
+  .stack-map { margin: 0; border: 1px solid var(--line); border-radius: var(--radius-l); background: #fff; padding: clamp(12px, 2vw, 24px); }
+  svg { width: 100%; height: auto; overflow: visible; }
+  .sm-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; fill: var(--ink-3); text-anchor: middle; }
+  .sm-link { fill: none; stroke: #d3d8df; stroke-width: 1.2; }
+  .sm-link.is-cur { stroke: url(#sm-g); stroke-width: 2.2; stroke-dasharray: 6 8; animation: sm-flow 1.2s linear infinite; }
+  @keyframes sm-flow { to { stroke-dashoffset: -28; } }
+  .sm-hub circle { fill: var(--night); }
+  .sm-hub .sm-ring { fill: none; stroke: rgb(8 112 199 / 0.25); stroke-width: 1; stroke-dasharray: 2 5; transform-origin: 320px 210px; animation: sm-spin 24s linear infinite; }
+  @keyframes sm-spin { to { transform: rotate(360deg); } }
+  .sm-hub text { fill: #fff; font-size: 13px; font-weight: 600; }
+  .sm-hub .sm-sub { fill: var(--ink-inverse-2); font-family: var(--font-mono); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; }
+  .sm-node rect { fill: var(--bg-subtle); stroke: var(--line); transition: fill var(--dur), stroke var(--dur); }
+  .sm-node text { font-size: 13.5px; font-weight: 550; fill: var(--ink); pointer-events: none; }
+  .sm-node:hover rect, .sm-node:focus-visible rect { stroke: var(--ink); fill: #fff; }
+  .sm-node:focus-visible { outline: none; }
+  .sm-node:focus-visible rect { stroke: var(--blue); stroke-width: 2; }
+  .sm-node.is-cur rect { fill: var(--ink); stroke: var(--ink); }
+  .sm-node.is-cur text { fill: #fff; }
+  @media (prefers-reduced-motion: reduce) { .sm-link.is-cur { animation: none; stroke-dasharray: none; } .sm-hub .sm-ring { animation: none; } }
+</style>

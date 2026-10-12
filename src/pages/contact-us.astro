@@ -1,0 +1,90 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Form from '../components/Form.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import { SITE, mailto } from '../data/site';
+
+const presence = [
+  { name: 'India', flag: '/wp-content/uploads/2025/09/india-1.png' },
+  { name: 'UAE', flag: '/wp-content/uploads/2025/09/UAE-1.png' },
+  { name: 'USA', flag: '/wp-content/uploads/2025/09/USA-1.png' },
+  { name: 'UK', flag: '/wp-content/uploads/2025/08/united-kingdom-2.png' },
+];
+const schema = [{
+  '@type': 'ContactPage',
+  name: 'Contact Voise Tech',
+  url: new URL('/contact-us/', Astro.site).href,
+  mainEntity: { '@id': `${SITE.url}/#organization` },
+}];
+---
+<BaseLayout
+  title="Contact Voise Tech | Partner for Programmatic Growth"
+  description="Get in touch with Voise Tech to explore programmatic advertising solutions. Partner with us to achieve scalable, transparent, and measurable growth."
+  breadcrumbs={[{ label: 'Contact Us', href: '/contact-us/' }]}
+  schema={schema}
+>
+  <PageHero
+    eyebrow="Contact us"
+    title="Let’s Build What’s Next in Programmatic Advertising — <span class='grad-text'>Together.</span>"
+    lede="Whether you’re a Publisher looking to maximize yield, a Buyer aiming for smarter media activation, or a partner exploring opportunities, the Voise Tech team is here to help."
+    crumbs={[{ label: 'Contact Us', href: '/contact-us/' }]}
+  />
+
+  <section class="section-sm contact">
+    <div class="container contact-grid">
+      <div class="reach">
+        <h2 class="h3" data-reveal>How You Can Reach Us</h2>
+        <ul role="list" class="reach-list" data-stagger>
+          <li data-reveal>
+            <span class="ico"><Icon name="pin" size={18} /></span>
+            <span><span class="mono k">Registered office</span><address>{SITE.legalName}<br />{SITE.address.street}<br />{SITE.address.city} {SITE.address.postcode}<br />{SITE.address.country}</address></span>
+          </li>
+          <li data-reveal>
+            <span class="ico"><Icon name="mail" size={18} /></span>
+            <span><span class="mono k">Email</span><a class="link email" href={mailto()}>{SITE.email}</a></span>
+          </li>
+          <li data-reveal>
+            <span class="ico"><Icon name="globe" size={18} /></span>
+            <span><span class="mono k">Presence</span>
+              <ul role="list" class="flags">
+                {presence.map((p) => <li><Img src={p.flag} alt="" width={22} height={22} sizes="22px" class="flag" />{p.name}</li>)}
+              </ul>
+            </span>
+          </li>
+        </ul>
+        <div class="why on-night" data-reveal>
+          <p class="eyebrow">Why reach out?</p>
+          <p class="h4">Partner with us for scalable, transparent, and measurable outcomes.</p>
+          <a class="btn btn-sm" href="/google-ad-manager-solutions-services/">Unlock GAM 360 Access Now <Icon name="arrow" size={14} class="arrow" /></a>
+        </div>
+      </div>
+
+      <div class="form-card" id="form" data-reveal style="--i:1">
+        <h2 class="h3">Get in Touch</h2>
+        <p class="muted">Looking for answers or exploring partnership opportunities? Our team is here to help with anything you need.</p>
+        <Form id="contact" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .contact { padding-top: 0; }
+  .contact-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+  .reach { display: grid; gap: 28px; position: sticky; top: 100px; }
+  .reach-list { display: grid; gap: 0; border-top: 1px solid var(--line); }
+  .reach-list > li { display: grid; grid-template-columns: 40px 1fr; gap: 14px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+  .ico { width: 40px; height: 40px; border-radius: 12px; background: var(--bg-subtle); display: grid; place-items: center; color: var(--ink-2); }
+  .k { display: block; color: var(--ink-3); margin-bottom: 6px; }
+  address { font-style: normal; line-height: 1.55; }
+  .email { font-weight: 550; }
+  .flags { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+  .flags li { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; }
+  .flags :global(.flag), .flags :global(.flag img) { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+  .why { display: grid; gap: 14px; justify-items: start; padding: 28px; border-radius: var(--radius-l); background: radial-gradient(90% 120% at 100% 0%, rgb(8 112 199 / 0.45), transparent 60%), var(--night); }
+  .form-card { display: grid; gap: 14px; padding: clamp(24px, 3.5vw, 48px); border: 1px solid var(--line); border-radius: var(--radius-l); background: #fff; box-shadow: var(--shadow-soft); }
+  .form-card > .muted { margin-bottom: 12px; }
+  @media (max-width: 960px) { .contact-grid { grid-template-columns: minmax(0, 1fr); } .reach { position: static; order: 2; } }
+</style>

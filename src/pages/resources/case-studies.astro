@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ResourceTabs from '../../components/ResourceTabs.astro';
+import LogoGrid from '../../components/LogoGrid.astro';
+import Img from '../../components/Img.astro';
+import { allCaseStudies } from '../../lib/content';
+import { clients } from '../../data/logos';
+
+const cases = await allCaseStudies();
+const headline = (c: (typeof cases)[number]) => c.data.metrics.filter((m) => /\d/.test(m.value)).slice(0, 3);
+---
+<BaseLayout
+  title="Voise Tech Case Studies | Digital Advertising Success Stories"
+  description="Explore Voise Tech’s case studies showcasing real results, smarter ad strategies, and measurable success in digital advertising and monetization."
+  breadcrumbs={[{ label: 'Resources', href: '/resources/blog/' }, { label: 'Case Studies', href: '/resources/case-studies/' }]}
+>
+  <PageHero eyebrow="Resources" title="Campaign Success Stories from Around the World." crumbs={[{ label: 'Resources', href: '/resources/blog/' }, { label: 'Case Studies', href: '/resources/case-studies/' }]} />
+  <ResourceTabs />
+
+  <section class="container">
+    <ul role="list" class="grid" data-stagger>
+      {cases.map((c) => (
+        <li data-reveal>
+          <a class="case is-link" href={`/case-study/${c.id}/`}>
+            <div class="media" style="aspect-ratio: 551 / 355">{c.data.image && <Img src={c.data.image.src} alt="" sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" />}</div>
+            <dl class="metrics">
+              {headline(c).map((m) => (
+                <div><dt>{m.label}</dt><dd class="tnum">{m.value}</dd></div>
+              ))}
+            </dl>
+            <h2 class="title">{c.data.title}</h2>
+          </a>
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <h2 class="h3 clients-title">Our clients</h2>
+      <LogoGrid logos={clients} label="Our clients" columns={8} />
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(40px, 4vw, 56px) clamp(20px, 2.5vw, 32px); }
+  .case { display: grid; gap: 16px; }
+  .metrics { display: flex; flex-wrap: wrap; gap: 6px 24px; padding-top: 4px; }
+  .metrics div { display: grid; gap: 2px; }
+  .metrics dt { font-size: var(--fs-xs); color: var(--ink-2); order: 2; }
+  .metrics dd { margin: 0; font-size: 1.3rem; font-weight: 600; letter-spacing: -0.03em; }
+  .metrics div { display: flex; flex-direction: column-reverse; }
+  .title { font-size: 1.1rem; line-height: 1.35; font-weight: 600; letter-spacing: -0.015em; transition: color var(--dur); }
+  .case:hover .title { color: var(--blue-ink); }
+  .clients-title { margin-bottom: 28px; }
+  @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+</style>

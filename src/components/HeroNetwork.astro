@@ -1,0 +1,357 @@
+---
+/**
+ * Illustrative real-time bidding loop through the Voise stack.
+ * Ad requests leave publisher inventory, pass Pre-Bid → Ad Server → SSP,
+ * fan out to demand; bids return, the auction resolves and the winning ad is
+ * delivered back. Node descriptions quote copy published on voisetech.com.
+ *
+ * Two orientations share one script: horizontal (≥ 760px) and vertical (phones).
+ */
+type Node = { id: string; label: string; href: string; info: string };
+
+const supply: Node[] = [
+  { id: 'web', label: 'Web', href: '/ad-publishers-solutions/#formats', info: 'Web — display, native, and video with responsive layouts.' },
+  { id: 'app', label: 'App', href: '/ad-publishers-solutions/#formats', info: 'App — in-app banners, interstitials, rewarded video, and native.' },
+  { id: 'ctv', label: 'CTV / OTT', href: '/ad-publishers-solutions/#formats', info: 'CTV/OTT — SSAI-enabled pre-roll, mid-roll, and interactive ads.' },
+  { id: 'audio', label: 'Audio', href: '/ad-publishers-solutions/#formats', info: 'Audio — dynamic insertion for podcasts, streaming radio & music apps.' },
+];
+const core: Node[] = [
+  { id: 'prebid', label: 'Pre-Bid', href: '/pre-bid/', info: 'Voise Pre-Bid — unified header bidding that consolidates bids from 25+ SSPs into a single fair auction.' },
+  { id: 'adserver', label: 'Ad Server', href: '/voise-ad-server/', info: 'Voise Ad Server — RTB decisioning in ~120ms with tiered priority: Direct > PMP > Open Exchange.' },
+  { id: 'ssp', label: 'SSP', href: '/supply-side-platform-advertising/', info: 'Voise SSP — AI-driven price discovery connecting publishers to 30+ premium DSPs and curated marketplaces.' },
+];
+const demand: Node[] = [
+  { id: 'dsps', label: 'DSPs', href: '/supply-side-platform-advertising/', info: 'DSPs — The Trade Desk, DV360, Xandr, Yahoo and more, via OpenRTB 2.5 & 2.6.' },
+  { id: 'deals', label: 'Curated deals', href: '/auction-platform/', info: 'Curated deals — private marketplaces, preferred deals and programmatic guaranteed.' },
+  { id: 'agencies', label: 'Agencies', href: '/ad-buyers-solutions/', info: 'Agencies — plan, buy, and optimize across the open web, in-app, and CTV.' },
+  { id: 'brands', label: 'Brands', href: '/ad-buyers-solutions/', info: 'Brands — brand-safe inventory with precision targeting and measurable outcomes.' },
+];
+const defaultInfo = 'Illustrative flow: an ad request travels from publisher inventory through the Voise stack to demand partners — and the winning ad comes back.';
+
+/* ---- horizontal geometry (viewBox 1200 × 440) */
+const H = { w: 1200, h: 440, sx: 150, dx: 1050, ys: [86, 176, 266, 356], pillW: 150, pillH: 46, portIn: 452, portOut: 748, portY: 221, core: { x: 452, y: 121, w: 296, h: 200 } };
+const hSupply = supply.map((n, i) => ({ ...n, x: H.sx, y: H.ys[i], d: `M ${H.sx + H.pillW / 2} ${H.ys[i]} C ${H.sx + 190} ${H.ys[i]}, ${H.portIn - 110} ${H.portY}, ${H.portIn} ${H.portY}` }));
+const hDemand = demand.map((n, i) => ({ ...n, x: H.dx, y: H.ys[i], d: `M ${H.portOut} ${H.portY} C ${H.portOut + 110} ${H.portY}, ${H.dx - 190} ${H.ys[i]}, ${H.dx - H.pillW / 2} ${H.ys[i]}` }));
+const blockW = 84, gap = 10, x0 = H.core.x + (H.core.w - (3 * blockW + 2 * gap)) / 2;
+const hCore = core.map((n, i) => {
+  const x = x0 + i * (blockW + gap);
+  return { ...n, x, y: H.core.y + 34, w: blockW, h: H.core.h - 68, t0: (x - H.portIn) / (H.portOut - H.portIn), t1: (x + blockW - H.portIn) / (H.portOut - H.portIn) };
+});
+
+/* ---- vertical geometry (viewBox 400 × 700) */
+const V = { w: 400, h: 700, xs: [52, 150, 250, 348], pillW: 86, pillH: 38, sy: 44, dy: 656, portIn: 196, portOut: 504, portX: 200, core: { x: 56, y: 196, w: 288, h: 308 } };
+const vSupply = supply.map((n, i) => ({ ...n, x: V.xs[i], y: V.sy, d: `M ${V.xs[i]} ${V.sy + V.pillH / 2} C ${V.xs[i]} ${V.sy + 90}, ${V.portX} ${V.portIn - 70}, ${V.portX} ${V.portIn}` }));
+const vDemand = demand.map((n, i) => ({ ...n, x: V.xs[i], y: V.dy, d: `M ${V.portX} ${V.portOut} C ${V.portX} ${V.portOut + 70}, ${V.xs[i]} ${V.dy - 90}, ${V.xs[i]} ${V.dy - V.pillH / 2}` }));
+const vBlockH = 70, vGap = 18, y0 = V.core.y + (V.core.h - (3 * vBlockH + 2 * vGap)) / 2;
+const vCore = core.map((n, i) => {
+  const y = y0 + i * (vBlockH + vGap);
+  return { ...n, x: V.core.x + 36, y, w: V.core.w - 72, h: vBlockH, t0: (y - V.portIn) / (V.portOut - V.portIn), t1: (y + vBlockH - V.portIn) / (V.portOut - V.portIn) };
+});
+
+const layouts = [
+  { key: 'h', viewBox: `0 0 ${H.w} ${H.h}`, supply: hSupply, demand: hDemand, core: hCore, pillW: H.pillW, pillH: H.pillH, corePath: `M ${H.portIn} ${H.portY} L ${H.portOut} ${H.portY}`, coreRect: H.core, labels: { supply: { x: H.sx, y: 36 }, demand: { x: H.dx, y: 36 }, core: { x: H.core.x + H.core.w / 2, y: H.core.y - 16 }, note: { x: H.core.x + H.core.w / 2, y: H.core.y + H.core.h + 30 } } },
+  { key: 'v', viewBox: `0 0 ${V.w} ${V.h}`, supply: vSupply, demand: vDemand, core: vCore, pillW: V.pillW, pillH: V.pillH, corePath: `M ${V.portX} ${V.portIn} L ${V.portX} ${V.portOut}`, coreRect: V.core, labels: { supply: { x: 200, y: 14 }, demand: { x: 200, y: 698 }, core: { x: 200, y: V.core.y + 24 }, note: { x: 200, y: V.core.y + V.core.h - 14 } } },
+];
+---
+<figure class="hero-net" data-hero-net>
+  <div class="panel blueprint" data-tilt>
+    {layouts.map((L) => (
+      <svg class={`net net-${L.key}`} viewBox={L.viewBox} role="group" aria-label="How an impression moves through the Voise stack">
+        <defs>
+          <linearGradient id={`hn-grad-${L.key}`} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={L.key === 'h' ? 1200 : 0} y2={L.key === 'h' ? 0 : 700}>
+            <stop offset="0" stop-color="#0870c7" /><stop offset="1" stop-color="#0eb151" />
+          </linearGradient>
+          <radialGradient id={`hn-halo-${L.key}`}><stop offset="0" stop-color="#0870c7" stop-opacity="0.35" /><stop offset="1" stop-color="#0870c7" stop-opacity="0" /></radialGradient>
+        </defs>
+
+        <g class="col-labels" aria-hidden="true">
+          <text x={L.labels.supply.x} y={L.labels.supply.y} class="col-label">SUPPLY · PUBLISHERS</text>
+          <text x={L.labels.demand.x} y={L.labels.demand.y} class="col-label">DEMAND · BUYERS</text>
+        </g>
+
+        <g class="links" aria-hidden="true">
+          {L.supply.map((n) => <path class="link" data-side="supply" data-node={n.id} d={n.d} />)}
+          {L.demand.map((n) => <path class="link" data-side="demand" data-node={n.id} d={n.d} />)}
+          <path class="core-path" d={L.corePath} />
+        </g>
+
+        <g class="core">
+          <circle class="pulse" cx={L.coreRect.x + L.coreRect.w / 2} cy={L.coreRect.y + L.coreRect.h / 2} r={L.key === 'h' ? 150 : 160} fill={`url(#hn-halo-${L.key})`} aria-hidden="true" />
+          <rect class="core-frame" x={L.coreRect.x} y={L.coreRect.y} width={L.coreRect.w} height={L.coreRect.h} rx="22" />
+          <text x={L.labels.core.x} y={L.labels.core.y} class="col-label core-label" aria-hidden="true">VOISE STACK</text>
+          {L.core.map((b) => (
+            <a href={b.href} class="block" data-node={b.id} data-t0={b.t0} data-t1={b.t1} data-info={b.info} aria-label={b.info}>
+              <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="14" />
+              <text x={b.x + b.w / 2} y={b.y + b.h / 2} dominant-baseline="central" text-anchor="middle">{b.label}</text>
+            </a>
+          ))}
+          <text x={L.labels.note.x} y={L.labels.note.y} class="note" aria-hidden="true">unified auction · decisioning ~120 ms</text>
+        </g>
+
+        <g class="nodes">
+          {[...L.supply, ...L.demand].map((n) => (
+            <a href={n.href} class="node" data-node={n.id} data-info={n.info} aria-label={n.info}>
+              <rect x={n.x - L.pillW / 2} y={n.y - L.pillH / 2} width={L.pillW} height={L.pillH} rx={L.pillH / 2} />
+              {L.key === 'h' && <circle class="node-dot" cx={n.x - L.pillW / 2 + 18} cy={n.y} r="3.5" />}
+              <text x={n.x + (L.key === 'h' ? 8 : 0)} y={n.y} dominant-baseline="central" text-anchor="middle">{n.label}</text>
+            </a>
+          ))}
+        </g>
+
+        <g class="packets" aria-hidden="true"></g>
+      </svg>
+    ))}
+  </div>
+  <figcaption class="caption">
+    <span class="legend" aria-hidden="true">
+      <span><i class="k req"></i>Ad request</span>
+      <span><i class="k bid"></i>Bid response</span>
+      <span><i class="k win"></i>Winning ad delivered</span>
+    </span>
+    <span class="info" data-info-out data-default={defaultInfo}>{defaultInfo}</span>
+  </figcaption>
+</figure>
+
+<style>
+  .hero-net { margin: 0; }
+  .panel {
+    position: relative; border: 1px solid var(--line); border-radius: var(--radius-l); background-color: #fff;
+    padding: clamp(14px, 2vw, 28px); overflow: hidden; transform-style: preserve-3d;
+    transition: transform 600ms var(--ease-out); will-change: transform;
+    box-shadow: 0 1px 0 rgb(255 255 255 / 0.8) inset, 0 40px 80px -48px rgb(16 24 40 / 0.35);
+  }
+  .panel::after { content: ''; position: absolute; inset: 0; pointer-events: none; background: radial-gradient(60% 80% at 50% 50%, transparent 40%, rgb(255 255 255 / 0.7)); }
+  .net { width: 100%; height: auto; overflow: visible; position: relative; z-index: 1; }
+  .net-v { display: none; }
+  @media (max-width: 759px) { .net-h { display: none; } .net-v { display: block; max-width: 440px; margin-inline: auto; } }
+
+  .col-label { font-family: var(--font-mono); font-size: 11px; letter-spacing: 0.14em; fill: var(--ink-3); text-anchor: middle; font-weight: 500; }
+  .link { fill: none; stroke: #c9cfd8; stroke-width: 1.2; transition: stroke 300ms, opacity 300ms, stroke-width 300ms; }
+  .core-path { fill: none; stroke: none; }
+  .net[data-focus] .link { opacity: 0.35; }
+  .net .link.is-hot { opacity: 1; stroke-width: 2; }
+  .net-h .link.is-hot { stroke: url(#hn-grad-h); }
+  .net-v .link.is-hot { stroke: url(#hn-grad-v); }
+
+  .core-frame { fill: rgb(255 255 255 / 0.92); stroke: var(--line-strong); stroke-width: 1.2; }
+  .pulse { opacity: 0; transform-box: fill-box; transform-origin: center; }
+  .pulse.is-on { animation: pulse 900ms var(--ease-out); }
+  @keyframes pulse { 0% { opacity: 0.9; transform: scale(0.55); } 100% { opacity: 0; transform: scale(1.15); } }
+  .block rect { fill: var(--bg-subtle); stroke: var(--line); transition: fill 260ms, stroke 260ms; }
+  .block text { font-size: 15px; font-weight: 600; fill: var(--ink); letter-spacing: -0.01em; pointer-events: none; }
+  .block.is-lit rect, .block:hover rect, .block:focus-visible rect, .block.is-hot rect { fill: var(--blue-soft); stroke: rgb(8 112 199 / 0.45); }
+  .note { font-family: var(--font-mono); font-size: 11px; fill: var(--ink-3); text-anchor: middle; letter-spacing: 0.04em; }
+
+  .node rect { fill: #fff; stroke: var(--line-strong); transition: stroke 260ms, fill 260ms; }
+  .node text { font-size: 14px; font-weight: 550; fill: var(--ink); letter-spacing: -0.01em; pointer-events: none; }
+  .net-v .node text { font-size: 12.5px; }
+  .node-dot { fill: var(--blue); transition: fill 260ms; }
+  .node[data-node='dsps'] .node-dot, .node[data-node='deals'] .node-dot, .node[data-node='agencies'] .node-dot, .node[data-node='brands'] .node-dot { fill: var(--green); }
+  .node:hover rect, .node:focus-visible rect, .node.is-hot rect { stroke: var(--ink); }
+  .node.is-blip rect { stroke: var(--blue); }
+  .node:focus-visible, .block:focus-visible { outline: none; }
+  .node:focus-visible rect, .block:focus-visible rect { stroke: var(--blue); stroke-width: 2; }
+
+  .packets :global(circle) { pointer-events: none; }
+
+  .caption { display: flex; flex-wrap: wrap; align-items: baseline; justify-content: space-between; gap: 10px 24px; margin-top: 16px; font-size: var(--fs-small); color: var(--ink-2); }
+  .legend { display: inline-flex; flex-wrap: wrap; gap: 6px 18px; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
+  .legend span { display: inline-flex; align-items: center; gap: 8px; }
+  .k { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
+  .k.req { background: var(--blue); }
+  .k.bid { background: var(--green); }
+  .k.win { background: var(--ink); box-shadow: 0 0 0 3px rgb(8 112 199 / 0.18); }
+  .info { flex: 1 1 340px; text-align: right; min-height: 3em; text-wrap: balance; }
+  @media (max-width: 759px) { .info { text-align: left; } }
+</style>
+
+<script>
+  type Packet = { el: SVGCircleElement; halo?: SVGCircleElement; path: SVGPathElement; len: number; start: number; dur: number; reverse: boolean; done: () => void; core?: boolean };
+
+  const SVG_NS = 'http://www.w3.org/2000/svg';
+  const reduced = matchMedia('(prefers-reduced-motion: reduce)');
+  const finePointer = matchMedia('(hover: hover) and (pointer: fine)');
+
+  document.querySelectorAll<HTMLElement>('[data-hero-net]').forEach((root) => {
+    const svgs = [...root.querySelectorAll<SVGSVGElement>('svg.net')];
+    const info = root.querySelector<HTMLElement>('[data-info-out]')!;
+    const panel = root.querySelector<HTMLElement>('[data-tilt]')!;
+    let svg = activeSvg();
+    let packets: Packet[] = [];
+    let running = false;
+    let visible = false;
+    let raf = 0;
+    let nextSpawn = 0;
+    let focusNode: string | null = null;
+
+    function activeSvg() { return svgs.find((s) => getComputedStyle(s).display !== 'none') ?? svgs[0]; }
+    const q = <T extends Element>(sel: string) => [...svg.querySelectorAll<T>(sel)];
+    const pick = <T,>(arr: T[]) => arr[Math.floor(Math.random() * arr.length)];
+
+    function makeDot(kind: 'req' | 'bid' | 'win') {
+      const g = svg.querySelector('.packets')!;
+      const c = document.createElementNS(SVG_NS, 'circle');
+      c.setAttribute('r', kind === 'win' ? '5' : '3.6');
+      c.setAttribute('fill', kind === 'req' ? '#0870c7' : kind === 'bid' ? '#0eb151' : '#17191d');
+      let halo: SVGCircleElement | undefined;
+      if (kind === 'win') {
+        halo = document.createElementNS(SVG_NS, 'circle');
+        halo.setAttribute('r', '11');
+        halo.setAttribute('fill', 'rgba(8,112,199,0.18)');
+        g.appendChild(halo);
+      }
+      g.appendChild(c);
+      return { c, halo };
+    }
+
+    function launch(kind: 'req' | 'bid' | 'win', path: SVGPathElement, dur: number, reverse: boolean, done: () => void, core = false) {
+      const { c, halo } = makeDot(kind);
+      const len = path.getTotalLength();
+      // Park the dot on its starting point, invisible, until the next frame positions it.
+      const p0 = path.getPointAtLength(reverse ? len : 0);
+      for (const el of [c, halo]) { el?.setAttribute('cx', String(p0.x)); el?.setAttribute('cy', String(p0.y)); }
+      c.setAttribute('opacity', '0');
+      halo?.setAttribute('opacity', '0');
+      packets.push({ el: c, halo, path, len, start: performance.now(), dur, reverse, done, core });
+    }
+
+    function blip(id: string) {
+      q<SVGElement>(`.node[data-node="${id}"]`).forEach((n) => { n.classList.add('is-blip'); setTimeout(() => n.classList.remove('is-blip'), 380); });
+    }
+    function pulse() {
+      const p = svg.querySelector<SVGCircleElement>('.pulse');
+      if (!p) return;
+      p.classList.remove('is-on'); void p.getBoundingClientRect(); p.classList.add('is-on');
+    }
+
+    function impression() {
+      const supplyLinks = q<SVGPathElement>('.link[data-side="supply"]');
+      const demandLinks = q<SVGPathElement>('.link[data-side="demand"]');
+      const corePath = svg.querySelector<SVGPathElement>('.core-path')!;
+      const preferred = focusNode ? supplyLinks.filter((l) => l.dataset.node === focusNode) : [];
+      const src = preferred.length && Math.random() < 0.7 ? preferred[0] : pick(supplyLinks);
+      const preferredDemand = focusNode ? demandLinks.filter((l) => l.dataset.node === focusNode) : [];
+
+      launch('req', src, 1100, false, () => {
+        launch('req', corePath, 900, false, () => {
+          const fan = [...demandLinks].sort(() => Math.random() - 0.5).slice(0, 2 + Math.floor(Math.random() * 2));
+          if (preferredDemand.length && !fan.includes(preferredDemand[0])) fan[0] = preferredDemand[0];
+          let settled = false;
+          fan.forEach((d, i) => {
+            launch('req', d, 950 + i * 90, false, () => {
+              blip(d.dataset.node!);
+              launch('bid', d, 950, true, () => {
+                if (settled) return;
+                settled = true;
+                pulse();
+                launch('win', corePath, 650, true, () => {
+                  launch('win', src, 950, true, () => blip(src.dataset.node!));
+                }, true);
+              });
+            });
+          });
+        }, true);
+      });
+    }
+
+    function frame(now: number) {
+      if (!running) return;
+      if (now >= nextSpawn && packets.length < 46) {
+        impression();
+        nextSpawn = now + (focusNode ? 300 : 440) + Math.random() * 360;
+      }
+      const lit = new Set<string>();
+      const blocks = q<SVGElement>('.block');
+      packets = packets.filter((p) => {
+        const t = Math.min(1, (now - p.start) / p.dur);
+        const e = t < 0.5 ? 2 * t * t : 1 - Math.pow(-2 * t + 2, 2) / 2;
+        const pos = p.reverse ? 1 - e : e;
+        const pt = p.path.getPointAtLength(pos * p.len);
+        p.el.setAttribute('cx', pt.x.toFixed(1));
+        p.el.setAttribute('cy', pt.y.toFixed(1));
+        p.halo?.setAttribute('cx', pt.x.toFixed(1));
+        p.halo?.setAttribute('cy', pt.y.toFixed(1));
+        const fade = t < 0.08 ? t / 0.08 : t > 0.92 ? (1 - t) / 0.08 : 1;
+        p.el.setAttribute('opacity', fade.toFixed(2));
+        p.halo?.setAttribute('opacity', fade.toFixed(2));
+        if (p.core) blocks.forEach((b) => { if (pos >= Number(b.dataset.t0) && pos <= Number(b.dataset.t1)) lit.add(b.dataset.node!); });
+        if (t >= 1) { p.el.remove(); p.halo?.remove(); p.done(); return false; }
+        return true;
+      });
+      blocks.forEach((b) => b.classList.toggle('is-lit', lit.has(b.dataset.node!)));
+      raf = requestAnimationFrame(frame);
+    }
+
+    function start() {
+      if (running || reduced.matches || !visible || document.hidden) return;
+      running = true;
+      nextSpawn = performance.now() + 200;
+      raf = requestAnimationFrame(frame);
+    }
+    function stop() {
+      running = false;
+      cancelAnimationFrame(raf);
+    }
+    function reset() {
+      stop();
+      packets.forEach((p) => { p.el.remove(); p.halo?.remove(); });
+      packets = [];
+      svg = activeSvg();
+      start();
+    }
+
+    // Static snapshot for reduced motion: a few packets resting on the lines.
+    function staticFrame() {
+      svgs.forEach((s) => {
+        svg = s;
+        s.querySelector('.packets')!.replaceChildren();
+        const links = q<SVGPathElement>('.link');
+        links.forEach((l, i) => {
+          const { c } = makeDot(l.dataset.side === 'supply' ? 'req' : i % 2 ? 'bid' : 'req');
+          const pt = l.getPointAtLength(l.getTotalLength() * (0.35 + (i % 3) * 0.15));
+          c.setAttribute('cx', String(pt.x)); c.setAttribute('cy', String(pt.y));
+        });
+      });
+      svg = activeSvg();
+    }
+
+    // Hover / focus: highlight a node's route and explain it.
+    function setFocus(id: string | null, text?: string) {
+      focusNode = id;
+      svgs.forEach((s) => {
+        s.toggleAttribute('data-focus', !!id);
+        s.querySelectorAll<SVGElement>('[data-node]').forEach((el) => el.classList.toggle('is-hot', !!id && el.dataset.node === id));
+        if (id && ['prebid', 'adserver', 'ssp'].includes(id)) s.querySelectorAll('.link').forEach((l) => l.classList.add('is-hot'));
+      });
+      info.textContent = text ?? info.dataset.default ?? '';
+    }
+    root.querySelectorAll<SVGAElement>('.node, .block').forEach((el) => {
+      const on = () => setFocus(el.dataset.node!, el.dataset.info);
+      el.addEventListener('pointerenter', on);
+      el.addEventListener('focus', on);
+      el.addEventListener('pointerleave', () => setFocus(null));
+      el.addEventListener('blur', () => setFocus(null));
+    });
+
+    // Restrained pointer tilt on the panel (fine pointers only).
+    if (finePointer.matches && !reduced.matches) {
+      root.addEventListener('pointermove', (e) => {
+        const r = panel.getBoundingClientRect();
+        const x = (e.clientX - r.left) / r.width - 0.5;
+        const y = (e.clientY - r.top) / r.height - 0.5;
+        panel.style.transform = `perspective(1600px) rotateX(${(-y * 3).toFixed(2)}deg) rotateY(${(x * 4).toFixed(2)}deg)`;
+      });
+      root.addEventListener('pointerleave', () => { panel.style.transform = ''; });
+    }
+
+    // Run only while on screen and the tab is visible.
+    new IntersectionObserver(([entry]) => {
+      visible = entry.isIntersecting;
+      visible ? start() : stop();
+    }, { threshold: 0.1 }).observe(root);
+    document.addEventListener('visibilitychange', () => (document.hidden ? stop() : start()));
+    matchMedia('(max-width: 759px)').addEventListener('change', reset);
+    reduced.addEventListener('change', () => (reduced.matches ? (stop(), staticFrame()) : reset()));
+    if (reduced.matches) staticFrame();
+  });
+</script>

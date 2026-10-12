@@ -1,0 +1,92 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import StatGrid from '../components/StatGrid.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import { solutionStats } from '../data/stats';
+import { publisherProducts, buyerProducts } from '../data/navigation';
+
+const sides = [
+  { key: 'pub', label: 'Publishers', href: '/ad-publishers-solutions/', image: '/wp-content/uploads/2025/09/publishers2.jpg', alt: 'A publisher team in a planning session', text: 'Maximize revenue with premium demand, optimized yield, and full control over inventory.', products: publisherProducts },
+  { key: 'buy', label: 'Buyers', href: '/ad-buyers-solutions/', image: '/wp-content/uploads/2025/09/buyers2.jpg', alt: 'Two media buyers reviewing results on a tablet', text: 'Access brand-safe inventory with precision targeting, measurable outcomes, and faster campaign activation.', products: buyerProducts },
+];
+---
+<BaseLayout
+  title="Comprehensive Ad Tech Solutions | Voise Tech"
+  description="Discover data-driven solutions by Voise Tech that empower publishers and buyers with smarter advertising, transparency, and measurable outcomes."
+  breadcrumbs={[{ label: 'Solutions', href: '/solutions/' }]}
+>
+  <PageHero
+    eyebrow="Voise Tech Solutions"
+    title="Empowering Publishers. <span class='grad-text'>Elevating Buyers.</span>"
+    lede="One platform, two sides of programmatic advertising — built for growth, trust, and measurable outcomes."
+    crumbs={[{ label: 'Solutions', href: '/solutions/' }]}
+  >
+    <div class="cluster" slot="actions">
+      <a class="btn" href="/contact-us/">Let’s Connect <Icon name="arrow" size={16} class="arrow" /></a>
+    </div>
+  </PageHero>
+
+  <section class="section-sm bridge-sec">
+    <div class="container">
+      <p class="lede overview" data-reveal>At Voise Tech, we connect publishers and buyers through a transparent, performance-driven programmatic ecosystem.</p>
+      <div class="bridge" data-play-in-view>
+        {sides.map((s, i) => (
+          <a class:list={['side', `side-${s.key}`]} href={s.href} data-reveal style={`--i:${i}`}>
+            <div class="media side-media"><Img src={s.image} alt={s.alt} sizes="(max-width: 900px) 100vw, 40vw" /></div>
+            <div class="side-copy">
+              <p class="eyebrow">{s.label}</p>
+              <h2 class="h3">{s.text}</h2>
+              <ul role="list" class="chips">
+                {s.products.map((p) => <li class="pill">{p.label.replace(/^Voise /, '')}</li>)}
+              </ul>
+              <span class="link-arrow"><span class="label">Read More</span><Icon name="arrow" size={14} class="arrow" /></span>
+            </div>
+          </a>
+        ))}
+        <div class="hub" aria-hidden="true">
+          <svg viewBox="0 0 120 120"><circle cx="60" cy="60" r="56" class="ring" /><circle cx="60" cy="60" r="40" class="core" /></svg>
+          <span>VoiseTech</span>
+        </div>
+        <span class="wire" aria-hidden="true"></span>
+      </div>
+    </div>
+  </section>
+
+  <section class="section tone-subtle">
+    <div class="container">
+      <SectionHeading eyebrow="Platform highlights" title="Platform Highlights" />
+      <div class="stats"><StatGrid stats={solutionStats} /></div>
+    </div>
+  </section>
+
+  <CtaBand eyebrow="Solutions" title="Scale Smarter. Start with Voise Tech Solutions." primary={{ label: 'Talk to Our Team', href: '/contact-us/' }} secondary={{ label: 'View products', href: '/products/' }} />
+</BaseLayout>
+
+<style>
+  .overview { max-width: 46ch; color: var(--ink); margin-bottom: clamp(32px, 4vw, 56px); }
+  .bridge { position: relative; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(64px, 9vw, 140px); }
+  .side { display: grid; gap: 0; border: 1px solid var(--line); border-radius: var(--radius-l); overflow: hidden; background: #fff; transition: transform var(--dur) var(--ease-out), box-shadow var(--dur), border-color var(--dur); position: relative; z-index: 1; }
+  .side:hover { transform: translateY(-4px); box-shadow: var(--shadow-lift); border-color: var(--line-strong); }
+  .side-media { aspect-ratio: 16 / 10; border-radius: 0; }
+  .side-copy { display: grid; gap: 14px; padding: clamp(24px, 3vw, 36px); justify-items: start; }
+  .side-copy h2 { font-weight: 550; }
+  .chips { display: flex; flex-wrap: wrap; gap: 6px; }
+  .hub { position: absolute; z-index: 2; left: 50%; top: 34%; transform: translate(-50%, -50%); width: clamp(96px, 9vw, 128px); aspect-ratio: 1; display: grid; place-items: center; }
+  .hub svg { position: absolute; inset: 0; width: 100%; height: 100%; }
+  .hub .core { fill: var(--night); }
+  .hub .ring { fill: none; stroke: var(--blue); stroke-width: 1.5; stroke-dasharray: 3 6; transform-origin: 60px 60px; animation: spin 18s linear infinite; }
+  .bridge[data-paused] .ring { animation-play-state: paused; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .hub span { position: relative; color: #fff; font-weight: 600; font-size: 0.8rem; letter-spacing: -0.01em; }
+  .wire { position: absolute; left: 25%; right: 25%; top: 34%; height: 2px; background: var(--line-strong); z-index: 0; overflow: hidden; }
+  .wire::after { content: ''; position: absolute; inset: 0; background: linear-gradient(90deg, transparent, var(--blue), var(--green), transparent); width: 40%; animation: wire 2.8s linear infinite; }
+  .bridge[data-paused] .wire::after { animation-play-state: paused; }
+  @keyframes wire { from { transform: translateX(-100%); } to { transform: translateX(260%); } }
+  @media (max-width: 900px) { .bridge { grid-template-columns: minmax(0, 1fr); gap: 120px; } .hub { top: 50%; } .wire { left: 50%; right: auto; top: 20%; bottom: 20%; width: 2px; height: auto; } .wire::after { width: 100%; height: 40%; animation-name: wire-v; } @keyframes wire-v { from { transform: translateY(-100%); } to { transform: translateY(260%); } } }
+  @media (prefers-reduced-motion: reduce) { .hub .ring, .wire::after { animation: none; } }
+  .stats { margin-top: clamp(32px, 4vw, 56px); }
+</style>

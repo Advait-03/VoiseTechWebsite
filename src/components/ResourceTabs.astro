@@ -1,0 +1,23 @@
+---
+import { resourceTabs } from '../data/navigation';
+const path = Astro.url.pathname;
+---
+<nav class="tabs container" aria-label="Resources">
+  <ul role="list">
+    {resourceTabs.map((t) => (
+      <li><a href={t.href} aria-current={path === t.href ? 'page' : undefined}>{t.label}</a></li>
+    ))}
+  </ul>
+</nav>
+
+<style>
+  .tabs { border-bottom: 1px solid var(--line); margin-bottom: clamp(40px, 5vw, 64px); }
+  ul { display: flex; gap: 8px; overflow-x: auto; scrollbar-width: none; }
+  ul::-webkit-scrollbar { display: none; }
+  a { position: relative; display: block; padding: 14px 6px; margin-right: 18px; color: var(--ink-2); font-weight: 500; white-space: nowrap; transition: color var(--dur); }
+  a::after { content: ''; position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; background: var(--ink); transform: scaleX(0); transform-origin: left; transition: transform var(--dur) var(--ease-out); }
+  a:hover { color: var(--ink); }
+  a:hover::after { transform: scaleX(0.4); }
+  a[aria-current='page'] { color: var(--ink); }
+  a[aria-current='page']::after { transform: scaleX(1); background: var(--grad); }
+</style>

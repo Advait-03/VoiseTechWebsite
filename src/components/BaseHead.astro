@@ -1,0 +1,99 @@
+---
+import interLatin from '@fontsource-variable/inter/files/inter-latin-opsz-normal.woff2?url';
+import { SITE } from '../data/site';
+
+export interface SeoProps {
+  title: string;
+  description?: string;
+  /** Root-relative or absolute image used for social cards. */
+  image?: { src: string; width?: number; height?: number; alt?: string };
+  type?: 'website' | 'article';
+  noindex?: boolean;
+  publishedTime?: Date;
+  modifiedTime?: Date;
+  /** Breadcrumb trail (excluding Home) for BreadcrumbList structured data. */
+  breadcrumbs?: { label: string; href: string }[];
+  /** Additional JSON-LD nodes merged into the page graph. */
+  schema?: Record<string, unknown>[];
+}
+
+const { title, description = SITE.description, image, type = 'website', noindex = false, publishedTime, modifiedTime, breadcrumbs = [], schema = [] } = Astro.props as SeoProps;
+
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const ogImage = image ?? { src: '/og/voisetech.png', width: 1200, height: 630, alt: SITE.name };
+const ogImageUrl = new URL(ogImage.src, SITE.url).href;
+
+const org = {
+  '@type': 'Organization',
+  '@id': `${SITE.url}/#organization`,
+  name: SITE.name,
+  legalName: SITE.legalName,
+  url: `${SITE.url}/`,
+  logo: { '@type': 'ImageObject', url: `${SITE.url}${SITE.logoPng}`, width: 172, height: 27 },
+  email: SITE.email,
+  address: {
+    '@type': 'PostalAddress',
+    streetAddress: SITE.address.street,
+    addressLocality: SITE.address.city,
+    postalCode: SITE.address.postcode,
+    addressCountry: SITE.address.countryCode,
+  },
+  sameAs: [SITE.linkedin, SITE.youtube],
+  description: SITE.description,
+};
+const website = { '@type': 'WebSite', '@id': `${SITE.url}/#website`, url: `${SITE.url}/`, name: SITE.name, publisher: { '@id': org['@id'] }, inLanguage: 'en-GB' };
+const webpage = {
+  '@type': 'WebPage',
+  '@id': `${canonical}#webpage`,
+  url: canonical,
+  name: title,
+  description,
+  isPartOf: { '@id': website['@id'] },
+  inLanguage: 'en-GB',
+  ...(publishedTime && { datePublished: publishedTime.toISOString() }),
+  ...(modifiedTime && { dateModified: modifiedTime.toISOString() }),
+};
+const crumbs = breadcrumbs.length
+  ? [{
+      '@type': 'BreadcrumbList',
+      itemListElement: [{ label: 'Home', href: '/' }, ...breadcrumbs].map((c, i) => ({
+        '@type': 'ListItem', position: i + 1, name: c.label, item: new URL(c.href, SITE.url).href,
+      })),
+    }]
+  : [];
+const graph = { '@context': 'https://schema.org', '@graph': [org, website, webpage, ...crumbs, ...schema] };
+---
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+<title>{title}</title>
+<meta name="description" content={description} />
+<link rel="canonical" href={canonical} />
+<meta name="robots" content={noindex ? 'noindex, nofollow' : 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1'} />
+<meta name="theme-color" content="#ffffff" />
+<meta name="format-detection" content="telephone=no" />
+
+<link rel="icon" href="/favicon-48.png" sizes="48x48" type="image/png" />
+<link rel="icon" href="/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+<link rel="alternate" type="application/rss+xml" title="Voise Blogs" href="/rss.xml" />
+<link rel="sitemap" href="/sitemap-index.xml" />
+<link rel="preload" href={interLatin} as="font" type="font/woff2" crossorigin />
+
+<meta property="og:locale" content="en_GB" />
+<meta property="og:type" content={type} />
+<meta property="og:site_name" content={SITE.name} />
+<meta property="og:title" content={title} />
+<meta property="og:description" content={description} />
+<meta property="og:url" content={canonical} />
+<meta property="og:image" content={ogImageUrl} />
+{ogImage.width && <meta property="og:image:width" content={String(ogImage.width)} />}
+{ogImage.height && <meta property="og:image:height" content={String(ogImage.height)} />}
+<meta property="og:image:alt" content={ogImage.alt ?? title} />
+{publishedTime && <meta property="article:published_time" content={publishedTime.toISOString()} />}
+{modifiedTime && <meta property="article:modified_time" content={modifiedTime.toISOString()} />}
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:title" content={title} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={ogImageUrl} />
+
+<script type="application/ld+json" set:html={JSON.stringify(graph)} />

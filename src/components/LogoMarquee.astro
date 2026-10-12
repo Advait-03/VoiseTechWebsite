@@ -1,0 +1,76 @@
+---
+/**
+ * Partner logo marquee: every logo is in the DOM once for assistive tech and
+ * crawlers; the looping copy is aria-hidden. Pauses on hover/focus, with an
+ * explicit pause button, and becomes a static grid for reduced motion.
+ */
+import LogoMark from './LogoMark.astro';
+import Icon from './Icon.astro';
+import type { Logo } from '../data/logos';
+
+interface Props { logos: Logo[]; rows?: 1 | 2; label: string; speed?: number }
+const { logos, rows = 2, label, speed = 60 } = Astro.props;
+const split = rows === 2 ? [logos.filter((_, i) => i % 2 === 0), logos.filter((_, i) => i % 2 === 1)] : [logos];
+const id = `marquee-${label.toLowerCase().replace(/[^a-z]+/g, '-')}`;
+---
+<div class="marquee" data-marquee data-play-in-view id={id}>
+  <ul role="list" class="sr-only">
+    {logos.map((l) => <li>{l.name}</li>)}
+  </ul>
+  <div class="rows" aria-hidden="true">
+    {split.map((row, r) => (
+      <div class="row" style={`--duration:${Math.round((row.length * 190) / speed * 1.8)}s;--dir:${r % 2 ? 'reverse' : 'normal'}`}>
+        {[0, 1].map(() => (
+          <ul role="list" class="track">
+            {row.map((l) => <li><LogoMark src={l.src} name={l.name} area={3600} maxHeight={60} decorative /></li>)}
+          </ul>
+        ))}
+      </div>
+    ))}
+  </div>
+  <button class="toggle" type="button" aria-pressed="false" aria-controls={id} data-marquee-toggle>
+    <span class="when-playing"><Icon name="pause" size={14} stroke={2} /> Pause logos</span>
+    <span class="when-paused"><Icon name="play" size={14} /> Play logos</span>
+  </button>
+</div>
+
+<style>
+  .marquee { position: relative; }
+  .rows { display: grid; overflow: hidden; gap: clamp(8px, 1.4vw, 18px); mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); -webkit-mask-image: linear-gradient(90deg, transparent, #000 9%, #000 91%, transparent); }
+  .row { display: flex; width: max-content; }
+  .track { display: flex; align-items: center; flex: none; animation: scroll var(--duration) linear infinite; animation-direction: var(--dir); }
+  .track li { display: grid; place-items: center; width: clamp(140px, 15vw, 210px); height: 96px; padding-inline: 18px; }
+  .track :global(.logo-mark) { filter: grayscale(1) contrast(1.25) brightness(0.85); opacity: 0.8; transition: filter var(--dur) var(--ease-out), opacity var(--dur) var(--ease-out); }
+  .marquee:hover .track :global(.logo-mark) { opacity: 0.9; }
+  .track li:hover :global(.logo-mark) { filter: none; opacity: 1; }
+  .marquee:hover .track, .marquee:focus-within .track, .marquee[data-paused] .track, .marquee.is-stopped .track { animation-play-state: paused; }
+  @keyframes scroll { to { transform: translateX(-100%); } }
+
+  .toggle { display: inline-flex; align-items: center; margin: 22px auto 0; height: 34px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line); font-size: var(--fs-xs); font-weight: 500; color: var(--ink-2); transition: color var(--dur), border-color var(--dur); }
+  .toggle:hover { color: var(--ink); border-color: var(--line-strong); }
+  .toggle span { display: inline-flex; align-items: center; gap: 8px; }
+  .when-paused { display: none !important; }
+  .is-stopped .when-paused { display: inline-flex !important; }
+  .is-stopped .when-playing { display: none !important; }
+  .marquee { text-align: center; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .rows { mask-image: none; -webkit-mask-image: none; }
+    .row { width: auto; }
+    .rows { display: flex; flex-wrap: wrap; justify-content: center; }
+    .row { display: contents; }
+    .track { animation: none; flex-wrap: wrap; justify-content: center; }
+    .track + .track { display: none; }
+    .toggle { display: none; }
+  }
+</style>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-marquee]').forEach((m) => {
+    const btn = m.querySelector<HTMLButtonElement>('[data-marquee-toggle]')!;
+    btn.addEventListener('click', () => {
+      const stopped = m.classList.toggle('is-stopped');
+      btn.setAttribute('aria-pressed', String(stopped));
+    });
+  });
+</script>

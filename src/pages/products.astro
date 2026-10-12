@@ -1,0 +1,102 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import StackMap from '../components/StackMap.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import { publisherProducts, buyerProducts } from '../data/navigation';
+
+const groups = [
+  {
+    id: 'publishers', eyebrow: 'Publishers', title: 'Full Control. Real Demand. Better Yield.', href: '/ad-publishers-solutions/', image: '/wp-content/uploads/2025/09/publishers2.jpg', alt: 'A publisher team presenting results on a whiteboard',
+    text: 'Voise Tech provides publishers with the infrastructure they need to manage monetization, maximize revenue, and maintain transparency across every channel. Whether you’re scaling premium inventory or launching new formats, our platform is designed to optimize every impression without compromising user experience or data ownership.',
+    links: publisherProducts,
+  },
+  {
+    id: 'buyers', eyebrow: 'Buyers', title: 'Clarity, Efficiency, and Performance at Scale', href: '/ad-buyers-solutions/', image: '/wp-content/uploads/2025/09/buyers2.jpg', alt: 'Two media buyers reviewing a plan on a tablet',
+    text: 'For media buyers, Voise Tech offers precision tools to plan smarter campaigns, access premium inventory, and optimize spend in real time. From curated packages to deep audience intelligence, everything is built to reduce waste, improve outcomes, and give you full visibility into every buy.',
+    links: buyerProducts,
+  },
+];
+---
+<BaseLayout
+  title="Products - Voise Tech"
+  description="A Smarter Stack for Smarter Outcomes. Voise Tech offers a complete programmatic ecosystem that simplifies how media is planned, bought, and monetized."
+  breadcrumbs={[{ label: 'Products', href: '/products/' }]}
+>
+  <PageHero
+    eyebrow="Products"
+    title="A Smarter Stack for <span class='grad-text'>Smarter Outcomes</span>"
+    lede={[
+      'Voise Tech offers a complete programmatic ecosystem that simplifies how media is planned, bought, and monetized. Designed for both the supply and demand sides of the ad economy, our tools restore transparency, speed, and performance to digital advertising.',
+      'From real-time auctions to data-driven planning, Voise Tech empowers publishers, buyers, and partners to take control of outcomes at every stage of the funnel.',
+    ]}
+    crumbs={[{ label: 'Products', href: '/products/' }]}
+    split
+  >
+    <div class="cluster" slot="actions">
+      <a class="btn" href="/contact-us/">Enquire Now <Icon name="arrow" size={16} class="arrow" /></a>
+    </div>
+    <div slot="visual" class="visual">
+      <StackMap />
+      <p class="mono cap">Select a product to explore it</p>
+    </div>
+  </PageHero>
+
+  {groups.map((g, gi) => (
+    <section class:list={['section', gi % 2 === 1 && 'tone-subtle']} id={g.id}>
+      <div class="container group">
+        <div class="media group-media" data-reveal="mask">
+          <Img src={g.image} alt={g.alt} sizes="(max-width: 900px) 100vw, 45vw" />
+        </div>
+        <div class="group-copy">
+          <SectionHeading eyebrow={g.eyebrow} title={g.title} />
+          <p class="muted" data-reveal>{g.text}</p>
+          <ul role="list" class="group-links" data-stagger>
+            {g.links.map((l, i) => (
+              <li data-reveal>
+                <a href={l.href}>
+                  <span class="mono">0{i + 1}</span>
+                  <span class="gl-name">{l.label}</span>
+                  <span class="gl-desc">{l.description}</span>
+                  <Icon name="arrow" size={16} class="arrow" />
+                </a>
+              </li>
+            ))}
+          </ul>
+          <a class="btn btn-secondary" href={g.href} data-reveal>Read More <Icon name="arrow" size={16} class="arrow" /></a>
+        </div>
+      </div>
+    </section>
+  ))}
+
+  <section class="section on-night partners-sec">
+    <div class="container partners">
+      <SectionHeading eyebrow="Partners" title="Technology, Data, and Growth" lede="Voise Tech collaborates with agencies, data providers, and tech platforms to co-create better solutions across the programmatic supply chain. Our partner ecosystem is designed to scale innovation, accelerate integrations, and deliver mutual value." />
+      <a class="btn" href="/google-ad-manager-solutions-services/" data-reveal>Partner with Us <Icon name="arrow" size={16} class="arrow" /></a>
+    </div>
+  </section>
+
+  <CtaBand eyebrow="Start the conversation" title="Let’s Build What’s Next in Programmatic Advertising — Together." primary={{ label: 'Enquire Now', href: '/contact-us/' }} secondary={{ label: 'Compare solutions', href: '/solutions/' }} />
+</BaseLayout>
+
+<style>
+  .visual { display: grid; gap: 12px; }
+  .cap { color: var(--ink-3); text-align: center; font-size: 0.68rem; }
+  .group { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .group-media { aspect-ratio: 564 / 420; }
+  .group-copy { display: grid; gap: 22px; justify-items: start; }
+  .tone-subtle .group-media { order: 2; }
+  .group-links { width: 100%; border-top: 1px solid var(--line); }
+  .group-links a { display: grid; grid-template-columns: 32px minmax(160px, 0.9fr) 1fr 20px; gap: 12px; align-items: center; padding: 16px 4px; border-bottom: 1px solid var(--line); transition: background-color var(--dur), padding var(--dur) var(--ease-out); }
+  .group-links a:hover { background: rgb(8 112 199 / 0.04); padding-left: 10px; }
+  .group-links .mono { color: var(--ink-3); }
+  .gl-name { font-weight: 600; letter-spacing: -0.015em; }
+  .gl-desc { font-size: var(--fs-xs); color: var(--ink-2); }
+  .group-links :global(.arrow) { color: var(--ink-3); }
+  @media (max-width: 900px) { .group { grid-template-columns: minmax(0, 1fr); } .tone-subtle .group-media { order: 0; } }
+  @media (max-width: 560px) { .group-links a { grid-template-columns: 32px 1fr 20px; } .gl-desc { grid-column: 2; } }
+  .partners { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 32px; }
+</style>

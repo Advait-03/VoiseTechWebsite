@@ -1,0 +1,34 @@
+---
+import Img from './Img.astro';
+import Icon from './Icon.astro';
+import type { Event } from '../lib/content';
+
+interface Props { event: Event }
+const { event: e } = Astro.props;
+---
+<a class="event is-link" href={`/event/${e.id}/`}>
+  <div class="media e-media">{e.data.image && <Img src={e.data.image.src} alt="" sizes="(max-width: 700px) 100vw, 280px" />}</div>
+  <div class="e-copy">
+    <h3 class="h4 e-title">{e.data.title}</h3>
+    <p class="e-meta">
+      {e.data.dateText && <span><Icon name="calendar" size={15} />{e.data.dateText}</span>}
+      {e.data.location && <span><Icon name="pin" size={15} />{e.data.location}</span>}
+    </p>
+    {e.data.gallery.length > 0 && <p class="mono gal">{e.data.gallery.length} photos</p>}
+  </div>
+  <span class="go" aria-hidden="true"><Icon name="arrow" size={18} /></span>
+</a>
+
+<style>
+  .event { position: relative; display: grid; grid-template-columns: 220px 1fr 40px; gap: clamp(16px, 3vw, 40px); align-items: center; padding: 22px 0; border-bottom: 1px solid var(--line); }
+  .e-media { aspect-ratio: 551 / 355; border-radius: 10px; }
+  .e-copy { display: grid; gap: 10px; }
+  .e-title { font-size: clamp(1.15rem, 1rem + 0.6vw, 1.5rem); font-weight: 600; transition: color var(--dur); }
+  .event:hover .e-title { color: var(--blue-ink); }
+  .e-meta { display: flex; flex-wrap: wrap; gap: 8px 20px; color: var(--ink-2); font-size: var(--fs-small); }
+  .e-meta span { display: inline-flex; gap: 8px; align-items: center; }
+  .gal { color: var(--ink-3); }
+  .go { width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-strong); display: grid; place-items: center; transition: background-color var(--dur), color var(--dur), transform var(--dur) var(--ease-out); }
+  .event:hover .go { background: var(--ink); color: #fff; transform: translateX(4px); }
+  @media (max-width: 700px) { .event { grid-template-columns: minmax(0, 1fr); } .go { display: none; } }
+</style>

@@ -1,0 +1,38 @@
+---
+/**
+ * A single logo, sized by optical area so wide wordmarks and compact marks
+ * carry similar visual weight. Uses the whitespace-trimmed variant from the
+ * image manifest; aspect ratio is always preserved.
+ */
+import manifest from '../data/image-manifest.json';
+
+type Variant = { w: number; src: string };
+type Entry = { w: number; h: number; variants: Variant[]; trim?: { w: number; h: number; variants: Variant[] } };
+
+interface Props { src: string; name: string; area?: number; maxHeight?: number; maxWidth?: number; decorative?: boolean; class?: string }
+const { src, name, area = 3000, maxHeight = 56, maxWidth = 168, decorative = false, class: className } = Astro.props;
+
+const entry = (manifest as Record<string, Entry>)[src];
+const box = entry?.trim ?? entry ?? { w: 200, h: 80, variants: [] };
+const aspect = box.w / box.h;
+let h = Math.sqrt(area / aspect);
+let w = h * aspect;
+if (h > maxHeight) { h = maxHeight; w = h * aspect; }
+if (w > maxWidth) { w = maxWidth; h = w / aspect; }
+w = Math.round(w); h = Math.round(h);
+const variants = box.variants ?? [];
+const srcset = variants.map((v) => `${v.src} ${v.w}w`).join(', ');
+const fallback = entry?.trim ? variants.find((v) => v.w >= w * 2)?.src ?? variants.at(-1)?.src ?? src : src;
+---
+<img
+  class:list={['logo-mark', className]}
+  src={fallback}
+  srcset={srcset || undefined}
+  sizes={`${w}px`}
+  width={w}
+  height={h}
+  alt={decorative ? '' : name}
+  loading="lazy"
+  decoding="async"
+  style={`width:${w}px;height:${h}px`}
+/>

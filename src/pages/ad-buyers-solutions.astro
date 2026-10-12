@@ -1,0 +1,122 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import JourneyFlow from '../components/JourneyFlow.astro';
+import ProductList from '../components/ProductList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+
+const stages = [
+  { step: 'Plan', title: 'From brief to plan in minutes', text: 'Inventory discovery, audience insights and media forecasting in one place — without jumping between spreadsheets, teams, or tools.', links: [{ label: 'Voise Agentic Planner', href: '/advertising-planning-tool/' }] },
+  { step: 'Target', title: 'Precision without the guesswork', text: 'First-party signals, contextual relevance and multicultural depth — privacy-first, across web, mobile, CTV, and audio.', links: [{ label: 'Voise AudienceIQ', href: '/audience-segmentation-tool/' }, { label: 'Voise Multicultural Opportunity', href: '/multicultural-advertising-agency/' }] },
+  { step: 'Create', title: 'Creative that works harder', text: 'Responsive banners, dynamic video and audio ads — programmatically ready and built to meet media specs.', links: [{ label: 'Voise Creative Studio', href: '/creative-services/' }] },
+  { step: 'Activate', title: 'Deals that do the heavy lifting', text: 'Handpick audiences, formats, publishers, and data layers — then package them into curated deals with real-time reporting.', links: [{ label: 'Voise Curation', href: '/auction-platform/' }] },
+];
+
+const compliance = [
+  { title: 'Pre-Screened Inventory', text: 'Every publisher is vetted before entry.' },
+  { title: 'Fraud Prevention', text: 'MRC-accredited IVT detection pre & post-bid.' },
+  { title: 'Data Compliance', text: 'Fully GDPR, CCPA, and COPPA compliant.' },
+  { title: 'Third-Party Verification', text: 'Independent assurance via leading partners.' },
+];
+const advantages = [
+  'Access to premium global demand at scale',
+  'Advanced targeting with dynamic pricing strategies',
+  'Transparent reporting and actionable insights',
+  'Strong brand safety controls and low IVT risk',
+];
+---
+<BaseLayout
+  title="Buyers - Voise Tech"
+  description="Plan Smarter. Activate Faster. Prove Impact. Voise Tech empowers media planners and buyers to plan, buy, and optimize across the open web, in-app, and CTV, without extra hops or hidden layers."
+  breadcrumbs={[{ label: 'Products', href: '/products/' }, { label: 'Buyers', href: '/ad-buyers-solutions/' }]}
+>
+  <PageHero
+    eyebrow="Buyers"
+    title="Plan Smarter.<br />Activate Faster.<br /><span class='grad-text'>Prove Impact.</span>"
+    lede="In today’s fragmented ecosystem, buyers need more than just access — they need clarity, speed, and control. Voise Tech empowers media planners and buyers to plan, buy, and optimize across the open web, in-app, and CTV, without extra hops or hidden layers."
+    crumbs={[{ label: 'Products', href: '/products/' }, { label: 'Buyers', href: '/ad-buyers-solutions/' }]}
+  >
+    <div class="cluster" slot="actions">
+      <a class="btn" href="/contact-us/">Let’s Connect <Icon name="arrow" size={16} class="arrow" /></a>
+      <a class="btn btn-secondary" href="#products">Explore buyer products</a>
+    </div>
+  </PageHero>
+
+  <section class="section-sm">
+    <div class="container">
+      <SectionHeading eyebrow="The buyer journey" title="One flow from planning to proof." lede="Each stage of the campaign is served by a Voise product — connected, so data and decisions carry through." />
+      <div class="flow-wrap">
+        <JourneyFlow label="Buyer journey" stages={stages} base={{ title: 'Compliance & Brand Safety', text: 'Pre-screened inventory, MRC-accredited IVT detection pre & post-bid, and third-party verification.' }} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="container">
+      <SectionHeading eyebrow="Buyer products" title="Built to Move Markets for Buyers." />
+      <div class="list-wrap">
+        <ProductList slugs={['auction-platform', 'multicultural-advertising-agency', 'advertising-planning-tool', 'audience-segmentation-tool', 'creative-services']} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section tone-subtle">
+    <div class="container split">
+      <div class="split-copy">
+        <SectionHeading eyebrow="Google" title="Google Authorized Buyers" lede="Google Authorized Buyers is a premium, programmatic marketplace that connects publishers with leading advertisers, agencies, and trading desks in real time." />
+        <p class="muted" data-reveal>With Voise Tech, you can unlock the full potential of this marketplace without the complexity. We manage setup, integration, and optimization — allowing you to focus on your content while we drive stronger monetization.</p>
+        <div data-reveal>
+          <h3 class="h4 adv-title">Key Advantages:</h3>
+          <ul role="list" class="adv">
+            {advantages.map((a) => <li><span class="tick"><Icon name="check" size={14} stroke={2.2} /></span>{a}</li>)}
+          </ul>
+        </div>
+        <a class="btn" href="/google-ad-manager-solutions-services/" data-reveal>Learn More <Icon name="arrow" size={16} class="arrow" /></a>
+      </div>
+      <div class="media split-media" data-reveal="mask">
+        <Img src="/wp-content/uploads/2025/08/Google-Ad-Manager-360.jpg" alt="A media buyer working on a laptop" sizes="(max-width: 860px) 100vw, 45vw" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container">
+      <SectionHeading eyebrow="Responsible advertising" title="Compliance & Brand Safety." />
+      <ul role="list" class="comp" data-stagger>
+        {compliance.map((c, i) => (
+          <li data-reveal>
+            <span class="mono comp-n">0{i + 1}</span>
+            <h3 class="h4">{c.title}</h3>
+            <p class="muted small">{c.text}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="closing" data-reveal>From clarity in planning to transparency post-buy, Voise Tech keeps your campaigns <span class="grad-text">efficient, measurable, and repeatable.</span></p>
+    </div>
+  </section>
+
+  <CtaBand eyebrow="Buyers" title="Ready to build your next plan?" primary={{ label: 'Request a Demo', href: '/contact-us/' }} secondary={{ label: 'View case studies', href: '/resources/case-studies/' }} />
+</BaseLayout>
+
+<style>
+  .flow-wrap { margin-top: clamp(40px, 5vw, 64px); }
+  .list-wrap { margin-top: clamp(48px, 6vw, 88px); }
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .split-copy { display: grid; gap: 24px; justify-items: start; }
+  .split-media { aspect-ratio: 564 / 419; }
+  .adv-title { margin-bottom: 12px; }
+  .adv { display: grid; gap: 10px; }
+  .adv li { display: flex; gap: 12px; align-items: center; }
+  .tick { width: 24px; height: 24px; border-radius: 50%; background: var(--blue-soft); color: var(--blue-ink); display: grid; place-items: center; flex: none; }
+  @media (max-width: 860px) { .split { grid-template-columns: minmax(0, 1fr); } }
+  .comp { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: clamp(32px, 4vw, 56px); border-top: 1px solid var(--line-strong); }
+  .comp li { display: grid; gap: 10px; padding: 26px 22px 6px 0; align-content: start; }
+  .comp li + li { padding-left: 22px; border-left: 1px solid var(--line); }
+  .comp-n { color: var(--green-ink); }
+  @media (max-width: 900px) { .comp { grid-template-columns: repeat(2, minmax(0, 1fr)); } .comp li:nth-child(3) { border-left: 0; padding-left: 0; } }
+  @media (max-width: 520px) { .comp { grid-template-columns: minmax(0, 1fr); } .comp li { border-left: 0 !important; padding-left: 0 !important; } }
+  .closing { margin-top: clamp(56px, 7vw, 96px); font-size: clamp(1.6rem, 1.1rem + 2vw, 2.9rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1.15; max-width: 24ch; }
+</style>

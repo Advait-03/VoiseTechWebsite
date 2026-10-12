@@ -1,0 +1,215 @@
+---
+import { render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumbs from '../../components/Breadcrumbs.astro';
+import EventRow from '../../components/EventRow.astro';
+import Img from '../../components/Img.astro';
+import Icon from '../../components/Icon.astro';
+import { allEvents, eventStatus, type Event } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const all = await allEvents();
+  return all.map((e) => ({ params: { slug: e.id }, props: { ev: e, others: all.filter((o) => o.id !== e.id).slice(0, 3) } }));
+}
+type Props = { ev: Event; others: Event[] };
+const { ev, others } = Astro.props;
+const { Content } = await render(ev);
+const d = ev.data;
+// Status is fixed at build time; the countdown script re-checks in the browser.
+const status = eventStatus(ev);
+const isPast = status === 'past';
+const actions = isPast ? d.actions.filter((a) => !/schedule|book|register|rsvp|meet/i.test(a.label)) : d.actions;
+const crumbs = [{ label: 'Resources', href: '/resources/blog/' }, { label: 'Events', href: '/resources/events/' }, { label: d.title, href: `/event/${ev.id}/` }];
+const schema = d.startDate ? [{
+  '@type': 'Event',
+  name: d.title,
+  description: d.description || d.excerpt,
+  startDate: d.startsAt ?? d.startDate.toISOString().slice(0, 10),
+  endDate: d.endDate?.toISOString().slice(0, 10),
+  eventStatus: 'https://schema.org/EventScheduled',
+  eventAttendanceMode: 'https://schema.org/OfflineEventAttendanceMode',
+  location: d.location ? { '@type': 'Place', name: d.location, address: d.location } : undefined,
+  image: d.image ? new URL(d.image.src, Astro.site).href : undefined,
+}] : [];
+---
+<BaseLayout title={d.seoTitle ?? d.title} description={d.description || d.excerpt} type="article" image={d.image} publishedTime={d.date} modifiedTime={d.updated} breadcrumbs={crumbs.slice(1)} schema={schema}>
+  <header class="head container">
+    <Breadcrumbs items={crumbs} />
+    <p class="badges" data-reveal>
+      <span class:list={['status', `is-${status}`]} data-event-end={(d.endDate ?? d.startDate)?.toISOString()}>
+        {status === 'past' ? 'Past event' : status === 'live' ? 'Happening now' : 'Upcoming event'}
+      </span>
+    </p>
+    <h1 class="h1 title" data-reveal style="--i:1">{d.title}</h1>
+    <ul role="list" class="meta" data-reveal style="--i:2">
+      {d.dateText && <li><Icon name="calendar" size={17} />{d.dateText}</li>}
+      {d.location && <li><Icon name="pin" size={17} />{d.location}</li>}
+    </ul>
+  </header>
+
+  {!isPast && d.startsAt && (
+    <section class="container countdown-wrap" aria-label="Countdown">
+      <div class="countdown on-night" data-countdown={d.startsAt}>
+        <p class="mono cd-title">{d.countdownHeading ?? `The countdown to ${d.title} is on.`}</p>
+        <div class="cd-grid" role="timer" aria-live="off">
+          {['Days', 'Hours', 'Minutes', 'Seconds'].map((u) => <div><span class="tnum" data-unit={u.toLowerCase()}>--</span><span class="mono">{u}</span></div>)}
+        </div>
+      </div>
+    </section>
+  )}
+
+  {(d.banner ?? d.image) && (
+    <div class="container banner" data-reveal="mask">
+      <div class="media"><Img src={(d.banner ?? d.image)!.src} alt={`${d.title} event artwork`} sizes="(max-width: 1280px) 100vw, 1280px" loading="eager" /></div>
+    </div>
+  )}
+
+  <article class="container body">
+    <div class="prose"><Content /></div>
+    {d.rsvpNote && <p class="note"><Icon name="alert" size={18} />{d.rsvpNote}</p>}
+    {actions.length > 0 && (
+      <div class="actions cluster">
+        {actions.map((a, i) => (
+          <a class:list={['btn', i > 0 && 'btn-secondary']} href={a.href} target={/^https?:/.test(a.href) ? '_blank' : undefined} rel={/^https?:/.test(a.href) ? 'noopener noreferrer' : undefined}>
+            {a.label}<Icon name={/^https?:/.test(a.href) ? 'arrow-up-right' : 'arrow'} size={16} class="arrow" />
+            {/^https?:/.test(a.href) && <span class="sr-only"> (opens in a new tab)</span>}
+          </a>
+        ))}
+      </div>
+    )}
+  </article>
+
+  {d.gallery.length > 0 && (
+    <section class="section-sm container gallery-sec" aria-labelledby="gallery-title">
+      <h2 id="gallery-title" class="h3">Image Gallery</h2>
+      <ul role="list" class="gallery" data-gallery>
+        {d.gallery.map((g, i) => (
+          <li>
+            <a href={g.src} class="g-item media" data-index={i} aria-label={`Open photo ${i + 1} of ${d.gallery.length}: ${g.alt}`}>
+              <Img src={g.src} alt={g.alt} sizes="(max-width: 600px) 50vw, (max-width: 960px) 33vw, 25vw" />
+            </a>
+          </li>
+        ))}
+      </ul>
+      <dialog class="lightbox" aria-label="Photo viewer" data-lightbox>
+        <figure>
+          <img alt="" data-lb-img />
+          <figcaption class="mono" data-lb-caption></figcaption>
+        </figure>
+        <button type="button" class="lb-btn lb-close" data-lb-close aria-label="Close photo viewer"><Icon name="close" size={20} /></button>
+        <button type="button" class="lb-btn lb-prev" data-lb-prev aria-label="Previous photo"><Icon name="arrow-left" size={20} /></button>
+        <button type="button" class="lb-btn lb-next" data-lb-next aria-label="Next photo"><Icon name="arrow" size={20} /></button>
+      </dialog>
+    </section>
+  )}
+
+  {others.length > 0 && (
+    <section class="section tone-subtle">
+      <div class="container">
+        <div class="more-head"><h2 class="h3">More events</h2><a class="link-arrow" href="/resources/events/"><span class="label">All events</span><Icon name="arrow" size={14} class="arrow" /></a></div>
+        <ul role="list" class="more">{others.map((o) => <li><EventRow event={o} /></li>)}</ul>
+      </div>
+    </section>
+  )}
+</BaseLayout>
+
+<style>
+  .head { display: grid; gap: 20px; padding-block: clamp(40px, 6vw, 88px) clamp(32px, 4vw, 56px); }
+  .title { max-width: 22ch; }
+  .status { display: inline-flex; align-items: center; gap: 8px; height: 28px; padding: 0 12px; border-radius: 999px; font-family: var(--font-mono); font-size: 0.7rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .status::before { content: ''; width: 7px; height: 7px; border-radius: 50%; background: currentColor; }
+  .is-past { background: var(--bg-muted); color: var(--ink-2); }
+  .is-upcoming { background: var(--blue-soft); color: var(--blue-ink); }
+  .is-live { background: #e6f7ee; color: var(--green-ink); }
+  .meta { display: flex; flex-wrap: wrap; gap: 10px 28px; color: var(--ink-2); font-size: 1.05rem; }
+  .meta li { display: inline-flex; gap: 10px; align-items: center; }
+  .countdown { border-radius: var(--radius-l); padding: clamp(24px, 3vw, 40px); background: radial-gradient(80% 120% at 100% 0%, rgb(8 112 199 / 0.45), transparent 60%), var(--night); }
+  .cd-title { color: var(--ink-inverse-2); margin-bottom: 20px; }
+  .cd-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .cd-grid div { display: grid; gap: 6px; padding: 18px; border-radius: var(--radius); background: rgb(255 255 255 / 0.05); border: 1px solid var(--line-night); }
+  .cd-grid .tnum { font-size: clamp(2rem, 1.4rem + 2.5vw, 3.5rem); font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+  .cd-grid .mono { color: var(--ink-inverse-2); }
+  .banner { margin-top: clamp(32px, 4vw, 56px); }
+  .banner .media { aspect-ratio: 1181 / 400; border-radius: var(--radius-l); }
+  .body { max-width: 820px; padding-block: clamp(40px, 5vw, 72px) clamp(24px, 3vw, 40px); }
+  .note { display: flex; gap: 12px; margin-top: 32px; padding: 16px 18px; border-radius: var(--radius); background: var(--bg-subtle); border: 1px solid var(--line); color: var(--ink-2); font-size: var(--fs-small); }
+  .actions { margin-top: 36px; }
+  .gallery-sec { display: grid; gap: 24px; padding-bottom: var(--section); }
+  .gallery { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+  .g-item { display: block; aspect-ratio: 4 / 3; border-radius: 10px; cursor: zoom-in; }
+  .g-item :global(img), .g-item :global(picture) { width: 100%; height: 100%; object-fit: cover; }
+  @media (max-width: 960px) { .gallery { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .gallery { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cd-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  .lightbox { width: 100vw; height: 100vh; max-width: none; max-height: none; margin: 0; padding: 0; border: 0; background: rgb(10 14 26 / 0.94); color: #fff; }
+  .lightbox[open] { display: grid; place-items: center; }
+  .lightbox::backdrop { background: transparent; }
+  .lightbox figure { margin: 0; display: grid; gap: 12px; justify-items: center; max-width: min(1200px, 92vw); }
+  .lightbox img { max-height: 82vh; width: auto; border-radius: 10px; }
+  .lightbox figcaption { color: var(--ink-inverse-2); }
+  .lb-btn { position: fixed; width: 48px; height: 48px; border-radius: 50%; display: grid; place-items: center; background: rgb(255 255 255 / 0.1); color: #fff; transition: background-color var(--dur); }
+  .lb-btn:hover { background: rgb(255 255 255 / 0.22); }
+  .lb-close { top: 20px; right: 20px; }
+  .lb-prev { left: 20px; top: 50%; translate: 0 -50%; }
+  .lb-next { right: 20px; top: 50%; translate: 0 -50%; }
+  .more-head { display: flex; justify-content: space-between; align-items: center; gap: 16px; margin-bottom: 20px; }
+  .more { border-top: 1px solid var(--line); }
+</style>
+
+<script>
+  // Pages are static: re-check the status badge against the event end date in the browser.
+  document.querySelectorAll<HTMLElement>('[data-event-end]').forEach((badge) => {
+    const end = new Date(badge.dataset.eventEnd!).getTime() + 86400000;
+    if (Date.now() > end && !badge.classList.contains('is-past')) {
+      badge.className = 'status is-past';
+      badge.textContent = 'Past event';
+      document.querySelector<HTMLElement>('.countdown-wrap')?.remove();
+    }
+  });
+
+  // Countdown (only rendered for upcoming events); stops at zero.
+  document.querySelectorAll<HTMLElement>('[data-countdown]').forEach((box) => {
+    const target = new Date(box.dataset.countdown!).getTime();
+    const out = (u: string) => box.querySelector<HTMLElement>(`[data-unit="${u}"]`)!;
+    const tick = () => {
+      const left = Math.max(0, target - Date.now());
+      out('days').textContent = String(Math.floor(left / 86400000)).padStart(2, '0');
+      out('hours').textContent = String(Math.floor((left / 3600000) % 24)).padStart(2, '0');
+      out('minutes').textContent = String(Math.floor((left / 60000) % 60)).padStart(2, '0');
+      out('seconds').textContent = String(Math.floor((left / 1000) % 60)).padStart(2, '0');
+      if (left > 0) setTimeout(tick, 1000);
+    };
+    tick();
+  });
+
+  // Gallery lightbox: native <dialog> (focus trap + Escape), arrow-key navigation.
+  document.querySelectorAll<HTMLElement>('[data-gallery]').forEach((gallery) => {
+    const dialog = gallery.parentElement!.querySelector<HTMLDialogElement>('[data-lightbox]')!;
+    const img = dialog.querySelector<HTMLImageElement>('[data-lb-img]')!;
+    const caption = dialog.querySelector<HTMLElement>('[data-lb-caption]')!;
+    const items = [...gallery.querySelectorAll<HTMLAnchorElement>('[data-index]')];
+    let index = 0;
+    let opener: HTMLElement | null = null;
+    const show = (i: number) => {
+      index = (i + items.length) % items.length;
+      const a = items[index];
+      img.src = a.href;
+      img.alt = a.querySelector('img')?.alt ?? '';
+      caption.textContent = `${index + 1} / ${items.length}`;
+    };
+    items.forEach((a, i) => a.addEventListener('click', (e) => {
+      e.preventDefault();
+      opener = a;
+      show(i);
+      dialog.showModal();
+    }));
+    dialog.querySelector('[data-lb-close]')!.addEventListener('click', () => dialog.close());
+    dialog.querySelector('[data-lb-prev]')!.addEventListener('click', () => show(index - 1));
+    dialog.querySelector('[data-lb-next]')!.addEventListener('click', () => show(index + 1));
+    dialog.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowRight') show(index + 1);
+      if (e.key === 'ArrowLeft') show(index - 1);
+    });
+    dialog.addEventListener('click', (e) => { if (e.target === dialog) dialog.close(); });
+    dialog.addEventListener('close', () => opener?.focus());
+  });
+</script>

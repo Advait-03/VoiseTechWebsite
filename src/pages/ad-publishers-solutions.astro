@@ -1,0 +1,131 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import StatGrid from '../components/StatGrid.astro';
+import JourneyFlow from '../components/JourneyFlow.astro';
+import ProductList from '../components/ProductList.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import { publisherStats } from '../data/stats';
+
+const stages = [
+  { step: 'Inventory', title: 'Every screen, every format', text: 'Web, in-app, CTV/OTT and audio inventory — display, native, video and dynamic audio insertion.', links: [{ label: 'Formats & channels', href: '#formats' }] },
+  { step: 'Header bidding', title: 'One fair, unified auction', text: 'Client-side and server-side bidding that consolidates bids from 25+ SSPs into a single fair auction.', links: [{ label: 'Voise Pre-Bid', href: '/pre-bid/' }] },
+  { step: 'Decisioning', title: 'Unified ad serving', text: 'Direct, PMP and open marketplace in one platform with tiered priority and ~120ms auction handling.', links: [{ label: 'Voise Ad Server', href: '/voise-ad-server/' }] },
+  { step: 'Monetisation', title: 'Premium demand, adaptive yield', text: '30+ DSPs, curated PMPs and machine learning–powered dynamic floors, with full monetization control.', links: [{ label: 'Voise SSP', href: '/supply-side-platform-advertising/' }] },
+  { step: 'Insight', title: 'Actionable reporting', text: 'Real-time revenue dashboards, per-buyer demand diagnostics, and exports via API, CSV, or BI tools.', links: [{ label: 'Voise SSP reporting', href: '/supply-side-platform-advertising/#features' }] },
+];
+
+const formats = [
+  { title: 'Web', text: 'Display, native, and video with responsive layouts.' },
+  { title: 'App', text: 'In-app banners, interstitials, rewarded video, and native.' },
+  { title: 'CTV/OTT', text: 'SSAI-enabled pre-roll, mid-roll, and interactive ads.' },
+  { title: 'Audio', text: 'Dynamic insertion for podcasts, streaming radio & music apps.' },
+];
+const gamDeliver = [
+  'Seamless integration across all inventory types',
+  'Ad unit and key-value targeting setup',
+  'Yield optimization with low IVT rates',
+  'Unified, transparent reporting for direct and programmatic sales',
+];
+---
+<BaseLayout
+  title="Programmatic Ad Solutions for Publishers | Voise Tech"
+  description="Explore Voise Tech’s programmatic solutions for publishers—Ad Server, SSP, Pre-Bid, and Content Studio built for transparency, control, and higher revenue."
+  breadcrumbs={[{ label: 'Products', href: '/products/' }, { label: 'Publishers', href: '/ad-publishers-solutions/' }]}
+>
+  <PageHero
+    eyebrow="Publishers"
+    title="Monetize Smarter. Create Faster.<br /><span class='grad-text'>Optimize Everything.</span>"
+    lede="In today’s competitive ecosystem, publishers need more than just demand — they need transparency, flexibility, and scale. Voise Tech empowers publishers with full-stack control to manage inventory, streamline creatives, and maximize yield across web, in-app, and CTV."
+    crumbs={[{ label: 'Products', href: '/products/' }, { label: 'Publishers', href: '/ad-publishers-solutions/' }]}
+  >
+    <div class="cluster" slot="actions">
+      <a class="btn" href="/contact-us/">Let’s Connect <Icon name="arrow" size={16} class="arrow" /></a>
+      <a class="btn btn-secondary" href="#products">Explore publisher products</a>
+    </div>
+  </PageHero>
+
+  <section class="section-sm">
+    <div class="container">
+      <SectionHeading eyebrow="Platform highlights" title="Platform Highlights" />
+      <div class="stats"><StatGrid stats={publisherStats} /></div>
+    </div>
+  </section>
+
+  <section class="section tone-subtle">
+    <div class="container">
+      <SectionHeading eyebrow="How it works" title="How an impression is monetised." lede="From the ad request to the revenue report, each step runs on the Voise publisher stack." />
+      <div class="flow-wrap"><JourneyFlow label="Publisher monetisation flow" stages={stages} /></div>
+    </div>
+  </section>
+
+  <section class="section" id="products">
+    <div class="container">
+      <SectionHeading eyebrow="Publisher products" title="Full Control. Real Demand. Better Yield." />
+      <div class="list-wrap">
+        <ProductList slugs={['voise-ad-server', 'supply-side-platform-advertising', 'pre-bid', 'content-production-solutions']} names={{ 'voise-ad-server': 'Voise Adserver' }} />
+      </div>
+    </div>
+  </section>
+
+  <section class="section tone-subtle">
+    <div class="container split">
+      <div class="split-copy">
+        <SectionHeading eyebrow="Google" title="Google Ad Manager (GAM)" lede="Google Ad Manager is the industry’s leading ad serving platform, enabling publishers to manage both direct and programmatic ad sales in one place. At Voise Tech, we make GAM simple, from setup to optimization, so you can focus on building great content while we maximize your ad performance." />
+        <div data-reveal>
+          <h3 class="h4 adv-title">What We Deliver:</h3>
+          <ul role="list" class="adv">
+            {gamDeliver.map((a) => <li><span class="tick"><Icon name="check" size={14} stroke={2.2} /></span>{a}</li>)}
+          </ul>
+        </div>
+        <a class="btn" href="/google-ad-manager-solutions-services/" data-reveal>Learn More <Icon name="arrow" size={16} class="arrow" /></a>
+      </div>
+      <div class="media split-media" data-reveal="mask">
+        <Img src="/wp-content/uploads/2025/08/Google-Ad-Manager-360.jpg" alt="A publisher working on a laptop" sizes="(max-width: 860px) 100vw, 45vw" />
+      </div>
+    </div>
+  </section>
+
+  <section class="section" id="formats">
+    <div class="container">
+      <SectionHeading eyebrow="Coverage" title="Supported Formats & Channels." />
+      <ul role="list" class="formats" data-stagger>
+        {formats.map((f, i) => (
+          <li data-reveal class="card" data-glow>
+            <span class="mono f-n">0{i + 1}</span>
+            <h3 class="h3">{f.title}</h3>
+            <p class="muted">{f.text}</p>
+          </li>
+        ))}
+      </ul>
+      <p class="closing" data-reveal>From transparent monetization to streamlined creative, Voise Tech keeps publishers <span class="grad-text">in control of growth, efficiency, and scale.</span></p>
+    </div>
+  </section>
+
+  <CtaBand eyebrow="Publishers" title="Ready to unlock smarter monetization?" primary={{ label: 'Request a Demo', href: '/contact-us/' }} secondary={{ label: 'Publisher login', href: '/login/' }} />
+</BaseLayout>
+
+<style>
+  .stats { margin-top: clamp(32px, 4vw, 56px); }
+  .flow-wrap { margin-top: clamp(40px, 5vw, 64px); }
+  .list-wrap { margin-top: clamp(48px, 6vw, 88px); }
+  .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .split-copy { display: grid; gap: 24px; justify-items: start; }
+  .split-media { aspect-ratio: 564 / 419; }
+  .adv-title { margin-bottom: 12px; }
+  .adv { display: grid; gap: 10px; }
+  .adv li { display: flex; gap: 12px; align-items: center; }
+  .tick { width: 24px; height: 24px; border-radius: 50%; background: var(--blue-soft); color: var(--blue-ink); display: grid; place-items: center; flex: none; }
+  @media (max-width: 860px) { .split { grid-template-columns: minmax(0, 1fr); } }
+  .formats { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; margin-top: clamp(32px, 4vw, 56px); }
+  .formats li { padding: 28px; display: grid; gap: 12px; align-content: start; min-height: 220px; overflow: hidden; }
+  .formats li::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(260px circle at var(--mx, 50%) var(--my, 0%), rgb(8 112 199 / 0.08), transparent 60%); opacity: 0; transition: opacity var(--dur); }
+  .formats li:hover::before { opacity: 1; }
+  .f-n { color: var(--blue-ink); }
+  @media (max-width: 900px) { .formats { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .formats { grid-template-columns: minmax(0, 1fr); } .formats li { min-height: 0; } }
+  .closing { margin-top: clamp(56px, 7vw, 96px); font-size: clamp(1.6rem, 1.1rem + 2vw, 2.9rem); font-weight: 600; letter-spacing: -0.035em; line-height: 1.15; max-width: 26ch; }
+</style>

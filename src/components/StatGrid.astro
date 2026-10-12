@@ -1,0 +1,42 @@
+---
+/** Verified statistics with count-up on view. The rendered HTML always contains the final value. */
+import { formatStat, type Stat } from '../data/stats';
+
+interface Props { stats: Stat[]; source?: string; variant?: 'light' | 'night'; class?: string }
+const { stats, source, variant = 'light', class: className } = Astro.props;
+---
+<div class:list={['stat-grid', variant === 'night' && 'is-night', className]} style={`--cols:${stats.length}`}>
+  <dl data-stagger>
+    {stats.map((s) => (
+      <div class="stat" data-reveal data-count={s.value} data-decimals={s.decimals ?? 0} data-prefix={s.prefix ?? ''} data-suffix={s.suffix}>
+        <dt class="label">{s.label}{s.detail && <span class="detail">{s.detail}</span>}</dt>
+        <dd class="value tnum"><span data-count-value>{formatStat(s)}</span></dd>
+      </div>
+    ))}
+  </dl>
+  {source && <p class="source mono">{source}</p>}
+</div>
+
+<style>
+  dl { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); border-top: 1px solid var(--line); }
+  .stat { display: flex; flex-direction: column-reverse; justify-content: flex-end; gap: 14px; padding: 28px 24px 8px 0; position: relative; }
+  .stat + .stat { padding-left: 24px; border-left: 1px solid var(--line); }
+  .stat::before { content: ''; position: absolute; top: -1px; left: 0; width: 36px; height: 2px; background: var(--grad); }
+  .stat + .stat::before { left: 24px; }
+  .value { font-size: clamp(2.5rem, 1.6rem + 2.6vw, 4.25rem); font-weight: 600; letter-spacing: -0.05em; line-height: 1; margin: 0; }
+  .label { font-size: var(--fs-small); color: var(--ink-2); line-height: 1.4; max-width: 22ch; }
+  .detail { display: block; color: var(--ink-3); font-size: var(--fs-xs); margin-top: 2px; }
+  .source { margin-top: 18px; color: var(--ink-3); font-size: 0.68rem; letter-spacing: 0.06em; }
+  .is-night dl { border-color: var(--line-night); }
+  .is-night .stat + .stat { border-color: var(--line-night); }
+  .is-night .label { color: var(--ink-inverse-2); }
+  .is-night .detail { color: rgb(167 175 189 / 0.7); }
+  @media (max-width: 960px) {
+    dl { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .stat:nth-child(odd) { padding-left: 0; border-left: 0; }
+    .stat:nth-child(odd)::before { left: 0; }
+    .stat:nth-child(n + 3) { border-top: 1px solid var(--line); }
+    .is-night .stat:nth-child(n + 3) { border-color: var(--line-night); }
+  }
+  @media (max-width: 420px) { .value { font-size: 2.3rem; } }
+</style>

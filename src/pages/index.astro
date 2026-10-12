@@ -1,0 +1,328 @@
+---
+import { getCollection } from 'astro:content';
+import BaseLayout from '../layouts/BaseLayout.astro';
+import HeroNetwork from '../components/HeroNetwork.astro';
+import StatGrid from '../components/StatGrid.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import LogoMarquee from '../components/LogoMarquee.astro';
+import LogoMark from '../components/LogoMark.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Icon from '../components/Icon.astro';
+import Img from '../components/Img.astro';
+import ResourceCard from '../components/ResourceCard.astro';
+import TestimonialCarousel from '../components/TestimonialCarousel.astro';
+import { homeStats } from '../data/stats';
+import { partners, clients } from '../data/logos';
+import { testimonials } from '../data/people';
+import products from '../data/products.json';
+import { latestHighlights, featuredCaseStudies } from '../lib/content';
+
+const publisherOrder = ['voise-ad-server', 'supply-side-platform-advertising', 'pre-bid', 'content-production-solutions'];
+const buyerOrder = ['auction-platform', 'multicultural-advertising-agency', 'advertising-planning-tool', 'audience-segmentation-tool', 'creative-services'];
+const bySlug = (s: string) => products.find((p) => p.slug === s)!;
+
+// Product summaries exactly as written on the live homepage / solution pages.
+const publisherSummaries: Record<string, string> = {
+  'voise-ad-server': 'Proprietary ad serving infrastructure with built-in CMS and player capabilities, AI-enhanced decisioning, clean supply routing, and transparent measurement across the omnichannel adtech ecosystem, supporting AdCP and seller-agent workflows for smarter automation and efficient supply path optimisation.',
+  'supply-side-platform-advertising': 'Voise SSP is a Supply-Side Platform optimised for premium monetisation and clean supply paths, with seller agent support, AI-driven price discovery, and multi-format adtech capabilities, connecting publishers to premium demand via curated marketplaces and real-time auctions.',
+  'pre-bid': 'Voise Pre-Bid Layer is a full-stack header bidding solution built on top of Prebid.js and advanced server-side technology. It brings together real-time demand from multiple SSPs, enabling fair, unified auctions across the omnichannel advertising ecosystem.',
+  'content-production-solutions': 'Voise Content Production Studio blends performance-led storytelling with media strategy, creating mobile-first video, interactive display, and CTV-grade creatives. Built for the omnichannel adtech ecosystem, it enables seamless activations, optimisations, and measurable campaign performance.',
+};
+const buyerSummaries: Record<string, string> = {
+  'auction-platform': 'Voise Curation gives agencies, brands, and resellers the power to build custom, high-performing programmatic marketplaces.',
+  'multicultural-advertising-agency': 'A programmatic solution designed for brands that want to connect authentically with diverse communities across cultures, languages, identities, and regions.',
+  'advertising-planning-tool': 'Built for the modern media team, advertisers, planners, and strategists who need to deliver results across fragmented formats and geographies.',
+  'audience-segmentation-tool': 'Your targeting backbone for high-performing programmatic campaigns.',
+  'creative-services': 'A full-stack production arm built to power high-performance digital advertising.',
+};
+const displayName = (slug: string) => (slug === 'voise-ad-server' ? 'Voise Ad Server' : bySlug(slug).name);
+
+const googlePoints = [
+  { title: 'Certified Access to Google Supply', text: 'We offer direct connections to DV360, GAM, and custom integrations, which enable premium, brand-safe inventory reach.' },
+  { title: 'Accelerated Go-Live', text: 'Pre-approved workflows and faster trafficking cut the time from brief to spend.' },
+  { title: 'Auction Transparency You Can Act On', text: 'Clear auction signals and reporting to tune bids, pacing, and frequency with confidence.' },
+  { title: 'Spend Efficiency by Design', text: 'Smarter routing and optimization reduce waste and maximize effective reach across Google’s stack.' },
+];
+
+const highlights = await latestHighlights(6);
+const cases = await featuredCaseStudies();
+---
+<BaseLayout
+  title="Programmatic Advertising Platform & Solutions | Voise Tech"
+  description="Power your campaigns with Voise Tech — a next-gen programmatic advertising platform offering advanced tools, automation & transparency for advertisers."
+>
+  <!-- Hero -->
+  <section class="hero">
+    <div class="container-wide hero-top">
+      <div class="hero-copy">
+        <p class="eyebrow" data-reveal>AI-driven infrastructure across the omnichannel AdTech ecosystem</p>
+        <h1 class="display" data-reveal style="--i:1">Beyond AdTech.<br /><span class="grad-text">Built for What’s Next.</span></h1>
+      </div>
+      <div class="hero-side">
+        <p class="lede" data-reveal style="--i:2">
+          At VoiseTech, we’re redefining how the world experiences advertising. As a trusted technology partner to leading global agency networks and publishers, we power high-impact, data-driven campaigns across the full digital advertising spectrum.
+        </p>
+        <div class="cluster" data-reveal style="--i:3">
+          <a class="btn" href="/contact-us/">Request a demo <Icon name="arrow" size={16} class="arrow" /></a>
+          <a class="btn btn-secondary" href="/products/">Explore the platform</a>
+        </div>
+      </div>
+    </div>
+    <div class="container-wide hero-visual" data-reveal="fade" style="--i:3">
+      <HeroNetwork />
+    </div>
+  </section>
+
+  <!-- Statement + stats -->
+  <section class="section statement-section">
+    <div class="container">
+      <div class="statement" data-reveal>
+        <p class="eyebrow">Meet Voise Tech</p>
+        <h2 class="statement-title">Smarter Advertising. Cleaner Supply. Powered by AI.</h2>
+      </div>
+      <div class="statement-body">
+        <p class="lede" data-reveal>
+          An AI-driven adtech solutions provider to global agencies, advertisers and publishers, VoiseTech combines machine intelligence, clean supply paths, advanced measurement, and agentic AI to maximise yield and brand-safe inventory access.
+        </p>
+        <div class="muted stack" data-reveal style="--i:1">
+          <p>We deliver premium inventory, advanced ad-serving, and agentic AI capabilities to the forefront of media buying. Our unified infrastructure powers everything from monetisation to measurement, built for scale, transparency, and smarter outcomes across every screen and environment.</p>
+          <p>With a presence across the US, UK, India, and UAE, we deliver transparent, measurable outcomes through intelligent decisioning, IVT filtration, and next-generation agent-to-agent optimisation.</p>
+          <a class="link-arrow" href="/about-us/"><span class="label">About Voise Tech</span><Icon name="arrow" size={14} class="arrow" /></a>
+        </div>
+      </div>
+      <StatGrid stats={homeStats} />
+    </div>
+  </section>
+
+  <!-- Platform: publishers -->
+  <section class="section on-night platform" id="platform">
+    <div class="container">
+      <div class="platform-head">
+        <SectionHeading eyebrow="For publishers" title="Monetize Smarter. Create Faster. Optimize Everything." lede="Voise Tech empowers publishers with full-stack control to manage inventory, streamline creatives, and maximize yield across web, in-app, and CTV." />
+        <a class="btn btn-secondary" href="/ad-publishers-solutions/" data-reveal>Publisher solutions <Icon name="arrow" size={16} class="arrow" /></a>
+      </div>
+      <ol role="list" class="product-rows" data-stagger>
+        {publisherOrder.map((slug, i) => {
+          const p = bySlug(slug);
+          return (
+            <li data-reveal>
+              <a class="product-row" href={`/${slug}/`} data-glow>
+                <span class="idx mono">0{i + 1}</span>
+                <span class="pr-name">{displayName(slug)}</span>
+                <span class="pr-tag">{p.tagline}</span>
+                <span class="pr-desc">{publisherSummaries[slug]}</span>
+                <span class="pr-go" aria-hidden="true"><Icon name="arrow-up-right" size={20} /></span>
+              </a>
+            </li>
+          );
+        })}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Platform: buyers -->
+  <section class="section buyers">
+    <div class="container">
+      <div class="platform-head">
+        <SectionHeading eyebrow="For buyers" title="Built to Move Markets for Buyers." lede="Voise Tech empowers media planners and buyers to plan, buy, and optimize across the open web, in-app, and CTV, without extra hops or hidden layers." />
+        <a class="btn btn-secondary" href="/ad-buyers-solutions/" data-reveal>Buyer solutions <Icon name="arrow" size={16} class="arrow" /></a>
+      </div>
+      <ul role="list" class="buyer-grid" data-stagger>
+        {buyerOrder.map((slug, i) => {
+          const p = bySlug(slug);
+          return (
+            <li data-reveal class:list={[i === 0 && 'wide']}>
+              <a class="buyer-card card" href={`/${slug}/`} data-glow>
+                <span class="mono idx">0{i + 1}</span>
+                <span class="bc-name">{slug === 'auction-platform' ? 'Voise Curation/Auction Packages' : p.name}</span>
+                <span class="bc-tag">{p.tagline}</span>
+                <span class="bc-desc">{buyerSummaries[slug]}</span>
+                <span class="link-arrow"><span class="label">Learn more</span><Icon name="arrow" size={14} class="arrow" /></span>
+              </a>
+            </li>
+          );
+        })}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Google -->
+  <section class="section tone-subtle google">
+    <div class="container google-grid">
+      <div class="google-copy">
+        <SectionHeading eyebrow="Google partnership" title="We Are a certified Google MCM Partner." lede="As a certified Google partner, VoiseTech combines strategic partnerships with open standards like AdCP to deliver premium, brand-safe inventory with transparent measurement and clean supply paths." />
+        <a class="link-arrow" href="/google-ad-manager-solutions-services/" data-reveal><span class="label">Explore GAM 360 services</span><Icon name="arrow" size={14} class="arrow" /></a>
+      </div>
+      <ol role="list" class="google-points" data-stagger>
+        {googlePoints.map((g, i) => (
+          <li data-reveal>
+            <span class="mono gp-n">0{i + 1}</span>
+            <h3 class="h4">{g.title}</h3>
+            <p class="muted small">{g.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <!-- Clients + case studies -->
+  <section class="section clients">
+    <div class="container">
+      <div class="platform-head">
+        <SectionHeading eyebrow="Our clients" title="Campaign Success Stories from Around the World." />
+        <a class="btn btn-secondary" href="/resources/case-studies/" data-reveal>All case studies <Icon name="arrow" size={16} class="arrow" /></a>
+      </div>
+      <ul role="list" class="client-grid" data-stagger aria-label="Our clients">
+        {clients.map((c) => (
+          <li data-reveal><LogoMark src={c.src} name={c.name} area={2600} maxHeight={50} maxWidth={150} /></li>
+        ))}
+      </ul>
+      <ul role="list" class="case-grid" data-stagger>
+        {cases.map((c) => (
+          <li data-reveal>
+            <a class="case-card is-link" href={`/case-study/${c.id}/`}>
+              <div class="media" style="aspect-ratio: 551/355">
+                {c.data.image && <Img src={c.data.image.src} alt="" sizes="(max-width: 860px) 100vw, 33vw" />}
+              </div>
+              <div class="case-meta">
+                {c.data.metrics.slice(0, 2).map((m) => (
+                  <span class="metric"><b class="tnum">{m.value}</b><span>{m.label}</span></span>
+                ))}
+              </div>
+              <h3 class="h4 case-title">{c.data.title}</h3>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <!-- Testimonials -->
+  <section class="section tone-subtle">
+    <div class="container">
+      <SectionHeading eyebrow="Testimonials" title="Real Results, Straight from Client Testimonials." />
+      <TestimonialCarousel items={testimonials} />
+    </div>
+  </section>
+
+  <!-- Partners -->
+  <section class="section partners">
+    <div class="container">
+      <SectionHeading eyebrow="Partners" title="Our Partners." align="center" />
+    </div>
+    <div class="partners-marquee" data-reveal="fade">
+      <LogoMarquee logos={partners} label="Our partners" />
+    </div>
+  </section>
+
+  <!-- Highlights -->
+  <section class="section tone-subtle">
+    <div class="container">
+      <div class="platform-head">
+        <SectionHeading eyebrow="Resources" title="Our Highlights." />
+        <a class="btn btn-secondary" href="/resources/blog/" data-reveal>All resources <Icon name="arrow" size={16} class="arrow" /></a>
+      </div>
+      <ul role="list" class="resource-grid" data-stagger>
+        {highlights.map((h) => <li data-reveal><ResourceCard item={h} /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <CtaBand
+    eyebrow="Start the conversation"
+    title="Let’s Build What’s Next in Programmatic Advertising — Together."
+    text="Whether you’re a Publisher looking to maximize yield, a Buyer aiming for smarter media activation, or a partner exploring opportunities, the Voise Tech team is here to help."
+    primary={{ label: 'Request a demo', href: '/contact-us/' }}
+    secondary={{ label: 'Explore products', href: '/products/' }}
+  />
+</BaseLayout>
+
+<style>
+  .hero { padding-top: clamp(40px, 6vw, 88px); padding-bottom: clamp(56px, 7vw, 104px); position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; inset: -20% -10% auto auto; width: 70vw; height: 70vw; background: radial-gradient(closest-side, rgb(8 112 199 / 0.09), transparent); pointer-events: none; }
+  .hero-top { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: clamp(28px, 3.5vw, 48px) clamp(28px, 4vw, 72px); align-items: end; position: relative; }
+  .hero-copy { display: grid; gap: 26px; grid-column: 1 / -1; }
+  .hero-side { display: contents; }
+  .hero-side .lede { font-size: clamp(1.05rem, 0.98rem + 0.3vw, 1.22rem); max-width: 56ch; }
+  .hero-side .cluster { justify-content: flex-end; }
+  .hero-visual { margin-top: clamp(40px, 5vw, 72px); }
+  @media (max-width: 860px) {
+    .hero-top { grid-template-columns: minmax(0, 1fr); }
+    .hero-side .cluster { justify-content: flex-start; }
+  }
+
+  .statement-section { padding-top: clamp(40px, 5vw, 80px); }
+  .statement { display: grid; gap: 18px; max-width: 900px; }
+  .statement-title { font-size: var(--fs-h2); }
+  .statement-body { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); margin: clamp(32px, 4vw, 56px) 0 clamp(56px, 7vw, 96px); }
+  .statement-body .lede { color: var(--ink); }
+  @media (max-width: 860px) { .statement-body { grid-template-columns: minmax(0, 1fr); } }
+
+  .platform-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 40px; margin-bottom: clamp(36px, 5vw, 64px); }
+  .product-rows { border-top: 1px solid var(--line-night); }
+  .product-row {
+    position: relative; display: grid; grid-template-columns: 56px minmax(180px, 1fr) minmax(0, 1.25fr) 40px; grid-template-areas: 'idx name desc go' 'idx tag desc go';
+    column-gap: clamp(16px, 3vw, 48px); row-gap: 6px; padding: clamp(24px, 3vw, 36px) 8px; border-bottom: 1px solid var(--line-night);
+    transition: background-color var(--dur) var(--ease-out);
+  }
+  .product-row::before { content: ''; position: absolute; inset: 0; background: radial-gradient(420px circle at var(--mx, 50%) var(--my, 50%), rgb(95 180 255 / 0.09), transparent 60%); opacity: 0; transition: opacity var(--dur); pointer-events: none; }
+  .product-row:hover::before { opacity: 1; }
+  .product-row::after { content: ''; position: absolute; left: 0; bottom: -1px; height: 1px; width: 100%; background: linear-gradient(90deg, var(--sky), var(--green-bright)); transform: scaleX(0); transform-origin: left; transition: transform 700ms var(--ease-out); }
+  .product-row:hover::after, .product-row:focus-visible::after { transform: scaleX(1); }
+  .idx { grid-area: idx; color: var(--ink-inverse-2); padding-top: 6px; }
+  .pr-name { grid-area: name; font-size: clamp(1.4rem, 1.1rem + 1vw, 2rem); font-weight: 600; letter-spacing: -0.03em; line-height: 1.1; }
+  .pr-tag { grid-area: tag; color: var(--sky); font-size: var(--fs-small); font-weight: 500; }
+  .pr-desc { grid-area: desc; color: var(--ink-inverse-2); font-size: var(--fs-small); line-height: 1.6; max-width: 62ch; }
+  .pr-go { grid-area: go; align-self: center; justify-self: end; width: 40px; height: 40px; border-radius: 50%; border: 1px solid var(--line-night-strong); display: grid; place-items: center; transition: background-color var(--dur), color var(--dur), transform var(--dur) var(--ease-out); }
+  .product-row:hover .pr-go { background: #fff; color: var(--ink); transform: rotate(45deg); }
+  @media (max-width: 860px) {
+    .product-row { grid-template-columns: 40px 1fr; grid-template-areas: 'idx name' 'idx tag' 'idx desc'; }
+    .pr-go { display: none; }
+    .pr-desc { margin-top: 8px; }
+  }
+
+  .buyer-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
+  .buyer-grid .wide { grid-column: span 2; }
+  .buyer-card { display: flex; flex-direction: column; gap: 10px; height: 100%; padding: clamp(22px, 2.4vw, 32px); overflow: hidden; }
+  .buyer-card::before { content: ''; position: absolute; inset: 0; border-radius: inherit; background: radial-gradient(380px circle at var(--mx, 50%) var(--my, 50%), rgb(8 112 199 / 0.07), transparent 60%); opacity: 0; transition: opacity var(--dur); pointer-events: none; }
+  .buyer-card:hover::before { opacity: 1; }
+  .buyer-card .idx { color: var(--ink-3); padding: 0; }
+  .bc-name { font-size: 1.35rem; font-weight: 600; letter-spacing: -0.025em; line-height: 1.2; margin-top: 18px; }
+  .wide .bc-name { font-size: clamp(1.6rem, 1.3rem + 1vw, 2.25rem); }
+  .bc-tag { color: var(--blue-ink); font-weight: 500; font-size: var(--fs-small); }
+  .bc-desc { color: var(--ink-2); font-size: var(--fs-small); }
+  .buyer-card .link-arrow { margin-top: auto; padding-top: 18px; }
+  .wide .buyer-card { background: linear-gradient(160deg, #fff 40%, var(--blue-soft)); }
+  @media (max-width: 960px) { .buyer-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .buyer-grid { grid-template-columns: minmax(0, 1fr); } .buyer-grid .wide { grid-column: auto; } }
+
+  .google-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr); gap: clamp(36px, 6vw, 96px); align-items: start; }
+  .google-copy { display: grid; gap: 28px; position: sticky; top: calc(var(--header-h) + 32px); }
+  .google-points { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); border-top: 1px solid var(--line-strong); }
+  .google-points li { padding: 28px 24px 32px 0; display: grid; gap: 10px; align-content: start; border-bottom: 1px solid var(--line); }
+  .google-points li:nth-child(even) { padding-left: 24px; border-left: 1px solid var(--line); }
+  .gp-n { color: var(--blue-ink); }
+  @media (max-width: 860px) { .google-grid { grid-template-columns: minmax(0, 1fr); } .google-copy { position: static; } }
+  @media (max-width: 560px) { .google-points { grid-template-columns: minmax(0, 1fr); } .google-points li:nth-child(even) { padding-left: 0; border-left: 0; } }
+
+  .client-grid { display: grid; grid-template-columns: repeat(8, minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .client-grid li { display: grid; place-items: center; height: 104px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 12px; }
+  .client-grid :global(.logo-mark) { mix-blend-mode: multiply; max-width: 100%; height: auto !important; transition: transform var(--dur) var(--ease-out); }
+  .client-grid li:hover :global(.logo-mark) { transform: scale(1.06); }
+  @media (max-width: 1000px) { .client-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  @media (max-width: 520px) { .client-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  .case-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.5vw, 32px); margin-top: clamp(40px, 5vw, 64px); }
+  .case-card { display: grid; gap: 16px; }
+  .case-meta { display: flex; gap: 28px; padding-top: 4px; }
+  .metric { display: grid; gap: 2px; font-size: var(--fs-xs); color: var(--ink-2); }
+  .metric b { font-size: 1.5rem; font-weight: 600; color: var(--ink); letter-spacing: -0.03em; }
+  .case-title { font-weight: 550; }
+  .case-card:hover .case-title { color: var(--blue-ink); }
+  @media (max-width: 860px) { .case-grid { grid-template-columns: minmax(0, 1fr); } }
+
+  .partners-marquee { margin-top: clamp(32px, 4vw, 56px); }
+  .resource-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 2.5vw, 32px) clamp(20px, 2.5vw, 32px); }
+  @media (max-width: 960px) { .resource-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .resource-grid { grid-template-columns: minmax(0, 1fr); } }
+</style>

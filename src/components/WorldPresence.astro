@@ -1,0 +1,47 @@
+---
+/**
+ * Global presence map. Map artwork rendered from the live site's
+ * map_image.svg; office pins use the coordinates from the live About page.
+ */
+const offices = [
+  { name: 'USA', x: 29.27, y: 35.21 },
+  { name: 'UK', x: 46.74, y: 31.04 },
+  { name: 'UAE', x: 61.94, y: 49.79 },
+  { name: 'India', x: 67.84, y: 53.75 },
+];
+// Arcs from the UK registered office to each other office (viewBox in percent units ×10).
+const hq = offices[1];
+const arcs = offices.filter((o) => o !== hq).map((o) => {
+  const x1 = hq.x * 10, y1 = hq.y * 10, x2 = o.x * 10, y2 = o.y * 10;
+  const mx = (x1 + x2) / 2, my = Math.min(y1, y2) - Math.abs(x2 - x1) * 0.28;
+  return `M ${x1} ${y1} Q ${mx} ${my} ${x2} ${y2}`;
+});
+---
+<figure class="presence" aria-label="VoiseTech offices: USA, UK, UAE and India">
+  <img src="/brand/world-map.webp" alt="" width="1934" height="960" loading="lazy" decoding="async" class="map" />
+  <svg class="arcs" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true" data-draw>
+    {arcs.map((d) => <path d={d} />)}
+  </svg>
+  <ul role="list" class="pins">
+    {offices.map((o, i) => (
+      <li style={`left:${o.x}%;top:${o.y}%;--d:${i * 0.4}s`}>
+        <span class="pin" aria-hidden="true"></span>
+        <span class="pin-label">{o.name}</span>
+      </li>
+    ))}
+  </ul>
+</figure>
+
+<style>
+  .presence { position: relative; margin: 0; aspect-ratio: 1934 / 960; }
+  .map { width: 100%; height: 100%; }
+  .arcs { position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; }
+  .arcs path { fill: none; stroke: var(--blue); stroke-width: 1.4; vector-effect: non-scaling-stroke; opacity: 0.7; }
+  .pins li { position: absolute; transform: translate(-50%, -50%); display: grid; justify-items: center; }
+  .pin { position: relative; width: 14px; height: 14px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px #fff, 0 2px 8px rgb(16 24 40 / 0.25); }
+  .pin::after { content: ''; position: absolute; inset: -4px; border-radius: 50%; border: 2px solid var(--green); animation: ping 2.6s var(--ease-out) infinite; animation-delay: var(--d); }
+  @keyframes ping { 0% { transform: scale(0.6); opacity: 0.9; } 100% { transform: scale(2.6); opacity: 0; } }
+  .pin-label { position: absolute; top: 20px; white-space: nowrap; font-family: var(--font-mono); font-size: 0.72rem; font-weight: 500; letter-spacing: 0.08em; text-transform: uppercase; background: #fff; border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; box-shadow: var(--shadow-soft); }
+  @media (max-width: 600px) { .pin-label { font-size: 0.6rem; padding: 2px 6px; top: 16px; } .pin { width: 10px; height: 10px; } }
+  @media (prefers-reduced-motion: reduce) { .pin::after { animation: none; opacity: 0; } }
+</style>

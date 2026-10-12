@@ -1,0 +1,41 @@
+---
+/**
+ * Responsive image for files mirrored from the WordPress uploads folder.
+ * Width/height come from the generated manifest (scripts/optimize-images.mjs)
+ * so the browser reserves space before the image loads.
+ */
+import manifest from '../data/image-manifest.json';
+
+type Variant = { w: number; src: string };
+type Entry = { w: number; h: number; variants: Variant[] };
+
+interface Props {
+  src: string;
+  alt: string;
+  sizes?: string;
+  width?: number;
+  height?: number;
+  loading?: 'lazy' | 'eager';
+  fetchpriority?: 'high' | 'low' | 'auto';
+  class?: string;
+  imgClass?: string;
+  style?: string;
+}
+
+const { src, alt, sizes = '100vw', loading = 'lazy', fetchpriority, class: className, imgClass, style } = Astro.props;
+const entry = (manifest as Record<string, Entry>)[src];
+if (!entry && import.meta.env.DEV) console.warn(`[Img] not in image manifest (run npm run assets:optimize): ${src}`);
+
+const width = Astro.props.width ?? entry?.w;
+const height = Astro.props.height ?? entry?.h;
+const variants = entry?.variants ?? [];
+const srcset = variants.map((v) => `${v.src} ${v.w}w`).join(', ');
+---
+{variants.length > 0 ? (
+  <picture class={className} style={style}>
+    <source type="image/webp" srcset={srcset} sizes={sizes} />
+    <img src={src} alt={alt} width={width} height={height} loading={loading} decoding="async" fetchpriority={fetchpriority} class={imgClass} />
+  </picture>
+) : (
+  <img src={src} alt={alt} width={width} height={height} loading={loading} decoding="async" fetchpriority={fetchpriority} class:list={[className, imgClass]} style={style} />
+)}

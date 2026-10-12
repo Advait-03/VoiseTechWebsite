@@ -1,0 +1,60 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import { SITE } from '../data/site';
+
+const portals = [
+  {
+    eyebrow: 'Publishers', title: 'Unlock Your Digital Potential', href: SITE.login.publisher, image: '/wp-content/uploads/2025/09/publishers2.jpg',
+    text: 'Welcome to Voise Tech, the cutting-edge platform where publishers thrive. Our advanced SSP (Supply-Side Platform) empowers you with superior monetization tools, enabling you to maximize revenue from your digital assets efficiently and effectively.',
+  },
+  {
+    eyebrow: 'Buyers', title: 'Drive Campaign', href: SITE.login.buyer, image: '/wp-content/uploads/2025/09/buyers2.jpg',
+    text: 'Step into the realm of Voise Tech, where buyers connect with premium inventory at scale. Our robust DSP (Demand-Side Platform) offers real-time bidding on high-quality ad placements, ensuring optimal visibility for your campaigns. Make every campaign delivered.',
+  },
+];
+---
+<BaseLayout
+  title="Login - Voise Tech"
+  description="Log in to the Voise Tech publisher or buyer platform."
+  breadcrumbs={[{ label: 'Login', href: '/login/' }]}
+>
+  <PageHero
+    eyebrow="Voise Login"
+    title="Experience the Future of Advertising <span class='grad-text'>with Voise Tech</span>"
+    lede="At Voise Tech, we are dedicated to simplifying the complex world of digital advertising by providing seamless solutions for publishers and advertisers alike. Whether you’re looking to monetize your website or enhance your advertising campaigns, our platform is designed to support your growth and success in the dynamic adtech landscape."
+    crumbs={[{ label: 'Login', href: '/login/' }]}
+  >
+    <div class="cluster" slot="actions">
+      <a class="btn btn-secondary" href="/contact-us/">Let’s Connect <Icon name="arrow" size={16} class="arrow" /></a>
+    </div>
+  </PageHero>
+
+  <section class="section-sm portals-sec">
+    <div class="container portals" data-stagger>
+      {portals.map((p) => (
+        <a class="portal card is-link" href={p.href} rel="noopener" data-reveal>
+          <div class="media portal-media"><Img src={p.image} alt="" sizes="(max-width: 860px) 100vw, 45vw" /></div>
+          <div class="portal-copy">
+            <p class="eyebrow">{p.eyebrow}</p>
+            <h2 class="h3">{p.title}</h2>
+            <p class="muted">{p.text}</p>
+            <span class="btn">Login<span class="sr-only"> to the {p.eyebrow.toLowerCase()} platform</span><Icon name="arrow-up-right" size={16} class="arrow" /></span>
+          </div>
+        </a>
+      ))}
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .portals-sec { padding-top: 0; }
+  .portals { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 20px; }
+  .portal { display: grid; overflow: hidden; }
+  .portal-media { aspect-ratio: 16 / 9; border-radius: 0; }
+  .portal-copy { display: grid; gap: 14px; padding: clamp(24px, 3vw, 40px); justify-items: start; }
+  .portal-copy .btn { margin-top: 10px; }
+  @media (max-width: 860px) { .portals { grid-template-columns: minmax(0, 1fr); } }
+</style>

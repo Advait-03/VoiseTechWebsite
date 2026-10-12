@@ -1,0 +1,27 @@
+# build output
+dist/
+.astro/
+
+# dependencies
+node_modules/
+
+# environment
+.env
+.env.*
+!.env.example
+
+# local form outbox (development / FORM_DELIVERY=file)
+.submissions/
+
+# WordPress import cache (re-creatable with `npm run import:wp`)
+.wp-cache/
+
+# logs & OS files
+npm-debug.log*
+.DS_Store
+Thumbs.db
+.gstack/
+
+# local tool state
+.claude/
+.gstack/

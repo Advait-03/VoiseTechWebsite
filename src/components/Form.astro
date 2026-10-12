@@ -1,0 +1,170 @@
+---
+/**
+ * Renders a form from src/lib/forms/definitions.ts. Works without JS (posts
+ * to the API, which redirects to /thank-you/); with JS it validates inline,
+ * submits via fetch and shows loading, error and success states.
+ */
+import Icon from './Icon.astro';
+import { forms, HONEYPOT, TIMESTAMP, type FormDef } from '../lib/forms/definitions';
+import { SITE } from '../data/site';
+
+interface Props { id: FormDef['id']; class?: string }
+const { id, class: className } = Astro.props;
+const def = forms[id];
+const hasFiles = def.fields.some((f) => f.type === 'file');
+const recaptcha = import.meta.env.PUBLIC_RECAPTCHA_SITE_KEY;
+const fid = (name: string) => `${id}-${name}`;
+// Short "Optional" sits in the label; anything longer is help text under the control.
+const help = (f: (typeof def.fields)[number]) => (f.hint ?? '').replace(/^Optional( — )?/, '').trim();
+const describedBy = (f: (typeof def.fields)[number]) => [help(f) && `${fid(f.name)}-help`, `${fid(f.name)}-error`].filter(Boolean).join(' ');
+---
+<form
+  class:list={['vt-form', className]}
+  action={`/api/${id}/`}
+  method="post"
+  enctype={hasFiles ? 'multipart/form-data' : 'application/x-www-form-urlencoded'}
+  novalidate
+  data-form={id}
+  data-recaptcha={recaptcha || undefined}
+  aria-describedby={`${id}-required-note`}
+>
+  <div class="summary" role="alert" tabindex="-1" hidden data-form-summary>
+    <p class="summary-title"><Icon name="alert" size={18} /> <span data-summary-text>Please check the highlighted fields.</span></p>
+    <ul role="list" data-summary-list></ul>
+  </div>
+
+  <p class="req-note" id={`${id}-required-note`}>Fields marked <span aria-hidden="true">*</span><span class="sr-only">with an asterisk</span> are required.</p>
+
+  <div class="grid">
+    {def.fields.map((f) => (
+      <div class:list={['field', f.half && 'half', `type-${f.type}`]} data-field={f.name}>
+        <label for={fid(f.name)} class="label">
+          <span class="label-text">{f.label}{f.required && <span class="req" aria-hidden="true">*</span>}</span>
+          {!f.required && <span class="hint">Optional</span>}
+        </label>
+        {f.type === 'select' ? (
+          <div class="select-wrap">
+            <select id={fid(f.name)} name={f.name} required={f.required} autocomplete={f.autocomplete} aria-describedby={describedBy(f)}>
+              <option value="">Select…</option>
+              {f.options!.map((o) => <option value={o}>{o}</option>)}
+            </select>
+            <Icon name="chevron" size={16} class="chev" />
+          </div>
+        ) : f.type === 'textarea' ? (
+          <textarea id={fid(f.name)} name={f.name} rows="5" maxlength={f.maxLength} required={f.required} aria-describedby={describedBy(f)}></textarea>
+        ) : f.type === 'file' ? (
+          <label class="drop" data-drop>
+            <input type="file" id={fid(f.name)} name={f.name} accept={f.accept!.join(',')} required={f.required} data-max-bytes={f.maxBytes} aria-describedby={describedBy(f)} />
+            <span class="drop-ui" aria-hidden="true">
+              <Icon name="upload" size={20} />
+              <span class="drop-text" data-drop-text>Choose a file or drag it here</span>
+            </span>
+          </label>
+        ) : (
+          <input
+            id={fid(f.name)}
+            name={f.name}
+            type={f.type}
+            required={f.required}
+            maxlength={f.maxLength}
+            autocomplete={f.autocomplete}
+            placeholder={f.placeholder}
+            inputmode={f.type === 'tel' ? 'tel' : undefined}
+            spellcheck={f.type === 'email' || f.type === 'url' ? 'false' : undefined}
+            aria-describedby={describedBy(f)}
+          />
+        )}
+        {help(f) && <p class="help" id={`${fid(f.name)}-help`}>{help(f)}</p>}
+        <p class="error" id={`${fid(f.name)}-error`} data-error></p>
+      </div>
+    ))}
+  </div>
+
+  <div class="hp" aria-hidden="true">
+    <label for={fid(HONEYPOT)}>Leave this field empty</label>
+    <input type="text" id={fid(HONEYPOT)} name={HONEYPOT} tabindex="-1" autocomplete="off" />
+  </div>
+  <input type="hidden" name={TIMESTAMP} value="" data-form-time />
+
+  <div class="foot">
+    <button type="submit" class="btn submit" data-submit>
+      <span class="submit-label">{def.submitLabel}</span>
+      <Icon name="arrow" size={16} class="arrow" />
+      <span class="spinner" aria-hidden="true"></span>
+    </button>
+    <p class="privacy">
+      We’ll use these details only to respond to your {id === 'careers' ? 'application' : 'enquiry'}. See our <a class="link" href="/privacy-policy/">Privacy Policy</a>.
+      {recaptcha && <> This site is protected by reCAPTCHA and the Google <a class="link" href="https://policies.google.com/privacy" target="_blank" rel="noopener noreferrer">Privacy Policy</a> and <a class="link" href="https://policies.google.com/terms" target="_blank" rel="noopener noreferrer">Terms of Service</a> apply.</>}
+    </p>
+  </div>
+  <div class="status" role="status" aria-live="polite" data-form-status></div>
+  <noscript><p class="privacy">Prefer email? Write to <a class="link" href={`mailto:${SITE.email}`}>{SITE.email}</a>.</p></noscript>
+</form>
+
+<style>
+  .vt-form { display: grid; gap: 22px; }
+  .req-note { font-size: var(--fs-xs); color: var(--ink-2); }
+  .req { color: #c0362c; }
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px 16px; }
+  .field { grid-column: 1 / -1; display: grid; gap: 8px; align-content: start; }
+  .field.half { grid-column: span 1; }
+  @media (max-width: 640px) { .field.half { grid-column: 1 / -1; } }
+  .label { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 4px 12px; font-size: var(--fs-small); font-weight: 550; }
+  .hint { font-weight: 400; color: var(--ink-3); font-size: var(--fs-xs); }
+  .req { margin-left: 3px; }
+  .help { font-size: var(--fs-xs); color: var(--ink-2); margin-top: -2px; }
+  input:not([type='file']), select, textarea {
+    width: 100%; min-height: 50px; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line-strong); background: #fff;
+    font-size: 1rem; color: var(--ink); transition: border-color var(--dur-fast), box-shadow var(--dur-fast);
+    -webkit-appearance: none; appearance: none;
+  }
+  textarea { resize: vertical; min-height: 130px; line-height: 1.5; }
+  input::placeholder, textarea::placeholder { color: var(--ink-3); }
+  input:hover, select:hover, textarea:hover { border-color: #aeb6c1; }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgb(8 112 199 / 0.18); }
+  .select-wrap { position: relative; }
+  .select-wrap select { padding-right: 40px; }
+  .select-wrap :global(.chev) { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--ink-2); }
+  [aria-invalid='true'] { border-color: #c0362c !important; }
+  [aria-invalid='true']:focus-visible { box-shadow: 0 0 0 3px rgb(192 54 44 / 0.18) !important; }
+  .error { font-size: var(--fs-xs); color: #b42318; min-height: 0; }
+  .error:empty { display: none; }
+
+  .drop { position: relative; display: block; cursor: pointer; }
+  .drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
+  .drop-ui { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 14px 16px; border: 1px dashed var(--line-strong); border-radius: 12px; background: var(--bg-subtle); color: var(--ink-2); font-size: var(--fs-small); transition: border-color var(--dur-fast), background-color var(--dur-fast); }
+  .drop:hover .drop-ui, .drop.is-over .drop-ui { border-color: var(--blue); background: var(--blue-soft); }
+  .drop input:focus-visible + .drop-ui { border-color: var(--blue); box-shadow: 0 0 0 3px rgb(8 112 199 / 0.18); }
+  .drop.has-file .drop-ui { border-style: solid; color: var(--ink); background: #fff; }
+  .drop input[aria-invalid='true'] + .drop-ui { border-color: #c0362c; }
+  .drop-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+
+  .hp { position: absolute; left: -10000px; width: 1px; height: 1px; overflow: hidden; }
+
+  .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 4px; }
+  .submit { min-width: 200px; }
+  /* Forms sit on white cards even inside dark sections. */
+  .vt-form .submit { --btn-bg: var(--ink); --btn-fg: #fff; }
+  .vt-form .submit:hover { --btn-fg: #fff; }
+  .spinner { display: none; width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgb(255 255 255 / 0.35); border-top-color: #fff; animation: spin 700ms linear infinite; }
+  @keyframes spin { to { transform: rotate(360deg); } }
+  .submit[aria-busy='true'] .spinner { display: inline-block; }
+  .submit[aria-busy='true'] :global(.arrow) { display: none; }
+  .privacy { flex: 1 1 260px; font-size: var(--fs-xs); color: var(--ink-2); }
+
+  .summary { padding: 16px 18px; border-radius: 12px; background: #fef3f2; border: 1px solid #fecdca; color: #7a271a; }
+  .summary:focus { outline: 2px solid #b42318; outline-offset: 2px; }
+  .summary-title { display: flex; gap: 8px; align-items: center; font-weight: 600; }
+  .summary ul { margin-top: 8px; padding-left: 26px; list-style: disc; font-size: var(--fs-small); }
+  .summary a { text-decoration: underline; }
+  .status:empty { display: none; }
+  .status { padding: 16px 18px; border-radius: 12px; font-size: var(--fs-small); }
+  .status.is-error { background: #fef3f2; border: 1px solid #fecdca; color: #7a271a; }
+  .status.is-success { background: #ecfdf3; border: 1px solid #abefc6; color: #085d3a; }
+  .status a { text-decoration: underline; }
+</style>
+
+<script>
+  import { initForms } from '../scripts/forms';
+  initForms();
+</script>

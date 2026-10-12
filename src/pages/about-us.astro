@@ -1,0 +1,226 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import StatGrid from '../components/StatGrid.astro';
+import VideoFacade from '../components/VideoFacade.astro';
+import WorldPresence from '../components/WorldPresence.astro';
+import LogoGrid from '../components/LogoGrid.astro';
+import LogoMark from '../components/LogoMark.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import PersonCard from '../components/PersonCard.astro';
+import { aboutStats } from '../data/stats';
+import { leadership, team } from '../data/people';
+import { partners, memberships, trustPartners } from '../data/logos';
+
+const values = [
+  { title: 'Innovation', text: 'We don’t believe in rinse-and-repeat. Our teams build, test, and adapt to stay ahead of what’s next.' },
+  { title: 'Transparency', text: 'From auction logic to campaign reporting, every piece of data is traceable and clear.' },
+  { title: 'Performance', text: 'Every product and partnership is designed to drive meaningful, measurable results.' },
+  { title: 'Responsibility', text: 'We follow privacy-first principles, support ethical media practices, and commit to long-term sustainability.' },
+  { title: 'Diversity & Inclusion', text: 'Representation matters, to us, to our teams, and in every campaign we help deliver.' },
+];
+const triad = [
+  { word: 'Precision.', text: 'Every impression is placed with intent.' },
+  { word: 'Power.', text: 'Delivering influence at maximum strength.' },
+  { word: 'Performance.', text: 'Optimized paths, provable results.' },
+];
+---
+<BaseLayout
+  title="About Voise Tech | Programmatic Advertising & AdTech Experts"
+  description="Learn about Voise Tech’s journey as a global leader in programmatic advertising and ad tech solutions, empowering publishers and advertisers worldwide."
+  breadcrumbs={[{ label: 'About Us', href: '/about-us/' }]}
+>
+  <PageHero
+    eyebrow="About us"
+    title="Built for Transparency. Engineered for Omnichannel Performance."
+    lede="VoiseTech was built with a clear mission: to power the next generation of AdTech infrastructure for a more transparent and efficient digital advertising ecosystem."
+    crumbs={[{ label: 'About Us', href: '/about-us/' }]}
+  />
+
+  <section class="section-sm story">
+    <div class="container story-grid">
+      <div class="story-copy stack muted" data-reveal>
+        <p>Since 2023, we have evolved into a global platform supporting publishers, agencies, and brands with technology designed for clean supply paths, advanced measurement, and predictable outcomes across the omnichannel landscape. Our approach focuses on simplifying the complexity of modern advertising while enabling more reliable performance and stronger outcomes across channels.</p>
+        <p>What began as a focused effort to bring greater clarity to digital advertising has grown into a trusted technology partner across the US, UK, UAE, India, and beyond. With a rapidly expanding platform and deep omnichannel integrations, VoiseTech enables buyers to access brand-safe inventory while helping publishers maximise yield with greater control and transparency.</p>
+      </div>
+      <div data-reveal="fade" style="--i:1">
+        <VideoFacade id="-MQV1bk5KHI" title="Voise Tech on YouTube" label="Watch the VoiseTech film" />
+      </div>
+    </div>
+    <div class="container stats-wrap">
+      <StatGrid stats={aboutStats} />
+    </div>
+  </section>
+
+  <section class="section on-night triad-section">
+    <div class="container">
+      <ul role="list" class="triad" data-stagger>
+        {triad.map((t) => (
+          <li data-reveal>
+            <span class="triad-word">{t.word}</span>
+            <span class="triad-text">{t.text}</span>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section vm">
+    <div class="container vm-grid">
+      <article class="vm-item">
+        <div class="media vm-media" data-reveal="mask"><Img src="/wp-content/uploads/2025/09/Vision.jpg" alt="Two colleagues reviewing a world map of live data in an operations room" sizes="(max-width: 860px) 100vw, 45vw" /></div>
+        <div class="vm-copy" data-reveal>
+          <p class="eyebrow">Vision</p>
+          <h2 class="h3">To become the most trusted and performance-driven omnichannel adtech solutions provider in the global advertising ecosystem.</h2>
+          <p class="muted">We’re setting the standard for clarity, speed, and accountability, where every impression is traceable, every dollar works harder, and sustainable, brand-safe media is the default.</p>
+        </div>
+      </article>
+      <article class="vm-item">
+        <div class="media vm-media" data-reveal="mask"><Img src="/wp-content/uploads/2025/09/Mission.jpg" alt="A team reviewing campaign analytics on screens" sizes="(max-width: 860px) 100vw, 45vw" /></div>
+        <div class="vm-copy" data-reveal>
+          <p class="eyebrow">Mission</p>
+          <h2 class="h3">To deliver impactful, measurable advertising outcomes through intelligent technology and transparent partnerships.</h2>
+          <p class="muted">We build tools that make buying faster and clearer, pair them with audit-ready reporting, and operate privacy-first, so brands, agencies, and media owners can scale with confidence and know exactly what drove the result.</p>
+        </div>
+      </article>
+    </div>
+  </section>
+
+  <section class="section tone-subtle">
+    <div class="container values-grid">
+      <SectionHeading eyebrow="Values" title="What Guides Our Work." />
+      <ol role="list" class="values" data-stagger>
+        {values.map((v, i) => (
+          <li data-reveal>
+            <span class="mono v-n">0{i + 1}</span>
+            <h3 class="h4">{v.title}</h3>
+            <p class="muted small">{v.text}</p>
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
+
+  <section class="section presence-section">
+    <div class="container">
+      <div class="presence-head">
+        <SectionHeading eyebrow="Offices" title="Global Presence." lede="A trusted technology partner across the US, UK, UAE, India, and beyond." />
+      </div>
+      <div data-reveal="fade"><WorldPresence /></div>
+    </div>
+  </section>
+
+  <section class="section tone-subtle" id="team">
+    <div class="container">
+      <SectionHeading eyebrow="People" title="Leadership Team." />
+      <ul role="list" class="people leaders" data-stagger>
+        {leadership.map((p) => <li data-reveal><PersonCard person={p} /></li>)}
+      </ul>
+      <div class="team-head"><SectionHeading eyebrow="People" title="Meet Our Team." level="h2" /></div>
+      <ul role="list" class="people" data-stagger>
+        {team.map((p) => <li data-reveal><PersonCard person={p} /></li>)}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section">
+    <div class="container resp-grid">
+      <div class="resp-copy">
+        <SectionHeading eyebrow="Responsibility" title="Responsibility in Action" lede="We’re not just ticking boxes. Voise Tech actively adheres to GDPR and CCPA compliance and partners only with MRC-accredited verification vendors. Every campaign is designed with privacy, brand safety, and media sustainability in mind." />
+        <a class="link-arrow" href="/privacy-policy/" data-reveal><span class="label">Read our privacy policy</span><Icon name="arrow" size={14} class="arrow" /></a>
+      </div>
+      <div class="media resp-media" data-reveal="mask"><Img src="/wp-content/uploads/2025/09/Responsibility-in-Action-1.jpg" alt="A laptop showing a security lock icon over data" sizes="(max-width: 860px) 100vw, 45vw" /></div>
+    </div>
+  </section>
+
+  <section class="section tone-subtle">
+    <div class="container">
+      <SectionHeading eyebrow="Partners" title="Our Partners." />
+      <div class="grid-wrap"><LogoGrid logos={partners} label="Our partners" /></div>
+      <div class="trust-row">
+        <div>
+          <h3 class="mono trust-title">Partnered with</h3>
+          <ul role="list" class="trust-logos">
+            {memberships.map((m) => <li><img src={m.src} alt={m.name} width={m.width} height={m.height} loading="lazy" decoding="async" /></li>)}
+          </ul>
+        </div>
+        <div>
+          <h3 class="mono trust-title">Compliance and trust partners</h3>
+          <ul role="list" class="trust-logos">
+            {trustPartners.map((m) => <li><LogoMark src={m.src} name={m.name} area={4200} maxHeight={48} maxWidth={170} /></li>)}
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <CtaBand
+    eyebrow="Start the conversation"
+    title="Precision Targeting, Transparent Reporting, Real Monetisation."
+    primary={{ label: 'Start the Conversation', href: '/contact-us/' }}
+    secondary={{ label: 'Careers at Voise Tech', href: '/careers/' }}
+  />
+</BaseLayout>
+
+<style>
+  .story-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .story-copy { font-size: 1.06rem; }
+  .stats-wrap { margin-top: clamp(56px, 7vw, 96px); }
+  @media (max-width: 900px) { .story-grid { grid-template-columns: minmax(0, 1fr); } }
+
+  .triad-section { padding-block: clamp(72px, 9vw, 128px); }
+  .triad { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(24px, 4vw, 56px); }
+  .triad li { min-width: 0; }
+  .triad li { display: grid; gap: 12px; padding-top: 22px; border-top: 1px solid var(--line-night-strong); }
+  .triad-word { font-size: clamp(2.5rem, 1.6rem + 3.2vw, 5rem); font-weight: 600; letter-spacing: -0.05em; line-height: 1; }
+  .triad li:nth-child(1) .triad-word { color: var(--sky); }
+  .triad li:nth-child(3) .triad-word { color: var(--green-bright); }
+  .triad-text { color: var(--ink-inverse-2); font-size: 1.05rem; }
+  @media (max-width: 1000px) { .triad { grid-template-columns: minmax(0, 1fr); } }
+
+  .vm-grid { display: grid; gap: clamp(56px, 8vw, 120px); }
+  .vm-item { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .vm-item:nth-child(2) .vm-media { order: 2; }
+  .vm-media { aspect-ratio: 550 / 405; }
+  .vm-copy { display: grid; gap: 18px; max-width: 520px; }
+  .vm-copy h2 { font-size: clamp(1.5rem, 1.2rem + 1.1vw, 2.2rem); line-height: 1.2; letter-spacing: -0.03em; }
+  @media (max-width: 860px) { .vm-item { grid-template-columns: minmax(0, 1fr); } .vm-item:nth-child(2) .vm-media { order: 0; } }
+
+  .values-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 6vw, 96px); align-items: start; }
+  .values { border-top: 1px solid var(--line-strong); }
+  .values li { display: grid; grid-template-columns: 48px minmax(150px, 0.6fr) 1fr; gap: 16px; padding: 24px 0; border-bottom: 1px solid var(--line); align-items: baseline; }
+  .v-n { color: var(--blue-ink); }
+  @media (max-width: 860px) { .values-grid { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 560px) { .values li { grid-template-columns: 40px 1fr; } .values li p { grid-column: 2; } }
+
+  .presence-head { margin-bottom: clamp(32px, 4vw, 56px); }
+
+  .people { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); margin-top: clamp(32px, 4vw, 48px); }
+  .people.leaders { grid-template-columns: repeat(3, minmax(0, 1fr)); max-width: 980px; }
+  .team-head { margin-top: clamp(72px, 9vw, 120px); }
+  .people :global(.person) { display: grid; gap: 14px; }
+  .people :global(.person-photo) { position: relative; aspect-ratio: 4 / 5; border-radius: var(--radius); overflow: hidden; background: linear-gradient(160deg, #e9eef5, #dfe6ee); }
+  .people :global(.person-photo img) { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 900ms var(--ease-out); }
+  .people :global(a.person:hover .person-photo img) { transform: scale(1.04); }
+  .people :global(.person-li) { position: absolute; right: 12px; bottom: 12px; width: 34px; height: 34px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; box-shadow: var(--shadow-soft); transition: background-color var(--dur), color var(--dur); }
+  .people :global(a.person:hover .person-li) { background: #0a66c2; color: #fff; }
+  .people :global(.person-name) { font-weight: 600; letter-spacing: -0.015em; }
+  .people :global(.person-role) { font-size: var(--fs-small); color: var(--ink-2); }
+  @media (max-width: 1000px) { .people { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .people, .people.leaders { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+
+  .resp-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .resp-copy { display: grid; gap: 28px; }
+  .resp-media { aspect-ratio: 565 / 419; }
+  @media (max-width: 860px) { .resp-grid { grid-template-columns: minmax(0, 1fr); } }
+
+  .grid-wrap { margin-top: clamp(32px, 4vw, 48px); }
+  .trust-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; margin-top: 48px; }
+  .trust-title { color: var(--ink-3); margin-bottom: 16px; font-size: 0.72rem; }
+  .trust-logos { display: flex; flex-wrap: wrap; gap: 28px; align-items: center; }
+  .trust-logos img { height: 40px; width: auto; }
+  @media (max-width: 760px) { .trust-row { grid-template-columns: minmax(0, 1fr); } }
+</style>

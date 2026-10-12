@@ -1,0 +1,23 @@
+---
+/**
+ * VoiseTech wordmark. Cropped (not redrawn) from the authentic high-resolution
+ * logo /wp-content/uploads/2026/03/VoiseTech_Logo_Transparent_With_Tagline2_White.png.
+ * Intrinsic ratio 2182 × 303.
+ */
+interface Props { height?: number; class?: string; eager?: boolean }
+const { height = 22, class: className, eager = true } = Astro.props;
+const width = Math.round((height * 2182) / 303);
+---
+<picture class={className}>
+  <source type="image/webp" srcset="/brand/voisetech-wordmark-240.webp 240w, /brand/voisetech-wordmark-480.webp 480w, /brand/voisetech-wordmark-720.webp 720w" sizes={`${width}px`} />
+  <img
+    src="/brand/voisetech-wordmark-480.png"
+    srcset="/brand/voisetech-wordmark-240.png 240w, /brand/voisetech-wordmark-480.png 480w, /brand/voisetech-wordmark-720.png 720w"
+    sizes={`${width}px`}
+    width={width}
+    height={height}
+    alt="VoiseTech"
+    loading={eager ? 'eager' : 'lazy'}
+    decoding="async"
+  />
+</picture>

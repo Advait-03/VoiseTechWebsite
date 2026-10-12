@@ -1,0 +1,19 @@
+---
+import Img from './Img.astro';
+import Icon from './Icon.astro';
+import type { Person } from '../data/people';
+
+interface Props { person: Person }
+const { person: p } = Astro.props;
+const Tag = p.linkedin ? 'a' : 'div';
+const linkProps = p.linkedin ? { href: p.linkedin, target: '_blank', rel: 'noopener noreferrer' } : {};
+---
+<Tag class="person" {...linkProps}>
+  <span class="person-photo">
+    <Img src={p.photo} alt={`${p.name}, ${p.role}`} sizes="(max-width: 600px) 50vw, (max-width: 1000px) 33vw, 240px" />
+    {p.linkedin && <span class="person-li" aria-hidden="true"><Icon name="linkedin" size={15} /></span>}
+  </span>
+  <span class="person-name">{p.name}</span>
+  <span class="person-role">{p.role}</span>
+  {p.linkedin && <span class="sr-only">— LinkedIn profile (opens in a new tab)</span>}
+</Tag>

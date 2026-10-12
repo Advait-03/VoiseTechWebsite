@@ -1,0 +1,43 @@
+---
+import Img from './Img.astro';
+import Icon from './Icon.astro';
+import { formatShortDate, type ResourceItem } from '../lib/content';
+
+interface Props { item: ResourceItem; headingLevel?: 'h2' | 'h3'; showExcerpt?: boolean; eager?: boolean; showDate?: boolean }
+const { item, headingLevel = 'h3', showExcerpt = false, eager = false, showDate = true } = Astro.props;
+const H = headingLevel;
+---
+<a class="resource-card is-link" href={item.href}>
+  <div class="media" style={`aspect-ratio:${item.image ? `${item.image.width}/${item.image.height}` : '551/355'}`}>
+    {item.image ? (
+      <Img src={item.image.src} alt="" sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" loading={eager ? 'eager' : 'lazy'} />
+    ) : <span class="placeholder blueprint" aria-hidden="true"></span>}
+  </div>
+  <div class="body">
+    <p class="meta mono">
+      <span class:list={['kind', item.kind === 'Event' && 'is-event', item.kind === 'Case study' && 'is-case']}>{item.kind}</span>
+      {showDate && item.kind !== 'Event' && <time datetime={item.date.toISOString()}>{formatShortDate(item.date)}</time>}
+    </p>
+    <H class="title">{item.title}</H>
+    {item.meta && <p class="sub">{item.meta}</p>}
+    {showExcerpt && item.excerpt && <p class="excerpt">{item.excerpt}</p>}
+    <span class="go" aria-hidden="true"><Icon name="arrow" size={16} /></span>
+  </div>
+</a>
+
+<style>
+  .resource-card { display: grid; gap: 18px; height: 100%; align-content: start; }
+  .media { aspect-ratio: 551 / 355; }
+  .placeholder { position: absolute; inset: 0; }
+  .body { position: relative; display: grid; gap: 8px; padding-right: 36px; }
+  .meta { display: flex; flex-wrap: wrap; gap: 12px; color: var(--ink-3); font-size: 0.7rem; }
+  .kind { color: var(--blue-ink); }
+  .kind.is-event { color: var(--green-ink); }
+  .kind.is-case { color: var(--ink); }
+  .title { font-size: 1.15rem; line-height: 1.32; letter-spacing: -0.018em; font-weight: 600; transition: color var(--dur); text-wrap: pretty; }
+  .resource-card:hover .title { color: var(--blue-ink); }
+  .sub { font-size: var(--fs-xs); color: var(--ink-2); }
+  .excerpt { font-size: var(--fs-small); color: var(--ink-2); display: -webkit-box; -webkit-line-clamp: 3; -webkit-box-orient: vertical; overflow: hidden; }
+  .go { position: absolute; top: 22px; right: 0; color: var(--ink-3); transition: transform var(--dur) var(--ease-out), color var(--dur); }
+  .resource-card:hover .go { transform: translateX(4px); color: var(--ink); }
+</style>

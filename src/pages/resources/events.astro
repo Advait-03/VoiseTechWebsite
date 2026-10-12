@@ -1,0 +1,49 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ResourceTabs from '../../components/ResourceTabs.astro';
+import EventRow from '../../components/EventRow.astro';
+import { allEvents, eventStatus } from '../../lib/content';
+
+const events = await allEvents();
+const now = new Date();
+const upcoming = events.filter((e) => eventStatus(e, now) !== 'past').reverse();
+const past = events.filter((e) => eventStatus(e, now) === 'past');
+const yearOf = (e: (typeof events)[number]) => (e.data.startDate ?? e.data.date).getUTCFullYear();
+const years = [...new Set(past.map(yearOf))];
+---
+<BaseLayout
+  title="Voise Tech Events | Digital Advertising Conferences & Webinars"
+  description="Discover Voise Tech’s latest events, webinars, and industry meetups. Join us to explore innovations and trends in digital advertising."
+  breadcrumbs={[{ label: 'Resources', href: '/resources/blog/' }, { label: 'Events', href: '/resources/events/' }]}
+>
+  <PageHero eyebrow="Resources" title="Events" lede="Meet the VoiseTech team at industry events around the world." crumbs={[{ label: 'Resources', href: '/resources/blog/' }, { label: 'Events', href: '/resources/events/' }]} />
+  <ResourceTabs />
+
+  <section class="container group">
+    <h2 class="h3">Upcoming</h2>
+    {upcoming.length ? (
+      <ul role="list" class="list" data-stagger>
+        {upcoming.map((e) => <li data-reveal><EventRow event={e} /></li>)}
+      </ul>
+    ) : (
+      <p class="none muted" data-reveal>There are no upcoming events listed right now. Follow <a class="link" href="https://www.linkedin.com/company/voisetech/" target="_blank" rel="noopener noreferrer">VoiseTech on LinkedIn</a> for announcements, or <a class="link" href="/contact-us/">get in touch</a> to arrange a meeting.</p>
+    )}
+  </section>
+
+  {years.map((y) => (
+    <section class="section-sm container group">
+      <h2 class="h3 year">{y}</h2>
+      <ul role="list" class="list" data-stagger>
+        {past.filter((e) => yearOf(e) === y).map((e) => <li data-reveal><EventRow event={e} /></li>)}
+      </ul>
+    </section>
+  ))}
+</BaseLayout>
+
+<style>
+  .group { display: grid; gap: 20px; }
+  .year { padding-top: 20px; }
+  .none { max-width: 62ch; padding: 22px 24px; border: 1px dashed var(--line-strong); border-radius: var(--radius); }
+  .list { border-top: 1px solid var(--line); }
+</style>

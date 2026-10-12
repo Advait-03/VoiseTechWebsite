@@ -1,0 +1,24 @@
+---
+/** Static logo grid (every logo visible, no motion). */
+import LogoMark from './LogoMark.astro';
+import type { Logo } from '../data/logos';
+
+interface Props { logos: Logo[]; label: string; columns?: number; color?: boolean }
+const { logos, label, columns = 6, color = true } = Astro.props;
+---
+<ul role="list" class:list={['logo-grid', !color && 'is-mono']} aria-label={label} style={`--cols:${columns}`} data-stagger>
+  {logos.map((l) => (
+    <li data-reveal title={l.name}><LogoMark src={l.src} name={l.name} area={3000} maxHeight={54} maxWidth={150} /></li>
+  ))}
+</ul>
+
+<style>
+  .logo-grid { display: grid; grid-template-columns: repeat(var(--cols), minmax(0, 1fr)); border-top: 1px solid var(--line); border-left: 1px solid var(--line); }
+  .logo-grid li { display: grid; place-items: center; height: 112px; padding: 16px; border-right: 1px solid var(--line); border-bottom: 1px solid var(--line); background: #fff; }
+  .logo-grid :global(.logo-mark) { max-width: 100%; height: auto !important; mix-blend-mode: multiply; transition: transform var(--dur) var(--ease-out), filter var(--dur); }
+  .logo-grid li:hover :global(.logo-mark) { transform: scale(1.06); }
+  .is-mono :global(.logo-mark) { filter: grayscale(1) contrast(1.2); }
+  .is-mono li:hover :global(.logo-mark) { filter: none; }
+  @media (max-width: 1000px) { .logo-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .logo-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } .logo-grid li { height: 96px; } }
+</style>

@@ -1,0 +1,56 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ResourceTabs from '../../components/ResourceTabs.astro';
+import LogoMark from '../../components/LogoMark.astro';
+import CtaBand from '../../components/CtaBand.astro';
+import Icon from '../../components/Icon.astro';
+import { testimonials } from '../../data/people';
+
+const schema = testimonials.map((t) => ({
+  '@type': 'Review',
+  reviewBody: t.quote,
+  author: { '@type': 'Person', name: t.name, jobTitle: t.role, worksFor: { '@type': 'Organization', name: t.company } },
+  itemReviewed: { '@id': 'https://www.voisetech.com/#organization' },
+}));
+---
+<BaseLayout
+  title="Voise Tech Client Testimonials | Trusted Digital Advertising Partner"
+  description="Discover what clients say about Voise Tech’s expertise in digital advertising, programmatic solutions, and revenue growth success stories."
+  breadcrumbs={[{ label: 'Resources', href: '/resources/blog/' }, { label: 'Testimonials', href: '/resources/testimonials/' }]}
+  schema={schema}
+>
+  <PageHero eyebrow="Resources" title="Real Results, Straight from Client Testimonials." crumbs={[{ label: 'Resources', href: '/resources/blog/' }, { label: 'Testimonials', href: '/resources/testimonials/' }]} />
+  <ResourceTabs />
+
+  <section class="container list">
+    {testimonials.map((t, i) => (
+      <figure class:list={['quote', i % 2 === 1 && 'alt']} data-reveal>
+        <div class="who">
+          <span class="logo"><LogoMark src={t.logo} name={t.company} area={3600} maxHeight={60} maxWidth={170} /></span>
+          <figcaption><b>{t.name}</b><span>{t.role}, {t.company}</span></figcaption>
+        </div>
+        <blockquote>
+          <Icon name="quote" size={30} class="q" />
+          <p>{t.quote}</p>
+        </blockquote>
+      </figure>
+    ))}
+  </section>
+
+  <CtaBand eyebrow="Work with us" title="Become our next success story." primary={{ label: 'Talk to Our Team', href: '/contact-us/' }} secondary={{ label: 'Read case studies', href: '/resources/case-studies/' }} />
+</BaseLayout>
+
+<style>
+  .list { display: grid; padding-bottom: var(--section); }
+  .quote { margin: 0; display: grid; grid-template-columns: minmax(200px, 0.35fr) 1fr; gap: clamp(24px, 5vw, 80px); padding-block: clamp(40px, 5vw, 64px); border-top: 1px solid var(--line); }
+  .who { display: grid; gap: 18px; align-content: start; }
+  .logo { display: grid; place-items: center start; height: 72px; }
+  .logo :global(.logo-mark) { mix-blend-mode: multiply; }
+  figcaption { display: grid; font-size: var(--fs-small); color: var(--ink-2); }
+  figcaption b { color: var(--ink); font-size: 1rem; font-weight: 600; }
+  blockquote { display: grid; gap: 18px; }
+  blockquote :global(.q) { color: var(--blue); }
+  blockquote p { font-size: clamp(1.25rem, 1rem + 1vw, 1.9rem); line-height: 1.4; letter-spacing: -0.022em; text-wrap: pretty; }
+  @media (max-width: 760px) { .quote { grid-template-columns: minmax(0, 1fr); } }
+</style>

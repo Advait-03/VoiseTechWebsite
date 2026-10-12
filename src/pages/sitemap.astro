@@ -1,0 +1,64 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import { publisherProducts, buyerProducts, resourceTabs } from '../data/navigation';
+import { allPosts, allCaseStudies, allEvents } from '../lib/content';
+
+const posts = await allPosts();
+const cases = await allCaseStudies();
+const events = await allEvents();
+const groups = [
+  { title: 'Company', links: [
+    { label: 'Home', href: '/' }, { label: 'About Us', href: '/about-us/' }, { label: 'Careers', href: '/careers/' },
+    { label: 'Contact Us', href: '/contact-us/' }, { label: 'Login', href: '/login/' }, { label: 'VoiseTech.AI', href: '/voisetechai/' },
+    { label: 'Privacy Policy', href: '/privacy-policy/' },
+  ] },
+  { title: 'Products & solutions', links: [
+    { label: 'Products', href: '/products/' }, { label: 'Solutions', href: '/solutions/' }, { label: 'Publishers', href: '/ad-publishers-solutions/' },
+    { label: 'Buyers', href: '/ad-buyers-solutions/' }, { label: 'GAM 360', href: '/google-ad-manager-solutions-services/' },
+  ] },
+  { title: 'Publisher products', links: publisherProducts },
+  { title: 'Buyer products', links: buyerProducts },
+  { title: 'Resources', links: resourceTabs },
+];
+---
+<BaseLayout title="Sitemap - Voise Tech" description="Every page on the Voise Tech website." breadcrumbs={[{ label: 'Sitemap', href: '/sitemap/' }]}>
+  <PageHero eyebrow="Sitemap" title="Sitemap" crumbs={[{ label: 'Sitemap', href: '/sitemap/' }]} />
+  <section class="section-sm map">
+    <div class="container">
+      <div class="groups">
+        {groups.map((g) => (
+          <nav aria-label={g.title}>
+            <h2 class="mono gt">{g.title}</h2>
+            <ul role="list">{g.links.map((l) => <li><a class="link" href={l.href}>{l.label}</a></li>)}</ul>
+          </nav>
+        ))}
+      </div>
+      <div class="long">
+        <nav aria-label="Blog articles">
+          <h2 class="mono gt">Voise Blogs ({posts.length})</h2>
+          <ul role="list" class="cols">{posts.map((p) => <li><a class="link" href={`/${p.id}/`}>{p.data.title}</a></li>)}</ul>
+        </nav>
+        <nav aria-label="Case studies">
+          <h2 class="mono gt">Case Studies ({cases.length})</h2>
+          <ul role="list" class="cols">{cases.map((c) => <li><a class="link" href={`/case-study/${c.id}/`}>{c.data.title}</a></li>)}</ul>
+        </nav>
+        <nav aria-label="Events">
+          <h2 class="mono gt">Events ({events.length})</h2>
+          <ul role="list" class="cols">{events.map((e) => <li><a class="link" href={`/event/${e.id}/`}>{e.data.title}</a></li>)}</ul>
+        </nav>
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .map { padding-top: 0; }
+  .groups { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 32px; padding-bottom: 48px; border-bottom: 1px solid var(--line); }
+  .gt { color: var(--ink-3); margin-bottom: 16px; }
+  ul { display: grid; gap: 10px; font-size: var(--fs-small); }
+  .long { display: grid; gap: 48px; margin-top: 48px; }
+  .cols { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px 32px; }
+  @media (max-width: 960px) { .groups { grid-template-columns: repeat(2, minmax(0, 1fr)); } .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .groups, .cols { grid-template-columns: minmax(0, 1fr); } }
+</style>

@@ -1,0 +1,105 @@
+---
+import Logo from './Logo.astro';
+import Icon from './Icon.astro';
+import Img from './Img.astro';
+import { footerNav } from '../data/navigation';
+import { memberships, trustPartners } from '../data/logos';
+import { SITE, mailto } from '../data/site';
+
+const presence = [
+  { name: 'USA', flag: '/wp-content/uploads/2025/09/USA-1.png' },
+  { name: 'UK', flag: '/wp-content/uploads/2025/08/united-kingdom-2.png' },
+  { name: 'UAE', flag: '/wp-content/uploads/2025/09/UAE-1.png' },
+  { name: 'India', flag: '/wp-content/uploads/2025/09/india-1.png' },
+];
+const year = new Date().getFullYear();
+---
+<footer class="site-footer">
+  <div class="container-wide">
+    <div class="top">
+      <div class="identity">
+        <a href="/" class="brand" aria-label="VoiseTech home"><Logo height={24} eager={false} /></a>
+        <p class="statement">Beyond AdTech.<br />Built for What’s Next.</p>
+        <address class="contact">
+          <span class="row"><Icon name="pin" size={18} />{SITE.legalName}, {SITE.address.street}, {SITE.address.city} {SITE.address.postcode}, {SITE.address.country}</span>
+          <a class="row link-row" href={mailto()}><Icon name="mail" size={18} /><span class="link">{SITE.email}</span></a>
+        </address>
+        <a class="social" href={SITE.linkedin} target="_blank" rel="noopener noreferrer">
+          <Icon name="linkedin" size={18} /><span>Follow us on LinkedIn</span><span class="sr-only">(opens in a new tab)</span>
+        </a>
+      </div>
+
+      <nav class="cols" aria-label="Footer">
+        {footerNav.map((col) => (
+          <div class="col">
+            <h2 class="col-title mono">{col.title}</h2>
+            <ul role="list">
+              {col.links.map((l) => <li><a class="link" href={l.href}>{l.label}</a></li>)}
+            </ul>
+          </div>
+        ))}
+      </nav>
+    </div>
+
+    <div class="trust">
+      <div class="trust-group">
+        <h2 class="col-title mono">Presence in</h2>
+        <ul role="list" class="presence">
+          {presence.map((p) => (
+            <li><Img src={p.flag} alt="" width={22} height={22} class="flag" sizes="22px" />{p.name}</li>
+          ))}
+        </ul>
+      </div>
+      <div class="trust-group">
+        <h2 class="col-title mono">Partnered with</h2>
+        <ul role="list" class="badges">
+          {memberships.map((m) => <li><img src={m.src} alt={m.name} width={m.width} height={m.height} loading="lazy" decoding="async" /></li>)}
+        </ul>
+      </div>
+      <div class="trust-group">
+        <h2 class="col-title mono">Compliance and trust partners</h2>
+        <ul role="list" class="badges">
+          {trustPartners.map((m) => <li><Img src={m.src} alt={m.name} sizes="140px" /></li>)}
+        </ul>
+      </div>
+    </div>
+
+    <div class="bottom">
+      <p>© {year} {SITE.legalName}. All rights reserved.</p>
+      <ul role="list" class="legal">
+        <li><a class="link" href="/privacy-policy/">Privacy</a></li>
+        <li><a class="link" href="/sitemap/">Sitemap</a></li>
+        <li><a class="link to-top" href="#top">Back to top <Icon name="arrow" size={14} class="up" /></a></li>
+      </ul>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .site-footer { background: var(--bg-subtle); border-top: 1px solid var(--line); padding-block: clamp(56px, 7vw, 96px) 28px; font-size: var(--fs-small); }
+  .top { display: grid; grid-template-columns: minmax(260px, 1fr) 2fr; gap: clamp(40px, 6vw, 96px); }
+  .brand { display: inline-flex; }
+  .statement { margin-top: 22px; font-size: 1.6rem; font-weight: 600; letter-spacing: -0.035em; line-height: 1.12; }
+  .contact { font-style: normal; display: grid; gap: 12px; margin-top: 28px; color: var(--ink-2); max-width: 34ch; }
+  .row { display: grid; grid-template-columns: 18px 1fr; gap: 10px; align-items: start; }
+  .row :global(svg) { margin-top: 2px; color: var(--ink-3); }
+  .link-row { color: var(--ink); }
+  .social { display: inline-flex; align-items: center; gap: 10px; margin-top: 22px; padding: 8px 14px 8px 10px; border: 1px solid var(--line-strong); border-radius: 999px; font-weight: 500; transition: background-color var(--dur), color var(--dur), border-color var(--dur); }
+  .social:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .cols { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 32px; }
+  .col-title { color: var(--ink-3); font-size: 0.72rem; letter-spacing: 0.1em; margin-bottom: 18px; }
+  .col ul { display: grid; gap: 11px; }
+  .col a { color: var(--ink); }
+  .trust { display: grid; grid-template-columns: repeat(3, auto); justify-content: space-between; gap: 32px; margin-top: clamp(48px, 6vw, 80px); padding-top: 32px; border-top: 1px solid var(--line); }
+  .presence { display: flex; flex-wrap: wrap; gap: 8px 20px; }
+  .presence li { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; }
+  .presence :global(.flag), .presence :global(.flag img) { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
+  .badges { display: flex; flex-wrap: wrap; align-items: center; gap: 22px; }
+  .badges :global(img) { height: 34px; width: auto; object-fit: contain; }
+  .bottom { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px 24px; margin-top: 40px; padding-top: 22px; border-top: 1px solid var(--line); color: var(--ink-2); font-size: var(--fs-xs); }
+  .legal { display: flex; gap: 22px; }
+  .to-top { display: inline-flex; align-items: center; gap: 6px; }
+  .to-top :global(.up) { transform: rotate(-90deg); }
+  @media (max-width: 1080px) { .top { grid-template-columns: minmax(0, 1fr); } .trust { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 720px) { .cols { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 36px 24px; } .trust { grid-template-columns: minmax(0, 1fr); } }
+</style>

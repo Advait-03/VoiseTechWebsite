@@ -1,0 +1,120 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import PageHero from '../components/PageHero.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import Form from '../components/Form.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+
+const blocks = [
+  {
+    id: 'gam',
+    eyebrow: 'For publishers',
+    title: 'The Google Ad Manager Partner Advantage',
+    intro: 'Unlock smarter monetization with a certified partner you can trust. We help publishers and media owners transform Google Ad Manager into a reliable growth engine, maximizing yield, reducing complexity, and building sustainable revenue streams.',
+    why: 'Google Ad Manager is powerful, but unlocking its full value requires more than access. It takes expert configuration, operational precision, and the right strategy. That’s where we come in.',
+    image: '/wp-content/uploads/2025/09/gam-360-1.jpg',
+    alt: 'Hands on a laptop with advertising analytics graphics',
+    deliver: [
+      { title: 'Revenue Optimization', text: 'Proprietary yield strategies that lift eCPM and ARPU without compromising user experience.' },
+      { title: 'Tailored Monetization Frameworks', text: 'Custom ad ops architectures aligned with your business model and audience behavior.' },
+      { title: 'Programmatic Expertise', text: 'Seamless activation across display, video, and CTV, all managed inside GAM.' },
+      { title: 'Real-Time Reporting', text: 'Transparent dashboards and insights that drive faster, smarter decisions.' },
+    ],
+  },
+  {
+    id: 'authorized-buyers',
+    eyebrow: 'For buyers',
+    title: 'The Google Authorized Buyer Advantage',
+    intro: 'Access premium, brand-safe inventory at a global scale. As a Google Authorized Buyer, Voise Tech empowers agencies, brands, and trading desks to activate programmatic performance with efficiency.',
+    why: 'The Authorized Buyer program (formerly DoubleClick Ad Exchange Buyers) is Google’s premium gateway to top-tier inventory. Success here requires more than access—it needs strategy, advanced technology, and precise targeting.',
+    image: '/wp-content/uploads/2025/09/The-Google-Authorized-Buyer-Advantage.jpg',
+    alt: 'A phone and laptop showing a verified secure connection',
+    deliver: [
+      { title: 'Direct-to-Publisher Deals', text: 'Unlock Programmatic Guaranteed (PG) and Preferred Deals for predictable pricing and premium alignment.' },
+      { title: 'Data-Driven Targeting', text: 'Blend Google’s audience signals with Voise Tech’s proprietary targeting strategies to reach the right user at the right moment.' },
+      { title: 'Omnichannel Reach for Advertisers', text: 'Expand beyond display into mobile, video, and CTV—backed by 25+ global CTV publisher integrations.' },
+      { title: 'Transparent Buying', text: 'Supply Path Optimization (SPO) that reduces waste and delivers measurable outcomes.' },
+    ],
+  },
+];
+const schema = [{ '@type': 'Service', name: 'Google Ad Manager 360 Partner Services', provider: { '@id': 'https://www.voisetech.com/#organization' }, serviceType: 'Google Ad Manager 360 and Google Authorized Buyers services', areaServed: 'Worldwide' }];
+---
+<BaseLayout
+  title="Google Ad Manager 360 Partner Services | Voise Tech"
+  description="Boost revenue with Voise Tech’s certified Google Ad Manager 360 services. Optimize ad performance, automate workflows, and grow smarter with expert support."
+  breadcrumbs={[{ label: 'GAM 360', href: '/google-ad-manager-solutions-services/' }]}
+  schema={schema}
+>
+  <PageHero
+    eyebrow="Voise GAM 360"
+    title="Smarter Advertising <span class='grad-text'>Starts Here</span>"
+    lede="Turn Google’s platforms into engines of measurable growth with Voise Tech."
+    crumbs={[{ label: 'Solutions', href: '/solutions/' }, { label: 'GAM 360', href: '/google-ad-manager-solutions-services/' }]}
+  >
+    <div class="cluster" slot="actions">
+      <a class="btn" href="#gam_form">Get Started <Icon name="arrow" size={16} class="arrow" /></a>
+      <a class="btn btn-secondary" href="#authorized-buyers">Authorized Buyers</a>
+    </div>
+  </PageHero>
+
+  {blocks.map((b, i) => (
+    <section class:list={['section', i === 1 && 'tone-subtle']} id={b.id}>
+      <div class:list={['container', 'block', i === 1 && 'flip']}>
+        <div class="block-copy">
+          <SectionHeading eyebrow={b.eyebrow} title={b.title} lede={b.intro} />
+          <div class="why" data-reveal>
+            <h3 class="h4">Why Partner with Voise Tech?</h3>
+            <p class="muted">{b.why}</p>
+          </div>
+        </div>
+        <div class="media block-media" data-reveal="mask"><Img src={b.image} alt={b.alt} sizes="(max-width: 900px) 100vw, 45vw" /></div>
+      </div>
+      <div class="container">
+        <h3 class="mono deliver-title" data-reveal>What We Deliver</h3>
+        <ol role="list" class="deliver" data-stagger>
+          {b.deliver.map((d, n) => (
+            <li data-reveal>
+              <span class="mono d-n">0{n + 1}</span>
+              <h4 class="h4">{d.title}</h4>
+              <p class="muted small">{d.text}</p>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  ))}
+
+  <section class="section on-night enquire" id="gam_form">
+    <div class="container enquire-grid">
+      <div class="enquire-copy">
+        <SectionHeading eyebrow="Enquire now" title="Unlock GAM 360 access." lede="Tell us about your inventory and revenue, and our Google Ad Manager team will get back to you." />
+      </div>
+      <div class="form-card" data-reveal style="--i:1">
+        <h2 class="h3">Enquire Now</h2>
+        <Form id="gam" />
+      </div>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .block { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .flip .block-media { order: -1; }
+  .block-copy { display: grid; gap: 28px; }
+  .block-media { aspect-ratio: 565 / 419; }
+  .why { display: grid; gap: 8px; padding-left: 18px; border-left: 2px solid var(--blue); }
+  .deliver-title { margin-top: clamp(48px, 6vw, 80px); color: var(--ink-3); }
+  .deliver { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); margin-top: 18px; border-top: 1px solid var(--line-strong); }
+  .deliver li { display: grid; gap: 10px; padding: 24px 22px 6px 0; align-content: start; }
+  .deliver li + li { padding-left: 22px; border-left: 1px solid var(--line); }
+  .d-n { color: var(--blue-ink); }
+  @media (max-width: 900px) { .block { grid-template-columns: minmax(0, 1fr); } .flip .block-media { order: 0; } .deliver { grid-template-columns: repeat(2, minmax(0, 1fr)); } .deliver li:nth-child(3) { border-left: 0; padding-left: 0; } }
+  @media (max-width: 520px) { .deliver { grid-template-columns: minmax(0, 1fr); } .deliver li { border-left: 0 !important; padding-left: 0 !important; } }
+  .enquire { background: radial-gradient(70% 60% at 100% 0%, rgb(8 112 199 / 0.3), transparent 60%), var(--night); }
+  .enquire-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
+  .enquire-copy { position: sticky; top: 100px; }
+  .form-card { padding: clamp(24px, 3.5vw, 44px); border-radius: var(--radius-l); background: #fff; color: var(--ink); display: grid; gap: 14px; }
+  .form-card :global(.muted) { color: var(--ink-2); }
+  @media (max-width: 960px) { .enquire-grid { grid-template-columns: minmax(0, 1fr); } .enquire-copy { position: static; } }
+</style>

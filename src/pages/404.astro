@@ -1,0 +1,39 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Icon from '../components/Icon.astro';
+
+// Rendered on demand so unmatched URLs pass through src/middleware.ts,
+// which issues the 301s for legacy WordPress URLs before falling back here.
+export const prerender = false;
+
+const links = [
+  { label: 'Products', href: '/products/' },
+  { label: 'Solutions', href: '/solutions/' },
+  { label: 'Voise Blogs', href: '/resources/blog/' },
+  { label: 'Case Studies', href: '/resources/case-studies/' },
+  { label: 'Contact Us', href: '/contact-us/' },
+];
+---
+<BaseLayout title="Page not found | Voise Tech" description="The page you were looking for could not be found." noindex>
+  <section class="nf blueprint">
+    <div class="container inner">
+      <p class="mono code">Error 404 · no bid</p>
+      <h1 class="h1">This placement came back empty.</h1>
+      <p class="lede">The page you were looking for has moved or no longer exists.</p>
+      <div class="cluster">
+        <a class="btn" href="/">Back to home <Icon name="arrow" size={16} class="arrow" /></a>
+        <a class="btn btn-secondary" href="/sitemap/">View sitemap</a>
+      </div>
+      <ul role="list" class="links">
+        {links.map((l) => <li><a class="link-arrow" href={l.href}><span class="label">{l.label}</span><Icon name="arrow" size={14} class="arrow" /></a></li>)}
+      </ul>
+    </div>
+  </section>
+</BaseLayout>
+
+<style>
+  .nf { padding-block: clamp(96px, 14vw, 200px); }
+  .inner { display: grid; gap: 22px; justify-items: start; max-width: 760px; }
+  .code { color: var(--blue-ink); }
+  .links { display: flex; flex-wrap: wrap; gap: 12px 28px; margin-top: 24px; padding-top: 24px; border-top: 1px solid var(--line); width: 100%; }
+</style>

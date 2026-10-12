@@ -1,0 +1,19 @@
+---
+title: "DMEXCO 2026"
+seoTitle: "DMEXCO 2026 - Voise Tech"
+description: "VoiseTech will be attending DMEXCO 2026, Europe’s leading digital marketing and technology event, bringing together global leaders across marketing, media, and innovation to define the future of the digital economy."
+image: {"src":"/wp-content/uploads/2026/05/Dmexco12.png","width":551,"height":355}
+excerpt: "VoiseTech attended DMEXCO 2026, Europe’s leading digital marketing and technology event, bringing together global leaders across marketing, media, and innovation. Hosted in Cologne, the event brought together decision-makers from brands, agencies, publishers, and tech platforms, creating a space where ideas turn into r"
+date: "2026-05-05T18:03:22"
+updated: "2026-10-02T13:40:07"
+dateText: "23rd September - 24th September, 2026"
+startDate: "2026-09-23"
+endDate: "2026-09-24"
+banner: {"src":"/wp-content/uploads/2026/05/Events-In-page-dmexco.png","width":1181,"height":400}
+actions: [{"label":"Join the Experience","href":"https://adexchanger.com/go/programmatic-i-o-2026-new-york/"}]
+gallery: [{"src":"/wp-content/uploads/elementor/thumbs/1-ru96d0xiiwelr60n89ylhlar218xl6032yvglvkqyw.jpg","alt":"1"},{"src":"/wp-content/uploads/elementor/thumbs/2-ru96d3r13eigpzwjrt6h72l4u6v189ba3ctx1pgkg8.jpg","alt":"2"},{"src":"/wp-content/uploads/elementor/thumbs/3-ru96d5mph2l1d7ttgtzqc2420ylrnniqrm4w09ds3s.jpg","alt":"3"},{"src":"/wp-content/uploads/elementor/thumbs/4-ru96d8g81kowc1pq0d7m1jeft47vaqtxs03cg39ll4.jpg","alt":"4"},{"src":"/wp-content/uploads/elementor/thumbs/5-ru96dabwf8rgz9mzpe0v6ixczvylq51eg9eben6t8o.jpg","alt":"5"},{"src":"/wp-content/uploads/elementor/thumbs/6-ru96dd5ezqvby3iw8x8qw07qs1kpd8clgncruh2mq0.jpg","alt":"6"},{"src":"/wp-content/uploads/elementor/thumbs/7-1-ru96ejg5jah8gjtgdxiyi7jhids7zm0imgpmfxbwy0.jpg","alt":"7"},{"src":"/wp-content/uploads/elementor/thumbs/8-ru96dgwrr30h8jdfmyv95z9l5l2680rit5yprkx214.jpg","alt":"8"},{"src":"/wp-content/uploads/elementor/thumbs/9-ru96disg4r31vrapbzoiaysiccswneyzhf9oq4u9oo.jpg","alt":"9"},{"src":"/wp-content/uploads/elementor/thumbs/10-ru96dko4if5miz7z10hrfybfj4jn2t6g5oknoorhc8.jpg","alt":"10"},{"src":"/wp-content/uploads/elementor/thumbs/11-ru96dmjsw3876758q1b0kxucpwadi7dwtxvmn8oozs.jpg","alt":"11"},{"src":"/wp-content/uploads/elementor/thumbs/12-ru96dofh9rartf2if249pxd9wo13xlldi76llslwnc.jpg","alt":"12"},{"src":"/wp-content/uploads/elementor/thumbs/13-ru96dqb5nfdcgmzs42xiuww73fruczsu6ghkkcj4aw.jpg","alt":"13"},{"src":"/wp-content/uploads/elementor/thumbs/14-ru96ds6u13fx3ux1t3qrzwf4a7ikse0aupsjiwgbyg.jpg","alt":"14"},{"src":"/wp-content/uploads/elementor/thumbs/15-ru96dv0clljs2osycmynpdpi2d4ofhbhv3qzyqc5fs.jpg","alt":"15"},{"src":"/wp-content/uploads/elementor/thumbs/16-ru96dww0z9mcpwq81nrwud8f94veuviyjd1yxa9d3c.jpg","alt":"16"},{"src":"/wp-content/uploads/elementor/thumbs/17-ru96dyrpcxoxd4nhqol5zcrcfwm5a9qf7mcxvu6kqw.jpg","alt":"17"},{"src":"/wp-content/uploads/elementor/thumbs/18-ru96e1l7xfssbyjea7t1ou1q8288xd1m80bebo2e88.jpg","alt":"18"},{"src":"/wp-content/uploads/elementor/thumbs/19-ru96e3gwb3vcz6gnz8mattknetyzcr92w9mda7zlvs.jpg","alt":"19"},{"src":"/wp-content/uploads/elementor/thumbs/20-ru96e5ckorxxmedxo9fjyt3kllpps5gjkixc8rwtjc.jpg","alt":"20"}]
+wpId: 6871
+---
+VoiseTech attended DMEXCO 2026, Europe’s leading digital marketing and technology event, bringing together global leaders across marketing, media, and innovation. Hosted in Cologne, the event brought together decision-makers from brands, agencies, publishers, and tech platforms, creating a space where ideas turn into real business outcomes.
+
+With a mix of expo, keynotes, and industry discussions, DMEXCO focused on key shifts across AI, data-driven marketing, commerce, and media transformation, driven by practical, real-world application. VoiseTech had a great time engaging with industry leaders, exploring new opportunities, and contributing to conversations shaping the future of AdTech.

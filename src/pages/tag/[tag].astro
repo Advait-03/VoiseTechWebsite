@@ -1,0 +1,44 @@
+---
+/** Tag archives — the WordPress /tag/{slug}/ URLs are preserved. */
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import PageHero from '../../components/PageHero.astro';
+import ResourceCard from '../../components/ResourceCard.astro';
+import Icon from '../../components/Icon.astro';
+import { allPosts, allTags, postItem } from '../../lib/content';
+
+export async function getStaticPaths() {
+  const posts = await allPosts();
+  return (await allTags()).map((t) => ({
+    params: { tag: t.slug },
+    props: { name: t.name, posts: posts.filter((p) => p.data.tags.some((x) => x.slug === t.slug)) },
+  }));
+}
+const { name, posts } = Astro.props;
+const { tag } = Astro.params;
+---
+<BaseLayout
+  title={`${name} Archives - Voise Tech`}
+  description={`Voise Tech articles about ${name}.`}
+  breadcrumbs={[{ label: 'Voise Blogs', href: '/resources/blog/' }, { label: `#${name}`, href: `/tag/${tag}/` }]}
+>
+  <PageHero
+    eyebrow="Topic"
+    title={`#${name}`}
+    lede={`${posts.length} article${posts.length === 1 ? '' : 's'} tagged “${name}”.`}
+    crumbs={[{ label: 'Resources', href: '/resources/blog/' }, { label: 'Voise Blogs', href: '/resources/blog/' }, { label: `#${name}`, href: `/tag/${tag}/` }]}
+  />
+  <section class="container list">
+    <ul role="list" class="grid" data-stagger>
+      {posts.map((p) => <li data-reveal><ResourceCard item={postItem(p)} headingLevel="h2" /></li>)}
+    </ul>
+    <a class="link-arrow back" href="/resources/blog/"><span class="label">All articles</span><Icon name="arrow" size={14} class="arrow" /></a>
+  </section>
+</BaseLayout>
+
+<style>
+  .list { padding-bottom: var(--section); }
+  .grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 48px 32px; }
+  .back { margin-top: 56px; }
+  @media (max-width: 960px) { .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 600px) { .grid { grid-template-columns: minmax(0, 1fr); } }
+</style>

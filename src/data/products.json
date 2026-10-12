@@ -1,0 +1,1771 @@
+[
+  {
+    "slug": "voise-ad-server",
+    "category": "publishers",
+    "name": "Voise Adserver",
+    "seoTitle": "Digital Media Buying & OTT Advertising Solutions | Voise Tech",
+    "description": "Boost your ad performance with Voise Tech’s digital media buying and OTT advertising solutions. Trusted by global ad tech companies for smarter results.",
+    "ogImage": "/wp-content/uploads/2025/09/Voise-Ad-Server-thimb.jpg",
+    "publishedTime": null,
+    "modifiedTime": "2026-03-10T12:42:24+00:00",
+    "tagline": "Next-Gen Infrastructure for Programmatic Excellence",
+    "intro": [
+      "Voise Ad Server is a proprietary, full-stack ad serving engine built for publishers, buyers, and media owners who need speed, scale, and transparency. With native RTB support, rich targeting controls, and streamlined creative management, it powers high-performing campaigns across every channel, from web and mobile to CTV.",
+      "Backed by Voise Tech’s programmatic ecosystem, it helps you reduce third-party dependencies while boosting revenue through intelligent auctioning and precise ad delivery."
+    ],
+    "heroCta": {
+      "label": "Request a Demo",
+      "href": "/contact-us/"
+    },
+    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
+    "tech": [
+      {
+        "label": "Frontend",
+        "value": "React.js, Redux",
+        "icon": "/wp-content/uploads/2025/09/Frontend.svg"
+      },
+      {
+        "label": "Backend",
+        "value": "Node.js, GoLang, Java",
+        "icon": "/wp-content/uploads/2025/08/backend-1.svg"
+      },
+      {
+        "label": "Databases",
+        "value": "PostgreSQL, MongoDB, Redis",
+        "icon": "/wp-content/uploads/2025/09/Databases.svg"
+      },
+      {
+        "label": "Processing",
+        "value": "Kafka, Apache Spark",
+        "icon": "/wp-content/uploads/2025/09/Processing.svg"
+      },
+      {
+        "label": "Cloud Infrastructure",
+        "value": "AWS EC2, S3, CloudFront, Kubernetes",
+        "icon": "/wp-content/uploads/2025/09/Cloud-Infrastructure.svg"
+      },
+      {
+        "label": "Monitoring & Security",
+        "value": "Prometheus, Grafana, AWS WAF, GeoEdge/Confiant",
+        "icon": "/wp-content/uploads/2025/09/Monitoring-Security.svg"
+      }
+    ],
+    "edge": [
+      {
+        "title": "Full visibility into campaign delivery and performance.",
+        "text": ""
+      },
+      {
+        "title": "Minimize reliance on third-party ad tech.",
+        "text": ""
+      },
+      {
+        "title": "Improve fill rates and eCPMs through automated optimization.",
+        "text": ""
+      },
+      {
+        "title": "Privacy-ready: GDPR, CCPA, TCF 2.2 compliant from the ground up.",
+        "text": ""
+      }
+    ],
+    "features": [
+      {
+        "title": "Multi-Format Support",
+        "items": [
+          {
+            "label": "Display",
+            "text": "banners, rich media."
+          },
+          {
+            "label": "Video",
+            "text": "VAST/VPAID, in-stream, out-stream."
+          },
+          {
+            "label": "Native",
+            "text": "customizable content-matched units."
+          },
+          {
+            "label": "Audio",
+            "text": "in-app and web environments."
+          },
+          {
+            "label": "CTV",
+            "text": "fully supported via VAST-compliant creatives."
+          }
+        ]
+      },
+      {
+        "title": "Real-Time Bidding (RTB) Engine",
+        "items": [
+          {
+            "label": "OpenRTB Compliance",
+            "text": "built-in OpenRTB 2.5+."
+          },
+          {
+            "label": "Ultra-Low Latency",
+            "text": "~120ms auction handling."
+          },
+          {
+            "label": "Header Bidding",
+            "text": "support for client-side and server-side."
+          }
+        ]
+      },
+      {
+        "title": "Unified Ad Serving",
+        "items": [
+          {
+            "label": "Central Platform",
+            "text": "manage direct, PMP, and open marketplace campaigns."
+          },
+          {
+            "label": "Tiered Priority",
+            "text": "Direct > PMP > Open Exchange."
+          },
+          {
+            "label": "Smart Delivery",
+            "text": "goal-based pacing, frequency capping, and budget control."
+          }
+        ]
+      },
+      {
+        "title": "Creative Management Tools",
+        "items": [
+          {
+            "label": "Builder",
+            "text": "drag-and-drop creative builder."
+          },
+          {
+            "label": "Delivery",
+            "text": "integrated CDN for asset delivery."
+          },
+          {
+            "label": "Optimization",
+            "text": "A/B testing and automated creative rotation."
+          },
+          {
+            "label": "Brand Safety",
+            "text": "malware scanning and brand safety via GeoEdge, Confiant."
+          }
+        ]
+      },
+      {
+        "title": "Advanced Targeting",
+        "items": [
+          {
+            "label": "Specs",
+            "text": "geo, device, OS, browser, connection speed."
+          },
+          {
+            "label": "Scheduling",
+            "text": "dayparting, language, and behavioral triggers."
+          },
+          {
+            "label": "Contextual",
+            "text": "AI/NLP-driven contextual targeting."
+          },
+          {
+            "label": "Audience Data",
+            "text": "leverage first-party and third-party data."
+          }
+        ]
+      },
+      {
+        "title": "Analytics & Reporting",
+        "items": [
+          {
+            "label": "Dashboards",
+            "text": "real-time views with customizable KPIs."
+          },
+          {
+            "label": "Metrics",
+            "text": "track impressions, CTR, revenue, eCPMs, and viewability."
+          },
+          {
+            "label": "Exports & Integrations",
+            "text": "export via API/CSV or integrate with BI tools."
+          }
+        ]
+      }
+    ],
+    "integrationsTitle": "Integrations",
+    "integrations": [
+      {
+        "label": "DSPs",
+        "text": "The Trade Desk, Google DV360, Xandr, Yahoo, MediaMath"
+      },
+      {
+        "label": "SSPs",
+        "text": "PubMatic, OpenX, Magnite, Index Exchange"
+      },
+      {
+        "label": "Verification",
+        "text": "IAS, DoubleVerify, MOAT"
+      },
+      {
+        "label": "Data",
+        "text": "Lotame, BlueKai (Oracle), and other audience providers"
+      }
+    ],
+    "useCasesTitle": "Use Cases",
+    "useCases": [
+      {
+        "title": "Media Owners",
+        "text": "Own your monetization stack, optimize yield with flexible controls",
+        "icon": "/wp-content/uploads/2025/09/social-media-management-1.svg"
+      },
+      {
+        "title": "Agencies",
+        "text": "Run precision-targeted campaigns at scale",
+        "icon": "/wp-content/uploads/2025/09/agency-1.svg"
+      },
+      {
+        "title": "Retail Media Networks",
+        "text": "Enable hybrid direct + programmatic sales",
+        "icon": "/wp-content/uploads/2025/09/grocery-store-1.svg"
+      },
+      {
+        "title": "CTV Platforms",
+        "text": "Schedule, serve, and track with full creative control",
+        "icon": "/wp-content/uploads/2025/09/device-1.svg"
+      }
+    ],
+    "whyTitle": "Why Voise Adserver?",
+    "why": [
+      "White-labeled deployments available for full ownership.",
+      "AI-powered dynamic floor pricing.",
+      "Fastest RTB decisioning engine (~120ms).",
+      "Native support for next-gen ID frameworks (Unified ID 2.0, ID5)."
+    ],
+    "closing": {
+      "heading": "Transform the way you monetize with the power of Voise Adserver.",
+      "cta": {
+        "label": "Modernize Your Ad Stack",
+        "href": "/contact-us/"
+      }
+    }
+  },
+  {
+    "slug": "supply-side-platform-advertising",
+    "category": "publishers",
+    "name": "Voise SSP",
+    "seoTitle": "Advertising Supply Side Platform for Publishers | Voise Tech",
+    "description": "Discover Voise SSP—the intelligent advertising supply side platform built for publishers. Maximize yield, boost transparency, and scale programmatic revenue.",
+    "ogImage": "/wp-content/uploads/2025/09/Voise-SSP-thumb.jpg",
+    "publishedTime": null,
+    "modifiedTime": "2026-03-10T13:42:12+00:00",
+    "tagline": "Intelligent Monetisation for the Modern Publisher",
+    "intro": [
+      "Voise SSP is a full-featured, programmatic supply-side platform that gives publishers total control over how their inventory is monetized. Whether you’re running web, mobile apps, CTV, or audio, Voise SSP connects you to 30+ premium DSPs, curated PMPs, and real-time auctions optimized by intelligent yield algorithms.",
+      "It’s built for scale and speed, with millisecond-level auctions, Prebid integration, and robust reporting that puts transparency front and center."
+    ],
+    "heroCta": {
+      "label": "Get Started",
+      "href": "/contact-us/"
+    },
+    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
+    "tech": [
+      {
+        "label": "Frontend",
+        "value": "Angular, React",
+        "icon": "/wp-content/uploads/2025/09/Frontend.svg"
+      },
+      {
+        "label": "Backend",
+        "value": "Golang, Java, Node.js",
+        "icon": "/wp-content/uploads/2025/08/backend-1.svg"
+      },
+      {
+        "label": "RTB Engine",
+        "value": "Kafka + Redis with async auctioning",
+        "icon": "/wp-content/uploads/2025/09/RTB-Engine.svg"
+      },
+      {
+        "label": "Databases",
+        "value": "Cassandra, PostgreSQL, BigQuery",
+        "icon": "/wp-content/uploads/2025/09/Databases.svg"
+      },
+      {
+        "label": "Infrastructure",
+        "value": "AWS (Auto Scaling, ELB), GCP (BigQuery)",
+        "icon": "/wp-content/uploads/2025/09/Cloud-Infrastructure.svg"
+      },
+      {
+        "label": "Data Pipelines",
+        "value": "Apache Spark, Kafka, Airflow",
+        "icon": "/wp-content/uploads/2025/09/Data_Pipeline.svg"
+      },
+      {
+        "label": "Monitoring",
+        "value": "ELK Stack, Prometheus",
+        "icon": "/wp-content/uploads/2025/09/Monitoring-Security.svg"
+      }
+    ],
+    "edge": [
+      {
+        "title": "Unified access to premium global demand.",
+        "text": ""
+      },
+      {
+        "title": "Transparent auction logic with full monetization control.",
+        "text": ""
+      },
+      {
+        "title": "Machine learning– driven yield optimization.",
+        "text": ""
+      },
+      {
+        "title": "Dedicated support for onboarding, compliance, and scaling.",
+        "text": ""
+      }
+    ],
+    "features": [
+      {
+        "title": "Premium Demand Connectivity",
+        "items": [
+          {
+            "label": "Integrated DSPs",
+            "text": "30+ DSPs including The Trade Desk, DV360, Xandr, Amobee, Yahoo, and more."
+          },
+          {
+            "label": "Deal Types",
+            "text": "Open Auction, Private Auction, Preferred Deals, Programmatic Guaranteed."
+          },
+          {
+            "label": "Curated PMPs",
+            "text": "curated PMP deals with global agencies and trading desks."
+          }
+        ]
+      },
+      {
+        "title": "Real-Time Bidding Engine",
+        "items": [
+          {
+            "label": "OpenRTB",
+            "text": "OpenRTB 2.5 & 2.6 compliant."
+          },
+          {
+            "label": "Latency",
+            "text": "millisecond-level bid decisioning."
+          },
+          {
+            "label": "Auctions",
+            "text": "multi-slot, multi-format auctions with video waterfall support."
+          }
+        ]
+      },
+      {
+        "title": "Ad Format & Inventory Coverage",
+        "items": [
+          {
+            "label": "Display",
+            "text": "standard banners, rich media."
+          },
+          {
+            "label": "Video",
+            "text": "instream, outstream, rewarded, CTV."
+          },
+          {
+            "label": "Native",
+            "text": "feed-based and content-integrated units."
+          },
+          {
+            "label": "Audio",
+            "text": "podcasts, music streaming."
+          }
+        ]
+      },
+      {
+        "title": "Header Bidding Integration",
+        "items": [
+          {
+            "label": "Prebid Support",
+            "text": "full support for Prebid.js (web and AMP)."
+          },
+          {
+            "label": "Server-Side",
+            "text": "server-side header bidding (S2S) ready."
+          },
+          {
+            "label": "Analytics",
+            "text": "unified auction analytics."
+          },
+          {
+            "label": "Controls",
+            "text": "timeout controls and dynamic floor pricing."
+          }
+        ]
+      },
+      {
+        "title": "Adaptive Yield Optimization",
+        "items": [
+          {
+            "label": "Dynamic Floors",
+            "text": "machine learning–powered dynamic floors."
+          },
+          {
+            "label": "Bid Shading",
+            "text": "DSP-specific bid shading."
+          },
+          {
+            "label": "Performance Modeling",
+            "text": "geo/device/domain-based performance modeling."
+          },
+          {
+            "label": "Channel Priority",
+            "text": "Direct > PG > PMP > Open."
+          }
+        ]
+      },
+      {
+        "title": "Publisher Controls & Transparency",
+        "items": [
+          {
+            "label": "Blocking",
+            "text": "domain and app-level blocking."
+          },
+          {
+            "label": "Blocklists",
+            "text": "category and advertiser blocklists (IAB-compliant)."
+          },
+          {
+            "label": "IVT Filtering",
+            "text": "IVT filtering with MRC-accredited vendors (IAS, DV)."
+          },
+          {
+            "label": "Ad Quality",
+            "text": "filters for malware, ad weight, clickbait, etc."
+          }
+        ]
+      },
+      {
+        "title": "Actionable Reporting & Insights",
+        "items": [
+          {
+            "label": "Dashboards",
+            "text": "real-time revenue dashboards."
+          },
+          {
+            "label": "Diagnostics",
+            "text": "demand diagnostics per buyer."
+          },
+          {
+            "label": "Metrics",
+            "text": "bid landscape, eCPM, fill rate, and viewability analysis."
+          },
+          {
+            "label": "Exports",
+            "text": "export via API, CSV, or BI tools."
+          }
+        ]
+      }
+    ],
+    "integrationsTitle": "Integrations",
+    "integrations": [
+      {
+        "label": "Verification",
+        "text": "IAS, MOAT, GeoEdge, DoubleVerify"
+      },
+      {
+        "label": "Identity",
+        "text": "Unified ID 2.0, ID5, LiveRamp"
+      },
+      {
+        "label": "Prebid Partners",
+        "text": "Amazon TAM, Index Exchange, Magnite, PubMatic"
+      },
+      {
+        "label": "Analytics Tools",
+        "text": "Looker Studio, Power BI, direct API access"
+      }
+    ],
+    "useCasesTitle": "Use Cases",
+    "useCases": [
+      {
+        "title": "Large Publishers",
+        "text": "Maximize programmatic yield while maintaining transparency and control",
+        "icon": "/wp-content/uploads/2025/09/social-media-management-1.svg"
+      },
+      {
+        "title": "CTV/OTT Platforms",
+        "text": "Access high-value video demand through VAST-compatible integrations",
+        "icon": "/wp-content/uploads/2025/09/agency-1.svg"
+      },
+      {
+        "title": "Retail Media Networks",
+        "text": "Expand beyond endemic brands with curated PMP deals",
+        "icon": "/wp-content/uploads/2025/09/grocery-store-1.svg"
+      },
+      {
+        "title": "Mobile App Publishers",
+        "text": "Optimize in-app yield through SDK-based header bidding and RTB",
+        "icon": "/wp-content/uploads/2025/09/device-1.svg"
+      }
+    ],
+    "complianceTitle": "Compliance & Privacy",
+    "compliance": [
+      {
+        "title": "",
+        "text": "Fully GDPR, CCPA, and LGPD compliant",
+        "icon": "/wp-content/uploads/2025/09/Fully-GDPR.svg"
+      },
+      {
+        "title": "",
+        "text": "TCF 2.2 supported",
+        "icon": "/wp-content/uploads/2025/09/TCF_supported.svg"
+      },
+      {
+        "title": "",
+        "text": "CMP integrations ready",
+        "icon": "/wp-content/uploads/2025/09/CMP-integrations.svg"
+      },
+      {
+        "title": "",
+        "text": "Data encrypted at rest and in transit",
+        "icon": "/wp-content/uploads/2025/09/Data-encrypted.svg"
+      }
+    ],
+    "whyTitle": "Why Voise SSP?",
+    "why": [
+      "AI-powered pricing intelligence engine",
+      "Built-in bidder deduplication to prevent auction overlap",
+      "Instant PMP deal creation and packaging tools",
+      "Publisher-first revenue share model"
+    ],
+    "closing": {
+      "heading": "Unlock smarter monetization with Voise SSP.",
+      "cta": {
+        "label": "Take Control of Your Inventory",
+        "href": "/contact-us/"
+      }
+    }
+  },
+  {
+    "slug": "pre-bid",
+    "category": "publishers",
+    "name": "Voise Pre-Bid",
+    "seoTitle": "Header Bidding Solution for Publishers | Pre Bid",
+    "description": "Boost ad revenue with Voise Pre Bid – a unified header bidding solution for publishers offering transparent auctions, higher eCPMs & full control.",
+    "ogImage": "/wp-content/uploads/2025/09/Voise-Pre-Bid-thumb.jpg",
+    "publishedTime": null,
+    "modifiedTime": "2026-03-10T13:29:30+00:00",
+    "tagline": "Unified Header Bidding, Simplified",
+    "intro": [
+      "Voise Pre-Bid Layer is a full-stack header bidding solution built on top of Prebid.js and advanced server-side tech. It brings together real-time demand from multiple SSPs, enabling fair, unified auctions across all formats, display, video, native, and CTV.",
+      "Whether you’re managing direct sales, programmatic deals, or PMP traffic, Voise gives you full transparency, deeper analytics, and higher eCPMs."
+    ],
+    "heroCta": {
+      "label": "Talk to an Expert",
+      "href": "/contact-us/"
+    },
+    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
+    "tech": [
+      {
+        "label": "Frameworks",
+        "value": "Prebid.js v8+, Node.js, Golang",
+        "icon": "/wp-content/uploads/2025/09/Frameworks.svg"
+      },
+      {
+        "label": "Ad Servers",
+        "value": "Compatible with GAM, FreeWheel, Xandr",
+        "icon": "/wp-content/uploads/2025/09/Ad-Servers.svg"
+      },
+      {
+        "label": "Auction Engine",
+        "value": "RTB router + Redis/Kafka",
+        "icon": "/wp-content/uploads/2025/09/Auction-Engine.svg"
+      },
+      {
+        "label": "Data Layer",
+        "value": "BigQuery, Snowflake",
+        "icon": "/wp-content/uploads/2025/08/Data-Layer.svg"
+      },
+      {
+        "label": "Monitoring",
+        "value": "Grafana, Prometheus, New Relic",
+        "icon": "/wp-content/uploads/2025/09/Monitoring.svg"
+      }
+    ],
+    "edge": [
+      {
+        "title": "Boost eCPMs with fair multi-demand auctions",
+        "text": ""
+      },
+      {
+        "title": "Reduce passbacks and increase fill rates",
+        "text": ""
+      },
+      {
+        "title": "Get transparent metrics on every partner",
+        "text": ""
+      },
+      {
+        "title": "Technical onboarding support included",
+        "text": ""
+      }
+    ],
+    "features": [
+      {
+        "title": "Unified Auction Framework",
+        "items": [
+          {
+            "label": "Client & Server Bidding",
+            "text": "supports client-side (Prebid.js) and server-side (S2S) bidding."
+          },
+          {
+            "label": "Consolidation",
+            "text": "consolidates bids from 25+ SSPs into a single fair auction."
+          },
+          {
+            "label": "OpenRTB Compatibility",
+            "text": "compatible with OpenRTB 2.5 & 2.6."
+          }
+        ]
+      },
+      {
+        "title": "Multi-Format Ad Support",
+        "items": [
+          {
+            "label": "Display",
+            "text": "banner, sticky, interstitial."
+          },
+          {
+            "label": "Video",
+            "text": "instream/outstream, VAST, VPAID."
+          },
+          {
+            "label": "Native",
+            "text": "content-matched units."
+          },
+          {
+            "label": "CTV/OTT",
+            "text": "full Prebid Video support."
+          }
+        ]
+      },
+      {
+        "title": "Built-in Demand Integrations",
+        "items": [
+          {
+            "label": "SSP Integrations",
+            "text": "pre-integrated with 25+ top SSPs including Magnite, OpenX, Xandr, Amazon TAM, and more."
+          },
+          {
+            "label": "Prebid Adapter Library",
+            "text": "plug-and-play onboarding with Prebid adapters."
+          },
+          {
+            "label": "Controls",
+            "text": "custom timeout and concurrency settings."
+          }
+        ]
+      },
+      {
+        "title": "Advanced Publisher Controls",
+        "items": [
+          {
+            "label": "Floor Rules",
+            "text": "set floors by geo, device, or content."
+          },
+          {
+            "label": "Ad Quality",
+            "text": "control malware, ad weight, and size caps."
+          },
+          {
+            "label": "Partner Management",
+            "text": "throttle or prioritize demand partners."
+          },
+          {
+            "label": "Per-Unit Rules",
+            "text": "configure rules per ad unit."
+          }
+        ]
+      },
+      {
+        "title": "Intelligent Yield Optimization",
+        "items": [
+          {
+            "label": "ML Pricing",
+            "text": "ML-driven floor pricing in real-time."
+          },
+          {
+            "label": "Landscape Analytics",
+            "text": "track bid competitiveness."
+          },
+          {
+            "label": "Bid Density Control",
+            "text": "reduce timeouts and increase wins."
+          },
+          {
+            "label": "SSP Integration",
+            "text": "native integration with Voise SSP for auction balancing."
+          }
+        ]
+      },
+      {
+        "title": "Performance Analytics",
+        "items": [
+          {
+            "label": "Timing",
+            "text": "bid response time tracking."
+          },
+          {
+            "label": "Win/Loss",
+            "text": "win-loss breakdown by partner."
+          },
+          {
+            "label": "Viewability & Engagement",
+            "text": "integrated viewability and engagement data."
+          },
+          {
+            "label": "Data Export",
+            "text": "export data via API for custom dashboards."
+          }
+        ]
+      }
+    ],
+    "integrationsTitle": "Integration & Compatibility",
+    "integrations": [
+      {
+        "label": "Platforms",
+        "text": "WordPress, Shopify, ReactJS, Angular, iOS/Android"
+      },
+      {
+        "label": "Consent Modules",
+        "text": "GDPR, CCPA, IAB TCF 2.2"
+      },
+      {
+        "label": "Identity",
+        "text": "LiveRamp, ID5, UID 2.0"
+      },
+      {
+        "label": "Custom Bidding",
+        "text": "Partner weighting, demand path rules"
+      }
+    ],
+    "complianceTitle": "Privacy & Compliance",
+    "compliance": [
+      {
+        "title": "",
+        "text": "Fully GDPR, CCPA, and LGPD compliant",
+        "icon": "/wp-content/uploads/2025/09/Fully-GDPR.svg"
+      },
+      {
+        "title": "",
+        "text": "Encrypted auction data and bid requests",
+        "icon": "/wp-content/uploads/2025/09/Encrypted-auction-data-and-bid-requests.svg"
+      },
+      {
+        "title": "",
+        "text": "Real-time consent propagation across bidders",
+        "icon": "/wp-content/uploads/2025/09/Real-time-consent-propagation-across-bidders.svg"
+      }
+    ],
+    "whyTitle": "Why Voise Pre-Bid?",
+    "why": [
+      "Pre-integrated with Voise SSP & DSP ecosystem.",
+      "Predictive ML models for dynamic floor pricing.",
+      "Deploy your way: client-side, server-side, or hybrid.",
+      "Fast onboarding and white-glove implementation."
+    ],
+    "closing": {
+      "heading": "Discover a smarter way to run auctions with Voise Pre-Bid.",
+      "cta": {
+        "label": "Unlock Transparent Auctions",
+        "href": "/contact-us/"
+      }
+    }
+  },
+  {
+    "slug": "content-production-solutions",
+    "category": "publishers",
+    "name": "Voise Content Production",
+    "seoTitle": "Creative Ad Production Studio for Publishers | Voise Tech",
+    "description": "Create high-performing ad creatives with Voise Content Production Studio. Get dynamic, data-led ads that boost engagement, CTR, and campaign ROI.",
+    "ogImage": "/wp-content/uploads/2025/09/Voise-Content-Production-thumb.jpg",
+    "publishedTime": null,
+    "modifiedTime": "2026-03-10T14:15:31+00:00",
+    "tagline": "Creativity that Performs",
+    "intro": [
+      "Voise Content Production Studio is where performance-led storytelling meets media strategy. From mobile-first videos and interactive display banners to CTV-grade creatives and dynamic localization, our studio delivers assets that aren’t just beautiful - they’re built to perform.",
+      "In a world where campaign results hinge on creative execution, Voise ensures your message hits the mark across screens, formats, and cultural contexts."
+    ],
+    "heroCta": {
+      "label": "Request a Creative Brief",
+      "href": "/contact-us/"
+    },
+    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
+    "tech": [
+      {
+        "label": "Design & Animation",
+        "value": "Adobe Creative Suite, Blender, Lottie, Rive",
+        "icon": "/wp-content/uploads/2025/09/Design-Animation.svg"
+      },
+      {
+        "label": "Video Editing",
+        "value": "Premiere Pro, Final Cut Pro, DaVinci Resolve",
+        "icon": "/wp-content/uploads/2025/08/Video-Editing.svg"
+      },
+      {
+        "label": "DCO Platforms",
+        "value": "Celtra, Google Studio, Flashtalking",
+        "icon": "/wp-content/uploads/2025/08/ml_layers.svg"
+      },
+      {
+        "label": "Creative Validation",
+        "value": "Google Validator, MOAT, IAS",
+        "icon": "/wp-content/uploads/2025/09/Creative-Validation.svg"
+      }
+    ],
+    "edge": [
+      {
+        "title": "Performance-Built",
+        "text": "Optimized for CTR, VTR, and brand recall."
+      },
+      {
+        "title": "Fast Turnaround",
+        "text": "Agile creative team for high-speed delivery."
+      },
+      {
+        "title": "Cost-Efficient",
+        "text": "Scalable templates for multi-market rollouts."
+      },
+      {
+        "title": "Integrated",
+        "text": "Built to sync with Voise Adserver, DSP, and SSP."
+      },
+      {
+        "title": "Strategic Support",
+        "text": "A/B testing, concept workshops, creative diagnostics."
+      }
+    ],
+    "features": [
+      {
+        "title": "Ad Creative Design & Development",
+        "items": [
+          {
+            "label": "Display & Rich Media",
+            "text": "IAB-compliant sizes, Responsive banners, Interactive elements"
+          },
+          {
+            "label": "",
+            "text": "IAB-compliant sizes, Responsive banners, Interactive elements"
+          },
+          {
+            "label": "Video Production",
+            "text": "Vertical (9:16), Square (1:1), Horizontal (16:9) Explainers, Testimonials, Branded content"
+          },
+          {
+            "label": "Vertical (9",
+            "text": "16), Square (1:1), Horizontal (16:9)"
+          },
+          {
+            "label": "",
+            "text": "Explainers, Testimonials, Branded content"
+          },
+          {
+            "label": "CTV/OTT Creatives",
+            "text": "High-production storytelling CTA overlays with QR, Branding and interactive tags"
+          },
+          {
+            "label": "",
+            "text": "High-production storytelling"
+          },
+          {
+            "label": "",
+            "text": "CTA overlays with QR, Branding and interactive tags"
+          }
+        ]
+      },
+      {
+        "title": "Dynamic Creative Optimization (DCO)",
+        "items": [
+          {
+            "label": "Personalization",
+            "text": "by geo, language, time, device behavior."
+          },
+          {
+            "label": "Real-time Rendering",
+            "text": "via Google Studio, Celtra, Innovid, and Adform."
+          },
+          {
+            "label": "Use Cases",
+            "text": "ideal for performance-led verticals: retail, travel, e-commerce."
+          }
+        ]
+      },
+      {
+        "title": "Multilingual & Multicultural Production",
+        "items": [
+          {
+            "label": "Languages",
+            "text": "20+ global languages supported."
+          },
+          {
+            "label": "Cultural Adaptation",
+            "text": "design adaptation aligned with Voise Multicultural Opportunity."
+          },
+          {
+            "label": "Messaging",
+            "text": "color, tone, and messaging tailored to audience nuance."
+          }
+        ]
+      },
+      {
+        "title": "Branded Content & Storyboarding",
+        "items": [
+          {
+            "label": "Full-cycle Creative",
+            "text": "scripting to production."
+          },
+          {
+            "label": "Native Formats",
+            "text": "for platforms like Outbrain, Taboola, and Discovery."
+          },
+          {
+            "label": "Interactive Units",
+            "text": "playable ads and in-banner surveys."
+          }
+        ]
+      },
+      {
+        "title": "Programmatic Video Editing & Packaging",
+        "items": [
+          {
+            "label": "Format Adaptation",
+            "text": "across channels (YouTube, CTV, social, in-app)."
+          },
+          {
+            "label": "Compliance",
+            "text": "VAST/VPAID compliance for frictionless ad delivery."
+          },
+          {
+            "label": "Cutdowns",
+            "text": "bumpers, mid-rolls, custom intros/outros."
+          }
+        ]
+      },
+      {
+        "title": "In-App Creative Production",
+        "items": [
+          {
+            "label": "Motion & Static Assets",
+            "text": "In-App: interstitials, rewarded video, mobile banners"
+          },
+          {
+            "label": "In-App",
+            "text": "interstitials, rewarded video, mobile banners"
+          },
+          {
+            "label": "Compatibility",
+            "text": "Vistar, Broadsign, Adomni"
+          }
+        ]
+      }
+    ],
+    "whyTitle": "Why Voise Content Production?",
+    "why": [
+      "In-house team with a programmatic-first design mindset.",
+      "Tight integration with Voise SSP, DSP, and Pre-Bid infrastructure.",
+      "Backed by real-time performance data and creative intelligence.",
+      "Trusted by global brands and multicultural media strategists."
+    ],
+    "closing": {
+      "heading": "Let’s build ads that connect, convert, and scale.",
+      "cta": {
+        "label": "Fuel Revenue with Creative",
+        "href": "/contact-us/"
+      }
+    }
+  },
+  {
+    "slug": "auction-platform",
+    "category": "buyers",
+    "name": "Voise Curation",
+    "seoTitle": "Auction Platform for Programmatic Buyers | Voise Curation",
+    "description": "Discover Voise Curation — a powerful auction platform for programmatic buyers. Curate premium deals, target better audiences, and boost media performance. Try now!",
+    "ogImage": "/wp-content/uploads/2025/08/Voise-Curation2-1.webp",
+    "publishedTime": null,
+    "modifiedTime": "2025-10-30T09:04:49+00:00",
+    "tagline": "Deals that Do the Heavy Lifting",
+    "intro": [
+      "Voise Curation gives agencies, brands, and resellers the power to build custom, high-performing programmatic marketplaces.",
+      "Instead of relying on off-the-shelf inventory bundles or predefined PMPs, this solution lets you handpick audiences, formats, publishers, and data layers—then package them into curated deals that deliver.",
+      "It’s built for the teams who want more control, better targeting, and curated media buys that perform like they were made in-house. Because they were."
+    ],
+    "heroCta": {
+      "label": "Explore Voise Curation",
+      "href": "/contact-us/"
+    },
+    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
+    "tech": [
+      {
+        "label": "Curation Engine",
+        "value": "Proprietary deal-building and package management system",
+        "icon": "/wp-content/uploads/2025/08/Curation-Engine.svg"
+      },
+      {
+        "label": "Data Layer",
+        "value": "Deep integrations with DMPs, CDPs, and contextual data providers",
+        "icon": "/wp-content/uploads/2025/08/Data-Layer.svg"
+      },
+      {
+        "label": "SSP Connectivity",
+        "value": "Direct API-level partnerships with major SSPs and publishers",
+        "icon": "/wp-content/uploads/2025/08/SSP-Connectivity.svg"
+      },
+      {
+        "label": "Optimization Module",
+        "value": "ML models trained on deal performance data",
+        "icon": "/wp-content/uploads/2025/08/Optimization-Module.svg"
+      },
+      {
+        "label": "Analytics & Reporting",
+        "value": "Real-time dashboards built with Plotly and D3.js",
+        "icon": "/wp-content/uploads/2025/08/Analytics-Reporting.svg"
+      },
+      {
+        "label": "Cloud Infra",
+        "value": "Fully scalable on AWS to support global buyer operations",
+        "icon": "/wp-content/uploads/2025/08/Cloud-Infra.svg"
+      }
+    ],
+    "edge": [
+      {
+        "title": "Curated, Brand-Safe Inventory",
+        "text": "Higher-quality media buys with full control"
+      },
+      {
+        "title": "Efficient Deal Packaging",
+        "text": "Pre-assembled bundles save time across campaigns"
+      },
+      {
+        "title": "Audience Precision",
+        "text": "Sharper targeting = better performance"
+      },
+      {
+        "title": "Scalable Curation",
+        "text": "Build and manage curated deals across teams and markets"
+      },
+      {
+        "title": "AI-Powered Performance",
+        "text": "Smart curation that improves results over time"
+      }
+    ],
+    "features": [
+      {
+        "title": "Custom Curated Marketplaces",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Enables you to create private marketplaces and curated deals with specific formats, audience segments, and inventory types."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You don’t rely on a generic supply, you build exactly what your campaign needs."
+          }
+        ]
+      },
+      {
+        "title": "Premium Inventory Access",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Direct API-level access to tier-one SSPs, exchanges, and publishers."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Your curated packages come with quality baked in."
+          }
+        ]
+      },
+      {
+        "title": "Audience Segmentation",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Combines 1P, 3P, and contextual data to build sharper audience definitions."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You reach real people - not just impressions."
+          }
+        ]
+      },
+      {
+        "title": "Deal ID Management",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Centralized interface to create, assign, monitor, and optimize Deal IDs."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You control the entire lifecycle of a curated deal, not just the setup."
+          }
+        ]
+      },
+      {
+        "title": "Real-Time Reporting",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Dashboards track the performance of every curated package—by audience, format, and region."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You can prove performance and adjust mid-flight."
+          }
+        ]
+      },
+      {
+        "title": "AI-Driven Optimization",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Analyzes campaign and publisher data to prioritize the best-performing inventory for each deal."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You maximize yield without constant manual intervention."
+          }
+        ]
+      }
+    ],
+    "closing": {
+      "heading": "Your campaigns deserve more than standard supply. Build the marketplace that works for you.",
+      "cta": {
+        "label": "Start Curating with Voise",
+        "href": "/contact-us/"
+      }
+    }
+  },
+  {
+    "slug": "multicultural-advertising-agency",
+    "category": "buyers",
+    "name": "Voise Multicultural Opportunity",
+    "seoTitle": "Multicultural Advertising Agency | Voise Tech",
+    "description": "Reach diverse audiences with Voise Tech — a multicultural advertising agency offering data-driven, inclusive campaigns across cultures, languages & regions.",
+    "ogImage": "/wp-content/uploads/2025/08/Voise-Multicultural-Opportunity1-1.webp",
+    "publishedTime": null,
+    "modifiedTime": "2026-01-12T10:56:18+00:00",
+    "tagline": "Diversity-Driven Advertising at Scale",
+    "intro": [
+      "Voise Multicultural Opportunity is a programmatic solution designed for brands that want to connect authentically with diverse communities across cultures, languages, identities, and regions.",
+      "Backed by deep audience intelligence and exclusive publisher relationships, this offering helps advertisers create culturally relevant campaigns that go beyond tokenism and actually deliver results. Whether you're targeting Hispanic moms on mobile, Tamil-speaking youth on CTV, or LGBTQ+ audiences across lifestyle content—Voise makes it simple to reach the right people, the right way."
+    ],
+    "heroCta": {
+      "label": "Explore Deal Packages",
+      "href": "/contact-us/"
+    },
+    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
+    "tech": [
+      {
+        "label": "Audience Intelligence",
+        "value": "Snowflake & BigQuery-based segmentation",
+        "icon": "/wp-content/uploads/2025/08/Audience-Intelligence.svg"
+      },
+      {
+        "label": "Campaign Tools",
+        "value": "GAM, DV360, The Trade Desk, Xandr integration",
+        "icon": "/wp-content/uploads/2025/08/Campaign-Tools.svg"
+      },
+      {
+        "label": "Targeting Stack",
+        "value": "IP pools, language filters, region-behavioral data",
+        "icon": "/wp-content/uploads/2025/08/Targeting-Stack.svg"
+      },
+      {
+        "label": "Measurement",
+        "value": "Cultural effectiveness, engagement lift, CTR analysis",
+        "icon": "/wp-content/uploads/2025/08/Measurement.svg"
+      },
+      {
+        "label": "Brand Safety",
+        "value": "Comscore, IAS, and DoubleVerify integration",
+        "icon": "/wp-content/uploads/2025/08/Brand-Safety.svg"
+      },
+      {
+        "label": "Compliance",
+        "value": "GDPR, CCPA, LGPD aligned, IAB DEI-compliant",
+        "icon": "/wp-content/uploads/2025/08/Compliance.svg"
+      }
+    ],
+    "edge": [],
+    "features": [
+      {
+        "title": "Curated Multicultural Inventory",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Offers direct access to top publishers, apps, and media networks serving African-American, Hispanic/Latino, AAPI, South Asian, Middle Eastern, and LGBTQ+ audiences."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You buy into premium, relevant environments, not generic inventory that misses the cultural mark."
+          }
+        ]
+      },
+      {
+        "title": "Identity-Based Audience Segments",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Builds audience pools based on language, location, content affinity, and demographics, sourced from first-party, third-party, and publisher data."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You target people by who they are and what they care about, not just broad interest categories."
+          }
+        ]
+      },
+      {
+        "title": "Creative Cultural Adaptation",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Supports multilingual creatives, culturally aware copy, regionally tuned CTAs, and pre-testing to ensure your message lands right."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You avoid “lost in translation” moments and build real emotional relevance."
+          }
+        ]
+      },
+      {
+        "title": "CTV Extension",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Extends reach to smart TVs in high-density ethnic zones, using real-time audience mapping."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You take your cultural message beyond mobile and display it in the environments where diverse audiences live and engage."
+          }
+        ]
+      },
+      {
+        "title": "Multicultural Deal Packages (PMP & PG)",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Offers ready-to-activate deals grouped by audience type, content category, or media channel."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You skip the manual work and start running campaigns faster, with pre-approved supply that matches your brief."
+          }
+        ]
+      }
+    ],
+    "closing": {
+      "heading": "Inclusive media done right, strategic, scalable, and built to perform.",
+      "cta": {
+        "label": "Explore Deal Packages",
+        "href": "/contact-us/"
+      }
+    }
+  },
+  {
+    "slug": "advertising-planning-tool",
+    "category": "buyers",
+    "name": "Voise Agentic Planner",
+    "seoTitle": "AI-Powered Media Planning Tool for Advertisers | Voise Tech",
+    "description": "Plan smarter with Voise Tech’s AI-powered media planning tool. Discover inventory, forecast performance & launch data-driven ad campaigns in minutes.",
+    "ogImage": "/wp-content/uploads/2025/08/Voise-Planning-Tool1-1.webp",
+    "publishedTime": null,
+    "modifiedTime": "2026-03-06T09:38:28+00:00",
+    "tagline": "From Brief to Plan in Minutes",
+    "intro": [
+      "The Voise Agentic Planner is built for the modern media team, advertisers, planners, and strategists who need to deliver results across fragmented formats and geographies.",
+      "Whether you're launching a national CTV campaign or a focused regional push, this all-in-one planning suite helps you navigate audience insights, inventory discovery, and media forecasting in one place, without jumping between spreadsheets, teams, or tools."
+    ],
+    "heroCta": {
+      "label": "Try the Planning Tool",
+      "href": "/contact-us/"
+    },
+    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
+    "tech": [
+      {
+        "label": "Backend",
+        "value": "Python, Node.js",
+        "icon": "/wp-content/uploads/2025/08/backend-1.svg"
+      },
+      {
+        "label": "Data Viz",
+        "value": "D3.js, Plotly, Google Charts",
+        "icon": "/wp-content/uploads/2025/08/data_VIZ.svg"
+      },
+      {
+        "label": "ML Layer",
+        "value": "Scikit-learn models trained on real campaign data",
+        "icon": "/wp-content/uploads/2025/08/ml_layers.svg"
+      },
+      {
+        "label": "DB Infra",
+        "value": "PostgreSQL + AWS Redshift",
+        "icon": "/wp-content/uploads/2025/08/db-infra-1.svg"
+      },
+      {
+        "label": "APIs",
+        "value": "Deep integration with Voise DSP, SSP, and major DMPs",
+        "icon": "/wp-content/uploads/2025/08/api-s.svg"
+      }
+    ],
+    "edge": [
+      {
+        "title": "Centralized Media Planning",
+        "text": "Reduce manual work and fragmented spreadsheets."
+      },
+      {
+        "title": "Data-Driven Strategy",
+        "text": "Make informed decisions backed by historical and real-time data."
+      },
+      {
+        "title": "Faster Go-to-Market",
+        "text": "Cut turnaround time from brief to IO by 50%."
+      },
+      {
+        "title": "Cross-Channel Visibility",
+        "text": "Align spend across CTV, Display, Native & more."
+      },
+      {
+        "title": "Scalable for Global Campaigns",
+        "text": "Designed for multi-market activation and localization."
+      }
+    ],
+    "features": [
+      {
+        "title": "Real-Time Inventory Discovery",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Access up-to-date availability across Display, Video, CTV, Audio, and Native formats."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You don’t waste time planning around inventory that isn’t actually available."
+          }
+        ]
+      },
+      {
+        "title": "AI-Driven Audience Matching",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Suggests the best-fit audience segments based on behavior, intent, and demographics, across Voise and integrated DMPs."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You match media to people, not just impressions."
+          }
+        ]
+      },
+      {
+        "title": "Smart Budget Allocation",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Recommends optimal budget splits across formats, using CPM benchmarks and past campaign data."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You avoid overspending in low-return areas and focus your budget where it counts."
+          }
+        ]
+      },
+      {
+        "title": "Predictive Performance Modeling",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Forecasts KPIs like Reach, CTR, Viewability, and CPM using machine learning trained on Voise campaign data."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You know what to expect before you spend."
+          }
+        ]
+      },
+      {
+        "title": "Geo & Device Heat Mapping",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Visual overlays show where your audience is active and how they access content."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You fine-tune targeting across regions and devices."
+          }
+        ]
+      },
+      {
+        "title": "Exportable Media Plans",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Create IO-ready Excel sheets, PDFs, or pitch decks. One-click integration to Voise DSP and Adserver."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You reduce the time between planning and buying by up to 50%."
+          }
+        ]
+      }
+    ],
+    "closing": {
+      "heading": "Build smarter, faster, and more precise campaigns — today.",
+      "cta": {
+        "label": "Start Planning with Voise",
+        "href": "/contact-us/"
+      }
+    }
+  },
+  {
+    "slug": "audience-segmentation-tool",
+    "category": "buyers",
+    "name": "Voise AudienceIQ",
+    "seoTitle": "Audience Segmentation for Programmatic Ads | Voise Tech",
+    "description": "Build smarter targeting with Voise Tech’s audience segmentation engine — powered by AI, first-party data, and multicultural insights. Start today!",
+    "ogImage": "/wp-content/uploads/2025/08/Voise-Audience-Segmentation1.webp",
+    "publishedTime": null,
+    "modifiedTime": "2026-03-06T09:40:10+00:00",
+    "tagline": "Precision Without the Guesswork",
+    "intro": [
+      "Voise AudienceIQ is your targeting backbone for high-performing programmatic campaigns.",
+      "Powered by first-party signals, contextual relevance, and multicultural depth, this privacy-first engine lets advertisers activate hyper-granular audiences across web, mobile, CTV, and audio, without sacrificing reach or compliance.",
+      "Whether you’re running brand awareness or performance-driven campaigns, Voise makes sure your media lands in front of the right people on their terms.",
+      "Fully integrated with the Voise DSP, Adserver, and Planning Tool, it brings precision and intelligence to every impression."
+    ],
+    "heroCta": {
+      "label": "Explore Segments",
+      "href": "/contact-us/"
+    },
+    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
+    "tech": [
+      {
+        "label": "Data Processing",
+        "value": "Apache Spark, Kafka",
+        "icon": "/wp-content/uploads/2025/08/data-processing-1.svg"
+      },
+      {
+        "label": "Machine Learning",
+        "value": "TensorFlow, PyTorch, LightGBM",
+        "icon": "/wp-content/uploads/2025/08/brainstorming-1.svg"
+      },
+      {
+        "label": "Audience Graph",
+        "value": "AWS Neptune (Graph DB), Redis",
+        "icon": "/wp-content/uploads/2025/08/percentage-1.svg"
+      },
+      {
+        "label": "Contextual Engine",
+        "value": "Python NLP with spaCy & BERT",
+        "icon": "/wp-content/uploads/2025/08/engineering-1-1.svg"
+      },
+      {
+        "label": "Integration",
+        "value": "Voise DSP, Adserver, DMPs/CDPs via API & RTB protocols",
+        "icon": "/wp-content/uploads/2025/08/integration-1.svg"
+      }
+    ],
+    "edge": [
+      {
+        "title": "Precise Targeting",
+        "text": "Reduces media waste and drives campaign efficiency."
+      },
+      {
+        "title": "Privacy-First",
+        "text": "Enables cookieless targeting via contextual + cohort models."
+      },
+      {
+        "title": "Multicultural Reach",
+        "text": "Enables inclusion through ethnic and language-based audience options."
+      },
+      {
+        "title": "Real-Time Activation",
+        "text": "Keeps segments fresh based on live bidding and campaign signals."
+      },
+      {
+        "title": "Intelligent Expansion",
+        "text": "Uses AI to expand reach via similarity scoring, without diluting impact."
+      }
+    ],
+    "features": [
+      {
+        "title": "Dynamic Segmentation Models",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Access pre-built taxonomies based on demographics, interests, and intent signals, plus real-time lookalikes from Voise campaign data."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You don’t start from scratch. You start smart with proven, evolving segments."
+          }
+        ]
+      },
+      {
+        "title": "Multicultural & Ethnicity-Based Segments",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Targets diverse communities with curated segments for South Asian, Hispanic, African-American, and MENA audiences, including language and diaspora overlays."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You go beyond reach and into resonance, speaking to identity, not just behavior."
+          }
+        ]
+      },
+      {
+        "title": "Contextual Intelligence Layer",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Matches ads to real-time content using NLP, semantic analysis, and IAB categories, built on Voise’s in-house indexing engine."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You stay cookieless-compliant while keeping contextual precision and brand alignment."
+          }
+        ]
+      },
+      {
+        "title": "Custom Audience Builder",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Upload CRM/email lists (hashed), layer in behavioral and geo filters, and build re-usable templates - all within a secure environment."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You unify your own data with real-world signals to create laser-focused targeting strategies."
+          }
+        ]
+      },
+      {
+        "title": "Data Source Integration",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Connects with DMPs, CDPs, SDKs, pixels, and telco/e-commerce data partners for enriched segmentation."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You activate audiences using a wide, verified data backbone, not just a siloed slice."
+          }
+        ]
+      }
+    ],
+    "closing": {
+      "heading": "Smart targeting starts with smart segmentation.",
+      "cta": {
+        "label": "Talk to a Targeting Specialist",
+        "href": "/contact-us/"
+      }
+    }
+  },
+  {
+    "slug": "creative-services",
+    "category": "buyers",
+    "name": "Voise Creative Studio",
+    "seoTitle": "Programmatic Ad Creative Production Agency | Voise Tech",
+    "description": "Build programmatic-ready creatives that convert. Voise Tech offers display, video, DOOH, and audio ad production for global advertisers. Start now!",
+    "ogImage": "/wp-content/uploads/2025/08/Voise-Creative-Services1-1.webp",
+    "publishedTime": null,
+    "modifiedTime": "2026-03-10T14:17:57+00:00",
+    "tagline": "Creative that Works Harder",
+    "intro": [
+      "Voise Creative Studio is a full-stack production arm built to power high-performance digital advertising.",
+      "From responsive banners and dynamic video to audio ads, our in-house team delivers creatives designed for every screen, every audience, and every platform, programmatically ready and built to perform.",
+      "Tightly integrated with Voise DSP, Adserver, and Audience Engine, every creative we produce is engineered to meet media specs, accelerate campaign launch, and improve key performance metrics."
+    ],
+    "heroCta": {
+      "label": "Book a Creative Consult",
+      "href": "/contact-us/"
+    },
+    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
+    "tech": [
+      {
+        "label": "Design & Motion",
+        "value": "Adobe Creative Cloud (After Effects, Illustrator, Photoshop), Figma",
+        "icon": "/wp-content/uploads/2025/09/Design-Animation.svg"
+      },
+      {
+        "label": "Video Editing",
+        "value": "Premiere Pro, Final Cut Pro",
+        "icon": "/wp-content/uploads/2025/08/Video-Editing.svg"
+      },
+      {
+        "label": "DCO Platform",
+        "value": "Google Studio, Celtra, RevJet (optional integrations)",
+        "icon": "/wp-content/uploads/2025/08/DCO-Platform.svg"
+      },
+      {
+        "label": "QA & Testing",
+        "value": "Litmus, BrowserStack, CreativeX",
+        "icon": "/wp-content/uploads/2025/08/QA-Testing.svg"
+      },
+      {
+        "label": "Code & Dev",
+        "value": "HTML5, GSAP (Greensock), JavaScript, CSS3",
+        "icon": "/wp-content/uploads/2025/08/Code-Dev.svg"
+      },
+      {
+        "label": "Delivery",
+        "value": "Voise Adserver, GAM, Innovid, Sizmek",
+        "icon": "/wp-content/uploads/2025/08/Delivery.svg"
+      }
+    ],
+    "edge": [
+      {
+        "title": "Creative Consultancy",
+        "text": "Strategic input beyond design, ensuring alignment with audience, platform, and media goals."
+      },
+      {
+        "title": "Multicultural Focus",
+        "text": "Creatives tailored for India, MENA, LATAM, EU, and APAC audiences, driving cultural relevance and reach."
+      },
+      {
+        "title": "Performance-Led Approach",
+        "text": "Optimized to improve CTR, VTR, viewability, and engagement for measurable impact."
+      },
+      {
+        "title": "Fast Turnaround",
+        "text": "Rapid production cycles that keep pace with time-sensitive launches and GTM campaigns."
+      }
+    ],
+    "features": [
+      {
+        "title": "Dynamic Video Production",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Creates short- and long-form video tailored for CTV, and mobile, with interactive elements and multilingual support."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Your message cuts through in high-impact formats and speaks directly to diverse viewers."
+          }
+        ]
+      },
+      {
+        "title": "Display & Rich Media Creatives",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Designs HTML5 and rich media units with interactive triggers like scroll, geolocation, and weather conditions."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You grab attention, boost engagement, and stay responsive across devices and screens."
+          }
+        ]
+      },
+      {
+        "title": "Native & Contextual Ad Experiences",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Crafts on-brand native ads matched to publisher content, backed by AI-powered context analysis."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Your brand blends in where it needs to and stands out where it counts."
+          }
+        ]
+      },
+      {
+        "title": "Dynamic Creative Optimization (DCO)",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Builds templates that adapt in real-time based on audience, behavior, and performance — automatically prioritizing top variants."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You deliver personalized creative without manual rework."
+          }
+        ]
+      },
+      {
+        "title": "CTV Creative Development",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Produces high-res creatives for digital screens, tailored for time of day, location, and local context."
+          },
+          {
+            "label": "Why it matters",
+            "text": "You maximize relevance on formats that are traditionally static."
+          }
+        ]
+      },
+      {
+        "title": "Audio Creative Studio",
+        "items": [
+          {
+            "label": "What it does",
+            "text": "Delivers multilingual voiceovers, branded sound identities, and ad units optimized for podcasts and streaming."
+          },
+          {
+            "label": "Why it matters",
+            "text": "Your message becomes memorable, even when the screen is off."
+          }
+        ]
+      }
+    ],
+    "integrationsTitle": "Supported Formats",
+    "integrations": [
+      {
+        "label": "Display",
+        "text": "JPEG, PNG, HTML5, AMP"
+      },
+      {
+        "label": "Video",
+        "text": "MP4 (HD/4K), WebM, MOV, VAST-compliant"
+      },
+      {
+        "label": "Audio",
+        "text": "MP3, OGG, WAV"
+      },
+      {
+        "label": "Native",
+        "text": "JSON feed-based templates, OpenRTB-compliant assets"
+      }
+    ],
+    "useCasesTitle": "Use Cases",
+    "useCases": [
+      {
+        "title": "Quick-launch creatives for product rollouts",
+        "text": "",
+        "icon": "/wp-content/uploads/2025/08/Quick-launch-creatives-for-product-rollouts.svg"
+      },
+      {
+        "title": "Multilingual/multicultural campaigns with regional nuance",
+        "text": "",
+        "icon": "/wp-content/uploads/2025/08/Multilingualmulticultural-campaigns-with-regional-nuance.svg"
+      },
+      {
+        "title": "Full-surface brand refresh campaigns",
+        "text": "",
+        "icon": "/wp-content/uploads/2025/08/Full-surface-brand-refresh-campaigns.svg"
+      },
+      {
+        "title": "Performance creative testing for ongoing programmatic media",
+        "text": "",
+        "icon": "/wp-content/uploads/2025/08/Performance-creative-testing-for-ongoing-programmatic-media.svg"
+      }
+    ],
+    "closing": {
+      "heading": "Creative that works where it matters.",
+      "cta": {
+        "label": "Start Your Creative Project | Talk to a Creative Strategist",
+        "href": "/contact-us/"
+      }
+    }
+  }
+]

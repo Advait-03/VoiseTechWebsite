@@ -1,0 +1,63 @@
+---
+/**
+ * Horizontal stage flow (vertical on small screens) with an animated signal
+ * running along the connector. Each stage lists the products that serve it.
+ */
+import Icon from './Icon.astro';
+
+type Stage = { step: string; title: string; text: string; links?: { label: string; href: string }[] };
+interface Props { stages: Stage[]; base?: { title: string; text: string }; label: string }
+const { stages, base, label } = Astro.props;
+---
+<div class="flow" style={`--n:${stages.length}`} role="group" aria-label={label} data-play-in-view>
+  <ol role="list" class="stages" data-stagger>
+    {stages.map((s, i) => (
+      <li class="stage" data-reveal>
+        <span class="node" aria-hidden="true"><span>{String(i + 1).padStart(2, '0')}</span></span>
+        <p class="mono step">{s.step}</p>
+        <h3 class="h4">{s.title}</h3>
+        <p class="text">{s.text}</p>
+        {s.links && (
+          <ul role="list" class="links">
+            {s.links.map((l) => <li><a class="link-arrow" href={l.href}><span class="label">{l.label}</span><Icon name="arrow" size={13} class="arrow" /></a></li>)}
+          </ul>
+        )}
+      </li>
+    ))}
+  </ol>
+  {base && (
+    <div class="base" data-reveal>
+      <span class="mono">Across every stage</span>
+      <strong>{base.title}</strong>
+      <span class="muted">{base.text}</span>
+    </div>
+  )}
+</div>
+
+<style>
+  .flow { position: relative; }
+  .stages { position: relative; display: grid; grid-template-columns: repeat(var(--n), minmax(0, 1fr)); gap: clamp(16px, 2vw, 28px); }
+  .stages::before, .stages::after { content: ''; position: absolute; top: 22px; left: 22px; right: 22px; height: 2px; }
+  .stages::before { background: var(--line); }
+  .stages::after { background: linear-gradient(90deg, transparent, var(--blue) 40%, var(--green) 60%, transparent); background-size: 30% 100%; background-repeat: no-repeat; animation: run 3.6s linear infinite; }
+  .flow[data-paused] .stages::after { animation-play-state: paused; }
+  @keyframes run { from { background-position: -40% 0; } to { background-position: 140% 0; } }
+  .stage { position: relative; display: grid; gap: 10px; align-content: start; }
+  .node { position: relative; z-index: 1; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: #fff; border: 1px solid var(--line-strong); font-family: var(--font-mono); font-size: 0.75rem; font-weight: 500; margin-bottom: 12px; transition: background-color var(--dur), color var(--dur), border-color var(--dur); }
+  .stage:hover .node { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .step { color: var(--blue-ink); }
+  .text { color: var(--ink-2); font-size: var(--fs-small); }
+  .links { display: grid; gap: 6px; margin-top: 6px; }
+  .base { display: grid; grid-template-columns: auto auto 1fr; gap: 6px 20px; align-items: baseline; margin-top: clamp(32px, 4vw, 48px); padding: 20px 24px; border: 1px dashed var(--line-strong); border-radius: var(--radius); background: var(--bg-subtle); }
+  .base .mono { color: var(--green-ink); }
+  .base .muted { font-size: var(--fs-small); }
+  @media (max-width: 900px) {
+    .stages { grid-template-columns: minmax(0, 1fr); gap: 28px; padding-left: 64px; }
+    .stages::before, .stages::after { top: 22px; bottom: 22px; left: 22px; right: auto; width: 2px; height: auto; }
+    .stages::after { background: linear-gradient(180deg, transparent, var(--blue) 40%, var(--green) 60%, transparent); background-size: 100% 30%; animation-name: run-v; }
+    @keyframes run-v { from { background-position: 0 -40%; } to { background-position: 0 140%; } }
+    .node { position: absolute; left: -64px; top: -4px; margin: 0; }
+    .base { grid-template-columns: minmax(0, 1fr); }
+  }
+  @media (prefers-reduced-motion: reduce) { .stages::after { animation: none; display: none; } }
+</style>
