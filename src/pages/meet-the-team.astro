@@ -5,6 +5,7 @@ import SectionHeading from '../components/SectionHeading.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Img from '../components/Img.astro';
 import Icon from '../components/Icon.astro';
+import GlobePresence from '../components/GlobePresence.astro';
 import { leadership, team, departments, type Person } from '../data/people';
 import { SITE } from '../data/site';
 
@@ -45,6 +46,18 @@ const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle:
           <li style={`--i:${i}`}><Img src={p.photo!} alt="" sizes="120px" loading={i < 6 ? 'eager' : 'lazy'} /></li>
         ))}
       </ul>
+    </div>
+  </section>
+
+  <section class="section-sm presence">
+    <div class="container presence-grid">
+      <div class="presence-copy">
+        <SectionHeading eyebrow="Global presence" title="One Team, Four Countries." lede="A trusted technology partner across the US, UK, UAE, India, and beyond." />
+        <ul role="list" class="countries">
+          {SITE.presence.map((c) => <li>{c}</li>)}
+        </ul>
+      </div>
+      <div data-reveal="fade"><GlobePresence /></div>
     </div>
   </section>
 
@@ -106,6 +119,12 @@ const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle:
 
 <style>
   .hero { position: relative; overflow: hidden; padding-block: clamp(40px, 6vw, 88px) clamp(56px, 7vw, 104px); background: radial-gradient(55% 70% at 90% 10%, rgb(8 112 199 / 0.09), transparent 70%), radial-gradient(40% 50% at 60% 90%, rgb(14 177 81 / 0.07), transparent 70%); }
+  .presence { overflow: hidden; padding-bottom: 0; }
+  .presence-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .presence-grid > div:last-child { padding-top: clamp(48px, 5vw, 72px); }
+  .countries { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+  .countries li { font-family: var(--font-mono); font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; border: 1px solid var(--line); border-radius: 999px; padding: 6px 14px; background: #fff; }
+  @media (max-width: 900px) { .presence-grid { grid-template-columns: minmax(0, 1fr); } }
   .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
   .hero-copy { display: grid; gap: 22px; justify-items: start; }
   .hero-copy :global(.crumbs) { margin-bottom: 10px; }
