@@ -1,5 +1,9 @@
 /** Team and testimonials, as published on /about-us/ and /resources/testimonials/. */
-export type Person = { name: string; role: string; photo: string; linkedin?: string };
+/** Department order = display order on /meet-the-team/ (leadership is shown above all departments). */
+export const departments = ['Product & Engineering', 'Operations', 'Partnerships', 'Marketing', 'Customer Success', 'People & Admin'] as const;
+export type Department = (typeof departments)[number];
+
+export type Person = { name: string; role: string; photo: string; linkedin?: string; department?: Department };
 
 export const leadership: Person[] = [
   { name: 'Sabarish Pillai', role: 'Founder & CEO', photo: '/wp-content/uploads/2026/06/Website-Employee-Photos-sabarish.png', linkedin: 'https://www.linkedin.com/in/sabarish-pillai/' },
@@ -7,19 +11,20 @@ export const leadership: Person[] = [
   { name: 'Jijesh Nambiar', role: 'Co-Founder & COO', photo: '/wp-content/uploads/2026/06/Website-Employee-Photos-Jijesh.png', linkedin: 'https://www.linkedin.com/in/jijeshnambiar87/' },
 ];
 
+/** Ordered by department (see `departments`); roles exactly as published on /about-us/. */
 export const team: Person[] = [
-  { name: 'Gyan Raunak', role: 'Product & Engineering', photo: '/wp-content/uploads/2026/04/Gyan-Raunak.png', linkedin: 'https://www.linkedin.com/in/gyanraunak/' },
-  { name: 'Victoria de la Calle Fernandez', role: 'Partnerships', photo: '/wp-content/uploads/2026/04/Vic.png', linkedin: 'https://www.linkedin.com/in/victoria-de-la-calle/' },
+  { name: 'Gyan Raunak', role: 'Product & Engineering', department: 'Product & Engineering', photo: '/wp-content/uploads/2026/04/Gyan-Raunak.png', linkedin: 'https://www.linkedin.com/in/gyanraunak/' },
+  { name: 'Anushree Fale', role: 'Engineering', department: 'Product & Engineering', photo: '/wp-content/uploads/2026/07/Anushree-Fale.png', linkedin: 'https://www.linkedin.com/in/anushreefale/' },
   // The live page links Yuvraj Munot to Maayur Kulthe's LinkedIn profile; the link is
   // withheld until the correct profile is confirmed (docs/REVIEW-ITEMS.md).
-  { name: 'Yuvraj Munot', role: 'Operations', photo: '/wp-content/uploads/2026/01/yum-e1767799386172.jpg' },
-  { name: 'Maayur Kulthe', role: 'Admin & Procurement', photo: '/wp-content/uploads/2026/10/Website-Employee-Photos.png', linkedin: 'https://www.linkedin.com/in/maayur-kulthe-19411110b/' },
-  { name: 'Akanksha Joshi', role: 'Customer Success', photo: '/wp-content/uploads/2025/09/Akanksha-Joshi.jpg', linkedin: 'https://www.linkedin.com/in/akanksha-joshi-534136142/' },
-  { name: 'Malavika Balakrishnan', role: 'Marketing', photo: '/wp-content/uploads/2025/12/4.png', linkedin: 'https://www.linkedin.com/in/malavika-balakrishnan-649069125/' },
-  { name: 'Sushma Veggalam', role: 'Operations', photo: '/wp-content/uploads/2025/12/Untitled-design-9-e1767800003538.png', linkedin: 'https://www.linkedin.com/in/sushma-veggalam/' },
-  { name: 'Pallavi Gadhe', role: 'Human Resource', photo: '/wp-content/uploads/2026/07/Pallavi-Gadhe.png', linkedin: 'https://www.linkedin.com/in/pallavi-g-6607511a0/' },
-  { name: 'Anushree Fale', role: 'Engineering', photo: '/wp-content/uploads/2026/07/Anushree-Fale.png', linkedin: 'https://www.linkedin.com/in/anushreefale/' },
-  { name: 'Kelly Hoang', role: 'Partnerships', photo: '/wp-content/uploads/2026/08/kelly.png', linkedin: 'https://www.linkedin.com/in/kelly-hoang1307/' },
+  { name: 'Yuvraj Munot', role: 'Operations', department: 'Operations', photo: '/wp-content/uploads/2026/01/yum-e1767799386172.jpg' },
+  { name: 'Sushma Veggalam', role: 'Operations', department: 'Operations', photo: '/wp-content/uploads/2025/12/Untitled-design-9-e1767800003538.png', linkedin: 'https://www.linkedin.com/in/sushma-veggalam/' },
+  { name: 'Victoria de la Calle Fernandez', role: 'Partnerships', department: 'Partnerships', photo: '/wp-content/uploads/2026/04/Vic.png', linkedin: 'https://www.linkedin.com/in/victoria-de-la-calle/' },
+  { name: 'Kelly Hoang', role: 'Partnerships', department: 'Partnerships', photo: '/wp-content/uploads/2026/08/kelly.png', linkedin: 'https://www.linkedin.com/in/kelly-hoang1307/' },
+  { name: 'Malavika Balakrishnan', role: 'Marketing', department: 'Marketing', photo: '/wp-content/uploads/2025/12/4.png', linkedin: 'https://www.linkedin.com/in/malavika-balakrishnan-649069125/' },
+  { name: 'Akanksha Joshi', role: 'Customer Success', department: 'Customer Success', photo: '/wp-content/uploads/2025/09/Akanksha-Joshi.jpg', linkedin: 'https://www.linkedin.com/in/akanksha-joshi-534136142/' },
+  { name: 'Pallavi Gadhe', role: 'Human Resource', department: 'People & Admin', photo: '/wp-content/uploads/2026/07/Pallavi-Gadhe.png', linkedin: 'https://www.linkedin.com/in/pallavi-g-6607511a0/' },
+  { name: 'Maayur Kulthe', role: 'Admin & Procurement', department: 'People & Admin', photo: '/wp-content/uploads/2026/10/Website-Employee-Photos.png', linkedin: 'https://www.linkedin.com/in/maayur-kulthe-19411110b/' },
 ];
 
 export type Testimonial = { name: string; role: string; company: string; quote: string; logo: string };

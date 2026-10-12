@@ -54,6 +54,7 @@ export const primaryNav = [
     kind: 'menu' as const,
     links: [
       { label: 'About Us', href: '/about-us/', description: 'Built for transparency. Engineered for omnichannel performance.' },
+      { label: 'Meet the Team', href: '/meet-the-team/', description: 'The leadership and people behind VoiseTech.' },
       { label: 'Careers', href: '/careers/', description: 'Shape the future of programmatic. Grow with us.' },
       { label: 'Contact Us', href: '/contact-us/', description: 'Talk to the VoiseTech team.' },
     ],
@@ -75,6 +76,7 @@ export const footerNav = [
     title: 'Company',
     links: [
       { label: 'About Us', href: '/about-us/' },
+      { label: 'Meet the Team', href: '/meet-the-team/' },
       { label: 'Solutions', href: '/solutions/' },
       { label: 'GAM 360', href: '/google-ad-manager-solutions-services/' },
       { label: 'VoiseTech.AI', href: '/voisetechai/' },

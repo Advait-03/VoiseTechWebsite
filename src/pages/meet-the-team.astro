@@ -1,0 +1,179 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+import SectionHeading from '../components/SectionHeading.astro';
+import CtaBand from '../components/CtaBand.astro';
+import Img from '../components/Img.astro';
+import Icon from '../components/Icon.astro';
+import { leadership, team, departments, type Person } from '../data/people';
+import { SITE } from '../data/site';
+
+const groups = departments.map((d) => ({ name: d, id: d.toLowerCase().replace(/[^a-z]+/g, '-'), people: team.filter((p) => p.department === d) })).filter((g) => g.people.length);
+const everyone = [...leadership, ...team];
+const crumbs = [{ label: 'About Us', href: '/about-us/' }, { label: 'Meet the Team', href: '/meet-the-team/' }];
+const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle: p.role, worksFor: { '@id': `${SITE.url}/#organization` }, ...(p.linkedin && { sameAs: [p.linkedin] }) }));
+---
+<BaseLayout
+  title="Meet the Team | Voise Tech"
+  description="Meet the Voise Tech team — the leadership and people across product, engineering, operations, partnerships, marketing and customer success."
+  breadcrumbs={crumbs}
+  schema={schema}
+>
+  <section class="hero">
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <Breadcrumbs items={crumbs} />
+        <p class="eyebrow" data-reveal>Meet the team</p>
+        <h1 class="display" data-reveal style="--i:1">Meet Our <span class="grad-text">Team.</span></h1>
+        <p class="lede" data-reveal style="--i:2">Our global team builds technology that makes advertising smarter, safer, and more transparent.</p>
+        <div class="cluster" data-reveal style="--i:3">
+          <a class="btn" href="#departments">Departments <Icon name="arrow" size={16} class="arrow" /></a>
+          <a class="btn btn-secondary" href="/careers/">Join us</a>
+        </div>
+        <dl class="facts" data-reveal style="--i:4">
+          <div><dt>People</dt><dd>{everyone.length}</dd></div>
+          <div><dt>Teams</dt><dd>{groups.length + 1}</dd></div>
+          <div><dt>Offices</dt><dd>{SITE.presence.length}</dd></div>
+        </dl>
+      </div>
+      <ul role="list" class="mosaic" aria-hidden="true">
+        {everyone.slice(0, 12).map((p, i) => (
+          <li style={`--i:${i}`}><Img src={p.photo} alt="" sizes="120px" loading={i < 6 ? 'eager' : 'lazy'} /></li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section-sm leadership">
+    <div class="container">
+      <SectionHeading eyebrow="Leadership" title="Leadership Team." />
+      <ul role="list" class="lead-grid" data-stagger>
+        {leadership.map((p, i) => (
+          <li data-reveal>
+            <article class:list={['card-p', 'is-lead', i === 0 && 'is-founder']}>
+              <div class="photo"><Img src={p.photo} alt={`${p.name}, ${p.role}`} sizes="(max-width: 700px) 100vw, 33vw" /></div>
+              <div class="meta">
+                <p class="mono tier">{i === 0 ? 'Founder' : 'Co-Founder'}</p>
+                <h3 class="name">{p.name}</h3>
+                <p class="role">{p.role}</p>
+                {p.linkedin && <a class="li" href={p.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${p.name} on LinkedIn (opens in a new tab)`}><Icon name="linkedin" size={16} /></a>}
+              </div>
+            </article>
+          </li>
+        ))}
+      </ul>
+    </div>
+  </section>
+
+  <section class="section tone-subtle" id="departments">
+    <div class="container">
+      <SectionHeading eyebrow="Departments" title="Our Talented Team" />
+      <div class="filters" role="group" aria-label="Filter by department" hidden data-team-filters>
+        <button type="button" class="chip" aria-pressed="true" data-dept="">All</button>
+        {groups.map((g) => <button type="button" class="chip" aria-pressed="false" data-dept={g.id}>{g.name} <span>{g.people.length}</span></button>)}
+      </div>
+      <p class="sr-only" role="status" data-team-status></p>
+      <div class="depts">
+        {groups.map((g) => (
+          <section class="dept" data-dept-group={g.id} aria-labelledby={`dept-${g.id}`}>
+            <h3 class="dept-title" id={`dept-${g.id}`}><span class="mono">{String(departments.indexOf(g.name) + 1).padStart(2, '0')}</span>{g.name}</h3>
+            <ul role="list" class="team-grid" data-stagger>
+              {g.people.map((p: Person) => (
+                <li data-reveal>
+                  <article class="card-p">
+                    <div class="photo"><Img src={p.photo} alt={`${p.name}, ${p.role}`} sizes="(max-width: 600px) 50vw, (max-width: 1000px) 33vw, 220px" /></div>
+                    <div class="meta">
+                      <h4 class="name">{p.name}</h4>
+                      <p class="role">{p.role}</p>
+                      {p.linkedin && <a class="li" href={p.linkedin} target="_blank" rel="noopener noreferrer" aria-label={`${p.name} on LinkedIn (opens in a new tab)`}><Icon name="linkedin" size={15} /></a>}
+                    </div>
+                  </article>
+                </li>
+              ))}
+            </ul>
+          </section>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <CtaBand eyebrow="Join us" title="Be Part of Something Bigger." text="If you’re passionate about building the future of programmatic advertising, Voise Tech is the place to do it." primary={{ label: 'View careers', href: '/careers/' }} secondary={{ label: 'About Voise Tech', href: '/about-us/' }} />
+</BaseLayout>
+
+<style>
+  .hero { position: relative; overflow: hidden; padding-block: clamp(40px, 6vw, 88px) clamp(56px, 7vw, 104px); background: radial-gradient(55% 70% at 90% 10%, rgb(8 112 199 / 0.09), transparent 70%), radial-gradient(40% 50% at 60% 90%, rgb(14 177 81 / 0.07), transparent 70%); }
+  .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
+  .hero-copy { display: grid; gap: 22px; justify-items: start; }
+  .hero-copy :global(.crumbs) { margin-bottom: 10px; }
+  .facts { display: flex; gap: clamp(24px, 4vw, 48px); margin-top: 12px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .facts div { display: flex; flex-direction: column-reverse; gap: 2px; }
+  .facts dt { font-size: var(--fs-small); color: var(--ink-2); }
+  .facts dd { margin: 0; font-size: 2.2rem; font-weight: 600; letter-spacing: -0.04em; line-height: 1; }
+
+  /* Portrait mosaic: staggered columns that drift gently */
+  .mosaic { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 12px; }
+  .mosaic li { aspect-ratio: 1; border-radius: 30%; overflow: hidden; background: linear-gradient(160deg, #e9eef5, #dfe6ee); box-shadow: var(--shadow-soft); }
+  .mosaic li:nth-child(4n + 2), .mosaic li:nth-child(4n + 4) { transform: translateY(28px); }
+  .mosaic :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; }
+  @media (prefers-reduced-motion: no-preference) {
+    .mosaic li { animation: drift 7s var(--ease-in-out) infinite alternate; animation-delay: calc(var(--i) * -0.6s); }
+    @keyframes drift { to { translate: 0 -10px; } }
+  }
+  @media (max-width: 900px) { .hero-grid { grid-template-columns: minmax(0, 1fr); } .mosaic { grid-template-columns: repeat(6, minmax(0, 1fr)); } .mosaic li:nth-child(n + 7) { display: none; } .mosaic li:nth-child(4n + 2), .mosaic li:nth-child(4n + 4) { transform: none; } }
+
+  /* Person card */
+  .card-p { position: relative; display: grid; gap: 14px; }
+  .photo { position: relative; aspect-ratio: 1; border-radius: 28%; overflow: hidden; background: linear-gradient(160deg, #e9eef5, #dfe6ee); transition: transform 500ms var(--ease-out), box-shadow 500ms var(--ease-out); }
+  .photo::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 0 rgb(14 177 81 / 0); transition: box-shadow 400ms var(--ease-out); }
+  .photo :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 800ms var(--ease-out); }
+  .card-p:hover .photo { transform: translateY(-6px); box-shadow: 0 24px 40px -24px rgb(8 112 199 / 0.6); }
+  .card-p:hover .photo::after { box-shadow: inset 0 0 0 3px var(--green); }
+  .card-p:hover .photo :global(img) { transform: scale(1.05); }
+  .meta { position: relative; display: grid; gap: 2px; justify-items: center; text-align: center; }
+  .name { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; }
+  .role { font-size: var(--fs-small); color: var(--ink-2); }
+  .tier { color: var(--blue-ink); margin-bottom: 4px; }
+  .li { margin-top: 8px; width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; border: 1px solid var(--line-strong); color: var(--ink); background: #fff; transition: background-color var(--dur), color var(--dur), border-color var(--dur); }
+  .li:hover { background: #0a66c2; color: #fff; border-color: #0a66c2; }
+
+  .lead-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: clamp(20px, 3vw, 40px); margin-top: clamp(32px, 4vw, 56px); }
+  .is-lead .name { font-size: 1.35rem; }
+  .is-lead .photo { border-radius: 24%; }
+  .is-founder .photo { box-shadow: 0 0 0 3px #fff, 0 0 0 5px var(--blue); }
+  @media (max-width: 700px) { .lead-grid { grid-template-columns: minmax(0, 1fr); max-width: 360px; margin-inline: auto; } }
+
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin: clamp(28px, 3vw, 40px) 0 clamp(36px, 4vw, 56px); }
+  .chip { display: inline-flex; align-items: center; gap: 8px; height: 40px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--line-strong); background: #fff; font-size: var(--fs-small); font-weight: 500; color: var(--ink-2); transition: background-color var(--dur), color var(--dur), border-color var(--dur), transform var(--dur-fast); }
+  .chip span { font-family: var(--font-mono); font-size: 0.7rem; color: var(--ink-3); }
+  .chip:hover { border-color: var(--ink); color: var(--ink); }
+  .chip:active { transform: scale(0.97); }
+  .chip[aria-pressed='true'] { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .chip[aria-pressed='true'] span { color: rgb(255 255 255 / 0.7); }
+
+  .depts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: clamp(40px, 4vw, 56px) clamp(24px, 3vw, 40px); }
+  .dept[hidden] { display: none; }
+  .dept-title { display: flex; align-items: baseline; gap: 14px; font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem); padding-bottom: 14px; margin-bottom: 24px; border-bottom: 1px solid var(--line-strong); }
+  .dept-title .mono { color: var(--green-ink); }
+  .team-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
+  @media (prefers-reduced-motion: no-preference) { .dept.is-shown { animation: rise 500ms var(--ease-out); } @keyframes rise { from { opacity: 0; transform: translateY(12px); } } }
+</style>
+
+<script>
+  const chips = [...document.querySelectorAll<HTMLButtonElement>('[data-dept]')];
+  const groups = [...document.querySelectorAll<HTMLElement>('[data-dept-group]')];
+  const status = document.querySelector<HTMLElement>('[data-team-status]');
+  const bar = document.querySelector<HTMLElement>('[data-team-filters]');
+  if (bar && status) {
+    bar.hidden = false;
+    chips.forEach((chip) => chip.addEventListener('click', () => {
+      const dept = chip.dataset.dept;
+      chips.forEach((c) => c.setAttribute('aria-pressed', String(c === chip)));
+      groups.forEach((g) => {
+        g.hidden = !!dept && g.dataset.deptGroup !== dept;
+        g.classList.toggle('is-shown', !g.hidden);
+        g.querySelectorAll('[data-reveal]').forEach((el) => el.classList.add('is-in'));
+      });
+      status.textContent = dept ? `Showing ${chip.textContent?.replace(/\d+$/, '').trim()}` : 'Showing all departments';
+    }));
+  }
+</script>
