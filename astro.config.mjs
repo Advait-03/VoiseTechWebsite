@@ -1,6 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-import node from '@astrojs/node';
+import vercel from '@astrojs/vercel';
 import sitemap from '@astrojs/sitemap';
 
 const SITE = 'https://www.voisetech.com';
@@ -15,11 +15,8 @@ export default defineConfig({
   build: { format: 'directory', inlineStylesheets: 'auto' },
   // Every page is prerendered; only the form endpoints in src/pages/api run on the server.
   output: 'static',
-  adapter: node({
-    mode: 'standalone',
-    // Careers uploads two files of up to 5 MB each.
-    bodySizeLimit: 12 * 1024 * 1024,
-  }),
+  // Vercel serverless functions run the form API and redirects; everything else is static.
+  adapter: vercel(),
   integrations: [
     sitemap({
       filter: (page) => !NOINDEX.some((p) => page.endsWith(p)),

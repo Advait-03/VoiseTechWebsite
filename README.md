@@ -22,7 +22,7 @@ Production build:
 
 ```bash
 npm run build
-npm start            # node ./dist/server/entry.mjs  (HOST / PORT from env)
+npm run preview      # preview the production build locally
 ```
 
 ## Scripts
@@ -31,7 +31,7 @@ npm start            # node ./dist/server/entry.mjs  (HOST / PORT from env)
 |---|---|
 | `npm run dev` | Dev server with hot reload |
 | `npm run build` | Production build to `dist/` (client assets + server) |
-| `npm start` | Run the production server |
+| `npm run preview` | Preview the production build locally |
 | `npm run import:wp` | Re-import blog posts, case studies and events from the live WordPress REST API (see *Content*). Add `-- --offline` to rebuild from `.wp-cache/` only. |
 | `npm run assets:fetch` | Download any `/wp-content/uploads/…` file referenced in `src/` that is missing from `public/` (add `-- --prune` to delete unreferenced ones) |
 | `npm run assets:optimize` | Generate responsive WebP variants into `public/_img/` and refresh `src/data/image-manifest.json` |
@@ -102,7 +102,9 @@ Original uploads stay at their WordPress paths under `public/wp-content/uploads/
 
 ## Deployment
 
-Any Node ≥ 22.12 host will run `npm run build && npm start`. Recommended setup:
+Deployed on **Vercel** (`@astrojs/vercel` adapter). Pages are static; the form API, redirects and 404 run as serverless functions. Every push to `main` redeploys. Add the SMTP/recipient variables from `.env.example` in Vercel › Project › Settings › Environment Variables. Note: Vercel limits request bodies to 4.5 MB, so a Careers submission with two large files can be rejected; keep uploads small or move file uploads to direct storage if that matters.
+
+Other notes:
 
 - Put the app **behind a reverse proxy or CDN** (Nginx, Cloudflare, etc.) for TLS and **gzip/brotli compression**. The Node server does not compress.
 - Cache headers:
