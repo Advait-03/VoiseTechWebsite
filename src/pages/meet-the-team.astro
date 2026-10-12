@@ -10,6 +10,7 @@ import { SITE } from '../data/site';
 
 const groups = departments.map((d) => ({ name: d, id: d.toLowerCase().replace(/[^a-z]+/g, '-'), people: team.filter((p) => p.department === d) })).filter((g) => g.people.length);
 const everyone = [...leadership, ...team];
+const initials = (n: string) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 const crumbs = [{ label: 'About Us', href: '/about-us/' }, { label: 'Meet the Team', href: '/meet-the-team/' }];
 const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle: p.role, worksFor: { '@id': `${SITE.url}/#organization` }, ...(p.linkedin && { sameAs: [p.linkedin] }) }));
 ---
@@ -37,8 +38,8 @@ const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle:
         </dl>
       </div>
       <ul role="list" class="mosaic" aria-hidden="true">
-        {everyone.slice(0, 12).map((p, i) => (
-          <li style={`--i:${i}`}><Img src={p.photo} alt="" sizes="120px" loading={i < 6 ? 'eager' : 'lazy'} /></li>
+        {everyone.filter((p) => p.photo).slice(0, 12).map((p, i) => (
+          <li style={`--i:${i}`}><Img src={p.photo!} alt="" sizes="120px" loading={i < 6 ? 'eager' : 'lazy'} /></li>
         ))}
       </ul>
     </div>
@@ -51,7 +52,7 @@ const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle:
         {leadership.map((p, i) => (
           <li data-reveal>
             <article class:list={['card-p', 'is-lead', i === 0 && 'is-founder']}>
-              <div class="photo"><Img src={p.photo} alt={`${p.name}, ${p.role}`} sizes="(max-width: 700px) 100vw, 33vw" /></div>
+              <div class="photo"><Img src={p.photo!} alt={`${p.name}, ${p.role}`} sizes="(max-width: 700px) 100vw, 33vw" /></div>
               <div class="meta">
                 <p class="mono tier">{i === 0 ? 'Founder' : 'Co-Founder'}</p>
                 <h3 class="name">{p.name}</h3>
@@ -75,13 +76,13 @@ const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle:
       <p class="sr-only" role="status" data-team-status></p>
       <div class="depts">
         {groups.map((g) => (
-          <section class="dept" data-dept-group={g.id} aria-labelledby={`dept-${g.id}`}>
+          <section class:list={['dept', g.people.length > 4 && 'is-wide']} data-dept-group={g.id} aria-labelledby={`dept-${g.id}`}>
             <h3 class="dept-title" id={`dept-${g.id}`}><span class="mono">{String(departments.indexOf(g.name) + 1).padStart(2, '0')}</span>{g.name}</h3>
             <ul role="list" class="team-grid" data-stagger>
               {g.people.map((p: Person) => (
                 <li data-reveal>
                   <article class="card-p">
-                    <div class="photo"><Img src={p.photo} alt={`${p.name}, ${p.role}`} sizes="(max-width: 600px) 50vw, (max-width: 1000px) 33vw, 220px" /></div>
+                    <div class="photo">{p.photo ? <Img src={p.photo} alt={`${p.name}, ${p.role}`} sizes="(max-width: 600px) 50vw, (max-width: 1000px) 33vw, 220px" /> : <span class="initials" aria-hidden="true">{initials(p.name)}</span>}</div>
                     <div class="meta">
                       <h4 class="name">{p.name}</h4>
                       <p class="role">{p.role}</p>
@@ -129,6 +130,7 @@ const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle:
   .card-p:hover .photo { transform: translateY(-6px); box-shadow: 0 24px 40px -24px rgb(8 112 199 / 0.6); }
   .card-p:hover .photo::after { box-shadow: inset 0 0 0 3px var(--green); }
   .card-p:hover .photo :global(img) { transform: scale(1.05); }
+  .initials { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(2rem, 1.4rem + 2vw, 3rem); font-weight: 600; letter-spacing: -0.04em; color: #fff; background: radial-gradient(90% 90% at 80% 10%, rgb(14 177 81 / 0.55), transparent 60%), linear-gradient(150deg, var(--blue), #0a3f86); }
   .meta { position: relative; display: grid; gap: 2px; justify-items: center; text-align: center; }
   .name { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; }
   .role { font-size: var(--fs-small); color: var(--ink-2); }
@@ -152,6 +154,9 @@ const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle:
 
   .depts { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(100%, 340px), 1fr)); gap: clamp(40px, 4vw, 56px) clamp(24px, 3vw, 40px); }
   .dept[hidden] { display: none; }
+  /* Large departments get the full row so they don't tower over the others. */
+  .dept.is-wide { grid-column: 1 / -1; }
+  .dept.is-wide .team-grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)); }
   .dept-title { display: flex; align-items: baseline; gap: 14px; font-size: clamp(1.15rem, 1rem + 0.5vw, 1.4rem); padding-bottom: 14px; margin-bottom: 24px; border-bottom: 1px solid var(--line-strong); }
   .dept-title .mono { color: var(--green-ink); }
   .team-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: clamp(16px, 2vw, 24px); }
