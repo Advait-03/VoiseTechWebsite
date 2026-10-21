@@ -4,14 +4,29 @@ Everything below was found during the content audit of www.voisetech.com on 11 O
 
 Priority: **High** means visible or legal/compliance risk; **Medium** means visible but low risk; **Low** means housekeeping.
 
+## Content pass 1: product accuracy (Oct 2026)
+
+Feedback: make Voise AdServer the core technology story, position Video as the Voise Video SDK, show the two DOOH sides, keep Google MCM prominent, and publish fewer numbers rather than ones we cannot defend. Done on the homepage, Products, Voise AdServer, Publishers and Buyers pages, with claim clean-up site-wide. AdServer copy follows the 23 May 2026 architecture walkthrough. **Please confirm (Anushree / Mayur):**
+
+| # | Item | What the site now says |
+|---|---|---|
+| P1 | **Live vs in development** | Live: OpenRTB 2.5/2.6 RTB ad units, demand partners + line items, reporting (hourly "today" view, reporting API per ad unit). Labelled *in development*: DOOH (CMS + Planning Tool) and Video SDK advanced formats. AI-assisted planning described as product direction. |
+| P2 | **Voise Video SDK** | "VAST ad units, Google IMA and PAL integrations, multiple ad formats around publisher content, and player telemetry that feeds the same reporting." Confirm IMA/PAL are live. |
+| P3 | **DOOH product names** | "a supply-side CMS for screen owners" and "a Planning Tool for agencies". Supply official names. |
+| P4 | **Architecture** | Rust and Python services → Kafka → ClickHouse; MongoDB for configuration; Redis for serving and cache. Approved to publish. |
+| P5 | **AdServer capabilities** | Pricing models (rev share, floor + margin, fixed), sellers.json / schain / IPD, deals pass-through, BCAT/BATTR and central lists, pre-bid + post-bid traffic quality, NURL/BURL/ADM tracking, SSAI, caps, role-based access. Written from the walkthrough spec: confirm each is live. |
+| P6 | **Product relationships** | SSP, Pre-Bid and buyer products "are being brought onto the same engine". Pre-Bid runs "before Voise AdServer picks the winner". Confirm the wording. |
+| P7 | **Numbers removed** | All scale counters (items 1–4 below), "~120 ms", "25+ SSPs", "30+ DSPs", "50%" planning claims, and named DSP/SSP/data-partner lists. Old tech stacks removed from every product page. Add a figure back only once confirmed. |
+| P8 | **Still to review** | VoiseTech.AI counters ("100% production-ready", "99.9%", "100+ LLM integrations") and its stack list; About › Responsibility ("GDPR and CCPA compliance", "MRC-accredited verification vendors"); compliance lists and AI/ML claims on the individual SSP, Pre-Bid and buyer product pages. |
+
 ## Facts and figures
 
 | # | Priority | Item | What the live site says | What the new site does |
 |---|---|---|---|---|
-| 1 | High | **Request volume contradicts itself across pages** | Home: "60+ Billion Requests Daily". About: "60 Billion Requests per Month". Solutions and Publishers: "Over 500 billion per month" / "500B+ Ad Requests Processed Monthly". The About video thumbnail says "40+ Billion Impressions every month". | Each page keeps its own published figure. **Confirm one number and unit**; then update `src/data/stats.ts`. |
-| 2 | High | **Partner / publisher / SSP counts differ** | Home: "200+ Partners". About: "200+ Global Premium Publishers". Publishers: "150+ Global Demand Partners". Home and About: "25+ SSPs and Exchanges". About video thumbnail: "180+ SSPs & Exchanges", "25+ Global CTV & DOOH publishers". SSP page: "30+ premium DSPs". | Each page keeps its own wording. Confirm. |
-| 3 | High | **ROI figure differs** | Home: "39.6% avg. ROI with SPO Activation". About video thumbnail: "ROI by 32% with SPO activation". | Home keeps 39.6%. The thumbnail image is not used (a neutral poster replaces it). Confirm. |
-| 4 | Medium | **Broken stat label on Publishers page** | Counter "24" labelled "Hourse" / "Global Premium Publishers" | Shown as "<24h — Integration time for most formats", the wording from `/solutions/` ("Under 24 hours for most formats"). Confirm. |
+| 1 | Done | **Request volume contradicts itself across pages** | Home: "60+ Billion Requests Daily". About: "60 Billion Requests per Month". Solutions and Publishers: "Over 500 billion per month" / "500B+ Ad Requests Processed Monthly". The About video thumbnail says "40+ Billion Impressions every month". | **Removed** in content pass 1. Re-add only a confirmed figure (`src/data/stats.ts`). |
+| 2 | Done | **Partner / publisher / SSP counts differ** | Home: "200+ Partners". About: "200+ Global Premium Publishers". Publishers: "150+ Global Demand Partners". Home and About: "25+ SSPs and Exchanges". About video thumbnail: "180+ SSPs & Exchanges", "25+ Global CTV & DOOH publishers". SSP page: "30+ premium DSPs". | **Removed** in content pass 1. |
+| 3 | Done | **ROI figure differs** | Home: "39.6% avg. ROI with SPO Activation". About video thumbnail: "ROI by 32% with SPO activation". | **Removed** in content pass 1. |
+| 4 | Done | **Broken stat label on Publishers page** | Counter "24" labelled "Hourse" / "Global Premium Publishers" | **Removed** with the other Publishers counters. |
 | 5 | Medium | **Samsung case study contains Kia's figures** | The Samsung "Metric Results" paragraph cites "viewability benchmark of 71.88%", "CTR of 0.21%" and an "auto category campaign", which are the Kia case study's numbers. The Samsung metrics list says CTR 0.74%. | Migrated as published. **Correct the paragraph** in `src/content/case-studies/samsungs-cross-screen-reach.md`. |
 | 6 | Medium | **Swarovski VTR** | "VTR – 0.85 %"; every other case study reports VTR around 85–92%. | Migrated as published. Confirm whether this should be 85%. |
 | 7 | Medium | **Post URL does not match its title** | `/the-2025-gold-rush-why-curated-marketplaces-are-your-brands-next-big-win/` serves a post titled "Why Connected TV (CTV) is a Game-Changer for Advertisers?" | URL preserved for SEO. Consider whether this was intentional. |

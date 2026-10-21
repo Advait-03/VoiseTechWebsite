@@ -1,9 +1,9 @@
 ---
 /**
- * Illustrative real-time bidding loop through the Voise stack.
- * Ad requests leave publisher inventory, pass Pre-Bid → Ad Server → SSP,
+ * Illustrative real-time bidding loop through the Voise platform.
+ * Ad requests leave publisher inventory, pass Pre-Bid → AdServer → SSP,
  * fan out to demand; bids return, the auction resolves and the winning ad is
- * delivered back. Node descriptions quote copy published on voisetech.com.
+ * delivered back. Copy avoids figures and partner names that are not confirmed.
  *
  * Two orientations share one script: horizontal (≥ 760px) and vertical (phones).
  */
@@ -12,21 +12,21 @@ type Node = { id: string; label: string; href: string; info: string };
 const supply: Node[] = [
   { id: 'web', label: 'Web', href: '/ad-publishers-solutions/#formats', info: 'Web - display, native, and video with responsive layouts.' },
   { id: 'app', label: 'App', href: '/ad-publishers-solutions/#formats', info: 'App - in-app banners, interstitials, rewarded video, and native.' },
-  { id: 'ctv', label: 'CTV / OTT', href: '/ad-publishers-solutions/#formats', info: 'CTV/OTT - SSAI-enabled pre-roll, mid-roll, and interactive ads.' },
-  { id: 'audio', label: 'Audio', href: '/ad-publishers-solutions/#formats', info: 'Audio - dynamic insertion for podcasts, streaming radio & music apps.' },
+  { id: 'ctv', label: 'CTV / OTT', href: '/ad-publishers-solutions/#formats', info: 'CTV/OTT - VAST and server-side ad insertion through the Voise Video SDK.' },
+  { id: 'dooh', label: 'DOOH', href: '/voise-ad-server/#edge', info: 'DOOH - screen inventory managed in a supply-side CMS on the same AdServer (in development).' },
 ];
 const core: Node[] = [
-  { id: 'prebid', label: 'Pre-Bid', href: '/pre-bid/', info: 'Voise Pre-Bid - unified header bidding that consolidates bids from 25+ SSPs into a single fair auction.' },
-  { id: 'adserver', label: 'Ad Server', href: '/voise-ad-server/', info: 'Voise Ad Server - RTB decisioning in ~120ms with tiered priority: Direct > PMP > Open Exchange.' },
-  { id: 'ssp', label: 'SSP', href: '/supply-side-platform-advertising/', info: 'Voise SSP - AI-driven price discovery connecting publishers to 30+ premium DSPs and curated marketplaces.' },
+  { id: 'prebid', label: 'Pre-Bid', href: '/pre-bid/', info: 'Voise Pre-Bid - header bidding that brings demand from multiple SSPs into one fair auction.' },
+  { id: 'adserver', label: 'AdServer', href: '/voise-ad-server/', info: 'Voise AdServer - the core platform: one bidder engine for OpenRTB, video, DOOH and reporting.' },
+  { id: 'ssp', label: 'SSP', href: '/supply-side-platform-advertising/', info: 'Voise SSP - takes publisher inventory to programmatic demand and curated marketplaces.' },
 ];
 const demand: Node[] = [
-  { id: 'dsps', label: 'DSPs', href: '/supply-side-platform-advertising/', info: 'DSPs - The Trade Desk, DV360, Xandr, Yahoo and more, via OpenRTB 2.5 & 2.6.' },
+  { id: 'dsps', label: 'DSPs', href: '/supply-side-platform-advertising/', info: 'DSPs and exchanges - integrated once over OpenRTB 2.5 and 2.6, then mapped with line items.' },
   { id: 'deals', label: 'Curated deals', href: '/auction-platform/', info: 'Curated deals - private marketplaces, preferred deals and programmatic guaranteed.' },
   { id: 'agencies', label: 'Agencies', href: '/ad-buyers-solutions/', info: 'Agencies - plan, buy, and optimize across the open web, in-app, and CTV.' },
   { id: 'brands', label: 'Brands', href: '/ad-buyers-solutions/', info: 'Brands - brand-safe inventory with precision targeting and measurable outcomes.' },
 ];
-const defaultInfo = 'An ad request travels from publisher inventory through the Voise stack to demand partners, and the winning ad comes back.';
+const defaultInfo = 'An ad request travels from publisher inventory through the Voise platform to demand partners, and the winning ad comes back.';
 
 /* ---- horizontal geometry (viewBox 1200 × 440) */
 const H = { w: 1200, h: 440, sx: 150, dx: 1050, ys: [86, 176, 266, 356], pillW: 150, pillH: 46, portIn: 452, portOut: 748, portY: 221, core: { x: 452, y: 121, w: 296, h: 200 } };
@@ -78,14 +78,14 @@ const layouts = [
         <g class="core">
           <circle class="pulse" cx={L.coreRect.x + L.coreRect.w / 2} cy={L.coreRect.y + L.coreRect.h / 2} r={L.key === 'h' ? 150 : 160} fill={`url(#hn-halo-${L.key})`} aria-hidden="true" />
           <rect class="core-frame" x={L.coreRect.x} y={L.coreRect.y} width={L.coreRect.w} height={L.coreRect.h} rx="22" />
-          <text x={L.labels.core.x} y={L.labels.core.y} class="col-label core-label" aria-hidden="true">VOISE STACK</text>
+          <text x={L.labels.core.x} y={L.labels.core.y} class="col-label core-label" aria-hidden="true">VOISE PLATFORM</text>
           {L.core.map((b) => (
             <a href={b.href} class="block" data-node={b.id} data-t0={b.t0} data-t1={b.t1} data-info={b.info} aria-label={b.info}>
               <rect x={b.x} y={b.y} width={b.w} height={b.h} rx="14" />
               <text x={b.x + b.w / 2} y={b.y + b.h / 2} dominant-baseline="central" text-anchor="middle">{b.label}</text>
             </a>
           ))}
-          <text x={L.labels.note.x} y={L.labels.note.y} class="note" aria-hidden="true">unified auction · decisioning ~120 ms</text>
+          <text x={L.labels.note.x} y={L.labels.note.y} class="note" aria-hidden="true">one bidder engine · one auction</text>
         </g>
 
         <g class="nodes">

@@ -1,12 +1,12 @@
 ---
 import Logo from './Logo.astro';
 import Icon from './Icon.astro';
-import { primaryNav } from '../data/navigation';
+import { primaryNav, platformProduct } from '../data/navigation';
 
 const path = Astro.url.pathname;
 const groupHrefs = (item: (typeof primaryNav)[number]) =>
   item.kind === 'mega'
-    ? [item.href, ...item.columns.flatMap((c) => [c.href, ...c.links.map((l) => l.href)])]
+    ? [item.href, platformProduct.href, ...item.columns.flatMap((c) => [c.href, ...c.links.map((l) => l.href)])]
     : [item.href, ...item.links.map((l) => l.href)];
 const isActive = (item: (typeof primaryNav)[number]) =>
   groupHrefs(item).includes(path) || (item.label === 'Resources' && /^\/(resources|case-study|event|tag)\//.test(path));
@@ -54,12 +54,13 @@ const current = (href: string) => (href === path ? 'page' : undefined);
                       </ul>
                     </div>
                   ))}
-                  <a class="mega-feature" href="/products/">
-                    <span class="eyebrow">Products</span>
-                    <span class="mega-feature-title">A Smarter Stack for Smarter Outcomes</span>
-                    <span class="mega-feature-text">One programmatic ecosystem for the supply and demand sides of the ad economy.</span>
-                    <span class="link-arrow"><span class="label">View all products</span><Icon name="arrow" size={14} class="arrow" /></span>
-                  </a>
+                  <div class="mega-feature">
+                    <span class="eyebrow">Core platform</span>
+                    <a class="mega-feature-title" href={platformProduct.href} aria-current={current(platformProduct.href)}>{platformProduct.label}</a>
+                    <span class="mega-feature-text">One omnichannel ad server for OpenRTB, video and CTV, DOOH and reporting. Every product runs alongside it.</span>
+                    <a class="link-arrow" href={platformProduct.href}><span class="label">Explore the platform</span><Icon name="arrow" size={14} class="arrow" /></a>
+                    <a class="link-arrow" href="/products/"><span class="label">View all products</span><Icon name="arrow" size={14} class="arrow" /></a>
+                  </div>
                 </div>
               ) : (
                 <ul role="list" class="menu">
@@ -97,6 +98,7 @@ const current = (href: string) => (href === path ? 'page' : undefined);
             <details class="mobile-group">
               <summary>{item.label}<Icon name="plus" size={16} /></summary>
               <ul role="list">
+                {item.kind === 'mega' && <li><a href={platformProduct.href} aria-current={current(platformProduct.href)}>{platformProduct.label} <span class="mono">· core platform</span></a></li>}
                 {item.kind === 'mega'
                   ? item.columns.map((col) => (
                       <>

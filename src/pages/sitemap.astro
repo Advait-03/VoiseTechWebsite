@@ -1,7 +1,7 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
-import { publisherProducts, buyerProducts, resourceTabs } from '../data/navigation';
+import { platformProduct, publisherProducts, buyerProducts, resourceTabs } from '../data/navigation';
 import { allPosts, allCaseStudies, allEvents } from '../lib/content';
 
 const posts = await allPosts();
@@ -14,7 +14,7 @@ const groups = [
     { label: 'Privacy Policy', href: '/privacy-policy/' },
   ] },
   { title: 'Products & solutions', links: [
-    { label: 'Products', href: '/products/' }, { label: 'Solutions', href: '/solutions/' }, { label: 'Publishers', href: '/ad-publishers-solutions/' },
+    { label: 'Products', href: '/products/' }, { label: platformProduct.label, href: platformProduct.href }, { label: 'Solutions', href: '/solutions/' }, { label: 'Publishers', href: '/ad-publishers-solutions/' },
     { label: 'Buyers', href: '/ad-buyers-solutions/' }, { label: 'GAM 360', href: '/google-ad-manager-solutions-services/' },
   ] },
   { title: 'Publisher products', links: publisherProducts },

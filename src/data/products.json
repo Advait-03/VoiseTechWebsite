@@ -1,246 +1,238 @@
 [
   {
     "slug": "voise-ad-server",
-    "category": "publishers",
-    "name": "Voise Adserver",
-    "seoTitle": "Digital Media Buying & OTT Advertising Solutions | Voise Tech",
-    "description": "Boost your ad performance with Voise Tech’s digital media buying and OTT advertising solutions. Trusted by global ad tech companies for smarter results.",
+    "category": "platform",
+    "name": "Voise AdServer",
+    "seoTitle": "Voise AdServer: Omnichannel Ad Server for OpenRTB, Video, CTV & DOOH | Voise Tech",
+    "description": "Voise AdServer is VoiseTech’s core platform: one omnichannel ad server for OpenRTB, video and CTV, DOOH and reporting, built on Rust, Kafka and ClickHouse.",
     "ogImage": "/wp-content/uploads/2025/09/Voise-Ad-Server-thimb.jpg",
     "publishedTime": null,
-    "modifiedTime": "2026-03-10T12:42:24+00:00",
-    "tagline": "Next-Gen Infrastructure for Programmatic Excellence",
+    "modifiedTime": "2026-10-22T00:00:00+00:00",
+    "tagline": "One Omnichannel Ad Server. Every Surface on One Engine.",
     "intro": [
-      "Voise Ad Server is a proprietary, full-stack ad serving engine built for publishers, buyers, and media owners who need speed, scale, and transparency. With native RTB support, rich targeting controls, and streamlined creative management, it powers high-performing campaigns across every channel, from web and mobile to CTV.",
-      "Backed by Voise Tech’s programmatic ecosystem, it helps you reduce third-party dependencies while boosting revenue through intelligent auctioning and precise ad delivery."
+      "Voise AdServer is VoiseTech’s core technology: one ad server and bidder engine for programmatic OpenRTB, video and CTV, digital out-of-home and reporting. Publishers, ad units, demand partners and line items are set up once, in one place, and every surface we build runs on the same infrastructure.",
+      "Voise SSP, Pre-Bid and our buyer-side products are being brought onto the same engine, so supply, demand and reporting share one data model instead of a chain of disconnected tools."
     ],
     "heroCta": {
       "label": "Request a Demo",
       "href": "/contact-us/"
     },
-    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
-    "tech": [
+    "edgeEyebrow": "One platform",
+    "edgeTitle": "Every Surface. One Engine.",
+    "edge": [
       {
-        "label": "Frontend",
-        "value": "React.js, Redux",
-        "icon": "/wp-content/uploads/2025/09/Frontend.svg"
+        "title": "OpenRTB & programmatic",
+        "text": "RTB ad units with OpenRTB 2.5 and 2.6 endpoints. Demand partners are integrated once; your team runs line items for open auction, PMP and programmatic guaranteed, with deal IDs carried end to end."
       },
       {
-        "label": "Backend",
-        "value": "Node.js, GoLang, Java",
+        "title": "Voise Video SDK",
+        "text": "Video and CTV beyond a player: VAST ad units, Google IMA and PAL integrations, multiple ad formats around publisher content, and player telemetry that feeds the same reporting.",
+        "status": "Advanced formats in development"
+      },
+      {
+        "title": "DOOH",
+        "text": "Two sides on one infrastructure: a supply-side CMS for screen owners to manage content and ad slots, and a Planning Tool for agencies to plan out-of-home campaigns.",
+        "status": "In development"
+      },
+      {
+        "title": "Reporting",
+        "text": "One model from ad request to paid impression: requests, bids, responses, wins, impressions, revenue and eCPM, with an hourly view of today and a reporting API per ad unit."
+      }
+    ],
+    "integrationsEyebrow": "How it works",
+    "integrationsTitle": "Four Building Blocks",
+    "integrations": [
+      {
+        "label": "Publisher",
+        "text": "Onboard a publisher once: domain, seller details for sellers.json, default revenue share, and the team members who can see the account."
+      },
+      {
+        "label": "Ad unit",
+        "text": "Every ad unit belongs to one publisher and has a type (RTB, VAST or banner), an ad format, and a platform: web, in-app, CTV or DOOH."
+      },
+      {
+        "label": "Demand partner",
+        "text": "Our engineering team integrates each demand partner once, through an OpenRTB endpoint, a VAST tag or a JavaScript tag."
+      },
+      {
+        "label": "Line item",
+        "text": "Your team maps line items to ad units, with pricing, targeting, caps and traffic-quality rules, and can edit the mapping from either side."
+      }
+    ],
+    "featuresTitle": "Built for Control and Transparency",
+    "features": [
+      {
+        "title": "Pricing & yield controls",
+        "items": [
+          {
+            "label": "Revenue models",
+            "text": "revenue share, floor plus margin, or fixed price, set per ad unit."
+          },
+          {
+            "label": "Price gates",
+            "text": "minimum and maximum eCPM, and a ceiling on the floor sent to demand."
+          },
+          {
+            "label": "Snapshots",
+            "text": "each impression keeps the pricing that applied when it won, so later changes never rewrite history."
+          }
+        ]
+      },
+      {
+        "title": "Supply-chain transparency",
+        "items": [
+          {
+            "label": "sellers.json",
+            "text": "the seller ID published for each publisher is the one sent in every bid request."
+          },
+          {
+            "label": "SupplyChain object",
+            "text": "schain nodes built per publisher, with seller pass-through when the relationship calls for it."
+          },
+          {
+            "label": "Inventory partner domain",
+            "text": "IPD signalling when VoiseTech acts as an inventory partner."
+          },
+          {
+            "label": "Deals",
+            "text": "PMP and PG deal objects passed to demand and deal IDs echoed back for reconciliation."
+          }
+        ]
+      },
+      {
+        "title": "Brand safety & blocking",
+        "items": [
+          {
+            "label": "Categories",
+            "text": "IAB content categories, blocked ad categories (BCAT) and blocked creative attributes (BATTR)."
+          },
+          {
+            "label": "Lists",
+            "text": "domain, brand, app, seat ID and creative ID lists, managed centrally and uploaded by CSV."
+          },
+          {
+            "label": "Precedence",
+            "text": "a block always wins over an allow."
+          }
+        ]
+      },
+      {
+        "title": "Traffic quality",
+        "items": [
+          {
+            "label": "Pre-bid & post-bid",
+            "text": "invalid-traffic scanning before the auction and on delivered impressions."
+          },
+          {
+            "label": "Per ad unit",
+            "text": "vendor, sampling rate and enforcement set for each ad unit."
+          }
+        ]
+      },
+      {
+        "title": "Tracking & reconciliation",
+        "items": [
+          {
+            "label": "Win and billing signals",
+            "text": "NURL, BURL and ad-markup tracking supported."
+          },
+          {
+            "label": "Fewer discrepancies",
+            "text": "the signal each publisher reconciles on is the one we guarantee to send."
+          }
+        ]
+      },
+      {
+        "title": "Video & CTV delivery",
+        "items": [
+          {
+            "label": "VAST ad units",
+            "text": "URL templates with standard player parameters: size, start delay, duration, linearity, device and app identifiers."
+          },
+          {
+            "label": "Server-side ad insertion",
+            "text": "SSAI support with server-side tracking for stitched CTV streams."
+          }
+        ]
+      },
+      {
+        "title": "Limits & access",
+        "items": [
+          {
+            "label": "Caps",
+            "text": "daily request and impression caps per ad unit, with blocking at the edge when traffic must stop."
+          },
+          {
+            "label": "Roles",
+            "text": "account managers see only the publishers assigned to them; publishers get their own reporting login."
+          }
+        ]
+      }
+    ],
+    "techEyebrow": "Architecture",
+    "techTitle": "A Streaming Architecture, End to End.",
+    "techIntro": "Decisioning services emit every event to a stream; reporting reads from a columnar store. Configuration and serving data live in purpose-built stores.",
+    "tech": [
+      {
+        "label": "Bidding & decisioning",
+        "value": "Rust and Python services",
         "icon": "/wp-content/uploads/2025/08/backend-1.svg"
       },
       {
-        "label": "Databases",
-        "value": "PostgreSQL, MongoDB, Redis",
-        "icon": "/wp-content/uploads/2025/09/Databases.svg"
-      },
-      {
-        "label": "Processing",
-        "value": "Kafka, Apache Spark",
+        "label": "Event streaming",
+        "value": "Apache Kafka",
         "icon": "/wp-content/uploads/2025/09/Processing.svg"
       },
       {
-        "label": "Cloud Infrastructure",
-        "value": "AWS EC2, S3, CloudFront, Kubernetes",
+        "label": "Reporting & analytics",
+        "value": "ClickHouse",
+        "icon": "/wp-content/uploads/2025/09/Databases.svg"
+      },
+      {
+        "label": "Configuration",
+        "value": "MongoDB",
+        "icon": "/wp-content/uploads/2025/09/Databases.svg"
+      },
+      {
+        "label": "Serving & cache",
+        "value": "Redis",
         "icon": "/wp-content/uploads/2025/09/Cloud-Infrastructure.svg"
-      },
-      {
-        "label": "Monitoring & Security",
-        "value": "Prometheus, Grafana, AWS WAF, GeoEdge/Confiant",
-        "icon": "/wp-content/uploads/2025/09/Monitoring-Security.svg"
-      }
-    ],
-    "edge": [
-      {
-        "title": "Full visibility into campaign delivery and performance.",
-        "text": ""
-      },
-      {
-        "title": "Minimize reliance on third-party ad tech.",
-        "text": ""
-      },
-      {
-        "title": "Improve fill rates and eCPMs through automated optimization.",
-        "text": ""
-      },
-      {
-        "title": "Privacy-ready: GDPR, CCPA, TCF 2.2 compliant from the ground up.",
-        "text": ""
-      }
-    ],
-    "features": [
-      {
-        "title": "Multi-Format Support",
-        "items": [
-          {
-            "label": "Display",
-            "text": "banners, rich media."
-          },
-          {
-            "label": "Video",
-            "text": "VAST/VPAID, in-stream, out-stream."
-          },
-          {
-            "label": "Native",
-            "text": "customizable content-matched units."
-          },
-          {
-            "label": "Audio",
-            "text": "in-app and web environments."
-          },
-          {
-            "label": "CTV",
-            "text": "fully supported via VAST-compliant creatives."
-          }
-        ]
-      },
-      {
-        "title": "Real-Time Bidding (RTB) Engine",
-        "items": [
-          {
-            "label": "OpenRTB Compliance",
-            "text": "built-in OpenRTB 2.5+."
-          },
-          {
-            "label": "Ultra-Low Latency",
-            "text": "~120ms auction handling."
-          },
-          {
-            "label": "Header Bidding",
-            "text": "support for client-side and server-side."
-          }
-        ]
-      },
-      {
-        "title": "Unified Ad Serving",
-        "items": [
-          {
-            "label": "Central Platform",
-            "text": "manage direct, PMP, and open marketplace campaigns."
-          },
-          {
-            "label": "Tiered Priority",
-            "text": "Direct > PMP > Open Exchange."
-          },
-          {
-            "label": "Smart Delivery",
-            "text": "goal-based pacing, frequency capping, and budget control."
-          }
-        ]
-      },
-      {
-        "title": "Creative Management Tools",
-        "items": [
-          {
-            "label": "Builder",
-            "text": "drag-and-drop creative builder."
-          },
-          {
-            "label": "Delivery",
-            "text": "integrated CDN for asset delivery."
-          },
-          {
-            "label": "Optimization",
-            "text": "A/B testing and automated creative rotation."
-          },
-          {
-            "label": "Brand Safety",
-            "text": "malware scanning and brand safety via GeoEdge, Confiant."
-          }
-        ]
-      },
-      {
-        "title": "Advanced Targeting",
-        "items": [
-          {
-            "label": "Specs",
-            "text": "geo, device, OS, browser, connection speed."
-          },
-          {
-            "label": "Scheduling",
-            "text": "dayparting, language, and behavioral triggers."
-          },
-          {
-            "label": "Contextual",
-            "text": "AI/NLP-driven contextual targeting."
-          },
-          {
-            "label": "Audience Data",
-            "text": "leverage first-party and third-party data."
-          }
-        ]
-      },
-      {
-        "title": "Analytics & Reporting",
-        "items": [
-          {
-            "label": "Dashboards",
-            "text": "real-time views with customizable KPIs."
-          },
-          {
-            "label": "Metrics",
-            "text": "track impressions, CTR, revenue, eCPMs, and viewability."
-          },
-          {
-            "label": "Exports & Integrations",
-            "text": "export via API/CSV or integrate with BI tools."
-          }
-        ]
-      }
-    ],
-    "integrationsTitle": "Integrations",
-    "integrations": [
-      {
-        "label": "DSPs",
-        "text": "The Trade Desk, Google DV360, Xandr, Yahoo, MediaMath"
-      },
-      {
-        "label": "SSPs",
-        "text": "PubMatic, OpenX, Magnite, Index Exchange"
-      },
-      {
-        "label": "Verification",
-        "text": "IAS, DoubleVerify, MOAT"
-      },
-      {
-        "label": "Data",
-        "text": "Lotame, BlueKai (Oracle), and other audience providers"
       }
     ],
     "useCasesTitle": "Use Cases",
     "useCases": [
       {
-        "title": "Media Owners",
-        "text": "Own your monetization stack, optimize yield with flexible controls",
+        "title": "Publishers & media owners",
+        "text": "Monetise web, in-app and CTV inventory through one ad server, with your own pricing and demand rules.",
         "icon": "/wp-content/uploads/2025/09/social-media-management-1.svg"
       },
       {
-        "title": "Agencies",
-        "text": "Run precision-targeted campaigns at scale",
+        "title": "CTV & video platforms",
+        "text": "Serve VAST and server-side-inserted ads, with tracking that matches what your partners bill on.",
+        "icon": "/wp-content/uploads/2025/09/device-1.svg"
+      },
+      {
+        "title": "Direct campaigns",
+        "text": "Run creative-uploaded brand campaigns alongside programmatic demand on the same ad units.",
         "icon": "/wp-content/uploads/2025/09/agency-1.svg"
       },
       {
-        "title": "Retail Media Networks",
-        "text": "Enable hybrid direct + programmatic sales",
+        "title": "Screen networks (DOOH)",
+        "text": "Manage screens and ad slots in the DOOH CMS, then open them to agency planning. In development.",
         "icon": "/wp-content/uploads/2025/09/grocery-store-1.svg"
-      },
-      {
-        "title": "CTV Platforms",
-        "text": "Schedule, serve, and track with full creative control",
-        "icon": "/wp-content/uploads/2025/09/device-1.svg"
       }
     ],
-    "whyTitle": "Why Voise Adserver?",
+    "whyTitle": "Why Voise AdServer?",
     "why": [
-      "White-labeled deployments available for full ownership.",
-      "AI-powered dynamic floor pricing.",
-      "Fastest RTB decisioning engine (~120ms).",
-      "Native support for next-gen ID frameworks (Unified ID 2.0, ID5)."
+      "One data model for publishers, ad units, demand partners and line items, across every surface.",
+      "Pricing, targeting, caps and quality rules are settings, not engineering tickets.",
+      "Reporting that reconciles: the tracking signal each partner bills on is the one we report.",
+      "New surfaces join the same engine, so growth does not mean new silos."
     ],
     "closing": {
-      "heading": "Transform the way you monetize with the power of Voise Adserver.",
+      "heading": "See Voise AdServer in action.",
       "cta": {
-        "label": "Modernize Your Ad Stack",
+        "label": "Request a Demo",
         "href": "/contact-us/"
       }
     }
@@ -256,51 +248,13 @@
     "modifiedTime": "2026-03-10T13:42:12+00:00",
     "tagline": "Intelligent Monetisation for the Modern Publisher",
     "intro": [
-      "Voise SSP is a full-featured, programmatic supply-side platform that gives publishers total control over how their inventory is monetized. Whether you’re running web, mobile apps, CTV, or audio, Voise SSP connects you to 30+ premium DSPs, curated PMPs, and real-time auctions optimized by intelligent yield algorithms.",
-      "It’s built for scale and speed, with millisecond-level auctions, Prebid integration, and robust reporting that puts transparency front and center."
+      "Voise SSP is a full-featured, programmatic supply-side platform that gives publishers total control over how their inventory is monetized. Whether you’re running web, mobile apps, CTV, or audio, Voise SSP connects you to programmatic demand, curated PMPs, and real-time auctions optimized by intelligent yield algorithms.",
+      "It’s built for scale and speed, with fast auctions, Prebid integration, and robust reporting that puts transparency front and center."
     ],
     "heroCta": {
       "label": "Get Started",
       "href": "/contact-us/"
     },
-    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
-    "tech": [
-      {
-        "label": "Frontend",
-        "value": "Angular, React",
-        "icon": "/wp-content/uploads/2025/09/Frontend.svg"
-      },
-      {
-        "label": "Backend",
-        "value": "Golang, Java, Node.js",
-        "icon": "/wp-content/uploads/2025/08/backend-1.svg"
-      },
-      {
-        "label": "RTB Engine",
-        "value": "Kafka + Redis with async auctioning",
-        "icon": "/wp-content/uploads/2025/09/RTB-Engine.svg"
-      },
-      {
-        "label": "Databases",
-        "value": "Cassandra, PostgreSQL, BigQuery",
-        "icon": "/wp-content/uploads/2025/09/Databases.svg"
-      },
-      {
-        "label": "Infrastructure",
-        "value": "AWS (Auto Scaling, ELB), GCP (BigQuery)",
-        "icon": "/wp-content/uploads/2025/09/Cloud-Infrastructure.svg"
-      },
-      {
-        "label": "Data Pipelines",
-        "value": "Apache Spark, Kafka, Airflow",
-        "icon": "/wp-content/uploads/2025/09/Data_Pipeline.svg"
-      },
-      {
-        "label": "Monitoring",
-        "value": "ELK Stack, Prometheus",
-        "icon": "/wp-content/uploads/2025/09/Monitoring-Security.svg"
-      }
-    ],
     "edge": [
       {
         "title": "Unified access to premium global demand.",
@@ -325,7 +279,7 @@
         "items": [
           {
             "label": "Integrated DSPs",
-            "text": "30+ DSPs including The Trade Desk, DV360, Xandr, Amobee, Yahoo, and more."
+            "text": "programmatic demand connected over OpenRTB."
           },
           {
             "label": "Deal Types",
@@ -343,10 +297,6 @@
           {
             "label": "OpenRTB",
             "text": "OpenRTB 2.5 & 2.6 compliant."
-          },
-          {
-            "label": "Latency",
-            "text": "millisecond-level bid decisioning."
           },
           {
             "label": "Auctions",
@@ -430,7 +380,7 @@
           },
           {
             "label": "IVT Filtering",
-            "text": "IVT filtering with MRC-accredited vendors (IAS, DV)."
+            "text": "pre-bid and post-bid invalid-traffic filtering."
           },
           {
             "label": "Ad Quality",
@@ -458,25 +408,6 @@
             "text": "export via API, CSV, or BI tools."
           }
         ]
-      }
-    ],
-    "integrationsTitle": "Integrations",
-    "integrations": [
-      {
-        "label": "Verification",
-        "text": "IAS, MOAT, GeoEdge, DoubleVerify"
-      },
-      {
-        "label": "Identity",
-        "text": "Unified ID 2.0, ID5, LiveRamp"
-      },
-      {
-        "label": "Prebid Partners",
-        "text": "Amazon TAM, Index Exchange, Magnite, PubMatic"
-      },
-      {
-        "label": "Analytics Tools",
-        "text": "Looker Studio, Power BI, direct API access"
       }
     ],
     "useCasesTitle": "Use Cases",
@@ -558,34 +489,6 @@
       "label": "Talk to an Expert",
       "href": "/contact-us/"
     },
-    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
-    "tech": [
-      {
-        "label": "Frameworks",
-        "value": "Prebid.js v8+, Node.js, Golang",
-        "icon": "/wp-content/uploads/2025/09/Frameworks.svg"
-      },
-      {
-        "label": "Ad Servers",
-        "value": "Compatible with GAM, FreeWheel, Xandr",
-        "icon": "/wp-content/uploads/2025/09/Ad-Servers.svg"
-      },
-      {
-        "label": "Auction Engine",
-        "value": "RTB router + Redis/Kafka",
-        "icon": "/wp-content/uploads/2025/09/Auction-Engine.svg"
-      },
-      {
-        "label": "Data Layer",
-        "value": "BigQuery, Snowflake",
-        "icon": "/wp-content/uploads/2025/08/Data-Layer.svg"
-      },
-      {
-        "label": "Monitoring",
-        "value": "Grafana, Prometheus, New Relic",
-        "icon": "/wp-content/uploads/2025/09/Monitoring.svg"
-      }
-    ],
     "edge": [
       {
         "title": "Boost eCPMs with fair multi-demand auctions",
@@ -614,7 +517,7 @@
           },
           {
             "label": "Consolidation",
-            "text": "consolidates bids from 25+ SSPs into a single fair auction."
+            "text": "consolidates bids from multiple SSPs into a single fair auction."
           },
           {
             "label": "OpenRTB Compatibility",
@@ -648,7 +551,7 @@
         "items": [
           {
             "label": "SSP Integrations",
-            "text": "pre-integrated with 25+ top SSPs including Magnite, OpenX, Xandr, Amazon TAM, and more."
+            "text": "SSP demand connected through standard Prebid adapters."
           },
           {
             "label": "Prebid Adapter Library",
@@ -724,25 +627,6 @@
         ]
       }
     ],
-    "integrationsTitle": "Integration & Compatibility",
-    "integrations": [
-      {
-        "label": "Platforms",
-        "text": "WordPress, Shopify, ReactJS, Angular, iOS/Android"
-      },
-      {
-        "label": "Consent Modules",
-        "text": "GDPR, CCPA, IAB TCF 2.2"
-      },
-      {
-        "label": "Identity",
-        "text": "LiveRamp, ID5, UID 2.0"
-      },
-      {
-        "label": "Custom Bidding",
-        "text": "Partner weighting, demand path rules"
-      }
-    ],
     "complianceTitle": "Privacy & Compliance",
     "compliance": [
       {
@@ -805,16 +689,6 @@
         "label": "Video Editing",
         "value": "Premiere Pro, Final Cut Pro, DaVinci Resolve",
         "icon": "/wp-content/uploads/2025/08/Video-Editing.svg"
-      },
-      {
-        "label": "DCO Platforms",
-        "value": "Celtra, Google Studio, Flashtalking",
-        "icon": "/wp-content/uploads/2025/08/ml_layers.svg"
-      },
-      {
-        "label": "Creative Validation",
-        "value": "Google Validator, MOAT, IAS",
-        "icon": "/wp-content/uploads/2025/09/Creative-Validation.svg"
       }
     ],
     "edge": [
@@ -832,7 +706,7 @@
       },
       {
         "title": "Integrated",
-        "text": "Built to sync with Voise Adserver, DSP, and SSP."
+        "text": "Built to sync with Voise AdServer, DSP, and SSP."
       },
       {
         "title": "Strategic Support",
@@ -886,7 +760,7 @@
           },
           {
             "label": "Real-time Rendering",
-            "text": "via Google Studio, Celtra, Innovid, and Adform."
+            "text": "through standard DCO platforms."
           },
           {
             "label": "Use Cases",
@@ -899,7 +773,7 @@
         "items": [
           {
             "label": "Languages",
-            "text": "20+ global languages supported."
+            "text": "multilingual production for global markets."
           },
           {
             "label": "Cultural Adaptation",
@@ -920,7 +794,7 @@
           },
           {
             "label": "Native Formats",
-            "text": "for platforms like Outbrain, Taboola, and Discovery."
+            "text": "for content-recommendation platforms."
           },
           {
             "label": "Interactive Units",
@@ -997,39 +871,6 @@
       "label": "Explore Voise Curation",
       "href": "/contact-us/"
     },
-    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
-    "tech": [
-      {
-        "label": "Curation Engine",
-        "value": "Proprietary deal-building and package management system",
-        "icon": "/wp-content/uploads/2025/08/Curation-Engine.svg"
-      },
-      {
-        "label": "Data Layer",
-        "value": "Deep integrations with DMPs, CDPs, and contextual data providers",
-        "icon": "/wp-content/uploads/2025/08/Data-Layer.svg"
-      },
-      {
-        "label": "SSP Connectivity",
-        "value": "Direct API-level partnerships with major SSPs and publishers",
-        "icon": "/wp-content/uploads/2025/08/SSP-Connectivity.svg"
-      },
-      {
-        "label": "Optimization Module",
-        "value": "ML models trained on deal performance data",
-        "icon": "/wp-content/uploads/2025/08/Optimization-Module.svg"
-      },
-      {
-        "label": "Analytics & Reporting",
-        "value": "Real-time dashboards built with Plotly and D3.js",
-        "icon": "/wp-content/uploads/2025/08/Analytics-Reporting.svg"
-      },
-      {
-        "label": "Cloud Infra",
-        "value": "Fully scalable on AWS to support global buyer operations",
-        "icon": "/wp-content/uploads/2025/08/Cloud-Infra.svg"
-      }
-    ],
     "edge": [
       {
         "title": "Curated, Brand-Safe Inventory",
@@ -1158,39 +999,6 @@
       "label": "Explore Deal Packages",
       "href": "/contact-us/"
     },
-    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
-    "tech": [
-      {
-        "label": "Audience Intelligence",
-        "value": "Snowflake & BigQuery-based segmentation",
-        "icon": "/wp-content/uploads/2025/08/Audience-Intelligence.svg"
-      },
-      {
-        "label": "Campaign Tools",
-        "value": "GAM, DV360, The Trade Desk, Xandr integration",
-        "icon": "/wp-content/uploads/2025/08/Campaign-Tools.svg"
-      },
-      {
-        "label": "Targeting Stack",
-        "value": "IP pools, language filters, region-behavioral data",
-        "icon": "/wp-content/uploads/2025/08/Targeting-Stack.svg"
-      },
-      {
-        "label": "Measurement",
-        "value": "Cultural effectiveness, engagement lift, CTR analysis",
-        "icon": "/wp-content/uploads/2025/08/Measurement.svg"
-      },
-      {
-        "label": "Brand Safety",
-        "value": "Comscore, IAS, and DoubleVerify integration",
-        "icon": "/wp-content/uploads/2025/08/Brand-Safety.svg"
-      },
-      {
-        "label": "Compliance",
-        "value": "GDPR, CCPA, LGPD aligned, IAB DEI-compliant",
-        "icon": "/wp-content/uploads/2025/08/Compliance.svg"
-      }
-    ],
     "edge": [],
     "features": [
       {
@@ -1285,34 +1093,6 @@
       "label": "Try the Planning Tool",
       "href": "/contact-us/"
     },
-    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
-    "tech": [
-      {
-        "label": "Backend",
-        "value": "Python, Node.js",
-        "icon": "/wp-content/uploads/2025/08/backend-1.svg"
-      },
-      {
-        "label": "Data Viz",
-        "value": "D3.js, Plotly, Google Charts",
-        "icon": "/wp-content/uploads/2025/08/data_VIZ.svg"
-      },
-      {
-        "label": "ML Layer",
-        "value": "Scikit-learn models trained on real campaign data",
-        "icon": "/wp-content/uploads/2025/08/ml_layers.svg"
-      },
-      {
-        "label": "DB Infra",
-        "value": "PostgreSQL + AWS Redshift",
-        "icon": "/wp-content/uploads/2025/08/db-infra-1.svg"
-      },
-      {
-        "label": "APIs",
-        "value": "Deep integration with Voise DSP, SSP, and major DMPs",
-        "icon": "/wp-content/uploads/2025/08/api-s.svg"
-      }
-    ],
     "edge": [
       {
         "title": "Centralized Media Planning",
@@ -1324,7 +1104,7 @@
       },
       {
         "title": "Faster Go-to-Market",
-        "text": "Cut turnaround time from brief to IO by 50%."
+        "text": "Shorten the path from brief to insertion order."
       },
       {
         "title": "Cross-Channel Visibility",
@@ -1406,11 +1186,11 @@
         "items": [
           {
             "label": "What it does",
-            "text": "Create IO-ready Excel sheets, PDFs, or pitch decks. One-click integration to Voise DSP and Adserver."
+            "text": "Create IO-ready Excel sheets, PDFs, or pitch decks. Plans hand over to activation on the Voise platform."
           },
           {
             "label": "Why it matters",
-            "text": "You reduce the time between planning and buying by up to 50%."
+            "text": "You reduce the time between planning and buying ."
           }
         ]
       }
@@ -1437,40 +1217,12 @@
       "Voise AudienceIQ is your targeting backbone for high-performing programmatic campaigns.",
       "Powered by first-party signals, contextual relevance, and multicultural depth, this privacy-first engine lets advertisers activate hyper-granular audiences across web, mobile, CTV, and audio, without sacrificing reach or compliance.",
       "Whether you’re running brand awareness or performance-driven campaigns, Voise makes sure your media lands in front of the right people on their terms.",
-      "Fully integrated with the Voise DSP, Adserver, and Planning Tool, it brings precision and intelligence to every impression."
+      "Fully integrated with the Voise DSP, AdServer, and Planning Tool, it brings precision and intelligence to every impression."
     ],
     "heroCta": {
       "label": "Explore Segments",
       "href": "/contact-us/"
     },
-    "techIntro": "What makes Voise Tech different? The features are built to give buyers clarity, speed, and measurable outcomes.",
-    "tech": [
-      {
-        "label": "Data Processing",
-        "value": "Apache Spark, Kafka",
-        "icon": "/wp-content/uploads/2025/08/data-processing-1.svg"
-      },
-      {
-        "label": "Machine Learning",
-        "value": "TensorFlow, PyTorch, LightGBM",
-        "icon": "/wp-content/uploads/2025/08/brainstorming-1.svg"
-      },
-      {
-        "label": "Audience Graph",
-        "value": "AWS Neptune (Graph DB), Redis",
-        "icon": "/wp-content/uploads/2025/08/percentage-1.svg"
-      },
-      {
-        "label": "Contextual Engine",
-        "value": "Python NLP with spaCy & BERT",
-        "icon": "/wp-content/uploads/2025/08/engineering-1-1.svg"
-      },
-      {
-        "label": "Integration",
-        "value": "Voise DSP, Adserver, DMPs/CDPs via API & RTB protocols",
-        "icon": "/wp-content/uploads/2025/08/integration-1.svg"
-      }
-    ],
     "edge": [
       {
         "title": "Precise Targeting",
@@ -1581,7 +1333,7 @@
     "intro": [
       "Voise Creative Studio is a full-stack production arm built to power high-performance digital advertising.",
       "From responsive banners and dynamic video to audio ads, our in-house team delivers creatives designed for every screen, every audience, and every platform, programmatically ready and built to perform.",
-      "Tightly integrated with Voise DSP, Adserver, and Audience Engine, every creative we produce is engineered to meet media specs, accelerate campaign launch, and improve key performance metrics."
+      "Tightly integrated with Voise DSP, AdServer, and Audience Engine, every creative we produce is engineered to meet media specs, accelerate campaign launch, and improve key performance metrics."
     ],
     "heroCta": {
       "label": "Book a Creative Consult",
@@ -1600,24 +1352,9 @@
         "icon": "/wp-content/uploads/2025/08/Video-Editing.svg"
       },
       {
-        "label": "DCO Platform",
-        "value": "Google Studio, Celtra, RevJet (optional integrations)",
-        "icon": "/wp-content/uploads/2025/08/DCO-Platform.svg"
-      },
-      {
-        "label": "QA & Testing",
-        "value": "Litmus, BrowserStack, CreativeX",
-        "icon": "/wp-content/uploads/2025/08/QA-Testing.svg"
-      },
-      {
         "label": "Code & Dev",
         "value": "HTML5, GSAP (Greensock), JavaScript, CSS3",
         "icon": "/wp-content/uploads/2025/08/Code-Dev.svg"
-      },
-      {
-        "label": "Delivery",
-        "value": "Voise Adserver, GAM, Innovid, Sizmek",
-        "icon": "/wp-content/uploads/2025/08/Delivery.svg"
       }
     ],
     "edge": [

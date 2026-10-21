@@ -11,12 +11,12 @@ export const productImages: Record<string, string> = {
   'creative-services': '/wp-content/uploads/2025/08/Voise-Creative-Services_listing1.webp',
 };
 
-/** Short descriptions used on listing pages (verbatim from the live buyer/publisher pages). */
+/** Short descriptions used on listing pages. Each says how the product relates to Voise AdServer. */
 export const productSummaries: Record<string, string> = {
-  'voise-ad-server': 'Proprietary ad serving infrastructure with built-in CMS and player capabilities, AI-enhanced decisioning, clean supply routing, and transparent measurement across the omnichannel adtech ecosystem, supporting AdCP and seller-agent workflows for smarter automation and efficient supply path optimisation.',
-  'supply-side-platform-advertising': 'Voise SSP is a Supply-Side Platform optimised for premium monetisation and clean supply paths, with seller agent support, AI-driven price discovery, and multi-format adtech capabilities, connecting publishers to premium demand via curated marketplaces and real-time auctions.',
-  'pre-bid': 'Voise Pre-Bid Layer is a full-stack header bidding solution built on top of Prebid.js and advanced server-side technology. It brings together real-time demand from multiple SSPs, enabling fair, unified auctions across the omnichannel advertising ecosystem.',
-  'content-production-solutions': 'Voise Content Production Studio blends performance-led storytelling with media strategy, creating mobile-first video, interactive display, and CTV-grade creatives. Built for the omnichannel adtech ecosystem, it enables seamless activations, optimisations, and measurable campaign performance.',
+  'voise-ad-server': 'VoiseTech’s core platform: one omnichannel ad server for OpenRTB, video and CTV through the Voise Video SDK, DOOH and reporting, on a single Rust, Kafka and ClickHouse architecture.',
+  'supply-side-platform-advertising': 'The supply-side layer of the Voise platform. Voise SSP takes publisher inventory to programmatic demand through real-time auctions and curated marketplaces, with clean supply paths and transparent seller information.',
+  'pre-bid': 'Header bidding ahead of the ad server decision. Voise Pre-Bid, built on Prebid.js with server-side bidding, brings demand from multiple SSPs into one fair auction before Voise AdServer picks the winner.',
+  'content-production-solutions': 'The creative that runs through the platform. Voise Content Production makes mobile-first video, interactive display and CTV creative, built to the specs of each format and channel.',
   'auction-platform': 'Voise Curation gives agencies, brands, and resellers the power to build custom, high-performing programmatic marketplaces. Instead of relying on off-the-shelf inventory bundles or predefined PMPs, this solution lets you handpick audiences, formats, publishers, and data layers - then package them into curated deals that deliver.',
   'multicultural-advertising-agency': 'Voise Multicultural Opportunity is a programmatic solution designed for brands that want to connect authentically with diverse communities across cultures, languages, identities, and regions.',
   'advertising-planning-tool': 'The Voise Agentic Planner is built for the modern media team, advertisers, planners, and strategists who need to deliver results across fragmented formats and geographies.',

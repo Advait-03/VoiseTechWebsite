@@ -9,17 +9,17 @@ import Img from '../components/Img.astro';
 import Icon from '../components/Icon.astro';
 
 const stages = [
-  { step: 'Plan', title: 'From brief to plan in minutes', text: 'Inventory discovery, audience insights and media forecasting in one place - without jumping between spreadsheets, teams, or tools.', links: [{ label: 'Voise Agentic Planner', href: '/advertising-planning-tool/' }] },
-  { step: 'Target', title: 'Precision without the guesswork', text: 'First-party signals, contextual relevance and multicultural depth - privacy-first, across web, mobile, CTV, and audio.', links: [{ label: 'Voise AudienceIQ', href: '/audience-segmentation-tool/' }, { label: 'Voise Multicultural Opportunity', href: '/multicultural-advertising-agency/' }] },
+  { step: 'Plan', title: 'From brief to plan', text: 'Inventory discovery, audience insights and forecasting in one place. AI-assisted planning, and a DOOH Planning Tool on the same AdServer infrastructure, are in development.', links: [{ label: 'Voise Agentic Planner', href: '/advertising-planning-tool/' }] },
+  { step: 'Target', title: 'Precision without the guesswork', text: 'First-party signals, contextual relevance and multicultural depth - privacy-first, across web, mobile and CTV.', links: [{ label: 'Voise AudienceIQ', href: '/audience-segmentation-tool/' }, { label: 'Voise Multicultural Opportunity', href: '/multicultural-advertising-agency/' }] },
   { step: 'Create', title: 'Creative that works harder', text: 'Responsive banners, dynamic video and audio ads - programmatically ready and built to meet media specs.', links: [{ label: 'Voise Creative Studio', href: '/creative-services/' }] },
-  { step: 'Activate', title: 'Deals that do the heavy lifting', text: 'Handpick audiences, formats, publishers, and data layers - then package them into curated deals with real-time reporting.', links: [{ label: 'Voise Curation', href: '/auction-platform/' }] },
+  { step: 'Activate', title: 'Deals that do the heavy lifting', text: 'Package audiences, formats and publishers into curated deals. Deal IDs travel through Voise AdServer end to end, so delivery reconciles.', links: [{ label: 'Voise Curation', href: '/auction-platform/' }, { label: 'Voise AdServer', href: '/voise-ad-server/' }] },
 ];
 
 const compliance = [
-  { title: 'Pre-Screened Inventory', text: 'Every publisher is vetted before entry.' },
-  { title: 'Fraud Prevention', text: 'MRC-accredited IVT detection pre & post-bid.' },
-  { title: 'Data Compliance', text: 'Fully GDPR, CCPA, and COPPA compliant.' },
-  { title: 'Third-Party Verification', text: 'Independent assurance via leading partners.' },
+  { title: 'Approved Supply', text: 'Publishers are approved before full traffic flows.' },
+  { title: 'Traffic Quality', text: 'Pre-bid and post-bid invalid-traffic scanning, set per ad unit.' },
+  { title: 'Brand Safety Controls', text: 'IAB category, domain, brand and creative blocking on every request.' },
+  { title: 'Supply-Chain Transparency', text: 'sellers.json IDs and SupplyChain objects on every bid request.' },
 ];
 const advantages = [
   'Access to premium global demand at scale',
@@ -30,13 +30,13 @@ const advantages = [
 ---
 <BaseLayout
   title="Buyers - Voise Tech"
-  description="Plan Smarter. Activate Faster. Prove Impact. Voise Tech empowers media planners and buyers to plan, buy, and optimize across the open web, in-app, and CTV, without extra hops or hidden layers."
+  description="Plan Smarter. Activate Faster. Prove Impact. Buyer products for planning, targeting, creative and curated deals, on supply that runs through Voise AdServer."
   breadcrumbs={[{ label: 'Products', href: '/products/' }, { label: 'Buyers', href: '/ad-buyers-solutions/' }]}
 >
   <PageHero
     eyebrow="Buyers"
     title="Plan Smarter.<br />Activate Faster.<br /><span class='grad-text'>Prove Impact.</span>"
-    lede="In today’s fragmented ecosystem, buyers need more than just access - they need clarity, speed, and control. Voise Tech empowers media planners and buyers to plan, buy, and optimize across the open web, in-app, and CTV, without extra hops or hidden layers."
+    lede="Buyers need more than access: they need clarity, speed and control. VoiseTech helps media planners and buyers plan, buy and optimise across the open web, in-app and CTV, on supply that runs through one platform, Voise AdServer, without extra hops or hidden layers."
     crumbs={[{ label: 'Products', href: '/products/' }, { label: 'Buyers', href: '/ad-buyers-solutions/' }]}
   >
     <div class="cluster" slot="actions">
@@ -49,7 +49,7 @@ const advantages = [
     <div class="container">
       <SectionHeading eyebrow="The buyer journey" title="One flow from planning to proof." lede="Each stage of the campaign is served by a Voise product - connected, so data and decisions carry through." />
       <div class="flow-wrap">
-        <JourneyFlow label="Buyer journey" stages={stages} base={{ title: 'Compliance & Brand Safety', text: 'Pre-screened inventory, MRC-accredited IVT detection pre & post-bid, and third-party verification.' }} />
+        <JourneyFlow label="Buyer journey" stages={stages} base={{ title: 'Brand Safety & Transparency', text: 'Approved supply, pre-bid and post-bid traffic-quality scanning, category and domain blocking, and supply-chain signals on every request.' }} />
       </div>
     </div>
   </section>
@@ -84,7 +84,7 @@ const advantages = [
 
   <section class="section">
     <div class="container">
-      <SectionHeading eyebrow="Responsible advertising" title="Compliance & Brand Safety." />
+      <SectionHeading eyebrow="Responsible advertising" title="Brand Safety & Transparency." />
       <ul role="list" class="comp" data-stagger>
         {compliance.map((c, i) => (
           <li data-reveal>

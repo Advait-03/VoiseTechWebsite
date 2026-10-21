@@ -2,7 +2,6 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import StatGrid from '../components/StatGrid.astro';
 import VideoFacade from '../components/VideoFacade.astro';
 import GlobePresence from '../components/GlobePresence.astro';
 import { SITE } from '../data/site';
@@ -12,7 +11,6 @@ import CtaBand from '../components/CtaBand.astro';
 import Img from '../components/Img.astro';
 import Icon from '../components/Icon.astro';
 import PersonCard from '../components/PersonCard.astro';
-import { aboutStats } from '../data/stats';
 import { leadership, team } from '../data/people';
 import { partners, memberships, trustPartners } from '../data/logos';
 
@@ -50,9 +48,6 @@ const triad = [
       <div data-reveal="fade" style="--i:1">
         <VideoFacade id="-MQV1bk5KHI" title="Voise Tech on YouTube" label="Watch the VoiseTech film" />
       </div>
-    </div>
-    <div class="container stats-wrap">
-      <StatGrid stats={aboutStats} />
     </div>
   </section>
 
@@ -171,7 +166,6 @@ const triad = [
 <style>
   .story-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
   .story-copy { font-size: 1.06rem; }
-  .stats-wrap { margin-top: clamp(56px, 7vw, 96px); }
   @media (max-width: 900px) { .story-grid { grid-template-columns: minmax(0, 1fr); } }
 
   .triad-section { padding-block: clamp(72px, 9vw, 128px); }

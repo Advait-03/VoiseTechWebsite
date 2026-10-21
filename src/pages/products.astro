@@ -6,44 +6,67 @@ import StackMap from '../components/StackMap.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Img from '../components/Img.astro';
 import Icon from '../components/Icon.astro';
-import { publisherProducts, buyerProducts } from '../data/navigation';
+import products from '../data/products.json';
+import { platformProduct, publisherProducts, buyerProducts } from '../data/navigation';
+
+const platform = products.find((p) => p.category === 'platform')!;
 
 const groups = [
   {
     id: 'publishers', eyebrow: 'Publishers', title: 'Full Control. Real Demand. Better Yield.', href: '/ad-publishers-solutions/', image: '/brand/art/publishers.svg', alt: 'Illustration: publisher inventory going through a real-time auction to a served ad',
-    text: 'Voise Tech provides publishers with the infrastructure they need to manage monetization, maximize revenue, and maintain transparency across every channel. Whether you’re scaling premium inventory or launching new formats, our platform is designed to optimize every impression without compromising user experience or data ownership.',
+    text: 'Publisher products work around Voise AdServer: Pre-Bid brings header-bidding demand into the auction, Voise SSP takes inventory to programmatic demand, and Content Production makes the creative that runs on it.',
     links: publisherProducts,
   },
   {
     id: 'buyers', eyebrow: 'Buyers', title: 'Clarity, Efficiency, and Performance at Scale', href: '/ad-buyers-solutions/', image: '/brand/art/buyers.svg', alt: 'Illustration: a campaign planner with audiences, channels, reach and brand safety',
-    text: 'For media buyers, Voise Tech offers precision tools to plan smarter campaigns, access premium inventory, and optimize spend in real time. From curated packages to deep audience intelligence, everything is built to reduce waste, improve outcomes, and give you full visibility into every buy.',
+    text: 'Buyer products help agencies and brands plan, target, create and activate. Curated deals reach supply through deal IDs that the AdServer carries end to end, and planning and audience tools draw on the same platform as it grows.',
     links: buyerProducts,
   },
 ];
 ---
 <BaseLayout
   title="Products - Voise Tech"
-  description="A Smarter Stack for Smarter Outcomes. Voise Tech offers a complete programmatic ecosystem that simplifies how media is planned, bought, and monetized."
+  description="One platform, built around Voise AdServer: OpenRTB, video and CTV, DOOH and reporting, with publisher and buyer products connected to it."
   breadcrumbs={[{ label: 'Products', href: '/products/' }]}
 >
   <PageHero
     eyebrow="Products"
-    title="A Smarter Stack for <span class='grad-text'>Smarter Outcomes</span>"
+    title="One Platform. <span class='grad-text'>Every Side of the Market.</span>"
     lede={[
-      'Voise Tech offers a complete programmatic ecosystem that simplifies how media is planned, bought, and monetized. Designed for both the supply and demand sides of the ad economy, our tools restore transparency, speed, and performance to digital advertising.',
-      'From real-time auctions to data-driven planning, Voise Tech empowers publishers, buyers, and partners to take control of outcomes at every stage of the funnel.',
+      'Everything VoiseTech builds starts with Voise AdServer, one omnichannel ad server for OpenRTB, video and CTV, DOOH and reporting.',
+      'Publisher products bring demand and creative into it. Buyer products plan, target and activate against it. Because they share one platform, data and decisions carry through from the first bid request to the last report.',
     ]}
     crumbs={[{ label: 'Products', href: '/products/' }]}
     split
   >
     <div class="cluster" slot="actions">
-      <a class="btn" href="/contact-us/">Enquire Now <Icon name="arrow" size={16} class="arrow" /></a>
+      <a class="btn" href={platformProduct.href}>Explore Voise AdServer <Icon name="arrow" size={16} class="arrow" /></a>
+      <a class="btn btn-secondary" href="/contact-us/">Enquire Now</a>
     </div>
     <div slot="visual" class="visual">
       <StackMap />
       <p class="mono cap">Select a product to explore it</p>
     </div>
   </PageHero>
+
+  <section class="section on-night platform" id="platform">
+    <div class="container">
+      <div class="platform-head">
+        <SectionHeading eyebrow="Core platform" title={platform.name} lede={platform.intro[0]} />
+        <a class="btn" href={platformProduct.href} data-reveal>Explore the platform <Icon name="arrow" size={16} class="arrow" /></a>
+      </div>
+      <ol role="list" class="surfaces" data-stagger>
+        {platform.edge.map((e: { title: string; text?: string; status?: string }, i) => (
+          <li data-reveal>
+            <span class="mono s-n">0{i + 1}</span>
+            <h3 class="h4">{e.title}</h3>
+            <p>{e.text}</p>
+            {e.status && <span class="status mono">{e.status}</span>}
+          </li>
+        ))}
+      </ol>
+    </div>
+  </section>
 
   {groups.map((g, gi) => (
     <section class:list={['section', gi % 2 === 1 && 'tone-subtle']} id={g.id}>
@@ -84,6 +107,15 @@ const groups = [
 
 <style>
   .visual { display: grid; gap: 12px; }
+  .platform-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: flex-end; gap: 28px; }
+  .platform-head :global(.lede) { max-width: 62ch; }
+  .surfaces { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 1px; margin-top: clamp(36px, 5vw, 64px); background: var(--line-night); border: 1px solid var(--line-night); border-radius: var(--radius-l); overflow: hidden; }
+  .surfaces li { background: var(--night); padding: clamp(22px, 2.4vw, 32px); display: grid; gap: 12px; align-content: start; }
+  .surfaces p { color: var(--ink-inverse-2); font-size: var(--fs-small); }
+  .s-n { color: var(--sky); }
+  .surfaces .status { justify-self: start; padding: 4px 10px; border-radius: 999px; border: 1px solid rgb(255 255 255 / 0.22); color: var(--ink-inverse-2); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  @media (max-width: 1000px) { .surfaces { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .surfaces { grid-template-columns: minmax(0, 1fr); } }
   .cap { color: var(--ink-3); text-align: center; font-size: 0.68rem; }
   .group { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.05fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
   .group-media { aspect-ratio: 564 / 420; }

@@ -2,27 +2,25 @@
 import BaseLayout from '../layouts/BaseLayout.astro';
 import PageHero from '../components/PageHero.astro';
 import SectionHeading from '../components/SectionHeading.astro';
-import StatGrid from '../components/StatGrid.astro';
 import JourneyFlow from '../components/JourneyFlow.astro';
 import ProductList from '../components/ProductList.astro';
 import CtaBand from '../components/CtaBand.astro';
 import Img from '../components/Img.astro';
 import Icon from '../components/Icon.astro';
-import { publisherStats } from '../data/stats';
 
 const stages = [
-  { step: 'Inventory', title: 'Every screen, every format', text: 'Web, in-app, CTV/OTT and audio inventory - display, native, video and dynamic audio insertion.', links: [{ label: 'Formats & channels', href: '#formats' }] },
-  { step: 'Header bidding', title: 'One fair, unified auction', text: 'Client-side and server-side bidding that consolidates bids from 25+ SSPs into a single fair auction.', links: [{ label: 'Voise Pre-Bid', href: '/pre-bid/' }] },
-  { step: 'Decisioning', title: 'Unified ad serving', text: 'Direct, PMP and open marketplace in one platform with tiered priority and ~120ms auction handling.', links: [{ label: 'Voise Ad Server', href: '/voise-ad-server/' }] },
-  { step: 'Monetisation', title: 'Premium demand, adaptive yield', text: '30+ DSPs, curated PMPs and machine learning–powered dynamic floors, with full monetization control.', links: [{ label: 'Voise SSP', href: '/supply-side-platform-advertising/' }] },
-  { step: 'Insight', title: 'Actionable reporting', text: 'Real-time revenue dashboards, per-buyer demand diagnostics, and exports via API, CSV, or BI tools.', links: [{ label: 'Voise SSP reporting', href: '/supply-side-platform-advertising/#features' }] },
+  { step: 'Inventory', title: 'Every screen, every format', text: 'Web, in-app, CTV/OTT and DOOH inventory, organised as ad units under each publisher: RTB, VAST or banner.', links: [{ label: 'Formats & channels', href: '#formats' }] },
+  { step: 'Header bidding', title: 'One fair, unified auction', text: 'Client-side and server-side header bidding brings demand from multiple SSPs into a single fair auction.', links: [{ label: 'Voise Pre-Bid', href: '/pre-bid/' }] },
+  { step: 'Decisioning', title: 'One ad server', text: 'Voise AdServer applies your pricing, targeting, caps and quality rules, and picks the winning bid across direct campaigns and programmatic demand.', links: [{ label: 'Voise AdServer', href: '/voise-ad-server/' }] },
+  { step: 'Monetisation', title: 'Programmatic demand, clean supply', text: 'Voise SSP takes inventory to programmatic demand and curated deals, with sellers.json and supply-chain signals on every request.', links: [{ label: 'Voise SSP', href: '/supply-side-platform-advertising/' }] },
+  { step: 'Insight', title: 'Reporting that reconciles', text: 'One reporting model from ad request to paid impression, with a reporting API per ad unit.', links: [{ label: 'AdServer reporting', href: '/voise-ad-server/#edge' }] },
 ];
 
 const formats = [
-  { title: 'Web', text: 'Display, native, and video with responsive layouts.' },
-  { title: 'App', text: 'In-app banners, interstitials, rewarded video, and native.' },
-  { title: 'CTV/OTT', text: 'SSAI-enabled pre-roll, mid-roll, and interactive ads.' },
-  { title: 'Audio', text: 'Dynamic insertion for podcasts, streaming radio & music apps.' },
+  { title: 'Web', text: 'Display, native and video, through RTB and banner ad units.' },
+  { title: 'In-app', text: 'Banners, interstitials, rewarded video and native, over OpenRTB.' },
+  { title: 'CTV/OTT', text: 'VAST and server-side ad insertion through the Voise Video SDK.' },
+  { title: 'DOOH', text: 'Screens and ad slots managed in a supply-side CMS on the same AdServer. In development.' },
 ];
 const gamDeliver = [
   'Seamless integration across all inventory types',
@@ -33,13 +31,13 @@ const gamDeliver = [
 ---
 <BaseLayout
   title="Programmatic Ad Solutions for Publishers | Voise Tech"
-  description="Explore Voise Tech’s programmatic solutions for publishers - Ad Server, SSP, Pre-Bid, and Content Studio built for transparency, control, and higher revenue."
+  description="Publisher solutions built around Voise AdServer: SSP, Pre-Bid and Content Production for web, in-app, CTV and DOOH, with transparency and control."
   breadcrumbs={[{ label: 'Products', href: '/products/' }, { label: 'Publishers', href: '/ad-publishers-solutions/' }]}
 >
   <PageHero
     eyebrow="Publishers"
     title="Monetize Smarter. Create Faster.<br /><span class='grad-text'>Optimize Everything.</span>"
-    lede="In today’s competitive ecosystem, publishers need more than just demand - they need transparency, flexibility, and scale. Voise Tech empowers publishers with full-stack control to manage inventory, streamline creatives, and maximize yield across web, in-app, and CTV."
+    lede="Publishers need more than demand: they need transparency, flexibility and scale. VoiseTech gives you one ad server, Voise AdServer, with SSP, Pre-Bid and creative production around it, to manage inventory and maximise yield across web, in-app, CTV and DOOH."
     crumbs={[{ label: 'Products', href: '/products/' }, { label: 'Publishers', href: '/ad-publishers-solutions/' }]}
   >
     <div class="cluster" slot="actions">
@@ -48,16 +46,9 @@ const gamDeliver = [
     </div>
   </PageHero>
 
-  <section class="section-sm">
-    <div class="container">
-      <SectionHeading eyebrow="Platform highlights" title="Platform Highlights" />
-      <div class="stats"><StatGrid stats={publisherStats} /></div>
-    </div>
-  </section>
-
   <section class="section tone-subtle">
     <div class="container">
-      <SectionHeading eyebrow="How it works" title="How an impression is monetised." lede="From the ad request to the revenue report, each step runs on the Voise publisher stack." />
+      <SectionHeading eyebrow="How it works" title="How an impression is monetised." lede="From the ad request to the revenue report, every step runs through Voise AdServer and the products around it." />
       <div class="flow-wrap"><JourneyFlow label="Publisher monetisation flow" stages={stages} /></div>
     </div>
   </section>
@@ -66,7 +57,7 @@ const gamDeliver = [
     <div class="container">
       <SectionHeading eyebrow="Publisher products" title="Full Control. Real Demand. Better Yield." />
       <div class="list-wrap">
-        <ProductList slugs={['voise-ad-server', 'supply-side-platform-advertising', 'pre-bid', 'content-production-solutions']} names={{ 'voise-ad-server': 'Voise Adserver' }} />
+        <ProductList slugs={['voise-ad-server', 'supply-side-platform-advertising', 'pre-bid', 'content-production-solutions']} />
       </div>
     </div>
   </section>
@@ -109,7 +100,6 @@ const gamDeliver = [
 </BaseLayout>
 
 <style>
-  .stats { margin-top: clamp(32px, 4vw, 56px); }
   .flow-wrap { margin-top: clamp(40px, 5vw, 64px); }
   .list-wrap { margin-top: clamp(48px, 6vw, 88px); }
   .split { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }

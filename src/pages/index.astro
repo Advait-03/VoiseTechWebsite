@@ -3,7 +3,6 @@ import { getCollection } from 'astro:content';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import HeroNetwork from '../components/HeroNetwork.astro';
 import HeroDevices from '../components/HeroDevices.astro';
-import StatGrid from '../components/StatGrid.astro';
 import SectionHeading from '../components/SectionHeading.astro';
 import LogoMarquee from '../components/LogoMarquee.astro';
 import LogoMark from '../components/LogoMark.astro';
@@ -12,23 +11,18 @@ import Icon from '../components/Icon.astro';
 import Img from '../components/Img.astro';
 import ResourceCard from '../components/ResourceCard.astro';
 import TestimonialCarousel from '../components/TestimonialCarousel.astro';
-import { homeStats } from '../data/stats';
 import { partners, clients } from '../data/logos';
 import { testimonials } from '../data/people';
 import products from '../data/products.json';
+import { productSummaries } from '../data/product-media';
 import { latestHighlights, featuredCaseStudies } from '../lib/content';
 
-const publisherOrder = ['voise-ad-server', 'supply-side-platform-advertising', 'pre-bid', 'content-production-solutions'];
+const publisherOrder = ['supply-side-platform-advertising', 'pre-bid', 'content-production-solutions'];
 const buyerOrder = ['auction-platform', 'multicultural-advertising-agency', 'advertising-planning-tool', 'audience-segmentation-tool', 'creative-services'];
 const bySlug = (s: string) => products.find((p) => p.slug === s)!;
+const platform = products.find((p) => p.category === 'platform')!;
 
-// Product summaries exactly as written on the live homepage / solution pages.
-const publisherSummaries: Record<string, string> = {
-  'voise-ad-server': 'Proprietary ad serving infrastructure with built-in CMS and player capabilities, AI-enhanced decisioning, clean supply routing, and transparent measurement across the omnichannel adtech ecosystem, supporting AdCP and seller-agent workflows for smarter automation and efficient supply path optimisation.',
-  'supply-side-platform-advertising': 'Voise SSP is a Supply-Side Platform optimised for premium monetisation and clean supply paths, with seller agent support, AI-driven price discovery, and multi-format adtech capabilities, connecting publishers to premium demand via curated marketplaces and real-time auctions.',
-  'pre-bid': 'Voise Pre-Bid Layer is a full-stack header bidding solution built on top of Prebid.js and advanced server-side technology. It brings together real-time demand from multiple SSPs, enabling fair, unified auctions across the omnichannel advertising ecosystem.',
-  'content-production-solutions': 'Voise Content Production Studio blends performance-led storytelling with media strategy, creating mobile-first video, interactive display, and CTV-grade creatives. Built for the omnichannel adtech ecosystem, it enables seamless activations, optimisations, and measurable campaign performance.',
-};
+// Short buyer summaries for the homepage cards.
 const buyerSummaries: Record<string, string> = {
   'auction-platform': 'Voise Curation gives agencies, brands, and resellers the power to build custom, high-performing programmatic marketplaces.',
   'multicultural-advertising-agency': 'A programmatic solution designed for brands that want to connect authentically with diverse communities across cultures, languages, identities, and regions.',
@@ -36,7 +30,6 @@ const buyerSummaries: Record<string, string> = {
   'audience-segmentation-tool': 'Your targeting backbone for high-performing programmatic campaigns.',
   'creative-services': 'A full-stack production arm built to power high-performance digital advertising.',
 };
-const displayName = (slug: string) => (slug === 'voise-ad-server' ? 'Voise Ad Server' : bySlug(slug).name);
 
 const googlePoints = [
   { title: 'Certified Access to Google Supply', text: 'We offer direct connections to DV360, GAM, and custom integrations, which enable premium, brand-safe inventory reach.' },
@@ -56,7 +49,7 @@ const cases = await featuredCaseStudies();
   <section class="hero">
     <div class="container-wide hero-top">
       <div class="hero-copy">
-        <p class="eyebrow" data-reveal>AI-driven infrastructure across the omnichannel AdTech ecosystem</p>
+        <p class="eyebrow" data-reveal>One platform across the omnichannel AdTech ecosystem</p>
         <h1 class="display" data-reveal style="--i:1">Beyond AdTech.<br /><span class="grad-text">Built for What’s Next.</span></h1>
       </div>
       <div class="hero-devices" data-reveal="fade" style="--i:2"><HeroDevices /></div>
@@ -75,24 +68,60 @@ const cases = await featuredCaseStudies();
     </div>
   </section>
 
-  <!-- Statement + stats -->
+  <!-- Statement + core platform -->
   <section class="section statement-section">
     <div class="container">
       <div class="statement" data-reveal>
         <p class="eyebrow">Meet Voise Tech</p>
-        <h2 class="statement-title">Smarter Advertising. Cleaner Supply. Powered by AI.</h2>
+        <h2 class="statement-title">Smarter Advertising. Cleaner Supply. One Platform.</h2>
       </div>
       <div class="statement-body">
         <p class="lede" data-reveal>
-          An AI-driven adtech solutions provider to global agencies, advertisers and publishers, VoiseTech combines machine intelligence, clean supply paths, advanced measurement, and agentic AI to maximise yield and brand-safe inventory access.
+          VoiseTech builds advertising technology for global agencies, advertisers and publishers. At its core is Voise AdServer: one omnichannel ad server for programmatic, video and CTV, digital out-of-home and reporting.
         </p>
         <div class="muted stack" data-reveal style="--i:1">
-          <p>We deliver premium inventory, advanced ad-serving, and agentic AI capabilities to the forefront of media buying. Our unified infrastructure powers everything from monetisation to measurement, built for scale, transparency, and smarter outcomes across every screen and environment.</p>
-          <p>With a presence across the US, UK, India, and UAE, we deliver transparent, measurable outcomes through intelligent decisioning, IVT filtration, and next-generation agent-to-agent optimisation.</p>
+          <p>Publisher and buyer products connect to the same platform, so monetisation, planning and measurement share one data model across web, in-app, CTV and DOOH. AI-assisted planning and optimisation are part of our product direction, built on that same foundation.</p>
+          <p>With a presence across the US, UK, India, and UAE, we work with partners on transparent, measurable outcomes: clean supply paths, invalid-traffic filtering and reporting that reconciles.</p>
           <a class="link-arrow" href="/about-us/"><span class="label">About Voise Tech</span><Icon name="arrow" size={14} class="arrow" /></a>
         </div>
       </div>
-      <StatGrid stats={homeStats} />
+
+      <div class="core on-night" data-reveal>
+        <div class="core-head">
+          <p class="eyebrow">Core platform</p>
+          <h2 class="h2">{platform.name}</h2>
+          <p class="core-tag">{platform.tagline}</p>
+          <a class="btn" href={`/${platform.slug}/`}>Explore the platform <Icon name="arrow" size={16} class="arrow" /></a>
+        </div>
+        <ol role="list" class="core-surfaces">
+          {platform.edge.map((e: { title: string; text?: string; status?: string }, i) => (
+            <li>
+              <span class="mono cs-n">0{i + 1}</span>
+              <span class="cs-title">{e.title}</span>
+              {e.status && <span class="cs-status mono">{e.status}</span>}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </section>
+
+  <!-- Google -->
+  <section class="section tone-subtle google">
+    <div class="container google-grid">
+      <div class="google-copy">
+        <SectionHeading eyebrow="Google partnership" title="We Are a Certified Google MCM Partner." lede="As a certified Google MCM partner, VoiseTech gives publishers managed access to Google demand, with brand-safe inventory, transparent measurement and clean supply paths." />
+        <a class="link-arrow" href="/google-ad-manager-solutions-services/" data-reveal><span class="label">Explore GAM 360 services</span><Icon name="arrow" size={14} class="arrow" /></a>
+      </div>
+      <ol role="list" class="google-points" data-stagger>
+        {googlePoints.map((g, i) => (
+          <li data-reveal>
+            <span class="mono gp-n">0{i + 1}</span>
+            <h3 class="h4">{g.title}</h3>
+            <p class="muted small">{g.text}</p>
+          </li>
+        ))}
+      </ol>
     </div>
   </section>
 
@@ -100,7 +129,7 @@ const cases = await featuredCaseStudies();
   <section class="section on-night platform" id="platform">
     <div class="container">
       <div class="platform-head">
-        <SectionHeading eyebrow="For publishers" title="Monetize Smarter. Create Faster. Optimize Everything." lede="Voise Tech empowers publishers with full-stack control to manage inventory, streamline creatives, and maximize yield across web, in-app, and CTV." />
+        <SectionHeading eyebrow="For publishers" title="Monetize Smarter. Create Faster. Optimize Everything." lede="Publisher products built around Voise AdServer, to manage inventory, bring in demand, and make the creative that runs across web, in-app, CTV and DOOH." />
         <a class="btn btn-secondary" href="/ad-publishers-solutions/" data-reveal>Publisher solutions <Icon name="arrow" size={16} class="arrow" /></a>
       </div>
       <ol role="list" class="product-rows" data-stagger>
@@ -110,9 +139,9 @@ const cases = await featuredCaseStudies();
             <li data-reveal>
               <a class="product-row" href={`/${slug}/`} data-glow>
                 <span class="idx mono">0{i + 1}</span>
-                <span class="pr-name">{displayName(slug)}</span>
+                <span class="pr-name">{p.name}</span>
                 <span class="pr-tag">{p.tagline}</span>
-                <span class="pr-desc">{publisherSummaries[slug]}</span>
+                <span class="pr-desc">{productSummaries[slug]}</span>
                 <span class="pr-go" aria-hidden="true"><Icon name="arrow-up-right" size={20} /></span>
               </a>
             </li>
@@ -123,7 +152,7 @@ const cases = await featuredCaseStudies();
   </section>
 
   <!-- Platform: buyers -->
-  <section class="section buyers">
+  <section class="section tone-subtle buyers">
     <div class="container">
       <div class="platform-head">
         <SectionHeading eyebrow="For buyers" title="Built to Move Markets for Buyers." lede="Voise Tech empowers media planners and buyers to plan, buy, and optimize across the open web, in-app, and CTV, without extra hops or hidden layers." />
@@ -145,25 +174,6 @@ const cases = await featuredCaseStudies();
           );
         })}
       </ul>
-    </div>
-  </section>
-
-  <!-- Google -->
-  <section class="section tone-subtle google">
-    <div class="container google-grid">
-      <div class="google-copy">
-        <SectionHeading eyebrow="Google partnership" title="We Are a certified Google MCM Partner." lede="As a certified Google partner, VoiseTech combines strategic partnerships with open standards like AdCP to deliver premium, brand-safe inventory with transparent measurement and clean supply paths." />
-        <a class="link-arrow" href="/google-ad-manager-solutions-services/" data-reveal><span class="label">Explore GAM 360 services</span><Icon name="arrow" size={14} class="arrow" /></a>
-      </div>
-      <ol role="list" class="google-points" data-stagger>
-        {googlePoints.map((g, i) => (
-          <li data-reveal>
-            <span class="mono gp-n">0{i + 1}</span>
-            <h3 class="h4">{g.title}</h3>
-            <p class="muted small">{g.text}</p>
-          </li>
-        ))}
-      </ol>
     </div>
   </section>
 
@@ -264,6 +274,19 @@ const cases = await featuredCaseStudies();
   .statement-body { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 80px); margin: clamp(32px, 4vw, 56px) 0 clamp(56px, 7vw, 96px); }
   .statement-body .lede { color: var(--ink); }
   @media (max-width: 860px) { .statement-body { grid-template-columns: minmax(0, 1fr); } }
+
+  /* Core platform card (Voise AdServer) */
+  .core { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr); gap: clamp(28px, 5vw, 72px); align-items: center; padding: clamp(28px, 4vw, 56px); border-radius: var(--radius-l); background: radial-gradient(90% 120% at 100% 0%, rgb(8 112 199 / 0.45), transparent 60%), radial-gradient(70% 90% at 0% 100%, rgb(14 177 81 / 0.25), transparent 60%), var(--night); }
+  .core-head { display: grid; gap: 14px; justify-items: start; }
+  .core-head .eyebrow { color: var(--ink-inverse-2); }
+  .core-tag { color: var(--ink-inverse-2); font-size: 1.1rem; max-width: 34ch; margin-bottom: 8px; }
+  .core-surfaces { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: var(--line-night); border: 1px solid var(--line-night); border-radius: var(--radius); overflow: hidden; }
+  .core-surfaces li { display: grid; gap: 8px; align-content: start; padding: 22px; background: rgb(6 18 38 / 0.85); min-height: 120px; }
+  .cs-n { color: var(--sky); }
+  .cs-title { font-size: 1.15rem; font-weight: 600; letter-spacing: -0.02em; }
+  .cs-status { justify-self: start; padding: 3px 9px; border-radius: 999px; border: 1px solid rgb(255 255 255 / 0.22); color: var(--ink-inverse-2); font-size: 0.62rem; letter-spacing: 0.06em; text-transform: uppercase; }
+  @media (max-width: 860px) { .core { grid-template-columns: minmax(0, 1fr); } }
+  @media (max-width: 460px) { .core-surfaces { grid-template-columns: minmax(0, 1fr); } .core-surfaces li { min-height: 0; } }
 
   .platform-head { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 24px 40px; margin-bottom: clamp(36px, 5vw, 64px); }
   .product-rows { border-top: 1px solid var(--line-night); }

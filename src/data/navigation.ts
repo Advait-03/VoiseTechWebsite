@@ -4,7 +4,6 @@ export type NavLink = { label: string; href: string; description?: string };
 
 // Product names as they appear in the live site menu, where they differ from the page H1.
 const MENU_NAMES: Record<string, string> = {
-  'voise-ad-server': 'Voise Ad Server',
   'auction-platform': 'Voise Curation/Auction Packages',
 };
 
@@ -13,6 +12,8 @@ const byCategory = (category: string): NavLink[] =>
     .filter((p) => p.category === category)
     .map((p) => ({ label: MENU_NAMES[p.slug] ?? p.name, href: `/${p.slug}/`, description: p.tagline }));
 
+/** Voise AdServer is the core platform; publisher and buyer products sit around it. */
+export const platformProduct = byCategory('platform')[0];
 export const publisherProducts = byCategory('publishers');
 export const buyerProducts = byCategory('buyers');
 
@@ -69,7 +70,7 @@ export const resourceTabs: NavLink[] = [
 ];
 
 export const footerNav = [
-  { title: 'Publishers', links: publisherProducts.map(({ label, href }) => ({ label, href })) },
+  { title: 'Publishers', links: [platformProduct, ...publisherProducts].map(({ label, href }) => ({ label, href })) },
   { title: 'Buyers', links: buyerProducts.map(({ label, href }) => ({ label, href })) },
   { title: 'Resources', links: resourceTabs },
   {

@@ -8,23 +8,32 @@ import Icon from './Icon.astro';
 import Img from './Img.astro';
 import products from '../data/products.json';
 import { productImages } from '../data/product-media';
-import { publisherProducts, buyerProducts } from '../data/navigation';
+import { platformProduct, publisherProducts, buyerProducts } from '../data/navigation';
 
-type Product = (typeof products)[number];
+// Optional per-product section copy (only the platform entry sets these today).
+type Extras = { edgeEyebrow?: string; edgeTitle?: string; integrationsEyebrow?: string; featuresTitle?: string; techEyebrow?: string; techTitle?: string };
+type Product = (typeof products)[number] & Extras;
 interface Props { product: Product }
 const { product: p } = Astro.props;
 
+const isPlatform = p.category === 'platform';
 const isPublisher = p.category === 'publishers';
-const categoryHref = isPublisher ? '/ad-publishers-solutions/' : '/ad-buyers-solutions/';
+const categoryHref = isPlatform ? '/products/' : isPublisher ? '/ad-publishers-solutions/' : '/ad-buyers-solutions/';
 const categoryLabel = isPublisher ? 'Publishers' : 'Buyers';
-const others = (isPublisher ? publisherProducts : buyerProducts).filter((l) => l.href !== `/${p.slug}/`);
+const crumbs = isPlatform
+  ? [{ label: 'Products', href: '/products/' }, { label: p.name, href: `/${p.slug}/` }]
+  : [{ label: 'Products', href: '/products/' }, { label: categoryLabel, href: categoryHref }, { label: p.name, href: `/${p.slug}/` }];
+// Every product links back to the platform it runs alongside.
+const others = isPlatform
+  ? publisherProducts
+  : [platformProduct, ...(isPublisher ? publisherProducts : buyerProducts)].filter((l) => l.href !== `/${p.slug}/`);
 
 const sections = [
   { id: 'overview', label: 'Overview', show: true },
-  { id: 'technology', label: 'Technology', show: !!p.tech?.length },
-  { id: 'edge', label: 'Your edge', show: !!p.edge?.length },
+  { id: 'edge', label: p.edgeEyebrow ?? 'Your edge', show: !!p.edge?.length },
+  { id: 'integrations', label: p.integrationsEyebrow ?? p.integrationsTitle ?? 'Integrations', show: !!p.integrations?.length },
   { id: 'features', label: 'Features', show: !!p.features?.length },
-  { id: 'integrations', label: p.integrationsTitle ?? 'Integrations', show: !!p.integrations?.length },
+  { id: 'technology', label: p.techEyebrow ?? 'Technology', show: !!p.tech?.length },
   { id: 'use-cases', label: 'Use cases', show: !!p.useCases?.length },
   { id: 'compliance', label: p.complianceTitle ?? 'Compliance', show: !!p.compliance?.length },
   { id: 'why', label: 'Why Voise', show: !!p.why?.length },
@@ -35,7 +44,7 @@ const schema = [{
   name: p.name,
   description: p.description || p.intro[0],
   brand: { '@type': 'Brand', name: 'Voise Tech' },
-  category: isPublisher ? 'Publisher advertising technology' : 'Buyer advertising technology',
+  category: isPlatform ? 'Ad server' : isPublisher ? 'Publisher advertising technology' : 'Buyer advertising technology',
   url: new URL(`/${p.slug}/`, Astro.site).href,
 }];
 const og = p.ogImage && !p.ogImage.endsWith('.svg') ? { src: p.ogImage } : undefined;
@@ -45,13 +54,13 @@ const og = p.ogImage && !p.ogImage.endsWith('.svg') ? { src: p.ogImage } : undef
   description={p.description}
   image={og}
   modifiedTime={p.modifiedTime ? new Date(p.modifiedTime) : undefined}
-  breadcrumbs={[{ label: 'Products', href: '/products/' }, { label: categoryLabel, href: categoryHref }, { label: p.name, href: `/${p.slug}/` }]}
+  breadcrumbs={crumbs}
   schema={schema}
 >
   <PageHero
-    eyebrow={isPublisher ? 'Publisher product' : 'Buyer product'}
+    eyebrow={isPlatform ? 'Core platform' : isPublisher ? 'Publisher product' : 'Buyer product'}
     title={p.name}
-    crumbs={[{ label: 'Products', href: '/products/' }, { label: categoryLabel, href: categoryHref }, { label: p.name, href: `/${p.slug}/` }]}
+    crumbs={crumbs}
     split
   >
     <p class="tagline grad-text" data-reveal style="--i:2">{p.tagline}</p>
@@ -60,11 +69,11 @@ const og = p.ogImage && !p.ogImage.endsWith('.svg') ? { src: p.ogImage } : undef
     </div>
     <div class="cluster" slot="actions">
       {p.heroCta && <a class="btn" href={p.heroCta.href}>{p.heroCta.label}<Icon name="arrow" size={16} class="arrow" /></a>}
-      <a class="btn btn-secondary" href={categoryHref}>All {categoryLabel.toLowerCase()} products</a>
+      <a class="btn btn-secondary" href={categoryHref}>{isPlatform ? 'All products' : `All ${categoryLabel.toLowerCase()} products`}</a>
     </div>
     <div slot="visual" class="hero-visual">
       <StackMap current={p.slug} />
-      <p class="visual-caption mono">Where {p.name} fits in the Voise ecosystem</p>
+      <p class="visual-caption mono">{isPlatform ? 'Every Voise product connects through the AdServer' : `Where ${p.name} fits in the Voise ecosystem`}</p>
     </div>
   </PageHero>
 
@@ -83,35 +92,34 @@ const og = p.ogImage && !p.ogImage.endsWith('.svg') ? { src: p.ogImage } : undef
 
   <div id="overview" class="anchor"></div>
 
-  {p.tech?.length > 0 && (
-    <section class="section" id="technology">
-      <div class="container two-col">
-        <div class="sticky-head">
-          <SectionHeading eyebrow="Technology" title="Smarter Tech, Stronger Results." lede={p.techIntro} />
-        </div>
-        <ul role="list" class="tech-list" data-stagger>
-          {p.tech.map((t, i) => (
-            <li data-reveal>
-              <span class="tech-icon">{t.icon ? <img src={t.icon} alt="" width="28" height="28" loading="lazy" decoding="async" /> : <span class="mono">0{i + 1}</span>}</span>
-              <span class="tech-label mono">{t.label}</span>
-              <span class="tech-value">{t.value}</span>
-            </li>
-          ))}
-        </ul>
-      </div>
-    </section>
-  )}
-
   {p.edge?.length > 0 && (
     <section class="section on-night edge" id="edge">
       <div class="container">
-        <SectionHeading eyebrow="Your edge" title="Your Edge with Voise Tech." />
+        <SectionHeading eyebrow={p.edgeEyebrow ?? 'Your edge'} title={p.edgeTitle ?? 'Your Edge with Voise Tech.'} />
         <ol role="list" class="edge-grid" data-stagger style={`--n:${p.edge.length}`}>
-          {p.edge.map((e, i) => (
+          {p.edge.map((e: { title: string; text?: string; status?: string }, i) => (
             <li data-reveal data-glow>
               <span class="mono edge-n">0{i + 1}</span>
               <h3 class="h4">{e.title}</h3>
               {e.text && <p>{e.text}</p>}
+              {e.status && <span class="status mono">{e.status}</span>}
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  )}
+
+  {p.integrations?.length > 0 && (
+    <section class="section tone-subtle" id="integrations">
+      <div class="container">
+        <SectionHeading eyebrow={p.integrationsEyebrow ?? (p.integrationsTitle === 'Supported Formats' ? 'Formats' : 'Ecosystem')} title={`${p.integrationsTitle}.`} />
+        <ol role="list" class="int-grid" data-stagger>
+          {p.integrations.map((it, i) => (
+            <li data-reveal>
+              <span class="mono int-n">0{i + 1}</span>
+              <h3 class="h4">{it.label}</h3>
+              <p class="muted">{it.text}</p>
             </li>
           ))}
         </ol>
@@ -123,7 +131,7 @@ const og = p.ogImage && !p.ogImage.endsWith('.svg') ? { src: p.ogImage } : undef
     <section class="section" id="features">
       <div class="container two-col">
         <div class="sticky-head">
-          <SectionHeading eyebrow="Capabilities" title="What Sets Us Apart" />
+          <SectionHeading eyebrow="Capabilities" title={p.featuresTitle ?? 'What Sets Us Apart'} />
         </div>
         <div class="accordion" data-stagger>
           {p.features.map((f, i) => (
@@ -148,19 +156,21 @@ const og = p.ogImage && !p.ogImage.endsWith('.svg') ? { src: p.ogImage } : undef
     </section>
   )}
 
-  {p.integrations?.length > 0 && (
-    <section class="section tone-subtle" id="integrations">
-      <div class="container">
-        <SectionHeading eyebrow={p.integrationsTitle === 'Supported Formats' ? 'Formats' : 'Ecosystem'} title={`${p.integrationsTitle}.`} />
-        <ol role="list" class="int-grid" data-stagger>
-          {p.integrations.map((it, i) => (
+  {p.tech?.length > 0 && (
+    <section class="section tone-subtle" id="technology">
+      <div class="container two-col">
+        <div class="sticky-head">
+          <SectionHeading eyebrow={p.techEyebrow ?? 'Technology'} title={p.techTitle ?? 'Smarter Tech, Stronger Results.'} lede={p.techIntro} />
+        </div>
+        <ul role="list" class="tech-list" data-stagger>
+          {p.tech.map((t, i) => (
             <li data-reveal>
-              <span class="mono int-n">0{i + 1}</span>
-              <h3 class="h4">{it.label}</h3>
-              <p class="muted">{it.text}</p>
+              <span class="tech-icon">{t.icon ? <img src={t.icon} alt="" width="28" height="28" loading="lazy" decoding="async" /> : <span class="mono">0{i + 1}</span>}</span>
+              <span class="tech-label mono">{t.label}</span>
+              <span class="tech-value">{t.value}</span>
             </li>
           ))}
-        </ol>
+        </ul>
       </div>
     </section>
   )}
@@ -218,7 +228,7 @@ const og = p.ogImage && !p.ogImage.endsWith('.svg') ? { src: p.ogImage } : undef
   <section class="section">
     <div class="container">
       <div class="others-head">
-        <SectionHeading eyebrow={`More for ${categoryLabel.toLowerCase()}`} title="Other Products." />
+        <SectionHeading eyebrow={isPlatform ? 'Around the platform' : `More for ${categoryLabel.toLowerCase()}`} title={isPlatform ? 'Publisher Products.' : 'Other Products.'} />
         <a class="link-arrow" href="/products/"><span class="label">All products</span><Icon name="arrow" size={14} class="arrow" /></a>
       </div>
       <ul role="list" class="others" data-stagger>
@@ -278,6 +288,7 @@ const og = p.ogImage && !p.ogImage.endsWith('.svg') ? { src: p.ogImage } : undef
   .edge-grid li::before { content: ''; position: absolute; inset: 0; background: radial-gradient(300px circle at var(--mx, 50%) var(--my, 0%), rgb(95 180 255 / 0.12), transparent 60%); opacity: 0; transition: opacity var(--dur); pointer-events: none; }
   .edge-grid li:hover::before { opacity: 1; }
   .edge-n { color: var(--sky); }
+  .edge-grid .status { justify-self: start; margin-top: auto; padding: 4px 10px; border-radius: 999px; border: 1px solid rgb(255 255 255 / 0.22); color: var(--ink-inverse-2); font-size: 0.66rem; letter-spacing: 0.06em; text-transform: uppercase; }
   .edge-grid h3 { font-weight: 550; }
   .edge-grid p { color: var(--ink-inverse-2); font-size: var(--fs-small); }
   @media (max-width: 1000px) { .edge-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
