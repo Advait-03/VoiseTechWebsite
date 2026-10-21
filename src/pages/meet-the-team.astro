@@ -10,7 +10,7 @@ import { SITE } from '../data/site';
 const groups = departments.map((d) => ({ name: d, id: d.toLowerCase().replace(/[^a-z]+/g, '-'), people: team.filter((p) => p.department === d) })).filter((g) => g.people.length);
 const everyone = [...leadership, ...team];
 // Hero tiles: leadership and senior roles first, then others to fill 12.
-const mosaicNames = ['Sabarish Pillai', 'Wahid Omer', 'Jijesh Nambiar', 'Gyan Raunak', 'Yuvraj Munot', 'Karim Hammoud', 'Maayur Kulthe', 'Anushree Fale', 'Victoria de la Calle Fernández', 'Sushma Veggalam', 'Yatin Makkar', 'Advait Anand'];
+const mosaicNames = ['Sabarish Pillai', 'Wahid Omer', 'Jijesh Nambiar', 'Gyan Raunak', 'Yuvraj Munot', 'Karim Hammoud', 'Maayur Kulthe', 'Anushree Fale', 'Victoria de la Calle Fernández', 'Sushma Veggalam', 'Kelly Hoang', 'Advait Anand'];
 const mosaic = mosaicNames.map((n) => everyone.find((p) => p.name === n && p.photo)).filter((p): p is Person => !!p);
 const initials = (n: string) => n.split(/\s+/).filter(Boolean).slice(0, 2).map((w) => w[0]).join('').toUpperCase();
 const crumbs = [{ label: 'About Us', href: '/about-us/' }, { label: 'Meet the Team', href: '/meet-the-team/' }];

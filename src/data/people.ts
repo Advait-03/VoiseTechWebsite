@@ -33,7 +33,6 @@ export const team: Person[] = [
   { name: 'Sushma Veggalam', role: 'Senior Account Manager', department: 'Operations', photo: '/wp-content/uploads/2025/12/Untitled-design-9-e1767800003538.png', linkedin: 'https://www.linkedin.com/in/sushma-veggalam/' },
   { name: 'Karim Hammoud', role: 'Director - Partnerships MENA', department: 'Partnerships', photo: '/team/karim-hammoud.webp', linkedin: 'https://www.linkedin.com/in/karim-hammoud-43a27b8/' },
   { name: 'Kelly Hoang', role: 'Partnerships', department: 'Partnerships', photo: '/wp-content/uploads/2026/08/kelly.png', linkedin: 'https://www.linkedin.com/in/kelly-hoang1307/' },
-  { name: 'Yatin Makkar', role: 'Marketing and Brand Manager', department: 'Marketing', photo: '/team/yatin-makkar.webp', linkedin: 'https://www.linkedin.com/in/yatin-makkar-800960167/' },
   { name: 'Malavika Balakrishnan', role: 'Marketing', department: 'Marketing', photo: '/wp-content/uploads/2025/12/4.png', linkedin: 'https://www.linkedin.com/in/malavika-balakrishnan-649069125/' },
   { name: 'Akanksha Joshi', role: 'Customer Success', department: 'Customer Success', photo: '/wp-content/uploads/2025/09/Akanksha-Joshi.jpg', linkedin: 'https://www.linkedin.com/in/akanksha-joshi-534136142/' },
   { name: 'Madhavi S', role: 'Finance Executive', department: 'Finance', photo: '/team/madhavi-s.webp', linkedin: 'https://www.linkedin.com/in/madhavisural/' },
