@@ -24,7 +24,7 @@ export const team: Person[] = [
   { name: 'Anamya Shree', role: 'Back End Developer', department: 'Product & Engineering', photo: '/team/anamya-shree.webp', linkedin: 'https://www.linkedin.com/in/anamya-shree-949987265/' },
   { name: 'Divya Kardile', role: 'iOS Developer', department: 'Product & Engineering', photo: '/team/divya-kardile.webp', linkedin: 'https://www.linkedin.com/in/divya-kardile-254b54200/' },
   { name: 'Swapnil Pawar', role: 'QA Engineer', department: 'Product & Engineering', photo: '/team/swapnil-pawar.webp', linkedin: 'https://www.linkedin.com/in/swapnilgpawar/' },
-  { name: 'Shweta', role: 'Creative Lead', department: 'Design & Creative', photo: '/team/shweta.webp' },
+  { name: 'Shweta Hingmire', role: 'Creative Lead', department: 'Design & Creative', photo: '/team/shweta.webp', linkedin: 'https://www.linkedin.com/in/shweta-hingmire/' },
   { name: 'Aakash Birhade', role: 'UI/UX Designer', department: 'Design & Creative', photo: '/team/aakash-birhade.webp', linkedin: 'https://www.linkedin.com/in/aakashbirhadex/' },
   { name: 'Saloni Deshmukh', role: 'AI Video Editor', department: 'Design & Creative', photo: '/team/saloni-deshmukh.webp', linkedin: 'https://www.linkedin.com/in/saloni-deshmukh-4561562a9/' },
   { name: 'Advait Anand', role: 'Tech Ops', department: 'Technical Operations', photo: '/team/advait-anand.webp', linkedin: 'https://www.linkedin.com/in/advait-anand03/' },
