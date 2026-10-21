@@ -1,6 +1,6 @@
 /** Team and testimonials, as published on /about-us/ and /resources/testimonials/. */
 /** Department order = display order on /meet-the-team/ (leadership is shown above all departments). */
-export const departments = ['Product & Engineering', 'Design & Creative', 'Technical Operations', 'Operations', 'Partnerships', 'Marketing', 'Customer Success', 'Finance', 'People & Admin'] as const;
+export const departments = ['Product & Engineering', 'Design & Creative', 'Operations', 'Partnerships', 'Marketing', 'Customer Success', 'Finance', 'People & Admin'] as const;
 export type Department = (typeof departments)[number];
 
 /** `photo` is optional: people without one get an initials avatar until a headshot is supplied. */
@@ -24,11 +24,11 @@ export const team: Person[] = [
   { name: 'Anamya Shree', role: 'Back End Developer', department: 'Product & Engineering', photo: '/team/anamya-shree.webp', linkedin: 'https://www.linkedin.com/in/anamya-shree-949987265/' },
   { name: 'Divya Kardile', role: 'iOS Developer', department: 'Product & Engineering', photo: '/team/divya-kardile.webp', linkedin: 'https://www.linkedin.com/in/divya-kardile-254b54200/' },
   { name: 'Swapnil Pawar', role: 'QA Engineer', department: 'Product & Engineering', photo: '/team/swapnil-pawar.webp', linkedin: 'https://www.linkedin.com/in/swapnilgpawar/' },
+  { name: 'Advait Anand', role: 'Tech Ops', department: 'Product & Engineering', photo: '/team/advait-anand.webp', linkedin: 'https://www.linkedin.com/in/advait-anand03/' },
+  { name: 'Ashwin Vinod', role: 'Technical Operations Engineer - Intern', department: 'Product & Engineering', photo: '/team/ashwin-vinod.webp', linkedin: 'https://www.linkedin.com/in/ashwin-vinod-463256427/' },
   { name: 'Shweta Hingmire', role: 'Creative Lead', department: 'Design & Creative', photo: '/team/shweta.webp', linkedin: 'https://www.linkedin.com/in/shweta-hingmire/' },
   { name: 'Aakash Birhade', role: 'UI/UX Designer', department: 'Design & Creative', photo: '/team/aakash-birhade.webp', linkedin: 'https://www.linkedin.com/in/aakashbirhadex/' },
   { name: 'Saloni Deshmukh', role: 'AI Video Editor', department: 'Design & Creative', photo: '/team/saloni-deshmukh.webp', linkedin: 'https://www.linkedin.com/in/saloni-deshmukh-4561562a9/' },
-  { name: 'Advait Anand', role: 'Tech Ops', department: 'Technical Operations', photo: '/team/advait-anand.webp', linkedin: 'https://www.linkedin.com/in/advait-anand03/' },
-  { name: 'Ashwin Vinod', role: 'Technical Operations Engineer - Intern', department: 'Technical Operations', photo: '/team/ashwin-vinod.webp', linkedin: 'https://www.linkedin.com/in/ashwin-vinod-463256427/' },
   { name: 'Yuvraj Munot', role: 'Senior Director', department: 'Operations', photo: '/wp-content/uploads/2026/01/yum-e1767799386172.jpg', linkedin: 'https://www.linkedin.com/in/yuvrajmunot83/' },
   { name: 'Victoria de la Calle Fernández', role: 'Senior Commercial Operations Manager', department: 'Operations', photo: '/wp-content/uploads/2026/04/Vic.png', linkedin: 'https://www.linkedin.com/in/victoria-de-la-calle/' },
   { name: 'Sushma Veggalam', role: 'Senior Account Manager', department: 'Operations', photo: '/wp-content/uploads/2025/12/Untitled-design-9-e1767800003538.png', linkedin: 'https://www.linkedin.com/in/sushma-veggalam/' },
