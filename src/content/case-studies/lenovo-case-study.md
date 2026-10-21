@@ -2,7 +2,7 @@
 title: "Driving Cross-Screen Engagement for Lenovo Through Data-Led Creativity"
 seoTitle: "Driving Cross-Screen Engagement for Lenovo Through Data-Led Creativity"
 description: "By leveraging Voise Curated Lists and activating programmatic video and display formats across premium publishers, the campaign ensured seamless multi-screen visibility."
-image: {"src":"/wp-content/uploads/2025/11/Feature-Image-Grid-551-x-355px-18.png","width":551,"height":355}
+image: {"src":"/wp-content/uploads/2026/10/case-study-lenovo-case-study.jpg","width":1670,"height":942}
 excerpt: "Objective Lenovo aimed to elevate visibility for its latest tech innovations among digitally active audiences aged 25–45. The goal was to connect with both men and women interested in lifestyle and technology, delivering engaging, high-impact creatives that inspire action and strengthen brand recall across premium digi"
 date: "2025-11-12T12:33:02"
 updated: "2025-11-12T12:37:59"

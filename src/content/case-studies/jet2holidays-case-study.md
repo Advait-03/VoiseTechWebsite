@@ -2,7 +2,7 @@
 title: "Strengthening Jet2Holidays’ Brand Visibility with Precision Web Display & Video Advertising"
 seoTitle: "Strengthening Jet2Holidays’ Brand Visibility with Precision Web Display & Video Advertising"
 description: "Jet2Holidays partnered with VoiseTech to boost brand visibility."
-image: {"src":"/wp-content/uploads/2025/11/1-3.png","width":551,"height":355}
+image: {"src":"/wp-content/uploads/2026/10/case-study-jet2holidays-case-study.jpg","width":1672,"height":941}
 excerpt: "Objective Jet2Holidays aimed to build brand visibility and inspire travel consideration during peak planning periods. The goal was to reach users browsing travel and leisure content early in their decision journey and guide them toward Jet2Holidays’ holiday package pages for deeper exploration. Our Approach We ran a co"
 date: "2025-11-26T22:24:05"
 updated: "2025-11-26T22:28:25"

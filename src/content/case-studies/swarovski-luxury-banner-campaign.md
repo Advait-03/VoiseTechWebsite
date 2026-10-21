@@ -2,7 +2,7 @@
 title: "Elevating Swarovski’s Global Presence with a High-Impact Luxury Banner Campaign"
 seoTitle: "Elevating Swarovski’s Global Presence with Luxury Banner Campaign"
 description: "Executed a global banner campaign leveraging our adtech stack, combining AI-driven audience refinement with premium inventory for precise, contextually aligned targeting."
-image: {"src":"/wp-content/uploads/2025/11/Feature-Image-Grid-551-x-355px-12.png","width":551,"height":355}
+image: {"src":"/wp-content/uploads/2026/10/case-study-swarovski-luxury-banner-campaign.jpg","width":1671,"height":941}
 excerpt: "Objective Drive large-scale brand awareness and meaningful engagement among premium female audiences aged 25–45 by delivering visually striking, contextually relevant banner ads across high-quality digital environments. Our Approach Voise Tech executed a global programmatic banner campaign using its proprietary adtech "
 date: "2025-11-11T18:10:23"
 updated: "2025-11-11T18:45:13"

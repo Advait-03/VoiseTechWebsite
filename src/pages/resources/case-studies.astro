@@ -23,7 +23,7 @@ const headline = (c: (typeof cases)[number]) => c.data.metrics.filter((m) => /\d
       {cases.map((c) => (
         <li data-reveal>
           <a class="case is-link" href={`/case-study/${c.id}/`}>
-            <div class="media" style="aspect-ratio: 551 / 355">{c.data.image && <Img src={c.data.image.src} alt="" sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" />}</div>
+            <div class="media" style={`aspect-ratio: ${c.data.image ? `${c.data.image.width} / ${c.data.image.height}` : "551 / 355"}`}>{c.data.image && <Img src={c.data.image.src} alt="" sizes="(max-width: 600px) 100vw, (max-width: 960px) 50vw, 33vw" />}</div>
             <dl class="metrics">
               {headline(c).map((m) => (
                 <div><dt>{m.label}</dt><dd class="tnum">{m.value}</dd></div>

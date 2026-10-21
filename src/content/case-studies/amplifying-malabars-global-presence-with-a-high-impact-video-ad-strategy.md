@@ -2,7 +2,7 @@
 title: "Amplifying Malabar’s Global Presence with a High-Impact Video Ad Strategy"
 seoTitle: "Amplifying Malabar’s Global Presence with a High-Impact Video Ad Strategy"
 description: "Voise Tech activated the video campaign through its global adtech stack, integrating DSP and premium supply sources for precise delivery."
-image: {"src":"/wp-content/uploads/2025/11/Feature-Image-Grid-551-x-355px-13.png","width":551,"height":355}
+image: {"src":"/wp-content/uploads/2026/10/case-study-amplifying-malabars-global-presence-with.jpg","width":1670,"height":941}
 excerpt: "Objective Reach and engage premium female consumers aged 25-45 with a high-impact video format campaign, boosting brand visibility, reinforcing premium positioning and delivering measurable performance via Voise Tech’s global programmatic platform. Our Approach Voise Tech activated the video campaign through its global"
 date: "2025-11-11T20:06:26"
 updated: "2025-11-11T20:11:32"

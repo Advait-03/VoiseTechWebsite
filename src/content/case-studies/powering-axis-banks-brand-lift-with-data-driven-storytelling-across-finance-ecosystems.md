@@ -2,7 +2,7 @@
 title: "Powering Axis Bank’s Brand Lift with Data-Driven Storytelling Across Finance Ecosystems"
 seoTitle: "Powering Axis Bank’s Brand Lift with Data-Driven Storytelling Across Finance Ecosystems - Voise Tech"
 description: "We crafted a performance-driven banner and video campaign designed for high-intent financial audiences."
-image: {"src":"/wp-content/uploads/2025/11/Feature-Image-Grid-551-x-355px-19.png","width":551,"height":355}
+image: {"src":"/wp-content/uploads/2026/10/case-study-powering-axis-banks-brand-lift-with-data.jpg","width":1670,"height":941}
 excerpt: "Objective Axis Bank aimed to amplify visibility for its latest financial offerings and establish stronger digital engagement among audiences deeply invested in finance and news. The goal was to create meaningful impressions and drive measurable engagement by combining storytelling with programmatic precision, ensuring "
 date: "2025-11-12T12:47:59"
 updated: "2025-11-12T12:56:22"

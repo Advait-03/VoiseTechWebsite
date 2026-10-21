@@ -193,7 +193,7 @@ const cases = await featuredCaseStudies();
         {cases.map((c) => (
           <li data-reveal>
             <a class="case-card is-link" href={`/case-study/${c.id}/`}>
-              <div class="media" style="aspect-ratio: 551/355">
+              <div class="media" style={`aspect-ratio: ${c.data.image ? `${c.data.image.width}/${c.data.image.height}` : "551/355"}`}>
                 {c.data.image && <Img src={c.data.image.src} alt="" sizes="(max-width: 860px) 100vw, 33vw" />}
               </div>
               <div class="case-meta">

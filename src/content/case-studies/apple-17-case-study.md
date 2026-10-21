@@ -2,7 +2,7 @@
 title: "Bringing Apple 17 to Life: Precision Video Delivery at Global Scale"
 seoTitle: "Bringing Apple 17 to Life: Precision Video Delivery at Global Scale"
 description: "Apple partnered with VoiseTech to boost attention and engagement."
-image: {"src":"/wp-content/uploads/2025/12/Feature-Image-Grid-551-x-355px-13.png","width":551,"height":355}
+image: {"src":"/wp-content/uploads/2026/10/case-study-apple-17-case-study.jpg","width":1672,"height":941}
 excerpt: "Objective Apple set out to build excitement for the Apple 17 through a high-impact video campaign targeting premium, tech-savvy audiences worldwide. The aim was to deliver quality attention and meaningful engagement in brand-safe, contextually relevant environments, creating an experience that felt distinctly Apple. Ou"
 date: "2025-12-05T16:23:10"
 updated: "2025-12-05T16:31:09"

@@ -2,7 +2,7 @@
 title: "Strengthening Currys Brand Presence with High-Attention CTV Advertising"
 seoTitle: "Strengthening Currys Brand Presence with High-Attention CTV Advertising"
 description: "Currys partnered with VoiseTech to boost brand visibility among high-intent tech shoppers."
-image: {"src":"/wp-content/uploads/2025/11/2-5.png","width":551,"height":355}
+image: {"src":"/wp-content/uploads/2026/10/case-study-currys-brand-case-study.jpg","width":1671,"height":941}
 excerpt: "Objective Curry’s aimed to boost brand visibility and influence product consideration among high-intent tech shoppers during a key retail period. The goal was to reach audiences on large-screen environments where attention is naturally higher, while maintaining measurable engagement and campaign transparency. Our Appro"
 date: "2025-11-26T22:16:49"
 updated: "2025-11-26T22:22:07"

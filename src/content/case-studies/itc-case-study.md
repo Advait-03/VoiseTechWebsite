@@ -2,7 +2,7 @@
 title: "Driving 3X Higher Engagement for ITC Through High-Impact Video and CTV Experiences"
 seoTitle: "Driving 3X Higher Engagement for ITC Through High-Impact Video and CTV Experiences"
 description: "Voise Tech executed a performance-driven video and CTV campaign focused on Kolkata, the rest of West Bengal, and Kerala."
-image: {"src":"/wp-content/uploads/2025/11/Feature-Image-Grid-551-x-355px-33.png","width":619,"height":399}
+image: {"src":"/wp-content/uploads/2026/10/case-study-itc-case-study.jpg","width":1671,"height":941}
 excerpt: "Objective ITC aimed to boost visibility and engagement across key regional markets by leveraging premium CTV and OTT environments. The goal was to deliver high-performing video creatives that captured audience attention and maximized view-through rates across connected screens. Our Approach Voise Tech executed a perfor"
 date: "2025-11-13T21:16:43"
 updated: "2025-11-13T21:20:09"

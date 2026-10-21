@@ -2,7 +2,7 @@
 title: "Boosting Kia’s Brand Visibility with High-Impact In-App Display & Video Ads"
 seoTitle: "Boosting Kia’s Brand Visibility with High-Impact In-App Display & Video Ads - Voise Tech"
 description: "The campaign helped Kia reinforce brand presence among active car shoppers while driving qualified traffic to model landing pages."
-image: {"src":"/wp-content/uploads/2025/11/Feature-Image-Grid-551-x-355px-10.png","width":551,"height":355}
+image: {"src":"/wp-content/uploads/2026/10/case-study-boosting-kias-brand-visibility-with-high.jpg","width":1671,"height":941}
 excerpt: "Objective Kia wanted to strengthen brand visibility and drive qualified traffic to their model landing pages. The focus was on reaching users who were actively researching automotive options, while ensuring high on-screen presence and measurable engagement across mobile environments. Our Approach We activated an In-App"
 date: "2025-11-11T17:49:26"
 updated: "2025-11-11T17:59:20"

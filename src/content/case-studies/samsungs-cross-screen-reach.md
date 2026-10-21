@@ -2,7 +2,7 @@
 title: "Boosting Samsung’s Cross-Screen Reach with an Integrated Multi-Format Advertising Approach"
 seoTitle: "Boosting Samsung’s Cross-Screen Reach with an Integrated Multi-Format Advertising Approach"
 description: "We activated a multi-format strategy combining banner, video, and CTV to deliver a cohesive brand experience."
-image: {"src":"/wp-content/uploads/2025/11/Feature-Image-Grid-551-x-355px-15.png","width":551,"height":355}
+image: {"src":"/wp-content/uploads/2026/10/case-study-samsungs-cross-screen-reach.jpg","width":1671,"height":941}
 excerpt: "Objective Samsung wanted to connect with modern, tech-savvy audiences across multiple touchpoints from mobile to Connected TV and drive meaningful engagement that translated into brand recall and measurable attention. The goal was to craft a unified campaign that captured diverse audience interests while maximizing per"
 date: "2025-11-11T20:28:56"
 updated: "2025-11-12T11:12:55"

@@ -17,6 +17,8 @@ type Props = { cs: CaseStudy; prev?: CaseStudy; next?: CaseStudy };
 const { cs, prev, next } = Astro.props;
 const { Content } = await render(cs);
 const d = cs.data;
+// 16:9 campaign creatives carry text edge to edge, so show them uncropped; older feature images keep the 1181:400 banner crop.
+const wide = !d.banner && !!d.image && d.image.width / d.image.height >= 1.7;
 // Short numeric values ("24.1 million", "0.74%") become headline figures; longer
 // values ("25-45 Men- Female-Lifestyle…") are shown as text facts.
 const numeric = d.metrics.filter((m) => m.value.length <= 16 && /^[~<>]?\s*[\d.,]/.test(m.value));
@@ -52,7 +54,7 @@ const schema = [{ '@type': 'Article', headline: d.title, description: d.descript
 
   {(d.banner ?? d.image) && (
     <div class="container banner" data-reveal="mask">
-      <div class="media"><Img src={(d.banner ?? d.image)!.src} alt={`${d.title} - campaign creative`} sizes="(max-width: 1280px) 100vw, 1280px" /></div>
+      <div class="media" style={wide ? `aspect-ratio: ${d.image!.width} / ${d.image!.height}` : undefined}><Img src={(d.banner ?? d.image)!.src} alt={`${d.title} - campaign creative`} sizes="(max-width: 1280px) 100vw, 1280px" /></div>
     </div>
   )}
 
