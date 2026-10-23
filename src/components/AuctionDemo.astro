@@ -1,0 +1,185 @@
+---
+/** "Watch an auction": an illustrative Voise AdServer decision (rules in src/lib/auction-demo.ts). */
+import { EXAMPLE, OUTCOME_LABEL, outcome, winner, tally } from '../lib/auction-demo';
+
+const { unit, bids } = EXAMPLE;
+const win = winner(bids, unit);
+const counts = tally(bids, unit);
+const max = Math.max(...bids.map((b) => b.cpm));
+const money = (n: number) => `$${n.toFixed(2)}`;
+---
+<figure class="auction" data-auction aria-label="Illustrative auction inside Voise AdServer">
+  <div class="a-head">
+    <span class="mono"><i class="dot" aria-hidden="true"></i>Illustrative auction · not live data</span>
+    <span class="mono a-id" data-id aria-hidden="true">#204918</span>
+  </div>
+  <dl class="a-meta">
+    <div><dt class="mono">Ad unit</dt><dd data-unit>{unit.label}</dd></div>
+    <div><dt class="mono">Floor</dt><dd data-floor>{money(unit.floor)}</dd></div>
+    <div><dt class="mono">Timeout</dt><dd data-tmax>{unit.tmax} ms</dd></div>
+  </dl>
+  <ol role="list" class="a-bids" data-bids>
+    {bids.map((b) => {
+      const o = outcome(b, unit);
+      const state = b === win ? 'win' : o === 'bid' ? 'bid' : 'out';
+      return (
+        <li class={`is-${state}`}>
+          <span class="b-name">{b.name}</span>
+          <span class="b-bar" aria-hidden="true"><i style={`width:${o === 'bid' ? (b.cpm / max) * 100 : 100}%`}></i></span>
+          <span class="b-val mono">{o === 'bid' ? money(b.cpm) : OUTCOME_LABEL[o]}</span>
+        </li>
+      );
+    })}
+  </ol>
+  <div class="a-foot">
+    <span class="mono a-elapsed">Elapsed <b data-elapsed>{Math.min(Math.max(...bids.map((b) => b.latency)), unit.tmax)} ms</b></span>
+    <span class="a-track" aria-hidden="true"><i data-progress style="width:100%"></i></span>
+    <button type="button" class="btn btn-sm btn-secondary" data-run hidden>Run another auction</button>
+  </div>
+  <div class:list={['a-result', 'is-done', !win && 'is-none']} data-result>
+    <div class="r-main">
+      <span class="mono r-k" data-r-label>{win ? 'Winner' : 'Result'}</span>
+      <span class="r-name" data-r-name>{win ? win.name : 'No eligible bid'}</span>
+      <span class="mono r-bid" data-r-bid>{win ? `${money(win.cpm)} bid` : ''}</span>
+    </div>
+    <ul role="list" class="r-tally mono">
+      <li class="t-bid"><b data-t="bid">{counts.bid}</b> eligible</li>
+      <li><b data-t="timeout">{counts.timeout}</b> timed out</li>
+      <li><b data-t="floor">{counts.floor}</b> below floor</li>
+      <li><b data-t="blocked">{counts.blocked}</b> blocked</li>
+    </ul>
+  </div>
+  <p class="sr-only" role="status" data-status></p>
+</figure>
+
+<script>
+  import { makeAuction, outcome, winner, closesAt, tally, OUTCOME_LABEL, type Bid, type Unit } from '../lib/auction-demo';
+
+  const SLOW = 8; // real ms per simulated ms, so the auction is watchable
+  const HOLD = 3500;
+  const money = (n: number) => `$${n.toFixed(2)}`;
+
+  document.querySelectorAll<HTMLElement>('[data-auction]').forEach((root) => {
+    const $ = <T extends HTMLElement>(s: string) => root.querySelector<T>(s)!;
+    const rows = [...root.querySelectorAll<HTMLLIElement>('[data-bids] li')];
+    const run = $<HTMLButtonElement>('[data-run]');
+    const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
+    let raf = 0, hold = 0, visible = false;
+
+    function paint(unit: Unit, bids: Bid[], t: number, done: boolean) {
+      const max = Math.max(...bids.map((b) => b.cpm));
+      const win = done ? winner(bids, unit) : undefined;
+      bids.forEach((b, i) => {
+        const row = rows[i];
+        const answered = t >= Math.min(b.latency, unit.tmax);
+        const o = outcome(b, unit);
+        row.className = !answered ? 'is-wait' : b === win ? 'is-win' : o === 'bid' ? 'is-bid' : 'is-out';
+        row.querySelector<HTMLElement>('.b-name')!.textContent = b.name;
+        row.querySelector<HTMLElement>('.b-bar i')!.style.width = !answered ? '0%' : o === 'bid' ? `${(b.cpm / max) * 100}%` : '100%';
+        row.querySelector<HTMLElement>('.b-val')!.textContent = !answered ? '…' : o === 'bid' ? money(b.cpm) : OUTCOME_LABEL[o];
+      });
+      $('[data-elapsed]').textContent = `${Math.round(t)} ms`;
+      $('[data-progress]').style.width = `${(t / unit.tmax) * 100}%`;
+      const counts = tally(bids, unit, t);
+      root.querySelectorAll<HTMLElement>('[data-t]').forEach((el) => (el.textContent = String(counts[el.dataset.t as keyof typeof counts])));
+      const box = $('[data-result]');
+      $('[data-r-label]').textContent = !done ? 'Status' : win ? 'Winner' : 'Result';
+      $('[data-r-name]').textContent = !done ? 'Waiting for bids…' : win ? win.name : 'No eligible bid';
+      $('[data-r-bid]').textContent = done && win ? `${money(win.cpm)} bid` : '';
+      if (done !== box.classList.contains('is-done')) box.classList.toggle('is-done', done);
+      box.classList.toggle('is-none', done && !win);
+      return win;
+    }
+
+    function start(announce = false) {
+      cancelAnimationFrame(raf);
+      clearTimeout(hold);
+      const { unit, bids } = makeAuction();
+      const end = closesAt(bids, unit);
+      $('[data-unit]').textContent = unit.label;
+      $('[data-floor]').textContent = money(unit.floor);
+      $('[data-tmax]').textContent = `${unit.tmax} ms`;
+      $('[data-id]').textContent = `#${Math.floor(100000 + Math.random() * 900000)}`;
+      const finish = () => {
+        const win = paint(unit, bids, end, true);
+        if (announce) $('[data-status]').textContent = win ? `${win.name} wins with ${money(win.cpm)}` : 'No eligible bid';
+        if (!reduced && visible) hold = window.setTimeout(start, HOLD);
+      };
+      if (reduced) return finish();
+      const t0 = performance.now();
+      const tick = (now: number) => {
+        const t = Math.min((now - t0) / SLOW, end);
+        if (t < end) { paint(unit, bids, t, false); raf = requestAnimationFrame(tick); }
+        else finish();
+      };
+      raf = requestAnimationFrame(tick);
+    }
+
+    run.hidden = false;
+    run.addEventListener('click', () => start(true));
+    // Auto-play only while on screen.
+    new IntersectionObserver(([e]) => {
+      visible = e.isIntersecting;
+      if (visible && !reduced) start();
+      else { cancelAnimationFrame(raf); clearTimeout(hold); }
+    }, { threshold: 0.35 }).observe(root);
+  });
+</script>
+
+<style>
+  .auction { margin: 0; border: 1px solid var(--line-strong); border-radius: var(--radius-l); background: #fff; box-shadow: var(--shadow-soft); overflow: hidden; }
+  .a-head { display: flex; justify-content: space-between; gap: 12px; padding: 14px 20px; background: var(--night); color: #fff; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .a-head .mono { display: inline-flex; align-items: center; gap: 10px; }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgb(14 177 81 / 0.6); }
+  @media (prefers-reduced-motion: no-preference) { .dot { animation: a-ping 1.8s infinite; } }
+  @keyframes a-ping { to { box-shadow: 0 0 0 8px rgb(14 177 81 / 0); } }
+  .a-id { color: var(--ink-inverse-2); }
+  .a-meta { display: grid; grid-template-columns: 1.6fr 1fr 1fr; margin: 0; border-bottom: 1px solid var(--line); }
+  .a-meta div { padding: 14px 20px; display: grid; gap: 4px; min-width: 0; }
+  .a-meta div + div { border-left: 1px solid var(--line); }
+  .a-meta dt { font-size: 0.64rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink-3); }
+  .a-meta dd { margin: 0; font-weight: 600; letter-spacing: -0.01em; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  .a-bids { display: grid; gap: 12px; padding: 20px; }
+  .a-bids li { display: grid; grid-template-columns: minmax(0, 8.5rem) minmax(0, 1fr) 7.5rem; gap: 14px; align-items: center; font-size: var(--fs-small); }
+  .b-bar { position: relative; height: 12px; border-radius: 999px; background: var(--bg-muted); overflow: hidden; }
+  .b-bar i { position: absolute; inset: 0 auto 0 0; border-radius: inherit; background: var(--blue); transition: width 300ms var(--ease-out); }
+  .b-val { text-align: right; font-size: 0.78rem; white-space: nowrap; }
+  .is-wait .b-val { color: var(--ink-3); }
+  .is-wait .b-bar i { transition: none; }
+  .is-out .b-name, .is-out .b-val { color: var(--ink-3); }
+  .is-out .b-val { text-decoration: line-through; }
+  .is-out .b-bar i { background: repeating-linear-gradient(45deg, var(--line-strong) 0 3px, transparent 3px 7px); }
+  .is-win .b-name, .is-win .b-val { color: var(--green-ink); font-weight: 700; }
+  .is-win .b-bar i { background: var(--green); }
+  .a-foot { display: flex; align-items: center; gap: 16px; padding: 14px 20px; border-top: 1px solid var(--line); flex-wrap: wrap; }
+  .a-elapsed { font-size: 0.7rem; color: var(--ink-3); text-transform: uppercase; letter-spacing: 0.06em; }
+  .a-elapsed b { color: var(--ink); font-size: 0.95rem; font-variant-numeric: tabular-nums; margin-left: 6px; }
+  .a-track { flex: 1; min-width: 80px; height: 4px; border-radius: 999px; background: var(--bg-muted); overflow: hidden; }
+  .a-track i { display: block; height: 100%; background: var(--ink); }
+  .is-win .b-val::before { content: 'Win'; display: inline-block; margin-right: 8px; padding: 2px 7px; border-radius: 999px; background: var(--green); color: #fff; font-size: 0.6rem; letter-spacing: 0.08em; text-transform: uppercase; vertical-align: 1px; }
+
+  /* Result panel: winner + live tally of how each bid ended */
+  .a-result { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding: 16px 20px 18px; border-top: 1px solid var(--line); background: var(--bg-subtle); transition: background-color 300ms; }
+  .a-result.is-done { background: rgb(14 177 81 / 0.08); }
+  .a-result.is-none { background: var(--bg-subtle); }
+  .r-main { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; align-items: baseline; }
+  .r-k { grid-row: span 2; align-self: center; padding: 4px 10px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }
+  .is-done:not(.is-none) .r-k { background: var(--green); }
+  .r-name { font-size: 1.15rem; font-weight: 650; letter-spacing: -0.02em; }
+  .is-done:not(.is-none) .r-name { color: var(--green-ink); }
+  .r-bid { font-size: 0.8rem; color: var(--ink-2); }
+  .r-bid:empty { display: none; }
+  .r-tally { display: flex; flex-wrap: wrap; gap: 6px 14px; font-size: 0.68rem; letter-spacing: 0.04em; text-transform: uppercase; color: var(--ink-3); }
+  .r-tally b { color: var(--ink); font-size: 0.85rem; margin-right: 3px; font-variant-numeric: tabular-nums; }
+  .r-tally .t-bid b { color: var(--blue-ink); }
+  @media (prefers-reduced-motion: no-preference) { .a-result.is-done .r-main { animation: r-pop 420ms var(--ease-out); } }
+  @keyframes r-pop { from { opacity: 0; transform: translateY(6px) scale(0.98); } }
+  @media (max-width: 560px) {
+    .a-meta { grid-template-columns: 1fr 1fr; }
+    .a-meta div:first-child { grid-column: 1 / -1; }
+    .a-meta div:nth-child(2) { border-left: 0; }
+    .a-meta div:first-child { border-bottom: 1px solid var(--line); }
+    .a-bids li { grid-template-columns: minmax(0, 1fr) auto; }
+    .b-bar { grid-column: 1 / -1; grid-row: 2; }
+  }
+</style>

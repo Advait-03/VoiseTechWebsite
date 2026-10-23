@@ -8,7 +8,7 @@ import Icon from '../../components/Icon.astro';
 import { allPosts, allTags, postItem, formatDate, readingTime } from '../../lib/content';
 
 const posts = await allPosts();
-const [featured, ...rest] = posts;
+const [featured] = posts;
 const tags = (await allTags()).filter((t) => t.count >= 2).slice(0, 12);
 const allTagList = await allTags();
 ---
@@ -20,7 +20,7 @@ const allTagList = await allTags();
   <PageHero eyebrow="Resources" title="Voise Blogs" lede="Perspectives on programmatic advertising, CTV, curation and agentic AI." crumbs={[{ label: 'Resources', href: '/resources/blog/' }, { label: 'Voise Blogs', href: '/resources/blog/' }]} />
   <ResourceTabs />
 
-  <section class="container">
+  <section class="container" data-featured-block>
     <a class="featured is-link" href={`/${featured.id}/`} data-reveal>
       <div class="media f-media">
         {(featured.data.banner ?? featured.data.image) && <Img src={(featured.data.image ?? featured.data.banner)!.src} alt="" sizes="(max-width: 900px) 100vw, 55vw" loading="eager" />}
@@ -35,19 +35,26 @@ const allTagList = await allTags();
   </section>
 
   <section class="section-sm container" data-blog>
-    <div class="filters" role="group" aria-label="Filter articles by topic" hidden data-filters>
-      <button type="button" class="chip" aria-pressed="true" data-filter="">All topics</button>
-      {tags.map((t) => <button type="button" class="chip" aria-pressed="false" data-filter={t.slug}>{t.name}</button>)}
+    <div class="controls" hidden data-filters>
+      <div class="filters" role="group" aria-label="Filter articles by topic">
+        <button type="button" class="chip" aria-pressed="true" data-filter="">All topics</button>
+        {tags.map((t) => <button type="button" class="chip" aria-pressed="false" data-filter={t.slug}>{t.name}</button>)}
+      </div>
+      <label class="search">
+        <span class="sr-only">Search articles</span>
+        <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><circle cx="11" cy="11" r="6.5" fill="none" stroke="currentColor" stroke-width="1.8" /><path d="m16 16 4.5 4.5" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+        <input type="search" placeholder="Search articles: CTV, curation, SSP…" autocomplete="off" data-search />
+      </label>
     </div>
     <p class="sr-only" role="status" data-filter-status></p>
     <ul role="list" class="grid" data-grid>
-      {rest.map((p) => (
-        <li data-tags={p.data.tags.map((t) => t.slug).join(' ')} data-card>
+      {posts.map((p, i) => (
+        <li data-tags={p.data.tags.map((t) => t.slug).join(' ')} data-text={`${p.data.title} ${p.data.excerpt ?? ''}`.toLowerCase()} data-featured={i === 0 ? '' : undefined} data-card>
           <ResourceCard item={postItem(p)} headingLevel="h2" />
         </li>
       ))}
     </ul>
-    <p class="empty muted" hidden data-empty>No articles for this topic yet.</p>
+    <p class="empty muted" hidden data-empty>No articles match. Try another word or topic.</p>
     <div class="more"><button type="button" class="btn btn-secondary" hidden data-more>Load more articles</button></div>
 
     <nav class="topics" aria-label="Browse all topics">
@@ -69,7 +76,12 @@ const allTagList = await allTags();
   .featured:hover .f-title { color: var(--blue-ink); }
   @media (max-width: 900px) { .featured { grid-template-columns: minmax(0, 1fr); } }
 
-  .filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 40px; }
+  .controls { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 16px 24px; margin-bottom: 40px; }
+  .controls[hidden] { display: none; }
+  .filters { display: flex; flex-wrap: wrap; gap: 8px; }
+  .search { display: flex; align-items: center; gap: 10px; height: 44px; padding: 0 16px; border: 1px solid var(--line-strong); border-radius: 999px; width: min(100%, 340px); color: var(--ink-3); transition: border-color var(--dur); }
+  .search:focus-within { border-color: var(--ink); color: var(--ink); }
+  .search input { flex: 1; min-width: 0; border: 0; background: none; font: inherit; font-size: var(--fs-small); color: var(--ink); outline: none; }
   .chip { height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-strong); font-size: var(--fs-xs); font-weight: 500; color: var(--ink-2); transition: background-color var(--dur), color var(--dur), border-color var(--dur); }
   .chip:hover { border-color: var(--ink); color: var(--ink); }
   .chip[aria-pressed='true'] { background: var(--ink); color: #fff; border-color: var(--ink); }
@@ -97,12 +109,21 @@ const allTagList = await allTags();
     const more = root.querySelector<HTMLButtonElement>('[data-more]')!;
     const empty = root.querySelector<HTMLElement>('[data-empty]')!;
     const status = root.querySelector<HTMLElement>('[data-filter-status]')!;
+    const search = root.querySelector<HTMLInputElement>('[data-search]')!;
+    const featuredBlock = document.querySelector<HTMLElement>('[data-featured-block]');
     root.querySelector<HTMLElement>('[data-filters]')!.hidden = false;
     let filter = '';
+    let terms: string[] = [];
     let shown = PAGE;
 
     function render(animateFrom = -1) {
-      const matching = cards.filter((c) => !filter || (c.dataset.tags ?? '').split(' ').includes(filter));
+      // The latest post sits in the featured block; it joins the grid only while filtering or searching.
+      const active = !!filter || terms.length > 0;
+      if (featuredBlock) featuredBlock.hidden = active;
+      const matching = cards.filter((c) =>
+        (active || !c.hasAttribute('data-featured')) &&
+        (!filter || (c.dataset.tags ?? '').split(' ').includes(filter)) &&
+        terms.every((t) => (c.dataset.text ?? '').includes(t)));
       cards.forEach((c) => (c.hidden = true));
       matching.forEach((c, i) => {
         c.hidden = i >= shown;
@@ -112,6 +133,11 @@ const allTagList = await allTags();
       empty.hidden = matching.length > 0;
       status.textContent = `${Math.min(shown, matching.length)} of ${matching.length} articles shown`;
     }
+    search.addEventListener('input', () => {
+      terms = search.value.trim().toLowerCase().split(/\s+/).filter(Boolean);
+      shown = PAGE;
+      render(0);
+    });
     chips.forEach((chip) => chip.addEventListener('click', () => {
       filter = chip.dataset.filter ?? '';
       shown = PAGE;

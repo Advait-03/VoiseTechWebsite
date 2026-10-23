@@ -6,11 +6,13 @@ import Img from '../components/Img.astro';
 import Icon from '../components/Icon.astro';
 import { SITE, mailto } from '../data/site';
 
+// tz drives the local-time clock. India, UAE and UK each have one time zone;
+// USA uses New York as a placeholder until the US office city is confirmed.
 const presence = [
-  { name: 'India', flag: '/wp-content/uploads/2025/09/india-1.png' },
-  { name: 'UAE', flag: '/wp-content/uploads/2025/09/UAE-1.png' },
-  { name: 'USA', flag: '/wp-content/uploads/2025/09/USA-1.png' },
-  { name: 'UK', flag: '/wp-content/uploads/2025/08/united-kingdom-2.png' },
+  { name: 'India', flag: '/wp-content/uploads/2025/09/india-1.png', tz: 'Asia/Kolkata' },
+  { name: 'UAE', flag: '/wp-content/uploads/2025/09/UAE-1.png', tz: 'Asia/Dubai' },
+  { name: 'USA', flag: '/wp-content/uploads/2025/09/USA-1.png', tz: 'America/New_York' },
+  { name: 'UK', flag: '/wp-content/uploads/2025/08/united-kingdom-2.png', tz: 'Europe/London' },
 ];
 const schema = [{
   '@type': 'ContactPage',
@@ -47,9 +49,9 @@ const schema = [{
           </li>
           <li data-reveal>
             <span class="ico"><Icon name="globe" size={18} /></span>
-            <span><span class="mono k">Presence</span>
+            <span><span class="mono k">Presence · local time</span>
               <ul role="list" class="flags">
-                {presence.map((p) => <li><Img src={p.flag} alt="" width={22} height={22} sizes="22px" class="flag" />{p.name}</li>)}
+                {presence.map((p) => <li><Img src={p.flag} alt="" width={22} height={22} sizes="22px" class="flag" /><span class="place">{p.name}<time class="clock mono" data-tz={p.tz}></time></span></li>)}
               </ul>
             </span>
           </li>
@@ -70,6 +72,15 @@ const schema = [{
   </section>
 </BaseLayout>
 
+<script>
+  // Local time per office, refreshed every 30 s.
+  const clocks = [...document.querySelectorAll<HTMLElement>('[data-tz]')];
+  const tick = () => clocks.forEach((el) => {
+    el.textContent = new Intl.DateTimeFormat('en-GB', { timeZone: el.dataset.tz, weekday: 'short', hour: '2-digit', minute: '2-digit' }).format(new Date());
+  });
+  if (clocks.length) { tick(); setInterval(tick, 30_000); }
+</script>
+
 <style>
   .contact { padding-top: 0; }
   .contact-grid { display: grid; grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr); gap: clamp(32px, 5vw, 80px); align-items: start; }
@@ -80,8 +91,11 @@ const schema = [{
   .k { display: block; color: var(--ink-3); margin-bottom: 6px; }
   address { font-style: normal; line-height: 1.55; }
   .email { font-weight: 550; }
-  .flags { display: flex; flex-wrap: wrap; gap: 8px 18px; }
+  .flags { display: grid; grid-template-columns: repeat(2, max-content); gap: 12px 32px; }
   .flags li { display: inline-flex; align-items: center; gap: 8px; font-weight: 500; }
+  .place { display: grid; line-height: 1.25; }
+  .clock { font-size: 0.72rem; font-weight: 400; color: var(--ink-3); font-variant-numeric: tabular-nums; }
+  .clock:empty { display: none; }
   .flags :global(.flag), .flags :global(.flag img) { width: 22px; height: 22px; border-radius: 50%; object-fit: cover; }
   .why { display: grid; gap: 14px; justify-items: start; padding: 28px; border-radius: var(--radius-l); background: radial-gradient(90% 120% at 100% 0%, rgb(8 112 199 / 0.45), transparent 60%), var(--night); }
   .form-card { display: grid; gap: 14px; padding: clamp(24px, 3.5vw, 48px); border: 1px solid var(--line); border-radius: var(--radius-l); background: #fff; box-shadow: var(--shadow-soft); }

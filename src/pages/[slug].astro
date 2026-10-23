@@ -95,6 +95,11 @@ const schema = post ? [{
             <a class="share-btn" href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`} target="_blank" rel="noopener noreferrer">
               <Icon name="linkedin" size={16} /> LinkedIn<span class="sr-only"> (opens in a new tab)</span>
             </a>
+            <button type="button" class="share-btn" data-copy-link={shareUrl} hidden>
+              <svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true"><path d="M10 14a4.5 4.5 0 0 0 6.4 0l3-3a4.5 4.5 0 0 0-6.4-6.4l-1 1M14 10a4.5 4.5 0 0 0-6.4 0l-3 3a4.5 4.5 0 0 0 6.4 6.4l1-1" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" /></svg>
+              <span data-copy-label>Copy link</span>
+            </button>
+            <span class="sr-only" role="status" data-copy-status></span>
           </div>
         </div>
         <div class="post-body">
@@ -128,6 +133,25 @@ const schema = post ? [{
   </BaseLayout>
 )}
 
+<script>
+  // Copy-link button: shown only where the Clipboard API exists.
+  const btn = document.querySelector<HTMLButtonElement>('[data-copy-link]');
+  if (btn && navigator.clipboard) {
+    const label = btn.querySelector<HTMLElement>('[data-copy-label]')!;
+    const status = document.querySelector<HTMLElement>('[data-copy-status]')!;
+    btn.hidden = false;
+    btn.addEventListener('click', async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copyLink || location.href);
+        label.textContent = status.textContent = 'Link copied';
+      } catch {
+        label.textContent = status.textContent = 'Could not copy';
+      }
+      setTimeout(() => { label.textContent = 'Copy link'; status.textContent = ''; }, 2000);
+    });
+  }
+</script>
+
 <style>
   .progress { position: fixed; inset: 0 0 auto 0; height: 3px; z-index: 120; pointer-events: none; }
   .progress span { display: block; height: 100%; background: var(--grad); transform-origin: left; transform: scaleX(0); }
@@ -146,6 +170,9 @@ const schema = post ? [{
   .toc a[aria-current] { color: var(--ink); border-left-color: var(--blue); }
   .share-btn { display: inline-flex; align-items: center; gap: 8px; height: 36px; padding: 0 14px; border-radius: 999px; border: 1px solid var(--line-strong); font-size: var(--fs-xs); font-weight: 500; transition: background-color var(--dur), color var(--dur); }
   .share-btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+  .share { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
+  .share .toc-title { flex-basis: 100%; margin-bottom: 4px; }
+  button.share-btn[hidden] { display: none; }
   .tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 48px; }
   .tags a:hover { border-color: var(--ink); color: var(--ink); }
   .post-cta { margin-top: 48px; padding: clamp(28px, 4vw, 44px); border-radius: var(--radius-l); display: grid; gap: 22px; justify-items: start; background: radial-gradient(80% 120% at 100% 0%, rgb(8 112 199 / 0.45), transparent 60%), var(--night); }
