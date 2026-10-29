@@ -14,7 +14,7 @@ const { eyebrow, title, text, primary, secondary } = Astro.props;
 <section class="cta on-night">
   <svg class="lines" viewBox="0 0 1200 400" preserveAspectRatio="none" aria-hidden="true">
     <defs>
-      <linearGradient id="cta-g" x1="0" x2="1"><stop offset="0" stop-color="#5fb4ff" stop-opacity="0" /><stop offset="0.5" stop-color="#5fb4ff" /><stop offset="1" stop-color="#2fd67a" /></linearGradient>
+      <linearGradient id="cta-g" x1="0" x2="1"><stop offset="0" stop-color="#4fa3db" stop-opacity="0" /><stop offset="0.5" stop-color="#4fa3db" /><stop offset="1" stop-color="#4cc27a" /></linearGradient>
     </defs>
     {[0, 1, 2, 3, 4, 5].map((i) => (
       <path class="signal" style={`--d:${i * 0.9}s`} d={`M -20 ${330 - i * 34} C 300 ${330 - i * 34}, 520 ${120 + i * 26}, 1220 ${90 + i * 30}`} />
@@ -35,7 +35,7 @@ const { eyebrow, title, text, primary, secondary } = Astro.props;
 
 <style>
   .cta { position: relative; overflow: hidden; padding-block: clamp(88px, 10vw, 160px); isolation: isolate; }
-  .cta::before { content: ''; position: absolute; inset: 0; z-index: -2; background: radial-gradient(70% 90% at 100% 0%, rgb(8 112 199 / 0.32), transparent 65%), radial-gradient(60% 80% at 0% 100%, rgb(14 177 81 / 0.16), transparent 65%); }
+  .cta::before { content: ''; position: absolute; inset: 0; z-index: -2; background: radial-gradient(70% 90% at 100% 0%, rgb(16 120 187 / 0.32), transparent 65%), radial-gradient(60% 80% at 0% 100%, rgb(31 173 83 / 0.16), transparent 65%); }
   .lines { position: absolute; inset: 0; width: 100%; height: 100%; z-index: -1; opacity: 0.55; }
   .signal { fill: none; stroke: url(#cta-g); stroke-width: 1; stroke-dasharray: 140 1400; stroke-dashoffset: 1540; animation: travel 7s linear infinite; animation-delay: var(--d); }
   .signal:nth-child(odd) { stroke-width: 0.7; }

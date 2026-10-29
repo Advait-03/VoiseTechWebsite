@@ -59,9 +59,9 @@ const layouts = [
       <svg class={`net net-${L.key}`} viewBox={L.viewBox} role="group" aria-label="How an impression moves through the Voise stack">
         <defs>
           <linearGradient id={`hn-grad-${L.key}`} gradientUnits="userSpaceOnUse" x1="0" y1="0" x2={L.key === 'h' ? 1200 : 0} y2={L.key === 'h' ? 0 : 700}>
-            <stop offset="0" stop-color="#0870c7" /><stop offset="1" stop-color="#0eb151" />
+            <stop offset="0" stop-color="#1078bb" /><stop offset="1" stop-color="#1fad53" />
           </linearGradient>
-          <radialGradient id={`hn-halo-${L.key}`}><stop offset="0" stop-color="#0870c7" stop-opacity="0.35" /><stop offset="1" stop-color="#0870c7" stop-opacity="0" /></radialGradient>
+          <radialGradient id={`hn-halo-${L.key}`}><stop offset="0" stop-color="#1078bb" stop-opacity="0.35" /><stop offset="1" stop-color="#1078bb" stop-opacity="0" /></radialGradient>
         </defs>
 
         <g class="col-labels" aria-hidden="true">
@@ -139,7 +139,7 @@ const layouts = [
   @keyframes pulse { 0% { opacity: 0.9; transform: scale(0.55); } 100% { opacity: 0; transform: scale(1.15); } }
   .block rect { fill: var(--bg-subtle); stroke: var(--line); transition: fill 260ms, stroke 260ms; }
   .block text { font-size: 15px; font-weight: 600; fill: var(--ink); letter-spacing: -0.01em; pointer-events: none; }
-  .block.is-lit rect, .block:hover rect, .block:focus-visible rect, .block.is-hot rect { fill: var(--blue-soft); stroke: rgb(8 112 199 / 0.45); }
+  .block.is-lit rect, .block:hover rect, .block:focus-visible rect, .block.is-hot rect { fill: var(--blue-soft); stroke: rgb(16 120 187 / 0.45); }
   .note { font-family: var(--font-mono); font-size: 11px; fill: var(--ink-3); text-anchor: middle; letter-spacing: 0.04em; }
 
   .node rect { fill: #fff; stroke: var(--line-strong); transition: stroke 260ms, fill 260ms; }
@@ -160,7 +160,7 @@ const layouts = [
   .k { width: 8px; height: 8px; border-radius: 50%; display: inline-block; }
   .k.req { background: var(--blue); }
   .k.bid { background: var(--green); }
-  .k.win { background: var(--ink); box-shadow: 0 0 0 3px rgb(8 112 199 / 0.18); }
+  .k.win { background: var(--ink); box-shadow: 0 0 0 3px rgb(16 120 187 / 0.18); }
   .info { flex: 1 1 340px; text-align: right; min-height: 3em; text-wrap: balance; }
   @media (max-width: 759px) { .info { text-align: left; } }
 </style>
@@ -192,7 +192,7 @@ const layouts = [
       const g = svg.querySelector('.packets')!;
       const c = document.createElementNS(SVG_NS, 'circle');
       c.setAttribute('r', kind === 'win' ? '5' : '3.6');
-      c.setAttribute('fill', kind === 'req' ? '#0870c7' : kind === 'bid' ? '#0eb151' : '#17191d');
+      c.setAttribute('fill', kind === 'req' ? '#1078bb' : kind === 'bid' ? '#1fad53' : '#17191d');
       let halo: SVGCircleElement | undefined;
       if (kind === 'win') {
         halo = document.createElementNS(SVG_NS, 'circle');

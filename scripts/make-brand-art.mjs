@@ -11,7 +11,7 @@ mkdirSync(OUT, { recursive: true });
 
 const SANS = `font-family="Inter, 'Segoe UI', Roboto, Arial, sans-serif"`;
 const MONO = `font-family="'JetBrains Mono', Consolas, 'Courier New', monospace"`;
-const BLUE = '#3a9bf0', GREEN = '#2fd27a', RED = '#ff5d6c', MUTED = '#b9c8dc';
+const BLUE = '#4fa3db', GREEN = '#4cc27a', RED = '#ff5d6c', MUTED = '#b9c8dc';
 
 const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;');
 const t = (x, y, size, text, { fill = '#fff', weight = 500, mono = false, anchor = 'start', op = 1, ls = 0 } = {}) =>
@@ -32,10 +32,10 @@ const eyebrow = (x, y, text) => `<circle cx="${x + 6}" cy="${y - 8}" r="6" fill=
 const frame = (body, css = '') => `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1120 840" width="1120" height="840">
 <defs>
 <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#06172e"/><stop offset="1" stop-color="#0a2b57"/></linearGradient>
-<radialGradient id="gb" cx="12%" cy="8%" r="65%"><stop offset="0" stop-color="#0870c7" stop-opacity=".55"/><stop offset="1" stop-color="#0870c7" stop-opacity="0"/></radialGradient>
-<radialGradient id="gg" cx="92%" cy="96%" r="55%"><stop offset="0" stop-color="#0eb151" stop-opacity=".38"/><stop offset="1" stop-color="#0eb151" stop-opacity="0"/></radialGradient>
+<radialGradient id="gb" cx="12%" cy="8%" r="65%"><stop offset="0" stop-color="#1078bb" stop-opacity=".55"/><stop offset="1" stop-color="#1078bb" stop-opacity="0"/></radialGradient>
+<radialGradient id="gg" cx="92%" cy="96%" r="55%"><stop offset="0" stop-color="#1fad53" stop-opacity=".38"/><stop offset="1" stop-color="#1fad53" stop-opacity="0"/></radialGradient>
 <pattern id="dots" width="28" height="28" patternUnits="userSpaceOnUse"><circle cx="2" cy="2" r="1.4" fill="#fff" fill-opacity=".07"/></pattern>
-<linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#0870c7"/><stop offset="1" stop-color="#0eb151"/></linearGradient>
+<linearGradient id="brand" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#1078bb"/><stop offset="1" stop-color="#1fad53"/></linearGradient>
 <linearGradient id="area" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="${GREEN}" stop-opacity=".45"/><stop offset="1" stop-color="${GREEN}" stop-opacity="0"/></linearGradient>
 </defs>
 <style>

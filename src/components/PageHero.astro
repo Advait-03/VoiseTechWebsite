@@ -35,8 +35,8 @@ const hasVisual = Astro.slots.has('visual');
   .bg {
     position: absolute; inset: 0; z-index: -1; pointer-events: none;
     background:
-      radial-gradient(60% 70% at 92% 0%, rgb(8 112 199 / 0.08), transparent 70%),
-      radial-gradient(40% 50% at 70% 20%, rgb(14 177 81 / 0.06), transparent 70%);
+      radial-gradient(60% 70% at 92% 0%, rgb(16 120 187 / 0.08), transparent 70%),
+      radial-gradient(40% 50% at 70% 20%, rgb(31 173 83 / 0.06), transparent 70%);
   }
   .bg::after {
     content: ''; position: absolute; inset: 0;
@@ -44,7 +44,7 @@ const hasVisual = Astro.slots.has('visual');
     background-size: 64px 64px;
     mask-image: radial-gradient(70% 80% at 85% 10%, #000, transparent 75%);
   }
-  .on-night .bg { background: radial-gradient(60% 70% at 90% 0%, rgb(8 112 199 / 0.35), transparent 70%), radial-gradient(50% 60% at 10% 100%, rgb(14 177 81 / 0.16), transparent 70%); }
+  .on-night .bg { background: radial-gradient(60% 70% at 90% 0%, rgb(16 120 187 / 0.35), transparent 70%), radial-gradient(50% 60% at 10% 100%, rgb(31 173 83 / 0.16), transparent 70%); }
   .on-night .bg::after { background-image: linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px); }
   .inner { display: grid; gap: 48px; }
   .copy { display: grid; gap: 22px; align-content: start; max-width: 880px; }

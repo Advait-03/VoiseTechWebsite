@@ -104,7 +104,7 @@ const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle:
 </BaseLayout>
 
 <style>
-  .hero { position: relative; overflow: hidden; padding-block: clamp(40px, 6vw, 88px) clamp(56px, 7vw, 104px); background: radial-gradient(55% 70% at 90% 10%, rgb(8 112 199 / 0.09), transparent 70%), radial-gradient(40% 50% at 60% 90%, rgb(14 177 81 / 0.07), transparent 70%); }
+  .hero { position: relative; overflow: hidden; padding-block: clamp(40px, 6vw, 88px) clamp(56px, 7vw, 104px); background: radial-gradient(55% 70% at 90% 10%, rgb(16 120 187 / 0.09), transparent 70%), radial-gradient(40% 50% at 60% 90%, rgb(31 173 83 / 0.07), transparent 70%); }
   .hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: clamp(32px, 5vw, 80px); align-items: center; }
   .hero-copy { display: grid; gap: 22px; justify-items: start; }
   .hero-copy :global(.crumbs) { margin-bottom: 10px; }
@@ -127,12 +127,12 @@ const schema = everyone.map((p) => ({ '@type': 'Person', name: p.name, jobTitle:
   /* Person card */
   .card-p { position: relative; display: grid; gap: 14px; }
   .photo { position: relative; aspect-ratio: 1; border-radius: 28%; overflow: hidden; background: linear-gradient(160deg, #e9eef5, #dfe6ee); transition: transform 500ms var(--ease-out), box-shadow 500ms var(--ease-out); }
-  .photo::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 0 rgb(14 177 81 / 0); transition: box-shadow 400ms var(--ease-out); }
+  .photo::after { content: ''; position: absolute; inset: 0; border-radius: inherit; box-shadow: inset 0 0 0 0 rgb(31 173 83 / 0); transition: box-shadow 400ms var(--ease-out); }
   .photo :global(img) { width: 100%; height: 100%; object-fit: cover; object-position: top; transition: transform 800ms var(--ease-out); }
-  .card-p:hover .photo { transform: translateY(-6px); box-shadow: 0 24px 40px -24px rgb(8 112 199 / 0.6); }
+  .card-p:hover .photo { transform: translateY(-6px); box-shadow: 0 24px 40px -24px rgb(16 120 187 / 0.6); }
   .card-p:hover .photo::after { box-shadow: inset 0 0 0 3px var(--green); }
   .card-p:hover .photo :global(img) { transform: scale(1.05); }
-  .initials { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(2rem, 1.4rem + 2vw, 3rem); font-weight: 600; letter-spacing: -0.04em; color: #fff; background: radial-gradient(90% 90% at 80% 10%, rgb(14 177 81 / 0.55), transparent 60%), linear-gradient(150deg, var(--blue), #0a3f86); }
+  .initials { position: absolute; inset: 0; display: grid; place-items: center; font-size: clamp(2rem, 1.4rem + 2vw, 3rem); font-weight: 600; letter-spacing: -0.04em; color: #fff; background: radial-gradient(90% 90% at 80% 10%, rgb(31 173 83 / 0.55), transparent 60%), linear-gradient(150deg, var(--blue), #0a3f86); }
   .meta { position: relative; display: grid; gap: 2px; justify-items: center; text-align: center; }
   .name { font-size: 1.05rem; font-weight: 600; letter-spacing: -0.015em; line-height: 1.25; }
   .role { font-size: var(--fs-small); color: var(--ink-2); }

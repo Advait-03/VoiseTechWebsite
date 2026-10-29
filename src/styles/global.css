@@ -6,38 +6,40 @@
 :root {
   /* Surfaces */
   --bg: #ffffff;
-  --bg-subtle: #f5f6f8;
-  --bg-muted: #eceef2;
-  --night: #0a0e1a;
-  --night-2: #121828;
-  --night-3: #1a2236;
+  --bg-subtle: #f7f7f9;     /* Voise UI neutral-50 */
+  --bg-muted: #efeff3;      /* neutral-100 */
+  --night: #0a0a0f;         /* neutral-950 */
+  --night-2: #121218;       /* neutral-900 */
+  --night-3: #1a1a21;       /* neutral-850 */
 
   /* Ink */
-  --ink: #17191d;
-  --ink-2: #5f6672;
-  --ink-3: #69707d;      /* 4.6:1 on --bg-subtle */
-  --ink-inverse: #f4f6f9;
-  --ink-inverse-2: #a7afbd;
+  --ink: #121218;           /* neutral-900 */
+  --ink-2: #52525b;         /* neutral-600 */
+  --ink-3: #71717a;         /* neutral-500: 4.5:1 on --bg-subtle */
+  --ink-inverse: #f7f7f9;
+  --ink-inverse-2: #a1a1aa; /* neutral-400 */
 
   /* Lines */
-  --line: #e3e6eb;
-  --line-strong: #cfd4dc;
+  --line: #e3e3e9;          /* neutral-200 */
+  --line-strong: #cacad3;   /* neutral-300 */
   --line-night: rgb(255 255 255 / 0.1);
   --line-night-strong: rgb(255 255 255 / 0.18);
 
-  /* Brand — sampled from the VoiseTech wordmark ("Voise" blue, "Tech" green) */
-  --blue: #0870c7;
-  --blue-ink: #0663b0;       /* text-safe on white (5.6:1) */
-  --blue-soft: #e7f1fb;
-  --green: #0eb151;
-  --green-ink: #087a37;      /* text-safe on white (5.3:1) */
-  --green-bright: #2fd67a;   /* accents on dark */
-  --sky: #5fb4ff;            /* accents on dark */
-  --grad: linear-gradient(90deg, var(--blue) 0%, var(--green) 100%);
-  --grad-soft: linear-gradient(90deg, rgb(8 112 199 / 0.12), rgb(14 177 81 / 0.12));
+  /* Brand: Voise UI tokens (Voise Blue #1078BB, Voise Green #1FAD53) */
+  --blue: #1078bb;           /* blue-600 */
+  --blue-ink: #0d6199;       /* blue-700, text-safe on white (6.5:1) */
+  --blue-soft: #eef6fc;      /* blue-50 */
+  --green: #1fad53;          /* green-500 */
+  --green-ink: #146c35;      /* green-700, text-safe on white (6.5:1) */
+  --green-bright: #4cc27a;   /* green-400, accents on dark */
+  --sky: #4fa3db;            /* blue-400, accents on dark */
+  --grad: linear-gradient(135deg, #1078bb 0%, #1fad53 100%);        /* gradient-vivid */
+  --grad-brand: linear-gradient(135deg, #1078bb 0%, #17863f 100%);  /* buttons (white text 4.6:1+) */
+  --grad-brand-hover: linear-gradient(135deg, #0d6199 0%, #146c35 100%);
+  --grad-soft: linear-gradient(135deg, rgb(16 120 187 / 0.12), rgb(31 173 83 / 0.12));
 
   /* Type */
-  --font-sans: 'Inter Variable', 'Inter', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  --font-sans: 'Plus Jakarta Sans Variable', 'Plus Jakarta Sans', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, 'SFMono-Regular', Menlo, Consolas, monospace;
   --fs-display: clamp(2.875rem, 1.35rem + 5.6vw, 6.5rem);
   --fs-h1: clamp(2.5rem, 1.55rem + 3.7vw, 5rem);
@@ -57,9 +59,9 @@
   --section: clamp(80px, 9vw, 152px);
   --section-sm: clamp(56px, 6vw, 96px);
   --header-h: 72px;
-  --radius-s: 8px;
-  --radius: 14px;
-  --radius-l: 22px;
+  --radius-s: 8px;   /* Voise UI radius-md */
+  --radius: 12px;    /* radius-lg */
+  --radius-l: 16px;  /* radius-xl */
 
   /* Motion */
   --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
@@ -68,8 +70,8 @@
   --dur: 320ms;
   --dur-slow: 800ms;
 
-  --shadow-soft: 0 1px 2px rgb(16 24 40 / 0.04), 0 8px 24px -12px rgb(16 24 40 / 0.12);
-  --shadow-lift: 0 2px 4px rgb(16 24 40 / 0.04), 0 22px 44px -22px rgb(16 24 40 / 0.28);
+  --shadow-soft: 0 4px 12px -2px rgb(18 18 24 / 0.08), 0 2px 4px -2px rgb(18 18 24 / 0.06);   /* shadow-md */
+  --shadow-lift: 0 16px 40px -8px rgb(18 18 24 / 0.18), 0 4px 10px -4px rgb(18 18 24 / 0.08); /* shadow-lg */
   --focus: 0 0 0 2px var(--bg), 0 0 0 4px var(--blue);
 
   color-scheme: light;
@@ -95,7 +97,6 @@ body {
   font-family: var(--font-sans);
   font-size: var(--fs-body);
   line-height: 1.6;
-  font-feature-settings: 'cv11', 'ss01', 'ss03';
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-rendering: optimizeLegibility;
@@ -110,9 +111,9 @@ button { cursor: pointer; background: none; border: 0; padding: 0; }
 a { color: inherit; text-decoration: none; }
 ul[role='list'], ol[role='list'] { list-style: none; padding: 0; }
 p, h1, h2, h3, h4, h5, h6, li, dd, blockquote { overflow-wrap: break-word; }
-h1, h2, h3, h4, h5, h6 { font-weight: 600; line-height: 1.1; letter-spacing: -0.025em; text-wrap: balance; }
+h1, h2, h3, h4, h5, h6 { font-weight: 700; line-height: 1.1; letter-spacing: -0.02em; text-wrap: balance; }
 p { text-wrap: pretty; }
-::selection { background: rgb(8 112 199 / 0.18); }
+::selection { background: rgb(16 120 187 / 0.18); }
 [hidden] { display: none !important; }
 
 :focus { outline: none; }
@@ -132,12 +133,12 @@ p { text-wrap: pretty; }
 .skip-link:focus-visible { transform: none; }
 
 /* ------------------------------------------------------------ Typography */
-.display { font-size: var(--fs-display); line-height: 0.98; letter-spacing: -0.048em; font-weight: 600; }
-.h1, h1 { font-size: var(--fs-h1); line-height: 1.02; letter-spacing: -0.042em; }
-.h2, h2 { font-size: var(--fs-h2); line-height: 1.06; letter-spacing: -0.036em; }
-.h3, h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.022em; }
-.h4, h4 { font-size: var(--fs-h4); line-height: 1.35; letter-spacing: -0.012em; }
-.lede { font-size: var(--fs-lede); line-height: 1.5; color: var(--ink-2); letter-spacing: -0.012em; }
+.display { font-size: var(--fs-display); line-height: 1; letter-spacing: -0.035em; font-weight: 700; }
+.h1, h1 { font-size: var(--fs-h1); line-height: 1.04; letter-spacing: -0.03em; }
+.h2, h2 { font-size: var(--fs-h2); line-height: 1.08; letter-spacing: -0.025em; }
+.h3, h3 { font-size: var(--fs-h3); line-height: 1.22; letter-spacing: -0.015em; }
+.h4, h4 { font-size: var(--fs-h4); line-height: 1.35; letter-spacing: -0.01em; }
+.lede { font-size: var(--fs-lede); line-height: 1.5; color: var(--ink-2); }
 .small { font-size: var(--fs-small); }
 .muted { color: var(--ink-2); }
 .mono {
@@ -181,37 +182,29 @@ p { text-wrap: pretty; }
 .on-night .rule { background: var(--line-night); }
 
 /* ------------------------------------------------------------- Buttons */
+/* Voise UI: primary = brand gradient, secondary = outline; radius-md (8px).
+   Sizes follow Voise UI: .btn = Large (48px), .btn-sm = Default (40px). */
 .btn {
-  --btn-bg: var(--ink); --btn-fg: #fff; --btn-border: transparent;
+  --btn-bg: var(--grad-brand); --btn-hover: var(--grad-brand-hover); --btn-fg: #fff; --btn-border: transparent;
   position: relative; display: inline-flex; align-items: center; justify-content: center; gap: 10px;
-  min-height: 48px; padding: 0 22px; border-radius: 999px;
+  min-height: 48px; padding: 0 22px; border-radius: var(--radius-s);
   background: var(--btn-bg); color: var(--btn-fg); border: 1px solid var(--btn-border);
-  font-size: 0.97rem; font-weight: 550; letter-spacing: -0.01em; white-space: nowrap;
-  isolation: isolate; overflow: hidden;
-  transition: background-color var(--dur) var(--ease-out), color var(--dur) var(--ease-out),
-    border-color var(--dur) var(--ease-out), transform var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
+  font-size: 0.95rem; font-weight: 600; letter-spacing: -0.005em; white-space: nowrap;
+  transition: color var(--dur) var(--ease-out), border-color var(--dur) var(--ease-out),
+    transform var(--dur-fast) var(--ease-out), box-shadow var(--dur) var(--ease-out);
   -webkit-tap-highlight-color: transparent;
 }
-.btn::before {
-  /* brand gradient wipes in on hover */
-  content: ''; position: absolute; inset: 0; z-index: -1; background: var(--grad);
-  transform: translateX(-101%); transition: transform 520ms var(--ease-out);
-}
-.btn:hover::before { transform: translateX(0); }
+.btn:hover { background: var(--btn-hover); box-shadow: 0 6px 18px -8px rgb(16 120 187 / 0.55); }
 .btn:active { transform: scale(0.975); }
 .btn .arrow { transition: transform var(--dur) var(--ease-out); flex: none; }
 .btn:hover .arrow, a:hover > .arrow, .link-arrow:hover .arrow { transform: translateX(4px); }
-.btn-secondary { --btn-bg: transparent; --btn-fg: var(--ink); --btn-border: var(--line-strong); }
-.btn-secondary::before { background: var(--ink); }
-.btn-secondary:hover { --btn-fg: #fff; --btn-border: var(--ink); }
-.on-night .btn { --btn-bg: #fff; --btn-fg: var(--ink); }
-.on-night .btn:hover { --btn-fg: #fff; }
-.on-night .btn-secondary { --btn-bg: transparent; --btn-fg: #fff; --btn-border: var(--line-night-strong); }
-.on-night .btn-secondary::before { background: #fff; }
-.on-night .btn-secondary:hover { --btn-fg: var(--ink); --btn-border: #fff; }
-.btn-sm { min-height: 40px; padding: 0 16px; font-size: 0.9rem; }
+.btn-secondary { --btn-bg: var(--bg); --btn-hover: var(--bg-muted); --btn-fg: var(--ink); --btn-border: var(--line-strong); }
+.btn-secondary:hover { box-shadow: none; border-color: var(--ink-3); }
+.on-night .btn-secondary { --btn-bg: transparent; --btn-hover: rgb(255 255 255 / 0.08); --btn-fg: #fff; --btn-border: var(--line-night-strong); }
+.on-night .btn-secondary:hover { border-color: rgb(255 255 255 / 0.4); }
+.btn-sm { min-height: 40px; padding: 0 16px; font-size: 0.875rem; }
 .btn[aria-disabled='true'], .btn:disabled { opacity: 0.6; pointer-events: none; }
-@media (hover: none) { .btn::before { display: none; } }
+
 
 .link {
   background-image: linear-gradient(currentColor, currentColor);
@@ -260,7 +253,7 @@ a:hover .media img, .is-link:hover .media img { transform: scale(1.035); }
 /* ----------------------------------------------------------- Prose (CMS) */
 .prose { font-size: 1.125rem; line-height: 1.75; color: #2a2e35; }
 .prose > * + * { margin-top: 1.25em; }
-.prose h2 { font-size: clamp(1.5rem, 1.25rem + 0.9vw, 2rem); margin-top: 2.2em; line-height: 1.2; letter-spacing: -0.028em; color: var(--ink); }
+.prose h2 { font-size: clamp(1.5rem, 1.25rem + 0.9vw, 2rem); margin-top: 2.2em; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); }
 .prose h3 { font-size: 1.3rem; margin-top: 1.9em; color: var(--ink); }
 .prose h4 { font-size: 1.1rem; margin-top: 1.6em; }
 .prose h2 + *, .prose h3 + *, .prose h4 + * { margin-top: 0.6em; }

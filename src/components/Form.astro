@@ -121,7 +121,7 @@ const describedBy = (f: (typeof def.fields)[number]) => [help(f) && `${fid(f.nam
   textarea { resize: vertical; min-height: 130px; line-height: 1.5; }
   input::placeholder, textarea::placeholder { color: var(--ink-3); }
   input:hover, select:hover, textarea:hover { border-color: #aeb6c1; }
-  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgb(8 112 199 / 0.18); }
+  input:focus-visible, select:focus-visible, textarea:focus-visible { outline: none; border-color: var(--blue); box-shadow: 0 0 0 3px rgb(16 120 187 / 0.18); }
   .select-wrap { position: relative; }
   .select-wrap select { padding-right: 40px; }
   .select-wrap :global(.chev) { position: absolute; right: 14px; top: 50%; transform: translateY(-50%); pointer-events: none; color: var(--ink-2); }
@@ -134,7 +134,7 @@ const describedBy = (f: (typeof def.fields)[number]) => [help(f) && `${fid(f.nam
   .drop input { position: absolute; inset: 0; opacity: 0; cursor: pointer; width: 100%; height: 100%; }
   .drop-ui { display: flex; align-items: center; gap: 12px; min-height: 64px; padding: 14px 16px; border: 1px dashed var(--line-strong); border-radius: 12px; background: var(--bg-subtle); color: var(--ink-2); font-size: var(--fs-small); transition: border-color var(--dur-fast), background-color var(--dur-fast); }
   .drop:hover .drop-ui, .drop.is-over .drop-ui { border-color: var(--blue); background: var(--blue-soft); }
-  .drop input:focus-visible + .drop-ui { border-color: var(--blue); box-shadow: 0 0 0 3px rgb(8 112 199 / 0.18); }
+  .drop input:focus-visible + .drop-ui { border-color: var(--blue); box-shadow: 0 0 0 3px rgb(16 120 187 / 0.18); }
   .drop.has-file .drop-ui { border-style: solid; color: var(--ink); background: #fff; }
   .drop input[aria-invalid='true'] + .drop-ui { border-color: #c0362c; }
   .drop-text { overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
@@ -144,8 +144,6 @@ const describedBy = (f: (typeof def.fields)[number]) => [help(f) && `${fid(f.nam
   .foot { display: flex; flex-wrap: wrap; align-items: center; gap: 16px 24px; margin-top: 4px; }
   .submit { min-width: 200px; }
   /* Forms sit on white cards even inside dark sections. */
-  .vt-form .submit { --btn-bg: var(--ink); --btn-fg: #fff; }
-  .vt-form .submit:hover { --btn-fg: #fff; }
   .spinner { display: none; width: 16px; height: 16px; border-radius: 50%; border: 2px solid rgb(255 255 255 / 0.35); border-top-color: #fff; animation: spin 700ms linear infinite; }
   @keyframes spin { to { transform: rotate(360deg); } }
   .submit[aria-busy='true'] .spinner { display: inline-block; }

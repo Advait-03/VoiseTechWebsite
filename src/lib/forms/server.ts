@@ -241,7 +241,7 @@ export async function handleForm(id: FormDef['id'], ctx: APIContext) {
   const items = Object.values(result.errors ?? {}).map((e) => `<li>${esc(e)}</li>`).join('');
   return new Response(
     `<!doctype html><html lang="en-GB"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><meta name="robots" content="noindex"><title>Please check your submission - Voise Tech</title>
-<style>body{font-family:system-ui,sans-serif;max-width:640px;margin:10vh auto;padding:0 20px;color:#17191d;line-height:1.6}a{color:#0663b0}</style></head>
+<style>body{font-family:system-ui,sans-serif;max-width:640px;margin:10vh auto;padding:0 20px;color:#17191d;line-height:1.6}a{color:#0d6199}</style></head>
 <body><h1>We couldn’t send your form yet</h1><p>${esc(result.message)}</p>${items ? `<ul>${items}</ul>` : ''}<p><a href="javascript:history.back()">Go back and try again</a> or email <a href="mailto:${FALLBACK_EMAIL}">${FALLBACK_EMAIL}</a>.</p></body></html>`,
     { status: result.status, headers: { 'Content-Type': 'text/html; charset=utf-8', 'Cache-Control': 'no-store' } },
   );

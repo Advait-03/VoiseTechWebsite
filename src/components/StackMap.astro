@@ -21,7 +21,7 @@ const curve = (x1: number, y1: number, x2: number, y2: number) => `M ${x1} ${y1}
 <figure class:list={['stack-map', compact && 'is-compact']}>
   <svg viewBox={`0 0 ${W} ${H}`} role="group" aria-label="The Voise product ecosystem" data-draw>
     <defs>
-      <linearGradient id="sm-g" x1="0" x2="1"><stop offset="0" stop-color="#0870c7" /><stop offset="1" stop-color="#0eb151" /></linearGradient>
+      <linearGradient id="sm-g" x1="0" x2="1"><stop offset="0" stop-color="#1078bb" /><stop offset="1" stop-color="#1fad53" /></linearGradient>
     </defs>
     <text x="112" y="22" class="sm-label" aria-hidden="true">PUBLISHERS</text>
     <text x={W - 112} y="22" class="sm-label" aria-hidden="true">BUYERS</text>
@@ -55,7 +55,7 @@ const curve = (x1: number, y1: number, x2: number, y2: number) => `M ${x1} ${y1}
   .sm-hub:hover circle:first-child, .sm-hub.is-cur circle:first-child { fill: var(--blue-ink); }
   .sm-hub:focus-visible { outline: none; }
   .sm-hub:focus-visible circle:first-child { stroke: var(--blue); stroke-width: 3; }
-  .sm-hub .sm-ring { fill: none; stroke: rgb(8 112 199 / 0.25); stroke-width: 1; stroke-dasharray: 2 5; transform-origin: 320px 210px; animation: sm-spin 24s linear infinite; }
+  .sm-hub .sm-ring { fill: none; stroke: rgb(16 120 187 / 0.25); stroke-width: 1; stroke-dasharray: 2 5; transform-origin: 320px 210px; animation: sm-spin 24s linear infinite; }
   @keyframes sm-spin { to { transform: rotate(360deg); } }
   .sm-hub text { fill: #fff; font-size: 13px; font-weight: 600; }
   .sm-hub .sm-sub { fill: var(--ink-inverse-2); font-family: var(--font-mono); font-size: 9px; font-weight: 500; letter-spacing: 0.08em; }

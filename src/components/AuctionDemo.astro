@@ -130,9 +130,9 @@ const money = (n: number) => `$${n.toFixed(2)}`;
   .auction { margin: 0; border: 1px solid var(--line-strong); border-radius: var(--radius-l); background: #fff; box-shadow: var(--shadow-soft); overflow: hidden; }
   .a-head { display: flex; justify-content: space-between; gap: 12px; padding: 14px 20px; background: var(--night); color: #fff; font-size: 0.68rem; letter-spacing: 0.08em; text-transform: uppercase; }
   .a-head .mono { display: inline-flex; align-items: center; gap: 10px; }
-  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgb(14 177 81 / 0.6); }
+  .dot { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 0 rgb(31 173 83 / 0.6); }
   @media (prefers-reduced-motion: no-preference) { .dot { animation: a-ping 1.8s infinite; } }
-  @keyframes a-ping { to { box-shadow: 0 0 0 8px rgb(14 177 81 / 0); } }
+  @keyframes a-ping { to { box-shadow: 0 0 0 8px rgb(31 173 83 / 0); } }
   .a-id { color: var(--ink-inverse-2); }
   .a-meta { display: grid; grid-template-columns: 1.6fr 1fr 1fr; margin: 0; border-bottom: 1px solid var(--line); }
   .a-meta div { padding: 14px 20px; display: grid; gap: 4px; min-width: 0; }
@@ -160,7 +160,7 @@ const money = (n: number) => `$${n.toFixed(2)}`;
 
   /* Result panel: winner + live tally of how each bid ended */
   .a-result { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 12px 24px; padding: 16px 20px 18px; border-top: 1px solid var(--line); background: var(--bg-subtle); transition: background-color 300ms; }
-  .a-result.is-done { background: rgb(14 177 81 / 0.08); }
+  .a-result.is-done { background: rgb(31 173 83 / 0.08); }
   .a-result.is-none { background: var(--bg-subtle); }
   .r-main { display: grid; grid-template-columns: auto 1fr; gap: 2px 12px; align-items: baseline; }
   .r-k { grid-row: span 2; align-self: center; padding: 4px 10px; border-radius: 999px; background: var(--ink); color: #fff; font-size: 0.62rem; letter-spacing: 0.08em; text-transform: uppercase; }

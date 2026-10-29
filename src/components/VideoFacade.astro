@@ -18,7 +18,7 @@ const { id, title, label = 'Play video' } = Astro.props;
 
 <style>
   .video { position: relative; aspect-ratio: 16 / 9; border-radius: var(--radius-l); overflow: hidden; background: var(--night); }
-  .poster { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 28px; color: #fff; background: radial-gradient(80% 90% at 85% 0%, rgb(8 112 199 / 0.45), transparent 60%), radial-gradient(70% 80% at 0% 100%, rgb(14 177 81 / 0.25), transparent 60%), var(--night); }
+  .poster { position: absolute; inset: 0; display: grid; place-items: center; align-content: center; gap: 28px; color: #fff; background: radial-gradient(80% 90% at 85% 0%, rgb(16 120 187 / 0.45), transparent 60%), radial-gradient(70% 80% at 0% 100%, rgb(31 173 83 / 0.25), transparent 60%), var(--night); }
   .poster::before { content: ''; position: absolute; inset: 0; background-image: linear-gradient(to right, rgb(255 255 255 / 0.05) 1px, transparent 1px), linear-gradient(to bottom, rgb(255 255 255 / 0.05) 1px, transparent 1px); background-size: 48px 48px; }
   .poster-logo { width: min(44%, 340px); height: auto; position: relative; }
   .play { position: relative; width: 76px; height: 76px; border-radius: 50%; background: #fff; color: var(--ink); display: grid; place-items: center; padding-left: 4px; transition: transform var(--dur) var(--ease-out), box-shadow var(--dur); box-shadow: 0 0 0 0 rgb(255 255 255 / 0.4); }
